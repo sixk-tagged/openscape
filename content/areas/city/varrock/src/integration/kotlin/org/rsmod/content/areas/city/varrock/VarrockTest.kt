@@ -6,11 +6,13 @@ import org.junit.jupiter.api.parallel.ExecutionMode
 import org.rsmod.api.config.refs.components
 import org.rsmod.api.config.refs.interfaces
 import org.rsmod.api.config.refs.objs
+import org.rsmod.api.config.refs.stats
 import org.rsmod.api.shops.ShopScript
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.areas.city.varrock.configs.varrock_locs
 import org.rsmod.content.areas.city.varrock.configs.varrock_npcs
+import org.rsmod.content.areas.city.varrock.locs.CookingGuildObjs
 import org.rsmod.content.areas.city.varrock.locs.Dummies
 import org.rsmod.content.areas.city.varrock.locs.VarrockLocScripts
 import org.rsmod.content.areas.city.varrock.npcs.BaraekObjs
@@ -19,6 +21,9 @@ import org.rsmod.content.areas.city.varrock.npcs.ServiceNpcs
 import org.rsmod.content.areas.city.varrock.npcs.StrayDogs
 import org.rsmod.content.areas.city.varrock.npcs.VarrockShops
 import org.rsmod.game.inv.InvObj
+import org.rsmod.game.loc.LocAngle
+import org.rsmod.game.loc.LocShape
+import org.rsmod.game.type.obj.Wearpos
 import org.rsmod.map.CoordGrid
 
 /* Obj transaction system is not thread-safe. */
@@ -92,6 +97,35 @@ class VarrockTest {
             assertTrue(locExists(START.translateX(1), varrock_locs.manhole_open))
         }
 
+    @Test
+    fun GameTestState.`the cooks' guild door lets only a dressed cook through`() =
+        runGameTest(VarrockLocScripts::class) {
+            val door =
+                placeMapLoc(
+                    GUILD_DOOR,
+                    varrock_locs.cooks_guild_door,
+                    LocShape.WallStraight,
+                    LocAngle.North,
+                )
+            player.setBaseLevel(stats.cooking, 32)
+            player.setCurrentLevel(stats.cooking, 32)
+            player.worn[Wearpos.Hat.slot] = InvObj(CookingGuildObjs.chefs_hat)
+            player.teleport(GUILD_DOOR)
+            advance()
+
+            player.opLoc1(door)
+            advanceUntil(max = 10) { player.coords == GUILD_DOOR.translateZ(1) }
+            // It shuts behind them instead of standing open for anyone else.
+            advanceUntil(max = 5) { locExists(GUILD_DOOR, varrock_locs.cooks_guild_door) }
+
+            player.worn[Wearpos.Hat.slot] = null
+            player.teleport(GUILD_DOOR)
+            advance()
+            player.opLoc1(door)
+            talkThrough()
+            assertEquals(GUILD_DOOR, player.coords)
+        }
+
     /** Clicks through the chatbox, picking [options] in order on each menu, until it closes. */
     private fun GameTestScope.talkThrough(vararg options: Int) {
         val choices = options.iterator()
@@ -118,6 +152,7 @@ class VarrockTest {
 
     private companion object {
         val START = CoordGrid(0, 50, 50, 10, 10)
+        val GUILD_DOOR = CoordGrid(3143, 3443)
 
         val SHOPKEEPERS =
             listOf(

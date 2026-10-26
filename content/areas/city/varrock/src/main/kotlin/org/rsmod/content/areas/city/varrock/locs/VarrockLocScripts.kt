@@ -220,7 +220,8 @@ constructor(private val locRepo: LocRepository, private val objTypes: ObjTypeLis
      * when going in from the street (south); leaving needs nothing.
      */
     private suspend fun ProtectedAccess.cooksGuildDoor(door: BoundLocInfo) {
-        if (coords.z <= door.coords.z) {
+        val entering = coords.z <= door.coords.z
+        if (entering) {
             val hat =
                 wornAny(
                     player.hat,
@@ -252,6 +253,8 @@ constructor(private val locRepo: LocRepository, private val objTypes: ObjTypeLis
             }
         }
         openDoor(door)
+        // Only the checked player goes through; the door shuts behind them.
+        telejump(coords.translateZ(if (entering) 1 else -1))
     }
 
     private fun wornAny(worn: InvObj?, vararg types: ObjType): Boolean =
@@ -260,7 +263,7 @@ constructor(private val locRepo: LocRepository, private val objTypes: ObjTypeLis
     private fun isMax(worn: InvObj?, group: ContentGroupType): Boolean =
         worn != null && objTypes[worn].isContentType(group)
 
-    /** A wall door swings open one tile along its angle and shuts again on its own. */
+    /** A wall door swings open one tile along its angle and shuts again right away. */
     private fun ProtectedAccess.openDoor(door: BoundLocInfo) {
         soundSynth(synths.door_open)
         val opened =
@@ -282,7 +285,7 @@ constructor(private val locRepo: LocRepository, private val objTypes: ObjTypeLis
 
     private companion object {
         const val CONTAINER_DURATION = 500
-        const val DOOR_DURATION = 500
+        const val DOOR_DURATION = 2
         const val GUILD_COOKING_LEVEL = 32
         val SEWER_LADDER_LANDING = CoordGrid(3237, 9859)
     }
