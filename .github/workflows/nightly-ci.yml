@@ -1,0 +1,66 @@
+name: Integration Tests
+
+on:
+  schedule:
+    # Schedule the workflow to run every day at 2:00 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      tasks:
+        description: 'Gradle tasks to run after install'
+        default: 'integration'
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+        with:
+          validate-wrappers: true
+
+      - name: Set up RS Mod
+        run: ./gradlew install
+
+      - name: Run Integration Tests
+        env:
+          TASKS: ${{ inputs.tasks || 'integration' }}
+        run: ./gradlew $TASKS --continue
+
+      - name: Upload Test Results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: '**/build/test-results/**/TEST-*.xml'
+
+      - name: Create Test Summary
+        uses: test-summary/action@v2
+        with:
+          paths: '**/test-results/integration/TEST-*.xml'
+          output: integration-test-summary.md
+        if: always()
+
+      - name: Upload Test Summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-summary
+          path: 'integration-test-summary.md'
+
+      - name: Show Test Summary
+        if: always()
+        run: |
+          echo "### Integration Test Summary" >> $GITHUB_STEP_SUMMARY
+          cat integration-test-summary.md >> $GITHUB_STEP_SUMMARY
