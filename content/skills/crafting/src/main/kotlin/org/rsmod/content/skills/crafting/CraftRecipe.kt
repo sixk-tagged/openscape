@@ -110,7 +110,7 @@ private fun ProtectedAccess.craftStep(task: CraftTask) {
         return
     }
     val spoil = recipe.spoil
-    val spoiled = spoil != null && !statRandom(stats.crafting, spoil.low, spoil.high, 0)
+    val spoiled = spoil != null && fails(spoil)
     if (!use(recipe, spoiled)) {
         return
     }
@@ -131,6 +131,9 @@ private fun ProtectedAccess.craftStep(task: CraftTask) {
         resetAnim()
     }
 }
+
+private fun ProtectedAccess.fails(spoil: Spoil): Boolean =
+    !statRandom(stats.crafting, spoil.low, spoil.high, 0)
 
 /** Takes the inputs, gives the product (or what is left of a ruined one) and the xp. */
 private fun ProtectedAccess.use(recipe: CraftRecipe, spoiled: Boolean): Boolean {

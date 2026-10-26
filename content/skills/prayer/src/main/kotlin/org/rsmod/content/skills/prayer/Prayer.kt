@@ -19,6 +19,29 @@ import org.rsmod.plugin.scripts.ScriptContext
 
 /** Burying bones (op1 on every bone type) and praying at altars. */
 class Prayer : PluginScript() {
+    private val bones: Map<ObjType, Double> by lazy {
+        with(prayer_objs) {
+            mapOf(
+                bones to 4.5,
+                bones_burnt to 4.5,
+                wolf_bones to 4.5,
+                bat_bones to 5.3,
+                big_bones to 15.0,
+                jogre_bones to 15.0,
+                zogre_bones to 22.5,
+                babydragon_bones to 30.0,
+                wyrm_bones to 50.0,
+                wyvern_bones to 72.0,
+                dragon_bones to 72.0,
+                drake_bones to 80.0,
+                lava_dragon_bones to 85.0,
+                hydra_bones to 110.0,
+                dagannoth_bones to 125.0,
+                superior_dragon_bones to 150.0,
+            )
+        }
+    }
+
     override fun ScriptContext.startup() {
         for ((bone, xp) in bones) {
             onOpHeld1(bone) { bury(bone, xp, it.slot, it.inventory) }
@@ -46,29 +69,6 @@ class Prayer : PluginScript() {
         player.statRestore(stats.prayer)
         vars[varbits.prayer_drain_counter] = 0
         mes("You recharge your Prayer points.")
-    }
-
-    private val bones: Map<ObjType, Double> by lazy {
-        with(prayer_objs) {
-            mapOf(
-                bones to 4.5,
-                bones_burnt to 4.5,
-                wolf_bones to 4.5,
-                bat_bones to 5.3,
-                big_bones to 15.0,
-                jogre_bones to 15.0,
-                zogre_bones to 22.5,
-                babydragon_bones to 30.0,
-                wyrm_bones to 50.0,
-                wyvern_bones to 72.0,
-                dragon_bones to 72.0,
-                drake_bones to 80.0,
-                lava_dragon_bones to 85.0,
-                hydra_bones to 110.0,
-                dagannoth_bones to 125.0,
-                superior_dragon_bones to 150.0,
-            )
-        }
     }
 }
 

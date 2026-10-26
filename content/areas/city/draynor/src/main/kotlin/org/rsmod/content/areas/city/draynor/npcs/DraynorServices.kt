@@ -141,11 +141,11 @@ class DraynorServices @Inject constructor(private val objRepo: ObjRepository) : 
         val choice =
             choice4(
                 "Red dye (3 redberries and 5 coins)",
-                Dye.RED,
+                Dye.Red,
                 "Yellow dye (2 onions and 5 coins)",
-                Dye.YELLOW,
+                Dye.Yellow,
                 "Blue dye (2 woad leaves and 5 coins)",
-                Dye.BLUE,
+                Dye.Blue,
                 "No thanks.",
                 null,
                 title = "What dye do you want?",
@@ -181,9 +181,9 @@ class DraynorServices @Inject constructor(private val objRepo: ObjRepository) : 
     }
 
     private enum class Dye(val label: String, val obj: ObjType, val ingredients: List<Ingredient>) {
-        RED("red", draynor_objs.red_dye, listOf(Ingredient(draynor_objs.redberries, 3))),
-        YELLOW("yellow", draynor_objs.yellow_dye, listOf(Ingredient(draynor_objs.onion, 2))),
-        BLUE("blue", draynor_objs.blue_dye, listOf(Ingredient(draynor_objs.woad_leaf, 2))),
+        Red("red", draynor_objs.red_dye, listOf(Ingredient(draynor_objs.redberries, 3))),
+        Yellow("yellow", draynor_objs.yellow_dye, listOf(Ingredient(draynor_objs.onion, 2))),
+        Blue("blue", draynor_objs.blue_dye, listOf(Ingredient(draynor_objs.woad_leaf, 2))),
     }
 
     private class Ingredient(val obj: ObjType, val count: Int)
@@ -309,11 +309,11 @@ class DraynorServices @Inject constructor(private val objRepo: ObjRepository) : 
         val choice =
             choice5(
                 "Splitbark helm (2 bark, 2 fine cloth, 6,000 coins)",
-                Splitbark.HELM,
+                Splitbark.Helm,
                 "Splitbark body (4 bark, 4 fine cloth, 37,000 coins)",
-                Splitbark.BODY,
+                Splitbark.Body,
                 "Splitbark legs (3 bark, 3 fine cloth, 32,000 coins)",
-                Splitbark.LEGS,
+                Splitbark.Legs,
                 "More...",
                 null,
                 "No thanks.",
@@ -326,9 +326,9 @@ class DraynorServices @Inject constructor(private val objRepo: ObjRepository) : 
         val more =
             choice3(
                 "Splitbark gauntlets (1 bark, 1 fine cloth, 1,000 coins)",
-                Splitbark.GAUNTLETS,
+                Splitbark.Gauntlets,
                 "Splitbark boots (1 bark, 1 fine cloth, 1,000 coins)",
-                Splitbark.BOOTS,
+                Splitbark.Boots,
                 "No thanks.",
                 null,
             )
@@ -361,11 +361,11 @@ class DraynorServices @Inject constructor(private val objRepo: ObjRepository) : 
     }
 
     private enum class Splitbark(val obj: ObjType, val pieces: Int, val fee: Int) {
-        GAUNTLETS(draynor_objs.splitbark_gauntlets, 1, 1_000),
-        BOOTS(draynor_objs.splitbark_boots, 1, 1_000),
-        HELM(draynor_objs.splitbark_helm, 2, 6_000),
-        LEGS(draynor_objs.splitbark_legs, 3, 32_000),
-        BODY(draynor_objs.splitbark_body, 4, 37_000),
+        Gauntlets(draynor_objs.splitbark_gauntlets, 1, 1_000),
+        Boots(draynor_objs.splitbark_boots, 1, 1_000),
+        Helm(draynor_objs.splitbark_helm, 2, 6_000),
+        Legs(draynor_objs.splitbark_legs, 3, 32_000),
+        Body(draynor_objs.splitbark_body, 4, 37_000),
     }
 
     // ---- Ava

@@ -23,6 +23,13 @@ data class Prayer(
     val plainLockedMessage: String? =
         lockedMessage?.replace("<col=000080>", "")?.replace("</col>", "")?.replace("<br>", " ")
 
+    /** openscape: protection prayers can be blocked by the dragon scimitar's Sever. */
+    val isProtection: Boolean
+        get() =
+            enabled.id == varbits.protect_from_magic.id ||
+                enabled.id == varbits.protect_from_missiles.id ||
+                enabled.id == varbits.protect_from_melee.id
+
     fun hasAllRequirements(player: Player): Boolean {
         if (unlocked != null && player.vars[unlocked] < unlockState) {
             return false
@@ -33,13 +40,6 @@ data class Prayer(
     }
 
     fun hasBaseRequirement(player: Player): Boolean = player.basePrayerLvl >= level
-
-    /** openscape: protection prayers can be blocked by the dragon scimitar's Sever. */
-    val isProtection: Boolean
-        get() =
-            enabled.id == varbits.protect_from_magic.id ||
-                enabled.id == varbits.protect_from_missiles.id ||
-                enabled.id == varbits.protect_from_melee.id
 }
 
 /** openscape: shown when a dragon scimitar's Sever stops a protection prayer from turning on. */

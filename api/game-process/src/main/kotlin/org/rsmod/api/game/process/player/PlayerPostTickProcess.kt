@@ -159,6 +159,17 @@ constructor(
         invUpdates.cleanUp()
     }
 
+    private inline fun Player.tryOrDisconnect(block: Player.() -> Unit) =
+        try {
+            block(this)
+        } catch (e: Exception) {
+            forceDisconnect()
+            exceptionHandler.handle(e) { "Error processing post-tick for player: $this." }
+        } catch (e: NotImplementedError) {
+            forceDisconnect()
+            exceptionHandler.handle(e) { "Error processing post-tick for player: $this." }
+        }
+
     private companion object {
         val STEPS =
             listOf(
@@ -195,15 +206,4 @@ constructor(
         const val NANOS_PER_MILLI = 1_000_000L
         const val SLOW_NANOS = 200 * NANOS_PER_MILLI
     }
-
-    private inline fun Player.tryOrDisconnect(block: Player.() -> Unit) =
-        try {
-            block(this)
-        } catch (e: Exception) {
-            forceDisconnect()
-            exceptionHandler.handle(e) { "Error processing post-tick for player: $this." }
-        } catch (e: NotImplementedError) {
-            forceDisconnect()
-            exceptionHandler.handle(e) { "Error processing post-tick for player: $this." }
-        }
 }

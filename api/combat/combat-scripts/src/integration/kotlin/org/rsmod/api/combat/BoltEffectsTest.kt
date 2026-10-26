@@ -28,6 +28,11 @@ import org.rsmod.map.CoordGrid
 
 @Execution(ExecutionMode.SAME_THREAD)
 class BoltEffectsTest {
+    private val ruby = Bolts.ruby
+    private val onyx = Bolts.onyx
+    private val sapphire = Bolts.sapphire
+    private val topaz = Bolts.topaz
+
     @Test
     fun GameTestState.`ruby bolts take a tenth of your hp for a fifth of theirs`() =
         boltTest { effects ->
@@ -111,11 +116,6 @@ class BoltEffectsTest {
         val sapphire = find("xbows_crossbow_bolts_mithril_tipped_sapphire_enchanted")
         val topaz = find("xbows_crossbow_bolts_steel_tipped_redtopaz_enchanted")
     }
-
-    private val ruby = Bolts.ruby
-    private val onyx = Bolts.onyx
-    private val sapphire = Bolts.sapphire
-    private val topaz = Bolts.topaz
 
     private fun GameTestState.boltTest(test: GameTestScope.(BoltEffects) -> Unit) =
         runInjectedGameTest(
