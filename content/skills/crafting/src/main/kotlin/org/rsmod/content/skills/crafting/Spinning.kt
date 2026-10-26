@@ -7,10 +7,6 @@ import org.rsmod.api.player.ui.skillMulti
 import org.rsmod.api.script.onOpLoc2
 import org.rsmod.api.script.onOpLocU
 import org.rsmod.api.script.onPlayerQueueWithArgs
-import org.rsmod.api.type.refs.loc.LocReferences
-import org.rsmod.api.type.refs.obj.ObjReferences
-import org.rsmod.api.type.refs.queue.QueueReferences
-import org.rsmod.api.type.refs.seq.SeqReferences
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.obj.isType
 import org.rsmod.plugin.scripts.PluginScript
@@ -19,12 +15,16 @@ import org.rsmod.plugin.scripts.ScriptContext
 /** Spinning wheel: wool, flax, sinew/roots, magic roots and yak hair (OSRS wiki levels and xp). */
 class Spinning : PluginScript() {
     override fun ScriptContext.startup() {
-        onOpLoc2(CraftingLocs.spinning_wheel) { choose() }
-        onOpLocU(CraftingLocs.spinning_wheel) { event ->
-            if (SpinRecipes.all.any { recipe -> recipe.inputs.any { event.objType.isType(it) } }) {
-                choose()
-            } else {
-                mes("Nothing interesting happens.")
+        for (wheel in CraftingLocs.spinning_wheels) {
+            onOpLoc2(wheel) { choose() }
+            onOpLocU(wheel) { event ->
+                if (
+                    SpinRecipes.all.any { recipe -> recipe.inputs.any { event.objType.isType(it) } }
+                ) {
+                    choose()
+                } else {
+                    mes("Nothing interesting happens.")
+                }
             }
         }
         onPlayerQueueWithArgs<SpinTask>(CraftingQueues.spin) { spin(it.args) }
@@ -109,33 +109,4 @@ object SpinRecipes {
                 Recipe(rope, listOf(yak_hair), 30, 25.0),
             )
         }
-}
-
-object CraftingLocs : LocReferences() {
-    val spinning_wheel = find("spinningwheel")
-}
-
-object CraftingObjs : ObjReferences() {
-    val wool = find("wool")
-    val ball_of_wool = find("ball_of_wool")
-    val flax = find("flax")
-    val bow_string = find("bow_string")
-    val sinew = find("xbows_sinew")
-    val oak_roots = find("oak_roots")
-    val willow_roots = find("willow_roots")
-    val maple_roots = find("maple_roots")
-    val yew_roots = find("yew_roots")
-    val crossbow_string = find("xbows_crossbow_string")
-    val magic_roots = find("magic_roots")
-    val magic_string = find("magic_string")
-    val yak_hair = find("yak_hair")
-    val rope = find("rope")
-}
-
-object CraftingSeqs : SeqReferences() {
-    val spin = find("human_spinningwheel")
-}
-
-object CraftingQueues : QueueReferences() {
-    val spin = find("crafting_spin")
 }

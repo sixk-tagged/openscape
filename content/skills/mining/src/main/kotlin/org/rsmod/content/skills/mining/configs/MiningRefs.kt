@@ -137,6 +137,8 @@ object MiningLocs : LocReferences() {
     val tin_1 = find("tinrock1")
     val tin_2 = find("tinrock2")
     val essence = find("big_essence_rock")
+    /** The rocks actually placed in the Rune Essence Mine. */
+    val essence_mine = find("blankrunestone")
     val blurite_1 = find("blurite_rock_1")
     val blurite_2 = find("blurite_rock_2")
     val limestone_1 = find("limestone_rock1")

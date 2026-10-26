@@ -1,0 +1,33 @@
+[[spawn]]
+obj = 'cabbage'
+coords = '0_51_49_21_39'
+
+[[spawn]]
+obj = 'jug_water'
+coords = '0_51_49_38_34'
+
+[[spawn]]
+obj = 'bodyrune'
+coords = '1_51_49_26_55'
+
+[[spawn]]
+obj = 'leather_boots'
+coords = '0_51_49_38_54'
+
+[[spawn]]
+obj = 'bucket_empty'
+coords = '0_51_49_43_59'
+
+[[spawn]]
+obj = 'bronze_mace'
+coords = '0_51_49_56_1'
+
+[[spawn]]
+obj = 'firerune'
+count = 3
+coords = '0_51_51_40_47'
+
+[[spawn]]
+obj = 'waterrune'
+count = 4
+coords = '0_51_51_34_52'

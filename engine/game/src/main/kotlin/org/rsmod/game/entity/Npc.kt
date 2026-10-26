@@ -407,14 +407,22 @@ public class Npc(
     public fun resetMode() {
         clearInteraction()
         resetFaceEntity()
+        restoreHuntRange()
         mode = null
     }
 
     public fun defaultMode() {
         clearInteraction()
         resetFaceEntity()
+        restoreHuntRange()
 
         mode = defaultMode
+    }
+
+    // A hunt mode without `findKeepHunting` stops hunting once it finds a target. Giving up on
+    // that target lets an aggressive npc look for players again.
+    private fun restoreHuntRange() {
+        huntRange = type.huntRange
     }
 
     public fun noneMode() {

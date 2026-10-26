@@ -2326,3 +2326,15 @@
 65482	death_coffer
 65483	death_tutorial
 65484	gravestone_paid
+65430	crafting_thread_uses
+65431	crafting_tanner
+65440	binding_necklace_used
+65441	essence_mine_origin
+65442	pouch_decay_medium
+65443	pouch_decay_large
+65444	pouch_decay_giant
+65445	pouch_decay_colossal
+65420	olivia_angry_until
+65421	tolerance_region
+65422	tolerance_region_old
+65423	tolerance_since

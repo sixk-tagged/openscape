@@ -111,6 +111,7 @@ object CookingLocs : LocReferences() {
     val newbie_range = find("newbierange")
     val tutorial_range = find("tut2_range")
     val elf_village_range = find("elf_village_range")
+    val sorceress_range = find("sorceress_range")
 
     val dairy_churn = find("dairy_churn")
 
@@ -128,6 +129,7 @@ object CookingLocs : LocReferences() {
                 newbie_range,
                 tutorial_range,
                 elf_village_range,
+                sorceress_range,
             )
 }
 

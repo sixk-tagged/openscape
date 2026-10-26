@@ -86,6 +86,12 @@ object BaseVarps : VarpReferences() {
     val prayer_drain = find("prayer_drain")
     val prayer0 = find("prayer0")
     val playtime = find("playtime")
+
+    // Custom: aggression tolerance (PlayerAreaProcessor, NpcPlayerHuntProcessor).
+    val tolerance_region = find("tolerance_region")
+    val tolerance_region_old = find("tolerance_region_old")
+    val tolerance_since = find("tolerance_since")
+
     val generic_temp_state_65516 = find("generic_temp_state_65516")
     val dinhs_passive_delay = find("dinhs_passive_delay")
     val com_maxhit = find("com_maxhit")

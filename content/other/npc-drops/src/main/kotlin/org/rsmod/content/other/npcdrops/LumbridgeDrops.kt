@@ -51,22 +51,22 @@ class LumbridgeDrops @Inject constructor(private val tables: NpcDropTables) : Pl
     }
 }
 
-private fun always(obj: ObjType, count: Int = 1) = Drop(obj, count..count)
+internal fun always(obj: ObjType, count: Int = 1) = Drop(obj, count..count)
 
-private fun drop(obj: ObjType, weight: Int, count: Int = 1) = Drop(obj, count..count, weight)
+internal fun drop(obj: ObjType, weight: Int, count: Int = 1) = Drop(obj, count..count, weight)
 
-private fun drop(obj: ObjType, weight: Int, count: IntRange) = Drop(obj, count, weight)
+internal fun drop(obj: ObjType, weight: Int, count: IntRange) = Drop(obj, count, weight)
 
 /** A members-only slot; on a free world it gives [f2p] (or nothing). */
-private fun members(obj: ObjType, weight: Int, count: IntRange = 1..1, f2p: Drop? = null) =
+internal fun members(obj: ObjType, weight: Int, count: IntRange = 1..1, f2p: Drop? = null) =
     Drop(obj, count, weight, members = true, f2p = f2p)
 
-private fun table(vararg drops: Drop) = DropTable(128, drops.toList())
+internal fun table(vararg drops: Drop) = DropTable(128, drops.toList())
 
-private val bones = always(objs.bones)
-private val bonesOnly = NpcDrops(always = listOf(bones))
+internal val bones = always(objs.bones)
+internal val bonesOnly = NpcDrops(always = listOf(bones))
 
-private val herbs =
+internal val herbs =
     with(drop_objs) {
         table(
             drop(grimy_guam, 32),
@@ -84,10 +84,10 @@ private val herbs =
     }
 
 /** The herb table is members-only; free worlds get 10 coins in its slot. */
-private fun herbs(weight: Int) =
+internal fun herbs(weight: Int) =
     Drop(table = herbs, weight = weight, members = true, f2p = always(objs.coins, 10))
 
-private val allotmentSeeds =
+internal val allotmentSeeds =
     with(drop_objs) {
         table(
             drop(potato_seed, 64, 1..4),
@@ -112,7 +112,7 @@ private val chickenDrops =
 
 private val giantRatDrops = NpcDrops(always = listOf(bones, always(drop_objs.raw_rat_meat)))
 
-private val manTable =
+internal val manTable =
     with(drop_objs) {
         table(
             drop(bronze_med_helm, 2),
@@ -135,10 +135,10 @@ private val manTable =
         )
     }
 
-private val manDrops = NpcDrops(always = listOf(bones), main = manTable)
+internal val manDrops = NpcDrops(always = listOf(bones), main = manTable)
 
 /** Members farmers have their own table; free-world farmers drop the man's table. */
-private val farmerDrops =
+internal val farmerDrops =
     with(drop_objs) {
         NpcDrops(
             always = listOf(bones),
@@ -192,7 +192,7 @@ private val goblinLevel2Drops =
         )
     }
 
-private val goblinLevel5Drops =
+internal val goblinLevel5Drops =
     with(drop_objs) {
         NpcDrops(
             always = listOf(bones),

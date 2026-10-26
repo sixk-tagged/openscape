@@ -19,6 +19,10 @@ class ContainerScript @Inject constructor(private val locRepo: LocRepository) : 
     override fun ScriptContext.startup() {
         container(ContainerLocs.chest, ContainerLocs.chest_open, "chest")
         container(ContainerLocs.drawers, ContainerLocs.drawers_open, "drawers")
+        container(ContainerLocs.drawers2, ContainerLocs.drawers2_open, "drawers")
+        container(ContainerLocs.drawers2_rotated, ContainerLocs.drawers2_rotated_open, "drawers")
+        container(ContainerLocs.spooky_wardrobe, ContainerLocs.spooky_wardrobe_open, "wardrobe")
+        container(ContainerLocs.draynor_wardrobe, ContainerLocs.draynor_wardrobe_open, "wardrobe")
         // Note: OSRS only opens Sigmund's chest with his key during The Lost Tribe; the
         // locked message is unverified.
         onOpLoc1(ContainerLocs.lost_tribe_chest) { mes("This chest is locked.") }
@@ -47,6 +51,14 @@ object ContainerLocs : LocReferences() {
     val chest_open = find("chestopen")
     val drawers = find("drawers4")
     val drawers_open = find("drawers4open")
+    val drawers2 = find("drawers2")
+    val drawers2_open = find("drawers2open")
+    val drawers2_rotated = find("drawers2_rotated")
+    val drawers2_rotated_open = find("drawers2open_rotated")
+    val spooky_wardrobe = find("spookywardrobe")
+    val spooky_wardrobe_open = find("spookywardrobe_open")
+    val draynor_wardrobe = find("draynor_wardrobe")
+    val draynor_wardrobe_open = find("draynor_wardrobe_open")
     val lost_tribe_chest = find("lost_tribe_chest")
 }
 

@@ -1,5 +1,6 @@
 plugins {
     id("base-conventions")
+    id("integration-test-suite")
 }
 
 dependencies {
@@ -17,6 +18,9 @@ dependencies {
     implementation(projects.engine.map)
     implementation(projects.engine.module)
     implementation(projects.engine.plugin)
+    integrationImplementation(libs.classgraph)
+    integrationImplementation(libs.guice)
+    integrationImplementation(projects.engine.plugin)
 }
 
 fun findPlugins(): List<Project> =

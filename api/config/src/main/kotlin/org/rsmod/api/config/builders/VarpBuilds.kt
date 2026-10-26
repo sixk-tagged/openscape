@@ -20,6 +20,9 @@ internal object VarpBuilds : VarpBuilder() {
 
         build("prayer_drain") { temporary = true }
         build("playtime")
+        build("tolerance_region")
+        build("tolerance_region_old")
+        build("tolerance_since")
         build("generic_temp_state_65516") { temporary = true }
         build("dinhs_passive_delay") { temporary = true }
         build("com_maxhit")

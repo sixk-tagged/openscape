@@ -1,0 +1,547 @@
+[[spawn]]
+npc = '0_48_50_saltfish'
+coords = '0_48_50_13_30'
+
+[[spawn]]
+npc = '0_48_50_saltfish'
+coords = '0_48_50_14_27'
+
+[[spawn]]
+npc = 'aggie_2ops'
+coords = '0_48_50_14_59'
+
+[[spawn]]
+npc = 'aluft_gnome_mage'
+coords = '0_48_49_43_24'
+
+[[spawn]]
+npc = 'anma_assistant'
+coords = '0_48_52_21_29'
+
+[[spawn]]
+npc = 'anma_witch_multi'
+coords = '0_48_52_27_42'
+
+[[spawn]]
+npc = 'aprilfoolshorsesalesman'
+coords = '0_48_50_9_47'
+
+[[spawn]]
+npc = 'armourmaking_wizard'
+coords = '1_48_49_36_25'
+
+[[spawn]]
+npc = 'banker1'
+coords = '0_48_50_16_42'
+
+[[spawn]]
+npc = 'banker1'
+coords = '0_48_50_18_45'
+
+[[spawn]]
+npc = 'banker2'
+coords = '0_48_50_18_42'
+
+[[spawn]]
+npc = 'banker2'
+coords = '0_48_50_18_43'
+
+[[spawn]]
+npc = 'black_knight'
+coords = '0_48_50_29_20'
+
+[[spawn]]
+npc = 'chicken'
+coords = '0_48_149_37_33'
+
+[[spawn]]
+npc = 'diary_queen'
+coords = '0_48_50_24_27'
+
+[[spawn]]
+npc = 'diary_queen_pet'
+coords = '0_48_50_25_27'
+
+[[spawn]]
+npc = 'farmer_farming_on_48_51'
+coords = '0_48_51_47_12'
+
+[[spawn]]
+npc = 'farming_market_guard'
+coords = '0_48_50_11_47'
+
+[[spawn]]
+npc = 'farming_market_guard'
+coords = '0_48_50_11_53'
+
+[[spawn]]
+npc = 'farming_tools_leprechaun'
+coords = '0_48_52_15_24'
+
+[[spawn]]
+npc = 'forestry_forester_nostorage'
+coords = '0_48_50_24_38'
+
+[[spawn]]
+npc = 'giantspider1'
+coords = '0_48_52_3_38'
+
+[[spawn]]
+npc = 'giantspider1'
+coords = '0_48_52_63_12'
+
+[[spawn]]
+npc = 'goblin_unarmed_melee_6'
+coords = '0_48_51_38_17'
+
+[[spawn]]
+npc = 'goblin_unarmed_melee_7'
+coords = '0_48_51_42_46'
+
+[[spawn]]
+npc = 'head_wizard_2op'
+coords = '0_48_149_31_35'
+
+[[spawn]]
+npc = 'highwayman'
+coords = '0_48_51_38_31'
+
+[[spawn]]
+npc = 'house_ghost'
+coords = '1_48_52_22_28'
+
+[[spawn]]
+npc = 'house_ghost2'
+coords = '1_48_52_26_31'
+
+[[spawn]]
+npc = 'house_ghost3'
+coords = '1_48_52_29_28'
+
+[[spawn]]
+npc = 'house_ghost4'
+coords = '1_48_52_36_30'
+
+[[spawn]]
+npc = 'house_ghost5'
+coords = '1_48_52_51_28'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_48_50_1_50'
+
+[[spawn]]
+npc = 'jailguard'
+coords = '0_48_50_55_48'
+
+[[spawn]]
+npc = 'jailguard_four_patrol'
+coords = '0_48_50_49_49'
+
+[[spawn]]
+npc = 'jailguard_three_patrol'
+coords = '0_48_50_48_38'
+
+[[spawn]]
+npc = 'jailguard_two_patrol'
+coords = '0_48_50_37_37'
+
+[[spawn]]
+npc = 'lesser_demon'
+coords = '2_48_49_38_21'
+
+[[spawn]]
+npc = 'malak'
+coords = '0_48_151_40_26'
+
+[[spawn]]
+npc = 'man'
+coords = '0_48_51_28_15'
+
+[[spawn]]
+npc = 'martin_the_master_farmer'
+coords = '0_48_50_6_58'
+
+[[spawn]]
+npc = 'master_farmer_1'
+coords = '0_48_50_8_50'
+
+[[spawn]]
+npc = 'morgan'
+coords = '0_48_51_26_4'
+
+[[spawn]]
+npc = 'nasty_tree'
+coords = '0_48_52_31_19'
+
+[[spawn]]
+npc = 'nasty_tree'
+coords = '0_48_52_35_9'
+
+[[spawn]]
+npc = 'nasty_tree'
+coords = '0_48_52_35_14'
+
+[[spawn]]
+npc = 'nasty_tree'
+coords = '0_48_52_35_16'
+
+[[spawn]]
+npc = 'nasty_tree'
+coords = '0_48_52_36_18'
+
+[[spawn]]
+npc = 'nasty_tree'
+coords = '0_48_52_39_11'
+
+[[spawn]]
+npc = 'nasty_tree'
+coords = '0_48_52_39_20'
+
+[[spawn]]
+npc = 'nasty_tree'
+coords = '0_48_52_43_16'
+
+[[spawn]]
+npc = 'nasty_tree'
+coords = '0_48_52_48_16'
+
+[[spawn]]
+npc = 'nasty_tree'
+coords = '0_48_52_50_7'
+
+[[spawn]]
+npc = 'ned'
+coords = '0_48_50_28_58'
+
+[[spawn]]
+npc = 'pig_1'
+coords = '0_48_50_3_61'
+
+[[spawn]]
+npc = 'pig_1'
+coords = '0_48_50_5_59'
+
+[[spawn]]
+npc = 'pig_2'
+coords = '0_48_50_3_59'
+
+[[spawn]]
+npc = 'pig_2'
+coords = '0_48_50_5_60'
+
+[[spawn]]
+npc = 'piglet_1'
+coords = '0_48_50_4_61'
+
+[[spawn]]
+npc = 'piglet_2'
+coords = '0_48_50_7_61'
+
+[[spawn]]
+npc = 'piglet_3'
+coords = '0_48_50_7_60'
+
+[[spawn]]
+npc = 'pmod_town_crier_draynor'
+coords = '0_48_50_7_49'
+
+[[spawn]]
+npc = 'professor_oddenstein'
+coords = '2_48_52_38_39'
+
+[[spawn]]
+npc = 'rag_wine_merchant'
+coords = '0_48_50_13_51'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_151_11_9'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_151_19_6'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_152_21_26'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_52_27_38'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_151_27_10'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_152_27_27'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_152_27_37'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_51_28_9'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_51_28_13'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_52_29_27'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_152_29_20'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_152_31_36'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_152_32_32'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_151_34_25'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_151_36_8'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_152_39_24'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_151_41_19'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_152_41_26'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_152_44_26'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_151_45_30'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_151_46_6'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_151_50_9'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_48_151_51_2'
+
+[[spawn]]
+npc = 'seagull_draynor1'
+coords = '0_48_50_13_19'
+
+[[spawn]]
+npc = 'seagull_draynor2'
+coords = '0_48_50_7_29'
+
+[[spawn]]
+npc = 'seed_merchant'
+coords = '0_48_50_6_51'
+
+[[spawn]]
+npc = 'skeletal_wyvern1'
+coords = '0_48_149_4_42'
+
+[[spawn]]
+npc = 'skeletal_wyvern2'
+coords = '0_48_149_6_49'
+
+[[spawn]]
+npc = 'skeletal_wyvern3'
+coords = '0_48_149_4_31'
+
+[[spawn]]
+npc = 'skeletal_wyvern4'
+coords = '0_48_149_4_21'
+
+[[spawn]]
+npc = 'skeleton_armed'
+coords = '0_48_151_37_11'
+
+[[spawn]]
+npc = 'skeleton_armed3'
+coords = '0_48_151_29_7'
+
+[[spawn]]
+npc = 'skeleton_unarmed'
+coords = '0_48_151_43_10'
+
+[[spawn]]
+npc = 'skeleton_unarmed3'
+coords = '0_48_151_51_5'
+
+[[spawn]]
+npc = 'slayer_master_9_active'
+coords = '0_48_51_19_2'
+
+[[spawn]]
+npc = 'sourhog'
+coords = '0_49_151_21_34'
+
+[[spawn]]
+npc = 'sourhog'
+coords = '0_49_151_27_35'
+
+[[spawn]]
+npc = 'sourhog'
+coords = '0_49_151_29_14'
+
+[[spawn]]
+npc = 'sourhog'
+coords = '0_49_151_31_9'
+
+[[spawn]]
+npc = 'sourhog'
+coords = '0_49_151_32_28'
+
+[[spawn]]
+npc = 'sourhog'
+coords = '0_49_151_35_15'
+
+[[spawn]]
+npc = 'sourhog'
+coords = '0_49_151_37_24'
+
+[[spawn]]
+npc = 'sourhog'
+coords = '0_49_151_41_19'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_48_152_38_17'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_48_152_39_18'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_48_152_40_20'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_48_152_40_21'
+
+[[spawn]]
+npc = 'telecrystal_wizard_shop'
+coords = '1_48_49_36_28'
+
+[[spawn]]
+npc = 'traiborn'
+coords = '1_48_49_40_26'
+
+[[spawn]]
+npc = 'veronica'
+coords = '0_48_52_38_2'
+
+[[spawn]]
+npc = 'wise_old_man'
+coords = '0_48_50_16_55'
+
+[[spawn]]
+npc = 'wizard'
+coords = '0_48_49_35_22'
+
+[[spawn]]
+npc = 'wizard'
+coords = '0_48_149_37_22'
+
+[[spawn]]
+npc = 'wizard'
+coords = '0_48_49_38_22'
+
+[[spawn]]
+npc = 'wizard'
+coords = '0_48_49_39_30'
+
+[[spawn]]
+npc = 'wizard'
+coords = '0_48_49_39_32'
+
+[[spawn]]
+npc = 'wizard'
+coords = '1_48_49_35_21'
+
+[[spawn]]
+npc = 'wizard'
+coords = '1_48_49_40_21'
+
+[[spawn]]
+npc = 'wizard_grayzag'
+coords = '2_48_49_38_25'
+
+[[spawn]]
+npc = 'wizard_mizgog'
+coords = '2_48_49_31_27'
+
+[[spawn]]
+npc = 'wom_bankguard'
+coords = '0_48_50_16_47'
+
+[[spawn]]
+npc = 'wom_bed_inactive'
+coords = '1_48_50_15_54'
+
+[[spawn]]
+npc = 'wom_gossip'
+coords = '0_48_50_23_52'
+
+[[spawn]]
+npc = 'woman'
+coords = '1_48_51_25_5'
+
+[[spawn]]
+npc = 'young_dark_wizard'
+coords = '0_48_50_12_36'
+
+[[spawn]]
+npc = 'young_dark_wizard'
+coords = '0_48_50_13_38'
+
+[[spawn]]
+npc = 'zombie_armed_sewer1'
+coords = '0_48_150_52_62'
+
+[[spawn]]
+npc = 'zombie_armed_sewer2'
+coords = '0_48_151_16_8'
+
+[[spawn]]
+npc = 'zombie_armed_sewer3'
+coords = '0_48_150_50_58'
+
+[[spawn]]
+npc = 'zombie_armed_sewer4'
+coords = '0_48_151_24_8'
+
+[[spawn]]
+npc = 'zombie_unarmed_sewer1'
+coords = '0_48_150_47_47'
+
+[[spawn]]
+npc = 'zombie_unarmed_sewer2'
+coords = '0_48_151_14_10'
+
+[[spawn]]
+npc = 'zombie_unarmed_sewer3'
+coords = '0_48_150_52_51'

@@ -1,0 +1,322 @@
+[[spawn]]
+obj = 'bodyrune'
+count = 2
+coords = '0_49_54_58_39'
+
+[[spawn]]
+obj = 'bucket_empty'
+coords = '1_50_54_21_41'
+
+[[spawn]]
+obj = 'bucket_empty'
+coords = '1_50_54_22_35'
+
+[[spawn]]
+obj = 'coins'
+count = 3
+coords = '0_50_54_28_48'
+
+[[spawn]]
+obj = 'coins'
+count = 4
+coords = '0_50_54_32_44'
+
+[[spawn]]
+obj = 'cup_of_tea'
+coords = '0_51_53_7_21'
+
+[[spawn]]
+obj = 'doogleleaves'
+coords = '0_49_53_15_7'
+
+[[spawn]]
+obj = 'doogleleaves'
+coords = '0_49_53_16_7'
+
+[[spawn]]
+obj = 'doogleleaves'
+coords = '0_49_53_16_9'
+
+[[spawn]]
+obj = 'doogleleaves'
+coords = '0_49_53_20_9'
+
+[[spawn]]
+obj = 'doogleleaves'
+coords = '0_49_53_21_8'
+
+[[spawn]]
+obj = 'earthrune'
+coords = '0_49_54_59_59'
+
+[[spawn]]
+obj = 'iron_dagger'
+coords = '1_50_52_42_55'
+
+[[spawn]]
+obj = 'jug_empty'
+coords = '0_51_53_8_17'
+
+[[spawn]]
+obj = 'knife'
+coords = '1_50_53_18_26'
+
+[[spawn]]
+obj = 'leather_armour'
+coords = '0_50_53_47_15'
+
+[[spawn]]
+obj = 'leather_boots'
+coords = '1_50_52_44_58'
+
+[[spawn]]
+obj = 'leather_gloves'
+coords = '1_50_52_42_57'
+
+[[spawn]]
+obj = 'lit_candle'
+coords = '1_50_53_8_3'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_50_53_44_6'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_50_53_45_6'
+
+[[spawn]]
+obj = 'phoenix_crossbow'
+coords = '1_50_52_43_55'
+
+[[spawn]]
+obj = 'phoenix_crossbow'
+coords = '1_50_52_45_57'
+
+[[spawn]]
+obj = 'piedish'
+coords = '0_50_54_22_38'
+
+[[spawn]]
+obj = 'pot_empty'
+coords = '0_50_53_32_7'
+
+[[spawn]]
+obj = 'poh_saw'
+coords = '0_50_54_41_14'
+
+[[spawn]]
+obj = 'spade'
+coords = '1_50_53_18_20'
+
+[[spawn]]
+obj = 'thread'
+coords = '0_51_54_22_35'
+
+[[spawn]]
+obj = 'wooden_shield'
+coords = '0_50_54_4_59'
+
+[[spawn]]
+obj = 'bowl_empty'
+coords = '1_49_53_5_58'
+
+[[spawn]]
+obj = 'cake_tin'
+coords = '1_49_53_5_60'
+
+[[spawn]]
+obj = 'chocolate_bar'
+coords = '0_49_53_7_61'
+
+[[spawn]]
+obj = 'cooking_apple'
+coords = '1_49_53_4_55'
+
+[[spawn]]
+obj = 'cooking_apple'
+coords = '1_49_53_5_55'
+
+[[spawn]]
+obj = 'cooking_apple'
+coords = '2_49_53_5_55'
+
+[[spawn]]
+obj = 'grapes'
+coords = '2_49_53_8_58'
+
+[[spawn]]
+obj = 'jug_empty'
+coords = '0_49_53_6_55'
+
+[[spawn]]
+obj = 'piedish'
+coords = '1_49_53_6_55'
+
+[[spawn]]
+obj = 'pot_empty'
+coords = '2_49_53_8_57'
+
+[[spawn]]
+obj = 'brass_necklace'
+coords = '0_49_153_55_28'
+
+[[spawn]]
+obj = 'coins'
+count = 26
+coords = '0_49_153_52_27'
+
+[[spawn]]
+obj = 'coins'
+count = 42
+coords = '0_49_153_52_28'
+
+[[spawn]]
+obj = 'coins'
+count = 35
+coords = '0_49_153_53_27'
+
+[[spawn]]
+obj = 'coins'
+count = 56
+coords = '0_49_153_54_27'
+
+[[spawn]]
+obj = 'coins'
+count = 66
+coords = '0_49_153_55_29'
+
+[[spawn]]
+obj = 'coins'
+count = 4
+coords = '0_49_153_59_28'
+
+[[spawn]]
+obj = 'coins'
+count = 3
+coords = '0_49_153_59_42'
+
+[[spawn]]
+obj = 'gold_bar'
+coords = '0_49_153_56_30'
+
+[[spawn]]
+obj = 'gold_necklace'
+coords = '0_49_153_56_29'
+
+[[spawn]]
+obj = 'gold_ore'
+coords = '0_49_153_59_29'
+
+[[spawn]]
+obj = 'ruby_ring'
+coords = '0_49_153_60_30'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_51_54_34_56'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_51_54_36_52'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_51_54_37_51'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_51_54_38_46'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_51_54_38_51'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_51_54_38_54'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_51_54_39_47'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_51_54_46_47'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_51_54_46_48'
+
+[[spawn]]
+obj = 'bodyrune'
+coords = '0_50_154_26_54'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_49_154_2_24'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_49_154_5_23'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_49_154_6_24'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_49_154_7_22'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_49_154_37_47'
+
+[[spawn]]
+obj = 'coins'
+count = 8
+coords = '0_49_154_31_41'
+
+[[spawn]]
+obj = 'coins'
+count = 5
+coords = '0_49_154_33_24'
+
+[[spawn]]
+obj = 'coins'
+count = 7
+coords = '0_49_154_37_25'
+
+[[spawn]]
+obj = 'coins'
+coords = '0_49_154_37_41'
+
+[[spawn]]
+obj = 'coins'
+coords = '0_51_154_10_14'
+
+[[spawn]]
+obj = 'earthrune'
+count = 6
+coords = '0_49_154_49_32'
+
+[[spawn]]
+obj = 'iron_axe'
+coords = '0_49_154_26_32'
+
+[[spawn]]
+obj = 'knife'
+coords = '0_50_154_18_31'
+
+[[spawn]]
+obj = 'mindrune'
+coords = '0_50_154_24_54'
+
+[[spawn]]
+obj = 'red_spiders_eggs'
+coords = '0_49_154_41_24'
+
+[[spawn]]
+obj = 'red_spiders_eggs'
+coords = '0_49_154_43_25'
+

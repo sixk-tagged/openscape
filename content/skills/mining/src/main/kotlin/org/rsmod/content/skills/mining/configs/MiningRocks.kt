@@ -48,6 +48,7 @@ internal object MiningRocks : LocEditor() {
         )
         rocks(
             locs.essence to locs.empty_1,
+            locs.essence_mine to locs.empty_1,
             level = 1,
             xp = 5.0,
             product = ores.rune_essence,

@@ -3,6 +3,7 @@ package org.rsmod.api.game.process.npc.hunt
 import jakarta.inject.Inject
 import org.rsmod.api.config.constants
 import org.rsmod.api.config.refs.varbits
+import org.rsmod.api.config.refs.varps
 import org.rsmod.api.hunt.Hunt
 import org.rsmod.api.npc.isValidTarget
 import org.rsmod.api.random.CoreRandom
@@ -172,10 +173,10 @@ constructor(
         }
     }
 
-    // TODO: Investigate what `checkAfk` actually checks.
-    private fun Player.isAfk(): Boolean {
-        return false
-    }
+    // `checkAfk` is tolerance: aggressive npcs leave alone a player who has stayed inside their
+    // tolerance regions (`PlayerAreaProcessor`) for 10 minutes of playtime (OSRS wiki).
+    private fun Player.isAfk(): Boolean =
+        vars[varps.playtime] - vars[varps.tolerance_since] >= TOLERANCE_TICKS
 
     // TODO(combat): Wilderness indicator.
     private fun Player.isInWilderness(): Boolean {
@@ -187,5 +188,9 @@ constructor(
     // this to a dynamic lookup on `AreaIndex` instead.
     private fun Player.isInMulti(): Boolean {
         return vars[varbits.multiway_indicator] == 1
+    }
+
+    private companion object {
+        const val TOLERANCE_TICKS = 1000
     }
 }

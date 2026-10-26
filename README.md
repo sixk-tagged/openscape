@@ -10,14 +10,17 @@ Content is built outward from Lumbridge. Membership is on for every account.
 
 ## What works today
 
-- **Lumbridge**: NPCs, shops, tutors, dialogue, doors, chests, the windmill, the swamp, every
-  attackable monster with its drop table.
+- **Lumbridge, Draynor Village, Al Kharid and Varrock**: NPCs, shops, services, dialogue, doors,
+  banks, every attackable monster with its drop table.
+- **Monsters**: the ones the OSRS Wiki calls aggressive attack players up to twice their combat
+  level, and turn tolerant after 10 minutes in the same area.
 - **Skills**: combat (Attack, Strength, Defence, Ranged, Hitpoints), Prayer, Magic, Mining, Smithing,
-  Woodcutting, Fishing, Cooking, Firemaking and Thieving (pickpocketing).
+  Crafting, Woodcutting, Fishing, Cooking, Firemaking, Runecraft and Thieving (pickpocketing and
+  market stalls).
 - **Combat**: prayers, the standard and Ancient spellbooks, Vengeance, special attacks.
 - **Death**: item loss, gravestones, Death's Office and Death's Coffer.
 
-Next up are Draynor Village, Al Kharid and Varrock, plus Crafting and Runecraft.
+Known gaps: monsters that cast spells or shoot (dark wizards, for one) fight in melee for now.
 
 ## Setting it up
 
@@ -84,6 +87,7 @@ server's private key. Players only ever need the modulus from `client.key`.
 | `./gradlew packCache` | Repacks the server cache. Run it after changing types, symbols or the map, and before integration tests (they hang without it) |
 | `./gradlew test` | Unit tests |
 | `./gradlew :content:skills:mining:integration` | One module's integration tests (game simulation) |
+| `./gradlew :server:shared:integration` | Starts every script together and fails if two handle the same event, which would stop the server from booting |
 | `./gradlew spotlessApply` | Formats the code (CI checks it) |
 
 Saves live in `.data/saves/game.db` (SQLite). Back that file up if the server holds anything you care

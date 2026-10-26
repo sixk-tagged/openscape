@@ -49,6 +49,42 @@ class PickpocketingTest {
             assertMessageSent("You need a Thieving level of 10 to pickpocket the farmer.")
         }
 
+    @Test
+    fun GameTestState.`warriors and guards pay their wiki coins and xp`() =
+        runGameTest(Pickpocketing::class) {
+            player.teleport(SPOT)
+            player.clearInv()
+            player.stats[stats.thieving] = 40
+            val warrior = spawnNpc(SPOT.translateX(1), npcTypes[ThievingNpcs.al_kharid_warrior])
+            val guard = spawnNpc(SPOT.translateZ(1), npcTypes[ThievingNpcs.varrock_guard])
+
+            random.next = 0 // Rolls 0.00: success.
+            player.opNpc3(warrior)
+            advanceUntil({ player.count(objs.coins) > 0 }, timeoutTicks = 5)
+            assertEquals(18, player.count(objs.coins))
+
+            random.next = 0
+            player.opNpc3(guard)
+            advanceUntil({ player.count(objs.coins) > 18 }, timeoutTicks = 12)
+            assertEquals(48, player.count(objs.coins))
+        }
+
+    @Test
+    fun GameTestState.`a master farmer gives seeds`() =
+        runGameTest(Pickpocketing::class) {
+            player.teleport(SPOT)
+            player.clearInv()
+            player.stats[stats.thieving] = 38
+            val farmer = spawnNpc(SPOT.translateX(1), npcTypes[ThievingNpcs.master_farmer_1])
+
+            random.next = 0 // Success.
+            random.then = 0 // The first seed of the table: potato.
+            random.then = 3 // Its quantity.
+            player.opNpc3(farmer)
+            advanceUntil({ player.count(ThievingObjs.potato_seed) > 0 }, timeoutTicks = 5)
+            assertEquals(3, player.count(ThievingObjs.potato_seed))
+        }
+
     private companion object {
         val SPOT = CoordGrid(0, 50, 50, 34, 31)
     }

@@ -8,6 +8,7 @@ import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.hit.processor.InstantPlayerHitProcessor
 import org.rsmod.api.player.hit.takeInstantHit
 import org.rsmod.api.player.protect.ProtectedAccess
+import org.rsmod.api.player.stat.farmingLvl
 import org.rsmod.api.player.stat.thievingLvl
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.script.onOpNpc3
@@ -16,13 +17,17 @@ import org.rsmod.api.type.refs.obj.ObjReferences
 import org.rsmod.api.type.refs.seq.SeqReferences
 import org.rsmod.api.type.refs.spot.SpotanimReferences
 import org.rsmod.game.entity.Npc
+import org.rsmod.game.entity.Player
 import org.rsmod.game.hit.HitType
 import org.rsmod.game.type.npc.NpcType
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
-/** Pickpocketing the Lumbridge men, women and farmers (OSRS wiki levels, xp, loot and rates). */
+/**
+ * Pickpocketing the humans of Lumbridge, Al Kharid, Draynor and Varrock (OSRS wiki levels, xp,
+ * loot, rates).
+ */
 class Pickpocketing @Inject constructor(private val instantHits: InstantPlayerHitProcessor) :
     PluginScript() {
     override fun ScriptContext.startup() {
@@ -46,7 +51,7 @@ class Pickpocketing @Inject constructor(private val instantHits: InstantPlayerHi
             stun(npc, target)
             return
         }
-        val (obj, count) = target.loot(random)
+        val (obj, count) = target.loot(random, player)
         if (!invAdd(inv, obj, count).success) {
             mes(constants.dm_invspace)
             return
@@ -60,15 +65,11 @@ class Pickpocketing @Inject constructor(private val instantHits: InstantPlayerHi
         npc.facePlayer(player)
         npc.say("What do you think you're doing?")
         npc.anim(npc.visType.param(params.attack_anim))
-        player.takeInstantHit(HitType.Typeless, STUN_DAMAGE, instantHits)
+        player.takeInstantHit(HitType.Typeless, target.damage, instantHits)
         anim(ThievingSeqs.stunned)
         spotanim(ThievingSpots.stunned, height = 100)
         mes("You've been stunned!")
         delay(target.stunTicks)
-    }
-
-    private companion object {
-        const val STUN_DAMAGE = 1
     }
 }
 
@@ -82,28 +83,83 @@ object PickpocketTargets {
         val low: Int,
         val high: Int,
         val stunTicks: Int,
-        val loot: (GameRandom) -> Pair<ObjType, Int>,
+        val damage: Int = 1,
+        val loot: (GameRandom, Player) -> Pair<ObjType, Int>,
     )
 
     val all =
         with(ThievingNpcs) {
             listOf(
-                Target("man", listOf(man, man2, man3, man_indoor), 1, 8.0, 180, 240, 8) {
+                Target(
+                    "man",
+                    listOf(man, man2, man3, man_indoor, al_kharid_man, varrock_man),
+                    1,
+                    8.0,
+                    180,
+                    240,
+                    8,
+                ) { _, _ ->
                     objs.coins to 3
                 },
-                Target("woman", listOf(woman, woman2, woman3), 1, 8.0, 180, 240, 8) {
+                Target(
+                    "woman",
+                    listOf(woman, woman2, woman3, varrock_woman),
+                    1,
+                    8.0,
+                    180,
+                    240,
+                    8,
+                ) { _, _ ->
                     objs.coins to 3
                 },
                 Target(
                     "farmer",
-                    listOf(farmer1, farmer3, farmer2_f, farmer3_f, farmer4),
+                    listOf(farmer1, farmer2, farmer3, farmer2_f, farmer3_f, farmer4),
                     10,
                     14.5,
                     150,
                     240,
                     8,
-                ) { random ->
+                ) { random, _ ->
                     if (random.of(128) < 5) ThievingObjs.potato_seed to 1 else objs.coins to 9
+                },
+                Target("Al-Kharid warrior", listOf(al_kharid_warrior), 25, 26.0, 100, 240, 8, 2) {
+                    _,
+                    _ ->
+                    objs.coins to 18
+                },
+                Target("warrior woman", listOf(warrior_woman), 25, 26.0, 100, 240, 8, 2) { _, _ ->
+                    objs.coins to 18
+                },
+                Target(
+                    "guard",
+                    listOf(varrock_guard, varrock_guard_captain),
+                    40,
+                    46.8,
+                    50,
+                    240,
+                    8,
+                    2,
+                ) { _, _ ->
+                    objs.coins to 30
+                },
+                Target(
+                    "Master Farmer",
+                    listOf(
+                        master_farmer_1,
+                        master_farmer_2,
+                        master_farmer_1_f,
+                        master_farmer_2_f,
+                        martin,
+                    ),
+                    38,
+                    43.0,
+                    90,
+                    240,
+                    8,
+                    3,
+                ) { random, player ->
+                    MasterFarmerSeeds.roll(random, player.farmingLvl)
                 },
             )
         }
@@ -118,14 +174,71 @@ object ThievingNpcs : NpcReferences() {
     val woman2 = find("woman2")
     val woman3 = find("woman3")
     val farmer1 = find("farmer1")
+    val farmer2 = find("farmer2")
     val farmer3 = find("farmer3")
     val farmer2_f = find("farmer2_f")
     val farmer3_f = find("farmer3_f")
     val farmer4 = find("farmer4")
+    val al_kharid_man = find("al_kharid_man")
+    val varrock_man = find("varrock_man1")
+    val varrock_woman = find("varrock_woman1")
+    val al_kharid_warrior = find("al_kharid_warrior")
+    val warrior_woman = find("warrior_woman")
+    val varrock_guard = find("fai_varrock_guard")
+    val varrock_guard_captain = find("fai_varrock_guard_captain")
+    val master_farmer_1 = find("master_farmer_1")
+    val master_farmer_2 = find("master_farmer_2")
+    val master_farmer_1_f = find("master_farmer_1_f")
+    val master_farmer_2_f = find("master_farmer_2_f")
+    val martin = find("martin_the_master_farmer")
 }
 
 object ThievingObjs : ObjReferences() {
     val potato_seed = find("potato_seed")
+    val onion_seed = find("onion_seed")
+    val cabbage_seed = find("cabbage_seed")
+    val tomato_seed = find("tomato_seed")
+    val sweetcorn_seed = find("sweetcorn_seed")
+    val strawberry_seed = find("strawberry_seed")
+    val watermelon_seed = find("watermelon_seed")
+    val snape_grass_seed = find("snape_grass_seed")
+    val barley_seed = find("barley_seed")
+    val hammerstone_seed = find("hammerstone_hop_seed")
+    val asgarnian_seed = find("asgarnian_hop_seed")
+    val jute_seed = find("jute_seed")
+    val yanillian_seed = find("yanillian_hop_seed")
+    val krandorian_seed = find("krandorian_hop_seed")
+    val wildblood_seed = find("wildblood_hop_seed")
+    val marigold_seed = find("marigold_seed")
+    val nasturtium_seed = find("nasturtium_seed")
+    val rosemary_seed = find("rosemary_seed")
+    val woad_seed = find("woad_seed")
+    val limpwurt_seed = find("limpwurt_seed")
+    val redberry_seed = find("redberry_bush_seed")
+    val cadavaberry_seed = find("cadavaberry_bush_seed")
+    val dwellberry_seed = find("dwellberry_bush_seed")
+    val jangerberry_seed = find("jangerberry_bush_seed")
+    val whiteberry_seed = find("whiteberry_bush_seed")
+    val poison_ivy_seed = find("poisonivy_bush_seed")
+    val mushroom_spore = find("mushroom_seed")
+    val belladonna_seed = find("belladonna_seed")
+    val cactus_seed = find("cactus_seed")
+    val seaweed_spore = find("seaweed_seed")
+    val potato_cactus_seed = find("potato_cactus_seed")
+    val guam_seed = find("guam_seed")
+    val marrentill_seed = find("marrentill_seed")
+    val tarromin_seed = find("tarromin_seed")
+    val harralander_seed = find("harralander_seed")
+    val ranarr_seed = find("ranarr_seed")
+    val toadflax_seed = find("toadflax_seed")
+    val irit_seed = find("irit_seed")
+    val avantoe_seed = find("avantoe_seed")
+    val kwuarm_seed = find("kwuarm_seed")
+    val snapdragon_seed = find("snapdragon_seed")
+    val cadantine_seed = find("cadantine_seed")
+    val lantadyme_seed = find("lantadyme_seed")
+    val dwarf_weed_seed = find("dwarf_weed_seed")
+    val torstol_seed = find("torstol_seed")
 }
 
 object ThievingSeqs : SeqReferences() {

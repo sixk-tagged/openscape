@@ -138,7 +138,7 @@ constructor(
     private fun ProtectedAccess.rollProduct(type: UnpackedLocType): Pair<ObjType, Double> =
         when (type.rockProductRoll) {
             ProductRoll.ESSENCE -> {
-                val pure = player.miningLvl >= PURE_ESSENCE_LEVEL
+                val pure = player.miningLvl >= PURE_ESSENCE_LEVEL && player.members
                 (if (pure) MiningObjs.pure_essence else MiningObjs.rune_essence) to type.rockXp
             }
             ProductRoll.SANDSTONE -> rollSize(MiningProducts.sandstone)

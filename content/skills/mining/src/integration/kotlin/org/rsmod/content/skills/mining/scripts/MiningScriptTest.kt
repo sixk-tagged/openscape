@@ -113,7 +113,8 @@ class MiningScriptTest {
         }
 
     @Test
-    fun GameTestState.`essence rock never depletes and switches to pure essence at 30`() =
+    fun GameTestState
+        .`essence rock never depletes and switches to pure essence at 30 for members`() =
         runGameTest(Mining::class) {
             val type = findLocType(MiningContent.rock) { it.rockProductRoll == ProductRoll.ESSENCE }
             val rock = placeMapLoc(ROCK_COORDS, type)
@@ -129,9 +130,16 @@ class MiningScriptTest {
             assertContains(player.inv, MiningObjs.rune_essence)
             assertExists(rock)
 
+            // Pure essence needs a members world as well as level 30.
             player.stats[stats.mining] = 30
             random.next = 0
             advance(ticks = 8) // Bronze pickaxe rolls every 8 ticks.
+            assertEquals(2, player.count(MiningObjs.rune_essence))
+            assertDoesNotContain(player.inv, MiningObjs.pure_essence)
+
+            player.members = true
+            random.next = 0
+            advance(ticks = 8)
             assertContains(player.inv, MiningObjs.pure_essence)
             assertExists(rock)
         }

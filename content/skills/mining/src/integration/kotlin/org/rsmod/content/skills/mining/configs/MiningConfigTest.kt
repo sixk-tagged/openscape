@@ -27,9 +27,10 @@ class MiningConfigTest {
     @Test
     fun GameTestState.`every rock has its mining params`() = runBasicGameTest {
         val rocks = cacheTypes.locs.values.filter { it.isContentType(MiningContent.rock) }
-        // 49 loc types: 29 ores x 2, minus the 9 ores whose two rocks share one loc type
-        // (essence, ash, sandstone, granite, basalt, te/efh/urt salt, ancient essence).
-        assertEquals(49, rocks.size)
+        // 50 loc types: 29 ores x 2, minus the 9 ores whose two rocks share one loc type
+        // (essence, ash, sandstone, granite, basalt, te/efh/urt salt, ancient essence), plus the
+        // Rune Essence Mine's own rock.
+        assertEquals(50, rocks.size)
         for (rock in rocks) {
             val rockParams = rock.paramMap
             assertNotNullContract(rockParams)

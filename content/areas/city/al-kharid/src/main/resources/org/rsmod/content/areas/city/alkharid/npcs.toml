@@ -1,0 +1,331 @@
+[[spawn]]
+npc = '0_51_49_saltfish'
+coords = '0_51_49_3_12'
+
+[[spawn]]
+npc = '0_51_49_saltfish'
+coords = '0_51_49_12_4'
+
+[[spawn]]
+npc = 'al_kharid_man'
+coords = '0_51_49_13_51'
+
+[[spawn]]
+npc = 'al_kharid_man'
+coords = '0_51_50_29_5'
+
+[[spawn]]
+npc = 'al_kharid_warrior'
+coords = '0_51_49_18_40'
+
+[[spawn]]
+npc = 'al_kharid_warrior'
+coords = '0_51_49_20_34'
+
+[[spawn]]
+npc = 'al_kharid_warrior'
+coords = '0_51_49_20_38'
+
+[[spawn]]
+npc = 'al_kharid_warrior'
+coords = '0_51_49_24_32'
+
+[[spawn]]
+npc = 'al_kharid_warrior'
+coords = '0_51_49_28_33'
+
+[[spawn]]
+npc = 'al_kharid_warrior'
+coords = '0_51_49_31_32'
+
+[[spawn]]
+npc = 'al_kharid_warrior'
+coords = '0_51_49_37_34'
+
+[[spawn]]
+npc = 'al_kharid_warrior'
+coords = '0_51_49_37_38'
+
+[[spawn]]
+npc = 'al_kharid_warrior'
+coords = '0_51_49_37_41'
+
+[[spawn]]
+npc = 'al_the_camel'
+coords = '0_51_49_10_31'
+
+[[spawn]]
+npc = 'alice_the_camel_multinpc'
+coords = '0_51_50_21_1'
+
+[[spawn]]
+npc = 'bcs_selim_vis'
+coords = '0_51_49_22_44'
+
+[[spawn]]
+npc = 'borderguard1'
+coords = '0_51_50_3_26'
+
+[[spawn]]
+npc = 'borderguard1'
+coords = '0_51_50_3_29'
+
+[[spawn]]
+npc = 'borderguard2'
+coords = '0_51_50_4_26'
+
+[[spawn]]
+npc = 'borderguard2'
+coords = '0_51_50_4_29'
+
+[[spawn]]
+npc = 'cam_the_camel'
+coords = '0_51_50_32_27'
+
+[[spawn]]
+npc = 'camel'
+coords = '0_51_51_46_5'
+
+[[spawn]]
+npc = 'desert_wolf'
+coords = '0_51_48_19_36'
+
+[[spawn]]
+npc = 'desert_wolf'
+coords = '0_51_48_59_22'
+
+[[spawn]]
+npc = 'desert_wolf2'
+coords = '0_51_48_46_4'
+
+[[spawn]]
+npc = 'desert_wolf3'
+coords = '0_51_48_19_12'
+
+[[spawn]]
+npc = 'dommik'
+coords = '0_51_49_58_58'
+
+[[spawn]]
+npc = 'ellis_tanner'
+coords = '0_51_49_12_57'
+
+[[spawn]]
+npc = 'elly_the_camel'
+coords = '0_51_50_47_8'
+
+[[spawn]]
+npc = 'farming_gardener_cactus'
+coords = '0_51_50_52_5'
+
+[[spawn]]
+npc = 'farming_tools_leprechaun'
+coords = '0_51_50_55_4'
+
+[[spawn]]
+npc = 'feud_ali_m'
+coords = '0_51_50_40_11'
+
+[[spawn]]
+npc = 'gem_trader'
+coords = '0_51_50_24_12'
+
+[[spawn]]
+npc = 'generalassistant3'
+coords = '0_51_49_52_46'
+
+[[spawn]]
+npc = 'generalshopkeeper3'
+coords = '0_51_49_52_48'
+
+[[spawn]]
+npc = 'hassan'
+coords = '0_51_49_38_27'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_51_51_35_9'
+
+[[spawn]]
+npc = 'kebab_seller'
+coords = '0_51_49_8_46'
+
+[[spawn]]
+npc = 'kharidbanker1'
+coords = '0_51_49_3_28'
+
+[[spawn]]
+npc = 'kharidbanker1'
+coords = '0_51_49_3_31'
+
+[[spawn]]
+npc = 'kharidbanker1'
+coords = '0_51_49_3_33'
+
+[[spawn]]
+npc = 'kharidbanker2'
+coords = '0_51_49_3_30'
+
+[[spawn]]
+npc = 'kharidbanker2'
+coords = '0_51_49_3_32'
+
+[[spawn]]
+npc = 'louie_legs'
+coords = '0_51_49_52_39'
+
+[[spawn]]
+npc = 'magic_carpet_monkey'
+coords = '0_51_48_47_36'
+
+[[spawn]]
+npc = 'magic_carpet_seller1'
+coords = '0_51_48_47_37'
+
+[[spawn]]
+npc = 'man'
+coords = '0_51_49_20_63'
+
+[[spawn]]
+npc = 'man2'
+coords = '0_51_49_30_60'
+
+[[spawn]]
+npc = 'man3'
+coords = '0_51_50_34_6'
+
+[[spawn]]
+npc = 'man3'
+coords = '0_51_49_39_63'
+
+[[spawn]]
+npc = 'ollie_the_camel'
+coords = '0_51_50_26_9'
+
+[[spawn]]
+npc = 'pilot_al_kharid'
+coords = '0_51_50_20_12'
+
+[[spawn]]
+npc = 'prince_ali_vis'
+coords = '0_51_49_22_27'
+
+[[spawn]]
+npc = 'ranael'
+coords = '0_51_49_52_28'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_51_50_55_50'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_51_49_28_6'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_51_51_28_33'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_51_51_34_35'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_51_51_34_40'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_51_51_34_47'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_51_51_35_24'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_51_51_36_51'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_51_51_37_14'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_51_51_38_42'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_51_51_39_28'
+
+[[spawn]]
+npc = 'shantay'
+coords = '0_51_48_40_51'
+
+[[spawn]]
+npc = 'shantay_guard'
+coords = '0_51_48_35_52'
+
+[[spawn]]
+npc = 'shantay_guard'
+coords = '0_51_48_41_57'
+
+[[spawn]]
+npc = 'shantay_guard'
+coords = '0_51_48_43_51'
+
+[[spawn]]
+npc = 'shantay_guard_still'
+coords = '0_51_48_39_46'
+
+[[spawn]]
+npc = 'silk_trader'
+coords = '0_51_50_35_4'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_51_49_55_3'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_51_49_58_5'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_51_49_60_2'
+
+[[spawn]]
+npc = 'ugthanki'
+coords = '0_51_48_3_5'
+
+[[spawn]]
+npc = 'ugthanki'
+coords = '0_51_48_5_38'
+
+[[spawn]]
+npc = 'ugthanki'
+coords = '0_51_48_11_22'
+
+[[spawn]]
+npc = 'ugthanki'
+coords = '0_51_48_27_6'
+
+[[spawn]]
+npc = 'ugthanki'
+coords = '0_51_48_27_28'
+
+[[spawn]]
+npc = 'ugthanki'
+coords = '0_51_48_41_17'
+
+[[spawn]]
+npc = 'ugthanki'
+coords = '0_51_48_54_6'
+
+[[spawn]]
+npc = 'ugthanki'
+coords = '0_51_48_57_32'
+
+[[spawn]]
+npc = 'zeke'
+coords = '0_51_49_24_54'

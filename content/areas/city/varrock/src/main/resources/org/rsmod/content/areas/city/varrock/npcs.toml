@@ -1,0 +1,1796 @@
+[[spawn]]
+npc = 'skeleton_armed'
+coords = '0_49_154_1_15'
+
+[[spawn]]
+npc = 'skeleton_unarmed4'
+coords = '0_49_154_2_18'
+
+[[spawn]]
+npc = 'merchant_pies'
+coords = '0_49_53_3_56'
+
+[[spawn]]
+npc = 'skeleton_armed2'
+coords = '0_49_154_3_21'
+
+[[spawn]]
+npc = 'zombie2'
+coords = '0_49_154_3_29'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_4_59'
+
+[[spawn]]
+npc = 'zombie2_b'
+coords = '0_49_154_4_37'
+
+[[spawn]]
+npc = 'game_zone_recruiter_saradomin'
+coords = '0_49_54_5_16'
+
+[[spawn]]
+npc = 'skeleton_armed5'
+coords = '0_49_154_5_13'
+
+[[spawn]]
+npc = 'skeleton_armed3'
+coords = '0_49_154_5_17'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_6_58'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_7_56'
+
+[[spawn]]
+npc = 'head_chef'
+coords = '0_49_53_7_52'
+
+[[spawn]]
+npc = 'game_zone_recruiter_zamorak'
+coords = '0_49_54_7_14'
+
+[[spawn]]
+npc = 'boardgames_barmaid3'
+coords = '0_49_54_7_16'
+
+[[spawn]]
+npc = 'zombie2_b'
+coords = '0_49_154_7_48'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_8_54'
+
+[[spawn]]
+npc = 'skeleton_armed4'
+coords = '0_49_154_8_13'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_10_54'
+
+[[spawn]]
+npc = 'zombie2'
+coords = '0_49_154_10_36'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_11_52'
+
+[[spawn]]
+npc = 'banker1_new'
+coords = '0_49_53_11_56'
+
+[[spawn]]
+npc = 'zombie2_b'
+coords = '0_49_154_11_27'
+
+[[spawn]]
+npc = 'zombie2'
+coords = '0_49_154_11_43'
+
+[[spawn]]
+npc = 'slayer_master_3'
+coords = '0_49_154_11_58'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_12_44'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_12_46'
+
+[[spawn]]
+npc = 'banker2_new'
+coords = '0_49_53_12_56'
+
+[[spawn]]
+npc = 'zombie2_c'
+coords = '0_49_154_12_48'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_14_40'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_14_42'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_14_43'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_14_45'
+
+[[spawn]]
+npc = 'philop'
+coords = '0_49_53_14_15'
+
+[[spawn]]
+npc = 'zombie2_c'
+coords = '0_49_154_14_33'
+
+[[spawn]]
+npc = 'zombie2'
+coords = '0_49_154_14_51'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_15_43'
+
+[[spawn]]
+npc = 'gertrude'
+coords = '0_49_53_15_18'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_49_53_15_22'
+
+[[spawn]]
+npc = 'zombie2_c'
+coords = '0_49_154_15_28'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_16_29'
+
+[[spawn]]
+npc = 'ge_expert_logs'
+coords = '0_49_54_16_33'
+
+[[spawn]]
+npc = 'man'
+coords = '0_49_53_18_36'
+
+[[spawn]]
+npc = 'cow3'
+coords = '0_49_52_19_3'
+
+[[spawn]]
+npc = 'cow3_calf'
+coords = '0_49_52_19_8'
+
+[[spawn]]
+npc = 'kanel'
+coords = '0_49_53_19_14'
+
+[[spawn]]
+npc = 'mossgiant3'
+coords = '0_49_154_19_47'
+
+[[spawn]]
+npc = 'cow2'
+coords = '0_49_52_20_14'
+
+[[spawn]]
+npc = 'ge_expert_herbs'
+coords = '0_49_54_20_25'
+
+[[spawn]]
+npc = 'ge_expert_combat'
+coords = '0_49_54_20_42'
+
+[[spawn]]
+npc = 'mossgiant'
+coords = '0_49_154_20_50'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_21_24'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_21_26'
+
+[[spawn]]
+npc = 'cow3_calf'
+coords = '0_49_52_22_1'
+
+[[spawn]]
+npc = 'cow2'
+coords = '0_49_52_22_8'
+
+[[spawn]]
+npc = 'mossgiant2'
+coords = '0_49_154_22_39'
+
+[[spawn]]
+npc = 'mossgiant'
+coords = '0_49_154_22_42'
+
+[[spawn]]
+npc = 'mossgiant2'
+coords = '0_49_154_22_48'
+
+[[spawn]]
+npc = 'mossgiant4'
+coords = '0_49_154_23_45'
+
+[[spawn]]
+npc = 'cow2'
+coords = '0_49_52_24_1'
+
+[[spawn]]
+npc = 'cow2_calf'
+coords = '0_49_52_24_14'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_24_23'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_25_22'
+
+[[spawn]]
+npc = 'draul_leptoc'
+coords = '0_49_53_25_43'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_49_52_26_7'
+
+[[spawn]]
+npc = 'farmer2'
+coords = '0_49_52_26_10'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_26_23'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_27_22'
+
+[[spawn]]
+npc = 'banker1_west'
+coords = '0_49_54_27_33'
+
+[[spawn]]
+npc = 'mossgiant'
+coords = '0_49_154_27_21'
+
+[[spawn]]
+npc = 'cow3'
+coords = '0_49_52_28_12'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_28_20'
+
+[[spawn]]
+npc = 'ge_clerk_2'
+coords = '0_49_54_28_32'
+
+[[spawn]]
+npc = 'ge_clerk_4'
+coords = '0_49_54_28_35'
+
+[[spawn]]
+npc = 'mossgiant2'
+coords = '0_49_154_28_24'
+
+[[spawn]]
+npc = 'ge_boss'
+coords = '0_49_54_29_21'
+
+[[spawn]]
+npc = 'ge_clerk_1'
+coords = '0_49_54_29_32'
+
+[[spawn]]
+npc = 'ge_clerk_3'
+coords = '0_49_54_29_35'
+
+[[spawn]]
+npc = 'banker1_east'
+coords = '0_49_54_30_33'
+
+[[spawn]]
+npc = 'banker2_east'
+coords = '0_49_54_30_34'
+
+[[spawn]]
+npc = 'mossgiant4'
+coords = '0_49_154_30_27'
+
+[[spawn]]
+npc = 'mossgiant3'
+coords = '0_49_154_31_24'
+
+[[spawn]]
+npc = 'dog_stray2'
+coords = '0_49_53_32_48'
+
+[[spawn]]
+npc = 'cow2'
+coords = '0_49_52_33_7'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_49_52_33_13'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_33_17'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_33_18'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_33_27'
+
+[[spawn]]
+npc = 'cow3'
+coords = '0_49_52_34_1'
+
+[[spawn]]
+npc = 'bond_james_visible'
+coords = '0_49_54_34_5'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_35_27'
+
+[[spawn]]
+npc = 'deadly_red_spider'
+coords = '0_49_154_35_28'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_36_17'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_36_27'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_49_52_37_4'
+
+[[spawn]]
+npc = 'cow3_calf'
+coords = '0_49_52_37_8'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_37_18'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_37_28'
+
+[[spawn]]
+npc = 'fai_varrock_guard02'
+coords = '0_49_53_37_37'
+
+[[spawn]]
+npc = 'ge_expert_runes'
+coords = '0_49_54_37_25'
+
+[[spawn]]
+npc = 'ge_expert_ores'
+coords = '0_49_54_37_42'
+
+[[spawn]]
+npc = 'cow2'
+coords = '0_49_52_38_13'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_38_19'
+
+[[spawn]]
+npc = 'deadly_red_spider'
+coords = '0_49_154_38_35'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_39_18'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_39_26'
+
+[[spawn]]
+npc = 'mugger'
+coords = '0_49_52_39_33'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_variant01'
+coords = '0_49_53_39_31'
+
+[[spawn]]
+npc = 'fai_varrock_guard_captain02'
+coords = '0_49_53_39_36'
+
+[[spawn]]
+npc = 'deadly_red_spider'
+coords = '0_49_154_39_25'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_40_19'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_40_26'
+
+[[spawn]]
+npc = 'deadly_red_spider'
+coords = '0_49_154_40_27'
+
+[[spawn]]
+npc = 'cow2'
+coords = '0_49_52_41_5'
+
+[[spawn]]
+npc = 'cow2_calf'
+coords = '0_49_52_41_11'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_41_21'
+
+[[spawn]]
+npc = 'duck_female'
+coords = '0_49_52_41_24'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_49_53_41_13'
+
+[[spawn]]
+npc = 'deadly_red_spider'
+coords = '0_49_154_42_24'
+
+[[spawn]]
+npc = 'deadly_red_spider'
+coords = '0_49_154_42_32'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_49_52_44_12'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_variant02'
+coords = '0_49_53_44_9'
+
+[[spawn]]
+npc = 'deadly_red_spider'
+coords = '0_49_154_44_27'
+
+[[spawn]]
+npc = 'farming_gardener_bush_1'
+coords = '0_49_52_45_31'
+
+[[spawn]]
+npc = 'clan_clerk'
+coords = '0_49_54_45_15'
+
+[[spawn]]
+npc = 'cow3'
+coords = '0_49_52_46_1'
+
+[[spawn]]
+npc = 'farming_tools_leprechaun'
+coords = '0_49_52_46_26'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_47_20'
+
+[[spawn]]
+npc = 'deadly_red_spider'
+coords = '0_49_154_47_29'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_49_52_48_6'
+
+[[spawn]]
+npc = 'cow3'
+coords = '0_49_52_48_13'
+
+[[spawn]]
+npc = 'qip_soa_thief_male01'
+coords = '0_49_52_48_57'
+
+[[spawn]]
+npc = 'qip_soa_thief_female01'
+coords = '0_49_52_48_61'
+
+[[spawn]]
+npc = 'qip_soa_thief_female02'
+coords = '0_49_52_49_62'
+
+[[spawn]]
+npc = 'tob_spectator_misthalin'
+coords = '0_49_54_49_60'
+
+[[spawn]]
+npc = 'katrine'
+coords = '0_49_52_50_57'
+
+[[spawn]]
+npc = 'deadly_red_spider'
+coords = '0_49_154_50_36'
+
+[[spawn]]
+npc = 'cow2_calf'
+coords = '0_49_52_51_3'
+
+[[spawn]]
+npc = 'cow2'
+coords = '0_49_52_51_8'
+
+[[spawn]]
+npc = 'aide_tutor_smithing_master'
+coords = '0_49_53_51_31'
+
+[[spawn]]
+npc = 'banker2_new'
+coords = '0_49_53_51_46'
+
+[[spawn]]
+npc = 'banker1_new'
+coords = '0_49_53_51_48'
+
+[[spawn]]
+npc = 'banker2_new'
+coords = '0_49_53_51_50'
+
+[[spawn]]
+npc = 'banker1_new'
+coords = '0_49_53_51_52'
+
+[[spawn]]
+npc = 'varrock_bank_doorguard'
+coords = '0_49_53_51_54'
+
+[[spawn]]
+npc = 'cow2'
+coords = '0_49_52_53_4'
+
+[[spawn]]
+npc = 'cow3_calf'
+coords = '0_49_52_55_8'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_55_14'
+
+[[spawn]]
+npc = 'guildmaster'
+coords = '0_49_52_55_34'
+
+[[spawn]]
+npc = 'farmer1'
+coords = '0_49_52_56_2'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_58_13'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_58_15'
+
+[[spawn]]
+npc = 'man3'
+coords = '0_49_53_58_4'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_49_52_59_7'
+
+[[spawn]]
+npc = 'apothecary'
+coords = '0_49_53_59_12'
+
+[[spawn]]
+npc = 'duck'
+coords = '0_49_52_60_11'
+
+[[spawn]]
+npc = 'chicken'
+coords = '0_49_52_60_24'
+
+[[spawn]]
+npc = 'cow2'
+coords = '0_49_52_61_3'
+
+[[spawn]]
+npc = 'chicken_brown'
+coords = '0_49_52_61_24'
+
+[[spawn]]
+npc = 'chicken'
+coords = '0_49_52_61_25'
+
+[[spawn]]
+npc = 'chicken_brown'
+coords = '0_49_52_62_26'
+
+[[spawn]]
+npc = 'chicken'
+coords = '0_49_52_62_27'
+
+[[spawn]]
+npc = 'dog_stray'
+coords = '0_50_53_0_7'
+
+[[spawn]]
+npc = 'warrior_woman'
+coords = '0_50_54_2_31'
+
+[[spawn]]
+npc = 'canoeing_tarquin'
+coords = '0_50_52_3_16'
+
+[[spawn]]
+npc = 'swordshop1'
+coords = '0_50_53_3_5'
+
+[[spawn]]
+npc = 'paladin_west_f'
+coords = '0_50_53_3_32'
+
+[[spawn]]
+npc = 'zaff'
+coords = '0_50_53_3_41'
+
+[[spawn]]
+npc = 'thessalia_normal'
+coords = '0_50_53_4_25'
+
+[[spawn]]
+npc = 'varrock_granny_1'
+coords = '0_50_53_4_27'
+
+[[spawn]]
+npc = 'sir_prysin'
+coords = '0_50_54_4_17'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f'
+coords = '0_50_54_4_40'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_50_52_5_27'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f_variant01'
+coords = '0_50_52_5_51'
+
+[[spawn]]
+npc = 'swordshop2'
+coords = '0_50_53_5_7'
+
+[[spawn]]
+npc = 'warrior_woman'
+coords = '0_50_54_5_31'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_50_154_5_21'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f_variant02'
+coords = '0_50_54_6_6'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_50_154_6_24'
+
+[[spawn]]
+npc = 'tramppg'
+coords = '0_50_52_8_63'
+
+[[spawn]]
+npc = 'surok_surok'
+coords = '0_50_54_8_40'
+
+[[spawn]]
+npc = 'reldo_normal'
+coords = '0_50_54_9_39'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_50_154_10_31'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_50_154_10_37'
+
+[[spawn]]
+npc = 'skeleton_armed'
+coords = '0_50_154_10_52'
+
+[[spawn]]
+npc = 'fai_varrock_guard_captain02'
+coords = '0_50_52_11_50'
+
+[[spawn]]
+npc = 'fai_varrock_guard02'
+coords = '0_50_52_11_53'
+
+[[spawn]]
+npc = 'romeo'
+coords = '0_50_53_11_33'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_variant01'
+coords = '0_50_54_11_7'
+
+[[spawn]]
+npc = 'skeleton_armed4'
+coords = '0_50_154_11_50'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_variant02'
+coords = '0_50_54_12_6'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_50_154_12_32'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_50_154_12_35'
+
+[[spawn]]
+npc = 'fai_varrock_guard_captain02'
+coords = '0_50_54_13_9'
+
+[[spawn]]
+npc = 'chaosmonk2'
+coords = '0_50_54_13_20'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_50_54_13_46'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f'
+coords = '0_50_54_15_8'
+
+[[spawn]]
+npc = 'generalassistant2'
+coords = '0_50_53_17_19'
+
+[[spawn]]
+npc = 'baraek'
+coords = '0_50_53_17_43'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f_variant01'
+coords = '0_50_54_17_5'
+
+[[spawn]]
+npc = 'giantspider2'
+coords = '0_50_154_17_30'
+
+[[spawn]]
+npc = 'giantspider2'
+coords = '0_50_154_17_33'
+
+[[spawn]]
+npc = 'varrock_woman1'
+coords = '0_50_53_18_3'
+
+[[spawn]]
+npc = 'generalshopkeeper2'
+coords = '0_50_53_18_23'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_18_8'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_18_13'
+
+[[spawn]]
+npc = 'qip_soa_newspaperseller'
+coords = '0_50_53_19_40'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_19_11'
+
+[[spawn]]
+npc = 'giantspider1'
+coords = '0_50_154_19_30'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_20_3'
+
+[[spawn]]
+npc = 'giantrat'
+coords = '0_50_154_20_7'
+
+[[spawn]]
+npc = 'giantspider2'
+coords = '0_50_154_20_32'
+
+[[spawn]]
+npc = 'shilop'
+coords = '0_50_53_21_42'
+
+[[spawn]]
+npc = 'wilough'
+coords = '0_50_53_21_43'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_21_16'
+
+[[spawn]]
+npc = 'giantspider1'
+coords = '0_50_154_21_30'
+
+[[spawn]]
+npc = 'dr_harlow'
+coords = '0_50_53_22_5'
+
+[[spawn]]
+npc = 'king_roald'
+coords = '0_50_54_22_16'
+
+[[spawn]]
+npc = 'qip_ds_young_dark_wizard3'
+coords = '0_50_52_23_39'
+
+[[spawn]]
+npc = 'qip_ds_young_dark_wizard2'
+coords = '0_50_52_23_44'
+
+[[spawn]]
+npc = 'jonny_the_beard'
+coords = '0_50_53_23_3'
+
+[[spawn]]
+npc = 'giantrat1_3'
+coords = '0_50_154_23_4'
+
+[[spawn]]
+npc = 'qip_ds_young_dark_wizard4'
+coords = '0_50_52_24_42'
+
+[[spawn]]
+npc = 'myq3_aeonisig_roalds_advisor'
+coords = '0_50_54_24_17'
+
+[[spawn]]
+npc = 'zombie_armed_sewer1'
+coords = '0_50_154_24_50'
+
+[[spawn]]
+npc = 'qip_ds_young_dark_wizard1'
+coords = '0_50_52_25_37'
+
+[[spawn]]
+npc = 'qip_ds_young_dark_wizard1'
+coords = '0_50_52_25_46'
+
+[[spawn]]
+npc = 'barbarianwoman_varrock'
+coords = '0_50_53_25_10'
+
+[[spawn]]
+npc = 'toby_varrock_diary'
+coords = '0_50_53_25_23'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_25_7'
+
+[[spawn]]
+npc = 'bluemoon_bartender'
+coords = '0_50_53_26_7'
+
+[[spawn]]
+npc = 'farming_gardener_tree_3'
+coords = '0_50_54_26_2'
+
+[[spawn]]
+npc = 'black_knight'
+coords = '0_50_54_26_59'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_26_6'
+
+[[spawn]]
+npc = 'zombie_armed_sewer2'
+coords = '0_50_154_26_47'
+
+[[spawn]]
+npc = 'qip_ds_young_dark_wizard4'
+coords = '0_50_52_28_45'
+
+[[spawn]]
+npc = 'pillory_tramp_thrower_varrock'
+coords = '0_50_53_28_20'
+
+[[spawn]]
+npc = 'queen_ellamaria'
+coords = '0_50_54_28_21'
+
+[[spawn]]
+npc = 'horvik_the_armourer'
+coords = '0_50_53_29_46'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_29_11'
+
+[[spawn]]
+npc = 'sheepsheeredg'
+coords = '0_50_52_30_18'
+
+[[spawn]]
+npc = 'qip_ds_young_dark_wizard2'
+coords = '0_50_52_30_35'
+
+[[spawn]]
+npc = 'qip_ds_young_dark_wizard3'
+coords = '0_50_52_30_37'
+
+[[spawn]]
+npc = 'qip_ds_young_dark_wizard3'
+coords = '0_50_52_30_46'
+
+[[spawn]]
+npc = 'qip_soa_thief_male01'
+coords = '0_50_52_30_63'
+
+[[spawn]]
+npc = 'fai_varrock_bluemoon_chef'
+coords = '0_50_53_30_9'
+
+[[spawn]]
+npc = 'brownbear'
+coords = '0_50_54_30_44'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_30_9'
+
+[[spawn]]
+npc = 'zombie_armed_sewer4'
+coords = '0_50_154_30_47'
+
+[[spawn]]
+npc = 'zombie_armed_sewer3'
+coords = '0_50_154_30_50'
+
+[[spawn]]
+npc = 'qip_ds_young_dark_wizard1'
+coords = '0_50_52_32_39'
+
+[[spawn]]
+npc = 'qip_ds_young_dark_wizard2'
+coords = '0_50_52_32_44'
+
+[[spawn]]
+npc = 'lowe'
+coords = '0_50_53_32_31'
+
+[[spawn]]
+npc = 'farming_tools_leprechaun'
+coords = '0_50_53_32_63'
+
+[[spawn]]
+npc = 'sheepunsheered3w'
+coords = '0_50_52_33_15'
+
+[[spawn]]
+npc = 'dog_stray2'
+coords = '0_50_53_33_2'
+
+[[spawn]]
+npc = 'giantrat'
+coords = '0_50_154_33_10'
+
+[[spawn]]
+npc = 'ramunsheered3'
+coords = '0_50_52_34_17'
+
+[[spawn]]
+npc = 'sheepsheeredw'
+coords = '0_50_52_34_21'
+
+[[spawn]]
+npc = 'man'
+coords = '0_50_53_34_6'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_50_54_34_50'
+
+[[spawn]]
+npc = 'black_knight'
+coords = '0_50_54_34_62'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_34_9'
+
+[[spawn]]
+npc = 'tramp'
+coords = '0_50_53_35_9'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_35_8'
+
+[[spawn]]
+npc = 'man'
+coords = '0_50_53_37_14'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_37_8'
+
+[[spawn]]
+npc = 'sheepsheeredg'
+coords = '0_50_52_38_17'
+
+[[spawn]]
+npc = 'sheepunsheered'
+coords = '0_50_52_38_21'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_50_52_38_62'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_50_53_38_0'
+
+[[spawn]]
+npc = 'man3'
+coords = '0_50_53_38_14'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_38_7'
+
+[[spawn]]
+npc = 'daddyshome_daddy'
+coords = '0_50_53_39_3'
+
+[[spawn]]
+npc = 'giantrat1_2'
+coords = '0_50_154_39_8'
+
+[[spawn]]
+npc = 'ghost5'
+coords = '0_50_154_39_59'
+
+[[spawn]]
+npc = 'sheepsheered'
+coords = '0_50_52_40_14'
+
+[[spawn]]
+npc = 'master_farmer_2'
+coords = '0_50_52_40_17'
+
+[[spawn]]
+npc = 'poh_estate_agent'
+coords = '0_50_54_40_20'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f_variant02'
+coords = '0_50_54_40_44'
+
+[[spawn]]
+npc = 'ghost'
+coords = '0_50_154_41_57'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_42_37'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_42_39'
+
+[[spawn]]
+npc = 'rat_indoors'
+coords = '0_50_53_43_1'
+
+[[spawn]]
+npc = 'vc_grimesquit'
+coords = '0_50_154_43_10'
+
+[[spawn]]
+npc = 'zombie_unarmed_sewer4'
+coords = '0_50_154_43_37'
+
+[[spawn]]
+npc = 'ghost8'
+coords = '0_50_154_43_59'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_44_7'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_44_19'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_44_30'
+
+[[spawn]]
+npc = 'vc_phingspet'
+coords = '0_50_154_45_12'
+
+[[spawn]]
+npc = 'sheepunsheered3g'
+coords = '0_50_52_46_15'
+
+[[spawn]]
+npc = 'sheepunsheered3w'
+coords = '0_50_52_46_22'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_50_54_46_2'
+
+[[spawn]]
+npc = 'fai_varrock_guard02'
+coords = '0_50_54_46_45'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_46_8'
+
+[[spawn]]
+npc = 'ramunsheered'
+coords = '0_50_52_48_23'
+
+[[spawn]]
+npc = 'skeleton_unagressive'
+coords = '0_50_154_48_58'
+
+[[spawn]]
+npc = 'mugger'
+coords = '0_50_52_49_63'
+
+[[spawn]]
+npc = 'fai_varrock_cleaner'
+coords = '0_50_53_50_37'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_51_37'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_50_154_51_52'
+
+[[spawn]]
+npc = 'skeleton_unagressive2'
+coords = '0_50_154_51_60'
+
+[[spawn]]
+npc = 'banker1_new'
+coords = '0_50_53_52_26'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_52_36'
+
+[[spawn]]
+npc = 'sheepsheeredw'
+coords = '0_50_52_53_27'
+
+[[spawn]]
+npc = 'aubury'
+coords = '0_50_53_53_10'
+
+[[spawn]]
+npc = 'banker1_new'
+coords = '0_50_53_53_26'
+
+[[spawn]]
+npc = 'pmod_town_crier_varrock'
+coords = '0_50_53_53_37'
+
+[[spawn]]
+npc = 'vm_archaeologist1_npc_dummy'
+coords = '0_50_53_53_53'
+
+[[spawn]]
+npc = 'vm_info_booth_lady'
+coords = '0_50_53_53_62'
+
+[[spawn]]
+npc = 'romeo_juliet_pew_sleeping_man'
+coords = '0_50_54_53_21'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_53_11'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_50_154_53_47'
+
+[[spawn]]
+npc = 'banker2_new'
+coords = '0_50_53_54_26'
+
+[[spawn]]
+npc = 'vm_archaeologist2_npc_dummy'
+coords = '0_50_53_54_52'
+
+[[spawn]]
+npc = 'father_lawrence'
+coords = '0_50_54_54_28'
+
+[[spawn]]
+npc = 'skeleton_unagressive3'
+coords = '0_50_154_54_60'
+
+[[spawn]]
+npc = 'banker2_new'
+coords = '0_50_53_55_26'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_50_154_55_13'
+
+[[spawn]]
+npc = 'banker2_new'
+coords = '0_50_53_56_26'
+
+[[spawn]]
+npc = 'vm_archaeologist3_npc_dummy'
+coords = '0_50_53_56_51'
+
+[[spawn]]
+npc = 'romeo_juliet_pew_sleeping_woman'
+coords = '0_50_54_56_25'
+
+[[spawn]]
+npc = 'vm_archaeologist4_npc_dummy'
+coords = '0_50_53_57_50'
+
+[[spawn]]
+npc = 'curator'
+coords = '0_50_53_57_55'
+
+[[spawn]]
+npc = 'fai_barbarian_goblin_armed_1'
+coords = '0_50_52_59_10'
+
+[[spawn]]
+npc = 'swan'
+coords = '0_50_52_59_27'
+
+[[spawn]]
+npc = 'zombie_unarmed_sewer2'
+coords = '0_50_154_59_35'
+
+[[spawn]]
+npc = 'ramunsheered2'
+coords = '0_50_52_60_21'
+
+[[spawn]]
+npc = 'rcu_zammy_mage1_edge'
+coords = '0_50_52_60_55'
+
+[[spawn]]
+npc = 'vm_museum_guard'
+coords = '0_50_53_60_55'
+
+[[spawn]]
+npc = 'vm_teacher_girl_multi'
+coords = '0_50_53_60_60'
+
+[[spawn]]
+npc = 'swan'
+coords = '0_50_52_61_27'
+
+[[spawn]]
+npc = 'man2'
+coords = '0_50_53_61_10'
+
+[[spawn]]
+npc = 'vm_school_boy_blonde'
+coords = '0_50_53_61_63'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_50_54_61_58'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_50_154_61_13'
+
+[[spawn]]
+npc = 'sheepunsheered'
+coords = '0_50_52_62_20'
+
+[[spawn]]
+npc = 'dog_stray'
+coords = '0_50_53_62_18'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_50_154_62_12'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_50_154_62_14'
+
+[[spawn]]
+npc = 'bioguard1'
+coords = '0_50_53_63_15'
+
+[[spawn]]
+npc = 'vm_museum_guard3'
+coords = '0_50_53_63_49'
+
+[[spawn]]
+npc = 'vm_school_girl_blonde'
+coords = '0_50_53_63_60'
+
+[[spawn]]
+npc = 'giantrat1'
+coords = '0_51_52_0_55'
+
+[[spawn]]
+npc = 'vm_collector'
+coords = '0_51_53_1_63'
+
+[[spawn]]
+npc = 'giantrat1_3'
+coords = '0_51_52_2_53'
+
+[[spawn]]
+npc = 'vm_archaeologist5_npc_dummy'
+coords = '0_51_53_2_53'
+
+[[spawn]]
+npc = 'surok_rat'
+coords = '0_51_52_3_5'
+
+[[spawn]]
+npc = 'vm_archaeologist6_npc_dummy'
+coords = '0_51_53_3_52'
+
+[[spawn]]
+npc = 'drunk2'
+coords = '0_51_52_4_61'
+
+[[spawn]]
+npc = 'donkey_bartender'
+coords = '0_51_53_4_1'
+
+[[spawn]]
+npc = 'vc_pox'
+coords = '0_51_53_4_7'
+
+[[spawn]]
+npc = 'vc_hooknosed_jack'
+coords = '0_51_53_4_8'
+
+[[spawn]]
+npc = 'skeleton_unagressive'
+coords = '0_51_154_6_58'
+
+[[spawn]]
+npc = 'gambler2'
+coords = '0_51_52_7_60'
+
+[[spawn]]
+npc = 'tea_seller'
+coords = '0_51_53_7_19'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_variant01'
+coords = '0_51_53_7_36'
+
+[[spawn]]
+npc = 'artist2'
+coords = '0_51_52_8_61'
+
+[[spawn]]
+npc = 'fai_varrock_guard_captain02'
+coords = '0_51_53_9_38'
+
+[[spawn]]
+npc = 'skeleton_unagressive2'
+coords = '0_51_154_10_57'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_variant02'
+coords = '0_51_53_11_30'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f'
+coords = '0_51_53_11_36'
+
+[[spawn]]
+npc = 'skeleton_unagressive'
+coords = '0_51_154_11_53'
+
+[[spawn]]
+npc = 'skeleton_unagressive3'
+coords = '0_51_154_11_55'
+
+[[spawn]]
+npc = 'dog_stray'
+coords = '0_51_52_13_53'
+
+[[spawn]]
+npc = 'jollyboar_bartender'
+coords = '0_51_54_13_32'
+
+[[spawn]]
+npc = 'black_knight'
+coords = '0_51_54_13_49'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_51_154_13_7'
+
+[[spawn]]
+npc = 'woman2'
+coords = '0_51_54_14_46'
+
+[[spawn]]
+npc = 'dimintheis'
+coords = '0_51_53_15_12'
+
+[[spawn]]
+npc = 'varrock_woman1'
+coords = '0_51_54_15_40'
+
+[[spawn]]
+npc = 'giantrat1_2'
+coords = '0_51_154_15_38'
+
+[[spawn]]
+npc = 'guidors_wife'
+coords = '0_51_52_17_55'
+
+[[spawn]]
+npc = 'tailorp'
+coords = '0_51_53_17_6'
+
+[[spawn]]
+npc = 'unicorn'
+coords = '0_51_52_19_27'
+
+[[spawn]]
+npc = 'man3'
+coords = '0_51_54_19_45'
+
+[[spawn]]
+npc = 'giantrat1'
+coords = '0_51_154_19_40'
+
+[[spawn]]
+npc = 'ali_leaflet_dropper'
+coords = '0_51_52_20_0'
+
+[[spawn]]
+npc = 'guidor'
+coords = '0_51_52_20_54'
+
+[[spawn]]
+npc = 'surok_annajones'
+coords = '0_51_54_21_12'
+
+[[spawn]]
+npc = 'fai_varrock_jollyboar_chef'
+coords = '0_51_54_21_33'
+
+[[spawn]]
+npc = 'thief1'
+coords = '0_51_54_21_45'
+
+[[spawn]]
+npc = 'unicorn'
+coords = '0_51_52_22_21'
+
+[[spawn]]
+npc = 'giantrat1'
+coords = '0_51_52_28_49'
+
+[[spawn]]
+npc = 'vm_museum_guard2'
+coords = '0_51_53_31_35'
+
+[[spawn]]
+npc = 'darkbear'
+coords = '0_51_52_32_19'
+
+[[spawn]]
+npc = 'zep_multi_assistant_varr'
+coords = '0_51_54_34_27'
+
+[[spawn]]
+npc = 'kittens_mew'
+coords = '0_51_54_34_58'
+
+[[spawn]]
+npc = 'poh_sawmill_opp'
+coords = '0_51_54_38_36'
+
+[[spawn]]
+npc = 'kittens_mew'
+coords = '0_51_54_39_50'
+
+[[spawn]]
+npc = 'kittens_mew'
+coords = '0_51_54_41_44'
+
+[[spawn]]
+npc = 'kittens_mew'
+coords = '0_51_54_43_51'
+
+[[spawn]]
+npc = 'soulbane_tolna_multi'
+coords = '0_51_53_44_60'
+
+[[spawn]]
+npc = 'soulbane_launa_multi'
+coords = '0_51_53_45_61'
+
+[[spawn]]
+npc = 'vm_patrol_route_wheelbarrow_empty'
+coords = '0_51_53_46_33'
+
+[[spawn]]
+npc = 'kittens_mew'
+coords = '0_51_54_46_43'
+
+[[spawn]]
+npc = 'fai_barbarian_goblin_armed_1'
+coords = '0_51_52_47_47'
+
+[[spawn]]
+npc = 'kittens_mew'
+coords = '0_51_54_51_59'
+
+[[spawn]]
+npc = 'pilot_digsite'
+coords = '0_51_53_57_39'
+
+[[spawn]]
+npc = 'vm_woodcutter'
+coords = '0_51_53_60_53'
+
+[[spawn]]
+npc = 'vm_patrol_route_workmen_1'
+coords = '0_51_53_62_51'
+
+[[spawn]]
+npc = 'juliet_multi_visible'
+coords = '1_49_53_22_33'
+
+[[spawn]]
+npc = 'phillipa'
+coords = '1_49_53_26_38'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f_variant01'
+coords = '1_49_53_39_11'
+
+[[spawn]]
+npc = 'fai_varrock_guard_captain02'
+coords = '1_49_53_39_22'
+
+[[spawn]]
+npc = 'scavvo'
+coords = '1_49_52_55_23'
+
+[[spawn]]
+npc = 'valaine'
+coords = '1_49_52_57_33'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f_variant02'
+coords = '1_50_54_1_39'
+
+[[spawn]]
+npc = 'fai_varrock_guard02'
+coords = '1_50_54_4_35'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_variant01'
+coords = '1_50_54_5_38'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_variant02'
+coords = '1_50_54_5_42'
+
+[[spawn]]
+npc = 'aluft_gnome_diplomat_varrock'
+coords = '1_50_54_9_18'
+
+[[spawn]]
+npc = 'varrock_man1'
+coords = '1_50_53_31_3'
+
+[[spawn]]
+npc = 'man3'
+coords = '1_50_53_31_7'
+
+[[spawn]]
+npc = 'man2'
+coords = '1_50_52_34_57'
+
+[[spawn]]
+npc = 'weaponsmaster'
+coords = '1_50_52_46_56'
+
+[[spawn]]
+npc = 'vm_advent_01'
+coords = '1_50_53_53_61'
+
+[[spawn]]
+npc = 'varrock_granny_2'
+coords = '1_50_54_55_32'
+
+[[spawn]]
+npc = 'vm_advent_02'
+coords = '1_50_53_62_50'
+
+[[spawn]]
+npc = 'vm_timeline_historian'
+coords = '1_51_53_0_63'
+
+[[spawn]]
+npc = 'varrock_man1'
+coords = '1_51_54_13_39'
+
+[[spawn]]
+npc = 'johnathon_fitzharmon'
+coords = '1_51_54_15_47'
+
+[[spawn]]
+npc = 'gertrudescat'
+coords = '1_51_54_42_56'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f'
+coords = '2_50_54_3_23'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f_variant01'
+coords = '2_50_54_4_21'
+
+[[spawn]]
+npc = 'captain_rovin'
+coords = '2_50_54_4_40'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f_variant02'
+coords = '2_50_54_6_22'
+
+[[spawn]]
+npc = 'fai_varrock_guard02'
+coords = '2_50_54_6_25'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_variant01'
+coords = '2_50_54_7_20'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_variant02'
+coords = '2_50_54_8_17'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f'
+coords = '2_50_54_9_15'
+
+[[spawn]]
+npc = 'fai_varrock_guard_training02'
+coords = '2_50_54_9_34'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f_variant01'
+coords = '2_50_54_10_18'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_f_variant02'
+coords = '2_50_54_11_12'
+
+[[spawn]]
+npc = 'fai_varrock_guard_training02_variant01'
+coords = '2_50_54_11_34'
+
+[[spawn]]
+npc = 'fai_varrock_guard_training02_f'
+coords = '2_50_54_13_34'
+
+[[spawn]]
+npc = 'fai_varrock_guard_trainer02'
+coords = '2_50_54_13_35'
+
+[[spawn]]
+npc = 'fai_varrock_guard_training02_f_variant01'
+coords = '2_50_54_15_34'
+
+[[spawn]]
+npc = 'fai_varrock_guard_training02'
+coords = '2_50_54_17_34'
+
+[[spawn]]
+npc = 'fai_varrock_guard02'
+coords = '2_50_54_21_27'
+
+[[spawn]]
+npc = 'fai_varrock_guard02_variant01'
+coords = '2_50_54_22_14'
+
+[[spawn]]
+npc = 'vm_art_critic'
+coords = '2_50_53_57_62'
+
+[[spawn]]
+npc = 'vm_teacher_girl_multi'
+coords = '2_50_53_61_59'
+
+[[spawn]]
+npc = 'banker1_new'
+coords = '0_49_53_51_44'
+
+[[spawn]]
+npc = 'banker1_new'
+coords = '0_50_53_51_26'
+
+[[spawn]]
+npc = 'banker1'
+coords = '0_49_54_27_34'
+
+[[spawn]]
+npc = 'hairdresser_boutique'
+coords = '0_50_54_56_5'
+
+[[spawn]]
+npc = 'tailor_boutique'
+coords = '0_50_54_60_7'
+

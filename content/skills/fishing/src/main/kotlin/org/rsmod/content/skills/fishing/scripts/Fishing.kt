@@ -224,17 +224,21 @@ object FishingData {
             catches = listOf(Catch(FishingObjs.raw_pike, 25, 60.0, 16, 96)),
         )
 
-    /** Spot npc type -> (op1 method, op3 method). Only Lumbridge's spots are spawned so far. */
+    /** Spot npc type -> (op1 method, op3 method). Only spawned spots are listed. */
     val spots =
         mapOf(
             FishingNpcs.lumbridge_sea_spot to (smallNet to seaBait),
             FishingNpcs.lumbridge_river_spot to (lure to riverBait),
+            FishingNpcs.draynor_sea_spot to (smallNet to seaBait),
+            FishingNpcs.alkharid_sea_spot to (smallNet to seaBait),
         )
 }
 
 object FishingNpcs : NpcReferences() {
     val lumbridge_sea_spot = find("0_50_49_saltfish")
     val lumbridge_river_spot = find("0_50_50_freshfish")
+    val draynor_sea_spot = find("0_48_50_saltfish")
+    val alkharid_sea_spot = find("0_51_49_saltfish")
 }
 
 object FishingObjs : ObjReferences() {
