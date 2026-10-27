@@ -118,8 +118,8 @@ constructor(private val objTypes: ObjTypeList, private val marketPrices: MarketP
             mes("You don't have enough inventory space.")
             return false
         }
-        val fee = unitFee(stored.first()) * fits
-        if (fee > 0 && !payDeathFee(fee)) {
+        val unitFee = unitFee(stored.first())
+        if (!canPayDeathFee(unitFee * fits)) {
             // Not on the wiki: OSRS's wording here is undocumented.
             mes("You don't have enough money to pay Death's fee.")
             return false
@@ -135,7 +135,12 @@ constructor(private val objTypes: ObjTypeList, private val marketPrices: MarketP
                 break
             }
         }
-        return fits == wanted
+        // Only what reached the backpack is paid for.
+        val moved = fits - left
+        if (unitFee * moved > 0) {
+            payDeathFee(unitFee * moved)
+        }
+        return moved == wanted
     }
 
     private fun ProtectedAccess.afterTake() {

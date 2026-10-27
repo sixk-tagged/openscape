@@ -427,12 +427,15 @@ class ServiceNpcs @Inject constructor(private val objRepo: ObjRepository) : Plug
     private suspend fun Dialogue.donkeyBeer() {
         chatPlayer(happy, "Yes please!")
         chatNpc(neutral, "Ok then, that's two gold coins please.")
-        if (player.invTakeFee(BEER_PRICE)) {
-            player.invAddOrDrop(objRepo, objs.beer)
-            player.spam("You buy a pint of beer.")
-            chatNpc(happy, "Cheers!")
-            chatPlayer(happy, "Cheers!")
+        if (!player.invTakeFee(BEER_PRICE)) {
+            // Note: wording unverified; the same reply as the other Varrock bartenders.
+            chatPlayer(sad, "Oh dear, I don't seem to have enough money.")
+            return
         }
+        player.invAddOrDrop(objRepo, objs.beer)
+        player.spam("You buy a pint of beer.")
+        chatNpc(happy, "Cheers!")
+        chatPlayer(happy, "Cheers!")
     }
 
     private suspend fun Dialogue.jollyBoar() {

@@ -16,15 +16,18 @@ class WaterSources : PluginScript() {
     override fun ScriptContext.startup() {
         for (source in WaterLocs.taps) {
             for (vessel in WaterVessels.all) {
-                onOpLocU(source, vessel.empty) { fill(FillTask(vessel, it.type.name.lowercase())) }
+                onOpLocU(source, vessel.empty) {
+                    fill(FillTask(vessel, it.type.name.lowercase()), FILL_TICKS)
+                }
             }
         }
         val bucket = WaterVessels.all.first()
-        onOpLocU(WaterLocs.well, bucket.empty) { fill(FillTask(bucket, "well")) }
-        onPlayerQueueWithArgs<FillTask>(WaterQueues.fill) { fill(it.args) }
+        onOpLocU(WaterLocs.well, bucket.empty) { fill(FillTask(bucket, "well"), FILL_TICKS) }
+        // A weak queue added while the queue runs is ticked down that same cycle: ask for one more.
+        onPlayerQueueWithArgs<FillTask>(WaterQueues.fill) { fill(it.args, FILL_TICKS + 1) }
     }
 
-    private fun ProtectedAccess.fill(task: FillTask) {
+    private fun ProtectedAccess.fill(task: FillTask, nextDelay: Int) {
         val vessel = task.vessel
         if (!invReplace(inv, vessel.empty, 1, vessel.full).success) {
             return
@@ -32,7 +35,7 @@ class WaterSources : PluginScript() {
         anim(WaterSeqs.fill)
         spam("You fill the ${ocName(vessel.empty).lowercase()} from the ${task.source}.")
         if (vessel.empty in inv) {
-            weakQueue(WaterQueues.fill, FILL_TICKS, task)
+            weakQueue(WaterQueues.fill, nextDelay, task)
         }
     }
 

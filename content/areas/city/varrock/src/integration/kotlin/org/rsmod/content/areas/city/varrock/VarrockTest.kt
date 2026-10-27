@@ -114,9 +114,11 @@ class VarrockTest {
             advance()
 
             player.opLoc1(door)
-            advanceUntil(max = 10) { player.coords == GUILD_DOOR.translateZ(1) }
-            // It shuts behind them instead of standing open for anyone else.
-            advanceUntil(max = 5) { locExists(GUILD_DOOR, varrock_locs.cooks_guild_door) }
+            advanceUntil(max = 10) {
+                // The door never opens, so nobody standing beside it can slip in behind them.
+                assertTrue(locExists(GUILD_DOOR, varrock_locs.cooks_guild_door))
+                player.coords == GUILD_DOOR.translateZ(1)
+            }
 
             player.worn[Wearpos.Hat.slot] = null
             player.teleport(GUILD_DOOR)
@@ -124,6 +126,25 @@ class VarrockTest {
             player.opLoc1(door)
             talkThrough()
             assertEquals(GUILD_DOOR, player.coords)
+        }
+
+    @Test
+    fun GameTestState.`a dummy takes one hit a click and lets you walk off`() =
+        runGameTest(Dummies::class) {
+            val dummy = placeMapLoc(START.translateX(1), varrock_locs.dummy)
+            player.setBaseLevel(stats.attack, 1)
+            player.setCurrentLevel(stats.attack, 1)
+            player.teleport(START)
+            advance()
+
+            val xp = player.statMap.getFineXP(stats.attack)
+            player.opLoc1(dummy)
+            advance(ticks = 10)
+            assertEquals(50, player.statMap.getFineXP(stats.attack) - xp) // 5 xp, once.
+
+            player.moveGameClick(START.translateZ(3))
+            advance(ticks = 3)
+            assertNotEquals(START, player.coords)
         }
 
     /** Clicks through the chatbox, picking [options] in order on each menu, until it closes. */

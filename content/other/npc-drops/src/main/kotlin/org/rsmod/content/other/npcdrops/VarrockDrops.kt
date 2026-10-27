@@ -15,7 +15,9 @@ import org.rsmod.plugin.scripts.ScriptContext
 class VarrockDrops @Inject constructor(private val tables: NpcDropTables) : PluginScript() {
     override fun ScriptContext.startup() {
         with(varrock_npcs) {
-            listOf(guard, guard_captain).forEach { tables[it] = guardDrops }
+            listOf(guard, guard_2, guard_3, guard_f, guard_f2, guard_f3, guard_captain).forEach {
+                tables[it] = guardDrops
+            }
             tables[warrior_woman] = bonesOnly
             tables[barbarian_woman] = barbarianDrops
             listOf(thief, thief_male1, thief_female1, thief_female2, varrock_man, varrock_woman)
@@ -197,8 +199,14 @@ private val mossGiantDrops =
     }
 
 object varrock_npcs : NpcReferences() {
-    val guard = find("fai_varrock_guard")
-    val guard_captain = find("fai_varrock_guard_captain")
+    // Varrock spawns these 2023 guards; the older fai_varrock_guard types are not placed anywhere.
+    val guard = find("fai_varrock_guard02")
+    val guard_2 = find("fai_varrock_guard02_variant01")
+    val guard_3 = find("fai_varrock_guard02_variant02")
+    val guard_f = find("fai_varrock_guard02_f")
+    val guard_f2 = find("fai_varrock_guard02_f_variant01")
+    val guard_f3 = find("fai_varrock_guard02_f_variant02")
+    val guard_captain = find("fai_varrock_guard_captain02")
     val warrior_woman = find("warrior_woman")
     val barbarian_woman = find("barbarianwoman_varrock")
     val thief = find("thief1")

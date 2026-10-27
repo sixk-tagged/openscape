@@ -120,26 +120,29 @@ class AncientSpells @Inject constructor() : SpellAttackMap {
             )
             manager.giveCombatXp(this, target, attack, damage)
             manager.queueMagicHit(this, target, spellObj, damage, clientDelay, serverDelay)
-            if (target is Player) {
-                applyEffect(target, damage)
-            }
+            applyEffect(target, damage)
             manager.continueCombatIfAutocast(this, target)
         }
 
-        private fun ProtectedAccess.applyEffect(target: Player, damage: Int) {
+        // Note: freeze and drain only land on players; blood heals the caster against anyone.
+        private fun ProtectedAccess.applyEffect(target: PathingEntity, damage: Int) {
             when (val effect = spell.effect) {
                 Effect.None -> {}
                 is Effect.Freeze -> {
-                    if (target.freeze(effect.ticks)) {
+                    if (target is Player && target.freeze(effect.ticks)) {
                         target.mes("You have been frozen!")
                     }
                 }
                 Effect.Blood -> {
-                    val healed = min(damage, target.hitpoints) / 4
+                    val targetHp =
+                        if (target is Player) target.hitpoints else (target as Npc).hitpoints
+                    val healed = min(damage, targetHp) / 4
                     player.statHeal(stats.hitpoints, constant = healed, percent = 0)
                 }
                 is Effect.Drain ->
-                    target.statDrain(stats.attack, constant = 0, percent = effect.percent)
+                    if (target is Player) {
+                        target.statDrain(stats.attack, constant = 0, percent = effect.percent)
+                    }
             }
         }
     }

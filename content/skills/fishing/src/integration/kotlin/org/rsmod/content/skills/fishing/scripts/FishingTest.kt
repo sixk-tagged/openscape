@@ -10,6 +10,7 @@ import org.rsmod.game.entity.Npc
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.type.npc.NpcType
 import org.rsmod.map.CoordGrid
+import org.rsmod.routefinder.flag.CollisionFlag
 
 /* Obj transaction system is not thread-safe. */
 @Execution(ExecutionMode.SAME_THREAD)
@@ -73,6 +74,36 @@ class FishingTest {
                 advanceUntil({ spot.coords != home }, timeoutTicks = 5)
                 assertTrue(spot.coords.chebyshevDistance(home) <= 2) { "Moved to ${spot.coords}" }
             }
+        }
+
+    @Test
+    fun GameTestState.`a spot that moves away stops whoever was fishing it`() =
+        runGameTest(Fishing::class) {
+            advance()
+            player.stats[stats.fishing] = 1
+            player.clearInv()
+            player.inv[0] = InvObj(FishingObjs.net)
+            val (type, home) = REAL_SPOTS.first()
+            val spot = spawnNpc(home, npcTypes[type])
+            val shore =
+                listOf(
+                        home.translateX(-1),
+                        home.translateX(1),
+                        home.translateZ(-1),
+                        home.translateZ(1),
+                    )
+                    .first { collision[it.x, it.z, it.level] and CollisionFlag.BLOCK_WALK == 0 }
+            player.teleport(shore)
+            advance()
+
+            player.opNpc1(spot)
+            advance(ticks = 2)
+            spot.aiTimer(1)
+            advanceUntil({ spot.coords != home }, timeoutTicks = 5)
+            advance(ticks = 3)
+
+            assertEquals(null, player.interaction)
+            assertEquals(shore, player.coords)
         }
 
     private fun GameTestScope.setUp(spotType: NpcType, level: Int, vararg objs: InvObj): Npc {

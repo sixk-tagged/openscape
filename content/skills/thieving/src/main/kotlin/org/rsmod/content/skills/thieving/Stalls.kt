@@ -62,7 +62,7 @@ constructor(
         }
         statAdvance(stats.thieving, stall.xp)
         mes("You steal ${withArticle(objTypes[obj].name)}.")
-        locRepo.change(loc, ThievingStalls.empty, stall.respawn)
+        locRepo.change(loc, stall.empty, stall.respawn)
         if (stall.type == ThievingLocs.seed_stall) {
             // Olivia's shop (content/areas/city/draynor) reads this.
             oliviaAngryUntil = player.vars[varps.playtime] + GRUDGE_TICKS
@@ -110,9 +110,8 @@ internal object ThievingStalls {
         val loot: Loot,
         val owners: List<NpcType> = emptyList(),
         val guards: List<NpcType> = emptyList(),
+        val empty: LocType = ThievingLocs.market,
     )
-
-    val empty: LocType = ThievingLocs.market
 
     val all =
         with(ThievingStallObjs) {
@@ -166,6 +165,7 @@ internal object ThievingStalls {
                     ),
                     owners = listOf(ThievingStallNpcs.fortunato),
                     guards = listOf(ThievingStallNpcs.market_guard),
+                    empty = ThievingLocs.wine_stall_empty,
                 ),
             )
         }
@@ -175,8 +175,9 @@ object ThievingLocs : LocReferences() {
     val tea_stall = find("tea_stall")
     val seed_stall = find("seed_stall")
     val wine_stall = find("rag_market_stall")
+    val wine_stall_empty = find("rag_market_stall_empty")
 
-    /** The bare "Market stall" every stall turns into while it respawns. */
+    /** The bare "Market stall" most stalls turn into while they respawn. */
     val market = find("market")
 }
 

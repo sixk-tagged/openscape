@@ -232,7 +232,12 @@ constructor(
         val tab = selectedTab
 
         val placeholder = objTypes.placeholder(objType)
-        val containedObjSlot = bank.indexOfFirst { it?.id == obj.id || it?.id == placeholder.id }
+        // An obj only stacks onto a slot when neither carries vars (see `Transaction.insertStack`).
+        val containedObjSlot =
+            bank.indexOfFirst {
+                it?.id == placeholder.id ||
+                    (it != null && it.id == obj.id && it.vars == 0 && obj.vars == 0)
+            }
         val prioritySlot =
             if (containedObjSlot != -1) {
                 containedObjSlot
@@ -407,7 +412,8 @@ constructor(
             return
         }
 
-        val containedBankObjs = bank.mapNotNull { it?.id }.toHashSet()
+        // A slot with vars takes no stack, so a deposit of that obj still needs a new slot.
+        val containedBankObjs = bank.mapNotNull { it?.takeIf { it.vars == 0 }?.id }.toHashSet()
 
         val uniqueInvObjs = mutableSetOf<Int>()
         for (invObj in from) {

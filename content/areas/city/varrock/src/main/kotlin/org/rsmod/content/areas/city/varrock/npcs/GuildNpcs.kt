@@ -74,9 +74,9 @@ class GuildNpcs @Inject constructor(private val objRepo: ObjRepository) : Plugin
     }
 
     private fun Dialogue.ownsCape(): Boolean =
-        access.invTotal(access.inv, objs.cooking_skillcape) > 0 ||
-            access.invTotal(access.bank, objs.cooking_skillcape) > 0 ||
-            access.invTotal(access.inv, objs.cooking_skillcape_t) > 0
+        listOf(objs.cooking_skillcape, objs.cooking_skillcape_t).any { cape ->
+            cape in player.inv || cape in player.worn || cape in access.bank
+        }
 
     private suspend fun Dialogue.buyCape() {
         chatPlayer(quiz, "Can I buy a Skillcape of Cooking from you?")

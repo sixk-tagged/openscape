@@ -133,7 +133,15 @@ object PickpocketTargets {
                 },
                 Target(
                     "guard",
-                    listOf(varrock_guard, varrock_guard_captain),
+                    listOf(
+                        varrock_guard,
+                        varrock_guard_2,
+                        varrock_guard_3,
+                        varrock_guard_f,
+                        varrock_guard_f2,
+                        varrock_guard_f3,
+                        varrock_guard_captain,
+                    ),
                     40,
                     46.8,
                     50,
@@ -184,8 +192,14 @@ object ThievingNpcs : NpcReferences() {
     val varrock_woman = find("varrock_woman1")
     val al_kharid_warrior = find("al_kharid_warrior")
     val warrior_woman = find("warrior_woman")
-    val varrock_guard = find("fai_varrock_guard")
-    val varrock_guard_captain = find("fai_varrock_guard_captain")
+    // Varrock spawns these 2023 guards; the older fai_varrock_guard types are not placed anywhere.
+    val varrock_guard = find("fai_varrock_guard02")
+    val varrock_guard_2 = find("fai_varrock_guard02_variant01")
+    val varrock_guard_3 = find("fai_varrock_guard02_variant02")
+    val varrock_guard_f = find("fai_varrock_guard02_f")
+    val varrock_guard_f2 = find("fai_varrock_guard02_f_variant01")
+    val varrock_guard_f3 = find("fai_varrock_guard02_f_variant02")
+    val varrock_guard_captain = find("fai_varrock_guard_captain02")
     val master_farmer_1 = find("master_farmer_1")
     val master_farmer_2 = find("master_farmer_2")
     val master_farmer_1_f = find("master_farmer_1_f")

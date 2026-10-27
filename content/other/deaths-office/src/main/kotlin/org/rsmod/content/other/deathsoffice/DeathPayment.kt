@@ -13,11 +13,10 @@ private var Player.deathCoffer by intVarp(DeathVarps.death_coffer)
  * nothing unless the three together cover [amount].
  */
 internal fun ProtectedAccess.payDeathFee(amount: Long): Boolean {
-    val carried = invTotal(inv, objs.coins).toLong()
-    val banked = invTotal(bank, objs.coins).toLong()
-    if (player.deathCoffer + carried + banked < amount) {
+    if (!canPayDeathFee(amount)) {
         return false
     }
+    val carried = invTotal(inv, objs.coins).toLong()
     var left = amount
     val fromCoffer = minOf(left, player.deathCoffer.toLong())
     player.deathCoffer -= fromCoffer.toInt()
@@ -32,3 +31,8 @@ internal fun ProtectedAccess.payDeathFee(amount: Long): Boolean {
     }
     return true
 }
+
+/** Whether Death's Coffer, backpack and bank coins together cover [amount]. */
+internal fun ProtectedAccess.canPayDeathFee(amount: Long): Boolean =
+    player.deathCoffer + invTotal(inv, objs.coins).toLong() + invTotal(bank, objs.coins).toLong() >=
+        amount

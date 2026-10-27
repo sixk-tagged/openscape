@@ -99,6 +99,20 @@ class PotteryGlassTest {
         }
 
     @Test
+    fun GameTestState.`seaweed stops burning once the fire goes out`() =
+        runGameTest(Crafting::class, Glass::class) {
+            val fire = placeMapLoc(SPOT.translateX(4), CraftingLocs.heat_sources.first())
+            val weed = obj("seaweed")
+            setUp(1, weed, weed, weed)
+            useOnLocItem(fire, weed)
+            advanceUntil({ player.count(CraftingObjs.soda_ash) == 1 }, timeoutTicks = 10)
+            locDel(fire)
+            advance(ticks = 12)
+            assertEquals(1, player.count(CraftingObjs.soda_ash))
+            assertEquals(2, player.count(weed))
+        }
+
+    @Test
     fun GameTestState.`every crafting script registers together`() =
         runGameTest(
             Crafting::class,

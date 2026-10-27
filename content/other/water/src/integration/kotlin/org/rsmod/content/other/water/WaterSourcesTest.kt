@@ -31,6 +31,22 @@ class WaterSourcesTest {
             assertEquals(1, player.count(WaterObjs.jug))
         }
 
+    @Test
+    fun GameTestState.`each further vessel takes two ticks`() =
+        runGameTest(WaterSources::class) {
+            advance()
+            player.clearInv()
+            repeat(4) { player.inv[it] = InvObj(WaterObjs.bucket) }
+            val sink = placeMapLoc(SPOT, WaterLocs.sink)
+            player.teleport(SPOT.translateX(-1))
+
+            val event = LocUEvents.Op(sink, sink, locTypes[sink], objTypes[WaterObjs.bucket], 0)
+            player.withProtectedAccess { eventBus.publish(this, event) }
+            advance(ticks = 4)
+            // One straight away, then one at tick 2 and one at tick 4.
+            assertEquals(3, player.count(WaterObjs.bucket_of_water))
+        }
+
     private companion object {
         val SPOT = CoordGrid(0, 50, 50, 34, 31)
     }

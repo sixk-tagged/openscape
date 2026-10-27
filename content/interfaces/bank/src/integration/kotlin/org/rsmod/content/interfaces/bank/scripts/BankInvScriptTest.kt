@@ -187,6 +187,29 @@ class BankInvScriptTest {
         }
 
     @Test
+    fun GameTestState.`deposit beside a copy with vars stays inside the selected tab`() =
+        runGameTest(BankInvScript::class) {
+            val bank = openBank(player)
+            val charged = firstObjType { !it.isStackable }
+            val other = firstObjType { !it.isStackable && it.id != charged.id }
+            bank[0] = InvObj(charged, 1, vars = 5)
+            bank[1] = InvObj(other, 1)
+            player.bankTabSize1 = 1
+            player.bankTabSizeMain = 1
+            player.selectedTab = BankTab.Tab1
+            player.inv[0] = InvObj(charged, 1)
+
+            player.ifButton(bank_components.side_inventory, comsub = 0, op = SIDE_INV_DEPOSIT_1)
+            advance()
+
+            // It can't stack onto the copy with vars, so tab 1 grows to hold it.
+            assertEquals(InvObj(charged, 1, vars = 5), bank[0])
+            assertEquals(InvObj(charged, 1), bank[1])
+            assertEquals(InvObj(other, 1), bank[2])
+            assertEquals(2, player.bankTabSize1)
+        }
+
+    @Test
     fun GameTestState.`deposit obj with MAX_VALUE count`() =
         runGameTest(BankInvScript::class) {
             val bank = openBank(player)

@@ -2,10 +2,12 @@ package org.rsmod.content.skills.fishing.scripts
 
 import jakarta.inject.Inject
 import org.rsmod.api.config.refs.stats
+import org.rsmod.api.player.clearInteractionRoute
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.fishingLvl
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.repo.npc.NpcRepository
+import org.rsmod.api.repo.player.PlayerRepository
 import org.rsmod.api.script.onAiTimer
 import org.rsmod.api.script.onEvent
 import org.rsmod.api.script.onOpNpc1
@@ -17,10 +19,12 @@ import org.rsmod.api.type.refs.obj.ObjReferences
 import org.rsmod.api.type.refs.seq.SeqReferences
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.npc.NpcStateEvents
+import org.rsmod.game.interact.InteractionNpc
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.obj.ObjTypeList
 import org.rsmod.game.type.seq.SeqType
 import org.rsmod.map.CoordGrid
+import org.rsmod.map.zone.ZoneKey
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 import org.rsmod.routefinder.collision.CollisionFlagMap
@@ -35,6 +39,7 @@ constructor(
     private val random: GameRandom,
     private val collision: CollisionFlagMap,
     private val npcRepo: NpcRepository,
+    private val playerRepo: PlayerRepository,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         for ((spot, methods) in FishingData.spots) {
@@ -114,7 +119,21 @@ constructor(
                 .flatMap { dx -> (-MOVE_RADIUS..MOVE_RADIUS).map { dz -> home.translate(dx, dz) } }
                 .filter { it != spot.coords && isFishable(it) && npcRepo.findAll(it).none() }
         if (options.isNotEmpty()) {
+            stopFishers(spot)
             spot.telejump(collision, options[random.of(options.size)])
+        }
+    }
+
+    /** Whoever fishes [spot] stops when it moves, as in OSRS, instead of following it. */
+    private fun stopFishers(spot: Npc) {
+        for (player in playerRepo.findAll(ZoneKey.from(spot.coords), zoneRadius = 1)) {
+            val interaction = player.interaction
+            if (interaction is InteractionNpc && interaction.target == spot) {
+                // The route too: it would still walk them over to where the spot went.
+                player.clearInteractionRoute()
+                player.resetFaceEntity()
+                player.resetAnim()
+            }
         }
     }
 

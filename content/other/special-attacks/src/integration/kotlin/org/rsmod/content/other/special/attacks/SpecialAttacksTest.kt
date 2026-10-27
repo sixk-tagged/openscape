@@ -173,6 +173,18 @@ class SpecialAttacksTest {
     }
 
     @Test
+    fun GameTestState.`granite maul ignores someone you only trade with`() = specialsTest { deps ->
+        val (a, b) = fighters(special_objs.granite_maul)
+        a.interaction =
+            InteractionPlayerOp(InteractionOp.Op4, b, hasOpTrigger = true, hasApTrigger = false)
+        var activated = true
+        a.withProtectedAccess { activated = deps.instant(special_objs.granite_maul).activate(this) }
+        assertFalse(activated)
+        advance(ticks = 2)
+        assertEquals(99, b.hitpoints)
+    }
+
+    @Test
     fun GameTestState.`granite maul needs the target straight next to you, not diagonal`() =
         specialsTest { deps ->
             val (a, b) = fighters(special_objs.granite_maul)

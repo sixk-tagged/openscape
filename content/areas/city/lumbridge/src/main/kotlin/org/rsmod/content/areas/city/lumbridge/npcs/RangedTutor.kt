@@ -263,8 +263,9 @@ class RangedTutor : PluginScript() {
             }
             val bow = RangedTutorObjs.bow
             val arrows = RangedTutorObjs.arrows
-            val needBow = bow !in player.inv && bow !in access.bank
-            val needArrows = arrows !in player.inv && arrows !in access.bank
+            val needBow = bow !in player.inv && bow !in player.worn && bow !in access.bank
+            val needArrows =
+                arrows !in player.inv && arrows !in player.worn && arrows !in access.bank
             // Note: the wiki has no line for owning both; both "already have" lines play.
             if (!needArrows) {
                 chatNpc(neutral, "You already have some training arrows.")

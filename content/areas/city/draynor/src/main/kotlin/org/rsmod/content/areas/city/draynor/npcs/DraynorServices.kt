@@ -2,7 +2,7 @@ package org.rsmod.content.areas.city.draynor.npcs
 
 import jakarta.inject.Inject
 import org.rsmod.api.player.dialogue.Dialogue
-import org.rsmod.api.player.stat.farmingLvl
+import org.rsmod.api.player.stat.baseFarmingLvl
 import org.rsmod.api.repo.obj.ObjRepository
 import org.rsmod.api.script.onOpNpc1
 import org.rsmod.api.script.onOpNpc3
@@ -238,7 +238,7 @@ class DraynorServices @Inject constructor(private val objRepo: ObjRepository) : 
             return
         }
         chatPlayer(quiz, "Can I buy a Farming cape?")
-        if (player.farmingLvl < 99) {
+        if (player.baseFarmingLvl < 99) {
             chatNpc(
                 neutral,
                 "I only sell the cape to those who have mastered Farming. Come back at level 99.",
@@ -309,31 +309,34 @@ class DraynorServices @Inject constructor(private val objRepo: ObjRepository) : 
         val choice =
             choice5(
                 "Splitbark helm (2 bark, 2 fine cloth, 6,000 coins)",
-                Splitbark.Helm,
+                1,
                 "Splitbark body (4 bark, 4 fine cloth, 37,000 coins)",
-                Splitbark.Body,
+                2,
                 "Splitbark legs (3 bark, 3 fine cloth, 32,000 coins)",
-                Splitbark.Legs,
+                3,
                 "More...",
-                null,
+                4,
                 "No thanks.",
-                null,
+                5,
             )
-        if (choice != null) {
-            makeSplitbark(choice)
-            return
-        }
-        val more =
-            choice3(
-                "Splitbark gauntlets (1 bark, 1 fine cloth, 1,000 coins)",
-                Splitbark.Gauntlets,
-                "Splitbark boots (1 bark, 1 fine cloth, 1,000 coins)",
-                Splitbark.Boots,
-                "No thanks.",
-                null,
-            )
-        if (more != null) {
-            makeSplitbark(more)
+        val piece =
+            when (choice) {
+                1 -> Splitbark.Helm
+                2 -> Splitbark.Body
+                3 -> Splitbark.Legs
+                4 ->
+                    choice3(
+                        "Splitbark gauntlets (1 bark, 1 fine cloth, 1,000 coins)",
+                        Splitbark.Gauntlets,
+                        "Splitbark boots (1 bark, 1 fine cloth, 1,000 coins)",
+                        Splitbark.Boots,
+                        "No thanks.",
+                        null,
+                    )
+                else -> null
+            }
+        if (piece != null) {
+            makeSplitbark(piece)
         }
     }
 

@@ -73,6 +73,18 @@ class DraynorTest {
         }
 
     @Test
+    fun GameTestState.`jalarast's no thanks ends the chat instead of opening more`() =
+        runGameTest(DraynorServices::class) {
+            val jalarast = spawnNpc(OPEN_GROUND.translateX(2), npcTypes[DraynorNpcs.jalarast])
+            player.teleport(OPEN_GROUND)
+            advance()
+
+            player.opNpc3(jalarast)
+            // A second menu here would need a second option and fail.
+            talkThrough(5)
+        }
+
+    @Test
     fun GameTestState.`aggie makes red dye from berries and coins`() =
         runGameTest(DraynorServices::class) {
             player.clearInv()
@@ -133,6 +145,24 @@ class DraynorTest {
                 runCatching { assertMessageSent("The doors won't open.") }.isSuccess
             }
             assertEquals(FRONT_DOOR.translateZ(1), player.coords)
+        }
+
+    @Test
+    fun GameTestState.`two players on one cabbage get one cabbage between them`() =
+        runGameTest(DraynorLocScript::class) {
+            advance()
+            val cabbage = placeMapLoc(OPEN_GROUND.translateX(1), DraynorLocs.manor_cabbage)
+            player.clearInv()
+            player.teleport(OPEN_GROUND)
+            val other = registerPlayer(OPEN_GROUND.translateX(2))
+            advance()
+
+            player.opLoc1(cabbage)
+            other.opLoc1(cabbage)
+            advance(ticks = 6)
+            val picked =
+                player.count(DraynorObjs.magic_cabbage) + other.count(DraynorObjs.magic_cabbage)
+            assertEquals(1, picked)
         }
 
     @Test

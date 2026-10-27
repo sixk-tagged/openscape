@@ -18,6 +18,7 @@ import org.rsmod.api.combat.weapon.styles.AttackStyles
 import org.rsmod.api.combat.weapon.types.AttackTypes
 import org.rsmod.api.config.refs.components
 import org.rsmod.api.config.refs.interfaces
+import org.rsmod.api.config.refs.npcs
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.varbits
@@ -40,6 +41,7 @@ import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.skills.magic.spell.attacks.configs.LunarComponents
 import org.rsmod.content.skills.magic.spell.attacks.lunar.MagicEffectsScript
+import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
 import org.rsmod.game.hit.HitType
 import org.rsmod.game.inv.InvObj
@@ -87,6 +89,18 @@ class AncientMagicTest {
         random.then = 12
         deps.cast(this, a, b, objs.spell_blood_rush)
         assertEquals(53, a.hitpoints)
+    }
+
+    @Test
+    fun GameTestState.`blood rush heals against an npc too`() = magicTest { deps ->
+        val (a, _) = fighters()
+        val man = spawnNpc(START.translateZ(2), npcTypes[npcs.man])
+        a.setCurrentLevel(stats.hitpoints, 50)
+        random.next = 0
+        random.then = 12
+        deps.cast(this, a, man, objs.spell_blood_rush)
+        // A man has 7 hitpoints, so the heal is capped at a quarter of those.
+        assertEquals(51, a.hitpoints)
     }
 
     @Test
@@ -138,6 +152,16 @@ class AncientMagicTest {
     @Inject
     constructor(val spells: MagicSpellRegistry, val attacks: SpellAttackRegistry) {
         fun cast(scope: GameTestScope, source: Player, target: Player, obj: ObjType) {
+            val spell = checkNotNull(spells.getObjSpell(obj))
+            val spellAttack = checkNotNull(attacks[obj])
+            with(scope) {
+                source.withProtectedAccess {
+                    with(spellAttack) { attack(target, CombatAttack.Spell(null, spell, false)) }
+                }
+            }
+        }
+
+        fun cast(scope: GameTestScope, source: Player, target: Npc, obj: ObjType) {
             val spell = checkNotNull(spells.getObjSpell(obj))
             val spellAttack = checkNotNull(attacks[obj])
             with(scope) {

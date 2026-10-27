@@ -47,6 +47,23 @@ class StallsTest {
         }
 
     @Test
+    fun GameTestState.`the wine stall turns into its own empty stall`() =
+        runGameTest(StallThieving::class) {
+            val coords = SPOT.translateX(1)
+            val stall = placeMapLoc(coords, ThievingLocs.wine_stall)
+            val full = locTypes[ThievingLocs.wine_stall]
+            val empty = locTypes[ThievingLocs.wine_stall_empty]
+            assertEquals(full.width to full.length, empty.width to empty.length)
+            player.teleport(SPOT)
+            player.clearInv()
+            player.stats[stats.thieving] = 22
+
+            player.opLoc2(stall)
+            advanceUntil(max = 6) { locExists(coords, ThievingLocs.wine_stall_empty) }
+            assertFalse(locExists(coords, ThievingLocs.market))
+        }
+
+    @Test
     fun GameTestState.`a market guard in sight goes for a seed thief`() =
         runGameTest(StallThieving::class) {
             // Draynor's real west seed stall and the south Market Guard's spawn, across open

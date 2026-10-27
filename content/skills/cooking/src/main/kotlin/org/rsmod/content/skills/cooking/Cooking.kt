@@ -52,14 +52,19 @@ constructor(
             mes("You need to cook this on a range.")
             return
         }
+        val many = invTotal(inv, recipe.raw) > 1
         val amount =
-            if (invTotal(inv, recipe.raw) > 1) {
+            if (many) {
                 skillMulti(COOK_VERB, TITLE, listOf(recipe.cooked), listOf(name(recipe)))?.amount
                     ?: return
             } else {
                 1
             }
-        start(CookTask(recipe, loc, heat, onRange, amount))
+        // Without the make-X chatbox this still runs in the op handler, after the queues.
+        start(
+            CookTask(recipe, loc, heat, onRange, amount),
+            if (many) queueDelay(COOK_TICKS) else COOK_TICKS,
+        )
     }
 
     /** The 'Cook' op offers every raw food carried that this heat source can cook. */
@@ -75,15 +80,18 @@ constructor(
         }
         val names = offers.map { name(it) }
         val choice = skillMulti(COOK_VERB, TITLE, offers.map { it.cooked }, names) ?: return
-        start(CookTask(offers[choice.index], loc, heat, onRange, choice.amount))
+        start(
+            CookTask(offers[choice.index], loc, heat, onRange, choice.amount),
+            queueDelay(COOK_TICKS),
+        )
     }
 
-    private fun ProtectedAccess.start(task: CookTask) {
+    private fun ProtectedAccess.start(task: CookTask, delay: Int) {
         if (!canCook(task.recipe)) {
             return
         }
         anim(if (task.onRange) CookingSeqs.range else CookingSeqs.fire)
-        weakQueue(CookingQueues.cook, queueDelay(COOK_TICKS), task)
+        weakQueue(CookingQueues.cook, delay, task)
     }
 
     private fun ProtectedAccess.cook(task: CookTask) {

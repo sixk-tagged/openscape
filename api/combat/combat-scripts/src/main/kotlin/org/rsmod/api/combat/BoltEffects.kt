@@ -9,6 +9,7 @@ import org.rsmod.api.player.stat.hitpoints
 import org.rsmod.api.player.stat.stat
 import org.rsmod.api.player.stat.statDrain
 import org.rsmod.api.player.stat.statHeal
+import org.rsmod.api.player.stat.statSub
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.type.refs.obj.ObjReferences
 import org.rsmod.api.type.refs.spot.SpotanimReferences
@@ -16,6 +17,7 @@ import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.PathingEntity
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.obj.ObjType
+import org.rsmod.game.type.obj.isType
 
 internal object BoltObjs : ObjReferences() {
     val opal = find("xbows_crossbow_bolts_bronze_tipped_opal_enchanted")
@@ -94,7 +96,8 @@ constructor(private val random: GameRandom, private val manager: PlayerAttackMan
         attack: CombatAttack.Ranged,
         ammo: ObjType?,
     ): Int {
-        val bolt = ammo?.let { bolts[it] }
+        // The ammo is the cache's own type, which never equals a reference: compare by id.
+        val bolt = bolts.entries.firstOrNull { ammo.isType(it.key) }?.value
         val chance = if (bolt == null) 0 else if (target is Player) bolt.pvp else bolt.pvn
         // The proc roll is always consumed first so that proc order is predictable.
         if (bolt == null || chance == 0 || random.of(1000) >= chance) {
@@ -114,13 +117,13 @@ constructor(private val random: GameRandom, private val manager: PlayerAttackMan
             Bolt.Ruby -> {
                 val targetHp = if (target is Player) target.hitpoints else (target as Npc).hitpoints
                 forcedDamage = minOf(100, targetHp / 5)
-                player.statDrain(stats.hitpoints, player.hitpoints / 10, 0)
+                player.statSub(stats.hitpoints, player.hitpoints / 10, 0)
             }
             Bolt.Sapphire -> {
                 if (target is Player) {
-                    val drain = ranged / 20
-                    target.statDrain(stats.prayer, drain, 0)
-                    player.statHeal(stats.prayer, drain / 2, 0)
+                    val before = target.stat(stats.prayer)
+                    target.statSub(stats.prayer, ranged / 20, 0)
+                    player.statHeal(stats.prayer, (before - target.stat(stats.prayer)) / 2, 0)
                 }
             }
             Bolt.Topaz -> if (target is Player) target.statDrain(stats.magic, 1, 0)

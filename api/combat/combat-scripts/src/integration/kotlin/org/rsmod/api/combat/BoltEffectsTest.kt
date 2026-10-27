@@ -37,11 +37,14 @@ class BoltEffectsTest {
     fun GameTestState.`ruby bolts take a tenth of your hp for a fifth of theirs`() =
         boltTest { effects ->
             val (a, b) = fighters()
+            a.setCurrentLevel(stats.hitpoints, 80)
             random.next = PROC
             var damage = -1
-            a.withProtectedAccess { damage = with(effects) { rollDamage(b, attack(a), ruby) } }
+            a.withProtectedAccess {
+                damage = with(effects) { rollDamage(b, attack(a), objTypes[ruby]) }
+            }
             assertEquals(19, damage) // 20% of 99, rounded down.
-            assertEquals(99 - 9, a.hitpoints)
+            assertEquals(80 - 8, a.hitpoints)
         }
 
     @Test
@@ -52,7 +55,9 @@ class BoltEffectsTest {
         random.then = HIT
         random.then = 20
         var damage = -1
-        a.withProtectedAccess { damage = with(effects) { rollDamage(b, attack(a), onyx) } }
+        a.withProtectedAccess {
+            damage = with(effects) { rollDamage(b, attack(a), objTypes[onyx]) }
+        }
         assertEquals(20, damage)
         assertEquals(55, a.hitpoints)
     }
@@ -61,11 +66,12 @@ class BoltEffectsTest {
     fun GameTestState.`sapphire bolts drain prayer and give half back`() = boltTest { effects ->
         val (a, b) = fighters()
         a.setCurrentLevel(stats.prayer, 50)
+        b.setCurrentLevel(stats.prayer, 40)
         random.next = PROC
         random.then = HIT
         random.then = 5
-        a.withProtectedAccess { with(effects) { rollDamage(b, attack(a), sapphire) } }
-        assertEquals(99 - 4, b.stat(stats.prayer)) // 99 ranged / 20.
+        a.withProtectedAccess { with(effects) { rollDamage(b, attack(a), objTypes[sapphire]) } }
+        assertEquals(40 - 4, b.stat(stats.prayer)) // 99 ranged / 20.
         assertEquals(52, a.stat(stats.prayer))
     }
 
@@ -73,7 +79,7 @@ class BoltEffectsTest {
     fun GameTestState.`topaz bolts drain a magic level`() = boltTest { effects ->
         val (a, b) = fighters()
         random.next = PROC
-        a.withProtectedAccess { with(effects) { rollDamage(b, attack(a), topaz) } }
+        a.withProtectedAccess { with(effects) { rollDamage(b, attack(a), objTypes[topaz]) } }
         assertEquals(98, b.stat(stats.magic))
     }
 
@@ -84,7 +90,9 @@ class BoltEffectsTest {
         random.then = HIT
         random.then = 7
         var damage = -1
-        a.withProtectedAccess { damage = with(effects) { rollDamage(b, attack(a), ruby) } }
+        a.withProtectedAccess {
+            damage = with(effects) { rollDamage(b, attack(a), objTypes[ruby]) }
+        }
         assertEquals(7, damage)
         assertEquals(99, a.hitpoints)
     }
@@ -96,7 +104,7 @@ class BoltEffectsTest {
         random.then = 7
         var damage = -1
         a.withProtectedAccess {
-            damage = with(effects) { rollDamage(b, attack(a), objs.runite_bolts) }
+            damage = with(effects) { rollDamage(b, attack(a), objTypes[objs.runite_bolts]) }
         }
         assertEquals(7, damage)
     }

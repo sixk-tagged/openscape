@@ -25,7 +25,6 @@ import org.rsmod.content.areas.city.varrock.configs.varrock_npcs
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.loc.BoundLocInfo
 import org.rsmod.game.loc.LocAngle
-import org.rsmod.game.loc.LocShape
 import org.rsmod.game.type.content.ContentGroupType
 import org.rsmod.game.type.loc.LocType
 import org.rsmod.game.type.obj.ObjType
@@ -252,8 +251,9 @@ constructor(private val locRepo: LocRepository, private val objTypes: ObjTypeLis
                 return
             }
         }
-        openDoor(door)
-        // Only the checked player goes through; the door shuts behind them.
+        // Note: the door stays shut. Swapping in the open door, even for a tick or two, lets
+        // whoever stands beside it walk in unchecked, so the checked player just steps through.
+        soundSynth(synths.door_open)
         telejump(coords.translateZ(if (entering) 1 else -1))
     }
 
@@ -263,29 +263,8 @@ constructor(private val locRepo: LocRepository, private val objTypes: ObjTypeLis
     private fun isMax(worn: InvObj?, group: ContentGroupType): Boolean =
         worn != null && objTypes[worn].isContentType(group)
 
-    /** A wall door swings open one tile along its angle and shuts again right away. */
-    private fun ProtectedAccess.openDoor(door: BoundLocInfo) {
-        soundSynth(synths.door_open)
-        val opened =
-            when (door.angle) {
-                LocAngle.West -> door.coords.translateX(-1)
-                LocAngle.North -> door.coords.translateZ(1)
-                LocAngle.East -> door.coords.translateX(1)
-                LocAngle.South -> door.coords.translateZ(-1)
-            }
-        locRepo.del(door, DOOR_DURATION)
-        locRepo.add(
-            opened,
-            varrock_locs.cooks_guild_door_open,
-            DOOR_DURATION,
-            door.turnAngle(1),
-            LocShape.WallStraight,
-        )
-    }
-
     private companion object {
         const val CONTAINER_DURATION = 500
-        const val DOOR_DURATION = 2
         const val GUILD_COOKING_LEVEL = 32
         val SEWER_LADDER_LANDING = CoordGrid(3237, 9859)
     }

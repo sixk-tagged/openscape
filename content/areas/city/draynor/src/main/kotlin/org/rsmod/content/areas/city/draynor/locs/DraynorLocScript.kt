@@ -91,10 +91,14 @@ constructor(
         arriveDelay()
         anim(seqs.human_pickupfloor)
         delay(1)
-        invAdd(inv, draynor_objs.magic_cabbage)
-        mes("You pick a cabbage.")
+        // Someone else may have picked it while we reached for it.
+        if (!isStillThere(cabbage)) {
+            return
+        }
         // Note: respawn time is a guess; the wiki lists "100" without units.
         locRepo.del(cabbage, CABBAGE_RESPAWN_CYCLES)
+        invAdd(inv, draynor_objs.magic_cabbage)
+        mes("You pick a cabbage.")
     }
 
     // Note: the real bookcase swings open; this one just disappears for a while.
@@ -154,11 +158,19 @@ constructor(
         arriveDelay()
         anim(seqs.human_pickupfloor)
         delay(1)
+        // Someone else may have picked them while we reached for them.
+        if (!isStillThere(nettles)) {
+            return
+        }
+        locRepo.del(nettles, NETTLE_RESPAWN_CYCLES)
         invAdd(inv, draynor_objs.nettles)
         // Note: messages unverified.
         mes("You pick a handful of nettles.")
-        locRepo.del(nettles, NETTLE_RESPAWN_CYCLES)
     }
+
+    // `del` reports success even for a map loc that is already gone, so look it up instead.
+    private fun isStillThere(loc: BoundLocInfo): Boolean =
+        locRepo.findAll(loc.coords).any { it.entity == loc.entity }
 
     private companion object {
         const val TRAPDOOR_OPEN_CYCLES = 300

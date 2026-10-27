@@ -39,6 +39,10 @@ constructor(private val seqTypes: SeqTypeList, private val xpMods: XpModifiers) 
             mes("You need a Cooking level of ${recipe.level} to make that.")
             return
         }
+        if (!hasRoom(recipe)) {
+            mes("You don't have enough inventory space to do that.")
+            return
+        }
         anim(product.anim)
         weakQueue(CookingQueues.churn, queueDelay(product.anim), ChurnTask(product, choice.amount))
     }
@@ -46,7 +50,7 @@ constructor(private val seqTypes: SeqTypeList, private val xpMods: XpModifiers) 
     private fun ProtectedAccess.churn(task: ChurnTask) {
         val product = task.product
         val recipe = recipeFor(product) ?: return
-        if (player.cookingLvl < recipe.level) {
+        if (player.cookingLvl < recipe.level || !hasRoom(recipe)) {
             return
         }
         invDel(inv, recipe.input)
@@ -64,6 +68,10 @@ constructor(private val seqTypes: SeqTypeList, private val xpMods: XpModifiers) 
     /** Uses the least-processed input carried: milk first, then cream, then butter. */
     private fun ProtectedAccess.recipeFor(product: Product): Recipe? =
         RECIPES.firstOrNull { it.output == product.obj && it.input in inv }
+
+    /** The leftover bucket or pot takes the input's slot, so the product needs a free one. */
+    private fun ProtectedAccess.hasRoom(recipe: Recipe): Boolean =
+        recipe.leftover == null || !inv.isFull()
 
     /** A weak queue added while handling input fires one tick early, so ask for one more. */
     private fun queueDelay(anim: SeqType): Int = seqTypes[anim].tickDuration + 1

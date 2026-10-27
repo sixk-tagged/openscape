@@ -15,7 +15,9 @@ import org.rsmod.map.CoordGrid
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
-/** The training dummies: 5 Attack experience a hit up to and including level 7. */
+/**
+ * The training dummies: 5 Attack experience a hit, one hit a click, up to and including level 7.
+ */
 class Dummies
 @Inject
 constructor(private val objTypes: ObjTypeList, private val xpMods: XpModifiers) : PluginScript() {
@@ -28,16 +30,14 @@ constructor(private val objTypes: ObjTypeList, private val xpMods: XpModifiers) 
     private suspend fun ProtectedAccess.train(dummy: CoordGrid) {
         arriveDelay()
         faceSquare(dummy)
-        while (true) {
-            if (player.attackLvl > MAX_LEVEL) {
-                mes("There is nothing more you can learn from hitting a dummy.")
-                return
-            }
-            val weapon = player.righthand?.let { objTypes[it] }
-            anim(weapon?.paramOrNull(params.attack_anim_stance1) ?: seqs.human_unarmedpunch)
-            statAdvance(stats.attack, XP_PER_HIT * xpMods.get(player, stats.attack))
-            delay(weapon?.paramOrNull(params.attackrate) ?: DEFAULT_SPEED)
+        if (player.attackLvl > MAX_LEVEL) {
+            mes("There is nothing more you can learn from hitting a dummy.")
+            return
         }
+        val weapon = player.righthand?.let { objTypes[it] }
+        anim(weapon?.paramOrNull(params.attack_anim_stance1) ?: seqs.human_unarmedpunch)
+        statAdvance(stats.attack, XP_PER_HIT * xpMods.get(player, stats.attack))
+        delay(weapon?.paramOrNull(params.attackrate) ?: DEFAULT_SPEED)
     }
 
     private companion object {

@@ -19,13 +19,15 @@ class Glass : PluginScript() {
         }
         for (pit in CraftingLocs.sandpits) {
             onOpLocU(pit, CraftingObjs.bucket_empty) {
-                startCrafting(GlassRecipes.fillBucket, MAX_AMOUNT)
+                startCrafting(GlassRecipes.fillBucket, MAX_AMOUNT, fromOp = true)
             }
         }
         // More specific than the Cooking module's catch-all for fires and ranges.
         for (heat in CraftingLocs.heat_sources) {
             for (burnt in GlassRecipes.sodaAsh) {
-                onOpLocU(heat, burnt.inputs.first().obj) { startCrafting(burnt, MAX_AMOUNT) }
+                onOpLocU(heat, burnt.inputs.first().obj) {
+                    startCrafting(burnt, MAX_AMOUNT, it.loc, fromOp = true)
+                }
             }
         }
     }

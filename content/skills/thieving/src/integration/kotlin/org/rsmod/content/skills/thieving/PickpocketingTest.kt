@@ -57,6 +57,10 @@ class PickpocketingTest {
             player.stats[stats.thieving] = 40
             val warrior = spawnNpc(SPOT.translateX(1), npcTypes[ThievingNpcs.al_kharid_warrior])
             val guard = spawnNpc(SPOT.translateZ(1), npcTypes[ThievingNpcs.varrock_guard])
+            // The guards Varrock spawns really offer Pickpocket as op3.
+            for (type in VARROCK_GUARDS) {
+                assertEquals("Pickpocket", npcTypes[type].op[2])
+            }
 
             random.next = 0 // Rolls 0.00: success.
             player.opNpc3(warrior)
@@ -87,5 +91,17 @@ class PickpocketingTest {
 
     private companion object {
         val SPOT = CoordGrid(0, 50, 50, 34, 31)
+        val VARROCK_GUARDS =
+            with(ThievingNpcs) {
+                listOf(
+                    varrock_guard,
+                    varrock_guard_2,
+                    varrock_guard_3,
+                    varrock_guard_f,
+                    varrock_guard_f2,
+                    varrock_guard_f3,
+                    varrock_guard_captain,
+                )
+            }
     }
 }

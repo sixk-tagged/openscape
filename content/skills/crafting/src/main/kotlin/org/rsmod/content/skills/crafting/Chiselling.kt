@@ -92,7 +92,7 @@ object ChiselRecipes : ObjReferences() {
             gem("diamond", "diamond", 43, 107.5, GemSeqs.diamond),
             gem("dragonstone", "dragonstone", 55, 137.5, GemSeqs.dragonstone),
             gem("onyx", "onyx", 67, 167.5, GemSeqs.onyx),
-            gem("zenyte", "zenyte", 89, 50.0, GemSeqs.zenyte),
+            gem("zenyte", "zenyte", 89, 200.0, GemSeqs.zenyte),
         )
 
     private val amethyst = find("amethyst")

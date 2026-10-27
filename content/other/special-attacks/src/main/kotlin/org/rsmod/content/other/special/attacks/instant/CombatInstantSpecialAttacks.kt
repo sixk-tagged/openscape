@@ -23,8 +23,9 @@ import org.rsmod.content.other.special.attacks.configs.special_seqs
 import org.rsmod.content.other.special.attacks.configs.special_spots
 import org.rsmod.game.entity.PathingEntity
 import org.rsmod.game.entity.Player
-import org.rsmod.game.interact.InteractionNpc
-import org.rsmod.game.interact.InteractionPlayer
+import org.rsmod.game.interact.InteractionNpcOp
+import org.rsmod.game.interact.InteractionOp
+import org.rsmod.game.interact.InteractionPlayerOp
 
 /** Combat specials that fire straight from the special attack bar. */
 class CombatInstantSpecialAttacks
@@ -61,10 +62,19 @@ constructor(private val types: AttackTypes, private val styles: AttackStyles) : 
         return true
     }
 
+    /** Whoever the player is attacking (op2): talking to, trading or following someone isn't. */
     private fun ProtectedAccess.currentTarget(): PathingEntity? =
         when (val interaction = player.interaction) {
-            is InteractionNpc -> interaction.target.takeIf { it.isValidTarget() }
-            is InteractionPlayer -> interaction.target.takeIf { it.isValidTarget() }
+            is InteractionNpcOp ->
+                interaction.target.takeIf {
+                    interaction.op == InteractionOp.Op2 &&
+                        it.isValidTarget() &&
+                        it.visType.hasOp(InteractionOp.Op2)
+                }
+            is InteractionPlayerOp ->
+                interaction.target.takeIf {
+                    interaction.op == InteractionOp.Op2 && it.isValidTarget()
+                }
             else -> null
         }
 

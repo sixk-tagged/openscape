@@ -1,14 +1,17 @@
 package org.rsmod.content.skills.crafting
 
+import jakarta.inject.Inject
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.craftingLvl
 import org.rsmod.api.player.ui.SKILLMULTI_OPTIONS
 import org.rsmod.api.player.ui.skillMulti
 import org.rsmod.api.player.vars.intVarp
+import org.rsmod.api.repo.loc.LocRepository
 import org.rsmod.api.script.onOpHeldU
 import org.rsmod.api.script.onPlayerQueueWithArgs
 import org.rsmod.game.entity.Player
+import org.rsmod.game.loc.BoundLocInfo
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.seq.SeqType
 import org.rsmod.plugin.scripts.PluginScript
@@ -55,7 +58,12 @@ class CraftRecipe(
 /** Using [a] on [b] starts one action of [recipe]. */
 class Combo(val a: ObjType, val b: ObjType, val recipe: CraftRecipe)
 
-internal data class CraftTask(val recipe: CraftRecipe, val remaining: Int)
+/** [heat] is the fire the batch burns on, if any: it stops once that has gone out. */
+internal data class CraftTask(
+    val recipe: CraftRecipe,
+    val remaining: Int,
+    val heat: BoundLocInfo? = null,
+)
 
 /** Cache enum 1809 verbs for the make-X chatbox. */
 internal object Verb {
@@ -74,9 +82,19 @@ private var Player.threadUses: Int by intVarp(CraftingVarps.thread_uses)
 /** A weak queue added while handling input fires one tick early, so ask for one more. */
 internal fun queueDelay(ticks: Int): Int = ticks + 1
 
-class Crafting : PluginScript() {
+class Crafting @Inject constructor(private val locRepo: LocRepository) : PluginScript() {
     override fun ScriptContext.startup() {
-        onPlayerQueueWithArgs<CraftTask>(CraftingQueues.make) { craftStep(it.args) }
+        onPlayerQueueWithArgs<CraftTask>(CraftingQueues.make) {
+            val heat = it.args.heat
+            if (
+                heat != null &&
+                    locRepo.findAll(heat.coords).none { loc -> loc.entity == heat.entity }
+            ) {
+                resetAnim()
+                return@onPlayerQueueWithArgs
+            }
+            craftStep(it.args)
+        }
         for (combo in NeedleRecipes.combos + GlassRecipes.combos) {
             onOpHeldU(combo.a, combo.b) { startCrafting(combo.recipe, 1) }
         }
@@ -93,14 +111,23 @@ internal suspend fun ProtectedAccess.offer(verb: Int, what: String, recipes: Lis
     startCrafting(menu[choice.index], choice.amount)
 }
 
-/** Starts up to [amount] actions of [recipe]; the first lands after the recipe's ticks. */
-internal fun ProtectedAccess.startCrafting(recipe: CraftRecipe, amount: Int) {
+/**
+ * Starts up to [amount] actions of [recipe]; the first lands after the recipe's ticks. Set [fromOp]
+ * when called straight from a loc op: those run after the queues, so need no extra tick.
+ */
+internal fun ProtectedAccess.startCrafting(
+    recipe: CraftRecipe,
+    amount: Int,
+    heat: BoundLocInfo? = null,
+    fromOp: Boolean = false,
+) {
     ifClose() // Clears weak queues: must come before the queue below.
     if (!canCraft(recipe)) {
         return
     }
     recipe.anim?.let { anim(it) }
-    weakQueue(CraftingQueues.make, queueDelay(recipe.ticks), CraftTask(recipe, amount))
+    val delay = if (fromOp) recipe.ticks else queueDelay(recipe.ticks)
+    weakQueue(CraftingQueues.make, delay, CraftTask(recipe, amount, heat))
 }
 
 private fun ProtectedAccess.craftStep(task: CraftTask) {

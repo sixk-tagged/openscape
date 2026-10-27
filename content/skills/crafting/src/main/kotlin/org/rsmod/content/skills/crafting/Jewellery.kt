@@ -46,7 +46,7 @@ class Jewellery : PluginScript() {
     /** The tiara mould on a furnace makes the gold tiara, else opens the silver panel. */
     private fun ProtectedAccess.tiara() {
         if (CraftingObjs.gold_bar in inv) {
-            startCrafting(JewelleryRecipes.goldTiara, 1)
+            startCrafting(JewelleryRecipes.goldTiara, 1, fromOp = true)
         } else {
             ifOpenMainModal(CraftingInterfaces.silver_crafting)
         }

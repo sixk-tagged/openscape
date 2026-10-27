@@ -32,6 +32,17 @@ class CookingTest {
         }
 
     @Test
+    fun GameTestState.`a single raw fish on a fire takes four ticks`() =
+        runGameTest(Cooking::class) {
+            val fire = setUp(level = 99, CookingLocs.fire, CookingObjs.raw_shrimp)
+            useOn(fire, CookingObjs.raw_shrimp)
+            advance(ticks = 3)
+            assertEquals(1, player.count(CookingObjs.raw_shrimp))
+            advance()
+            assertEquals(0, player.count(CookingObjs.raw_shrimp))
+        }
+
+    @Test
     fun GameTestState.`a failed roll burns the food`() =
         runGameTest(Cooking::class) {
             val fire = setUp(level = 1, CookingLocs.fire, CookingObjs.raw_shrimp)
@@ -82,6 +93,25 @@ class CookingTest {
 
             assertEquals(1, player.count(CookingObjs.bucket))
             assertMessageSent("You make a pat of butter.")
+        }
+
+    @Test
+    fun GameTestState.`a full inventory of milk is not churned into empty buckets`() =
+        runGameTest(Churning::class) {
+            advance()
+            player.stats[stats.cooking] = 99
+            player.clearInv()
+            repeat(28) { player.inv[it] = InvObj(CookingObjs.bucket_of_milk) }
+            val churn = placeMapLoc(SPOT, CookingLocs.dairy_churn)
+            player.teleport(SPOT.translateZ(-1))
+
+            player.opLoc1(churn)
+            advance(ticks = 2)
+            player.resumePauseButton(components.skillmulti_b, sub = 1)
+            advance(ticks = 10)
+
+            assertEquals(28, player.count(CookingObjs.bucket_of_milk))
+            assertEquals(0, player.count(CookingObjs.bucket))
         }
 
     private fun GameTestScope.setUp(level: Int, heat: LocType, vararg objs: ObjType): BoundLocInfo {

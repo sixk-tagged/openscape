@@ -58,7 +58,7 @@ constructor(
             return
         }
         val ground = objRepo.add(log.obj, player.coords, constants.lootdrop_duration, player)
-        start(LightTask(log, ground))
+        start(LightTask(log, ground), queueDelay(ATTEMPT_TICKS))
     }
 
     private fun ProtectedAccess.lightGround(log: FiremakingLogs.Log, ground: Obj) {
@@ -66,15 +66,16 @@ constructor(
             mes("You need a tinderbox to light a fire.")
             return
         }
+        // An obj op runs after the queues, so this first attempt needs no extra tick.
         if (canLight(log, ground.coords)) {
-            start(LightTask(log, ground))
+            start(LightTask(log, ground), ATTEMPT_TICKS)
         }
     }
 
-    private fun ProtectedAccess.start(task: LightTask) {
+    private fun ProtectedAccess.start(task: LightTask, delay: Int) {
         mes("You attempt to light the logs.")
         anim(FiremakingSeqs.light)
-        weakQueue(FiremakingQueues.light, queueDelay(ATTEMPT_TICKS), task)
+        weakQueue(FiremakingQueues.light, delay, task)
     }
 
     private fun ProtectedAccess.attempt(task: LightTask) {
