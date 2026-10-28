@@ -35,8 +35,8 @@ import org.rsmod.plugin.scripts.ScriptContext
  * the three god spells. The runes, the staff, the level and the xp come from the cache, so a
  * missing Iban's staff or god staff fails the cast like any other missing rune.
  *
- * Note: Iban's staff charges, the Slayer staff (e) on-task Magic Dart bonus and the Mage
- * Arena's first-100-casts rule are not modelled.
+ * Note: Iban's staff charges, the Slayer staff (e) on-task Magic Dart bonus and the Mage Arena's
+ * first-100-casts rule are not modelled.
  */
 class CombatSpells @Inject constructor(private val objTypes: ObjTypeList) : SpellAttackMap {
     override fun SpellAttackRepository.register(manager: SpellAttackManager) {

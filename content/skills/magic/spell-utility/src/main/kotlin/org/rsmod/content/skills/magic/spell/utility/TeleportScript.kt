@@ -21,8 +21,8 @@ import org.rsmod.plugin.scripts.ScriptContext
  * `spell_telecoord` param and the runes (the banana of Ape Atoll included) are its cache
  * requirements. The runes are taken at the click; the player lands [CAST_TICKS] later.
  *
- * Note: the alternative destinations (Varrock's Grand Exchange, Camelot's Seers' Village...)
- * need diary state and a destination menu; the default destination is always used.
+ * Note: the alternative destinations (Varrock's Grand Exchange, Camelot's Seers' Village...) need
+ * diary state and a destination menu; the default destination is always used.
  */
 class TeleportScript
 @Inject

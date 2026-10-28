@@ -27,9 +27,8 @@ import org.rsmod.plugin.scripts.ScriptContext
  * cast, from up to [RANGE] tiles away. The runes go at the cast; nothing is taken (and no runes)
  * when the inventory has no room.
  *
- * Note: no line-of-sight or "fences yes, doors no" check, and nothing blocks the grab inside
- * the restricted areas the wiki lists (Tower of Life...). The grab is a map graphic, not a
- * projectile.
+ * Note: no line-of-sight or "fences yes, doors no" check, and nothing blocks the grab inside the
+ * restricted areas the wiki lists (Tower of Life...). The grab is a map graphic, not a projectile.
  */
 class TelegrabScript
 @Inject

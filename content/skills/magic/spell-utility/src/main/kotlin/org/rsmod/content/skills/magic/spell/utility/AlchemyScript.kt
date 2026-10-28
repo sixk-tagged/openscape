@@ -26,8 +26,7 @@ import org.rsmod.plugin.scripts.ScriptContext
  * cache value, rounded down. Coins and items flagged `no_alchemy` cannot be alchemised. The cast
  * delay is shared with the weapon attack delay, as in OSRS.
  *
- * Note: noted items use the unnoted item's value; the "alchemy warning" prompts are client
- * side.
+ * Note: noted items use the unnoted item's value; the "alchemy warning" prompts are client side.
  */
 class AlchemyScript
 @Inject
