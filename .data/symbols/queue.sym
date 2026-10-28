@@ -34,3 +34,5 @@
 61	water_fill
 70	home_teleport
 110	crafting_make
+130	magic_charge_end
+140	production_make

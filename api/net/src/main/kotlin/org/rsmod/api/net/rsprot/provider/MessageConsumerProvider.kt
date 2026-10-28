@@ -21,6 +21,7 @@ import net.rsprot.protocol.game.incoming.npcs.OpNpc6
 import net.rsprot.protocol.game.incoming.npcs.OpNpcT
 import net.rsprot.protocol.game.incoming.objs.OpObj
 import net.rsprot.protocol.game.incoming.objs.OpObj6
+import net.rsprot.protocol.game.incoming.objs.OpObjT
 import net.rsprot.protocol.game.incoming.players.OpPlayer
 import net.rsprot.protocol.game.incoming.players.OpPlayerT
 import net.rsprot.protocol.game.incoming.resumed.ResumePCountDialog
@@ -47,6 +48,7 @@ import org.rsmod.api.net.rsprot.handlers.OpNpcHandler
 import org.rsmod.api.net.rsprot.handlers.OpNpcTHandler
 import org.rsmod.api.net.rsprot.handlers.OpObj6Handler
 import org.rsmod.api.net.rsprot.handlers.OpObjHandler
+import org.rsmod.api.net.rsprot.handlers.OpObjTHandler
 import org.rsmod.api.net.rsprot.handlers.OpPlayerHandler
 import org.rsmod.api.net.rsprot.handlers.OpPlayerTHandler
 import org.rsmod.api.net.rsprot.handlers.ResumePCountDialogHandler
@@ -79,6 +81,7 @@ constructor(
     private val resumePauseButton: ResumePauseButtonHandler,
     private val opObj: OpObjHandler,
     private val opObj6: OpObj6Handler,
+    private val opObjT: OpObjTHandler,
     private val resumePCountDialog: ResumePCountDialogHandler,
     private val resumePNameDialog: ResumePNameDialogHandler,
     private val resumePStringDialog: ResumePStringDialogHandler,
@@ -107,6 +110,7 @@ constructor(
         builder.addListener(ResumePauseButton::class.java, resumePauseButton)
         builder.addListener(OpObj::class.java, opObj)
         builder.addListener(OpObj6::class.java, opObj6)
+        builder.addListener(OpObjT::class.java, opObjT)
         builder.addListener(ResumePCountDialog::class.java, resumePCountDialog)
         builder.addListener(ResumePNameDialog::class.java, resumePNameDialog)
         builder.addListener(ResumePStringDialog::class.java, resumePStringDialog)

@@ -16,17 +16,20 @@ I'm building it outward from Lumbridge, one area at a time.
 - Explore **Lumbridge, Draynor Village, Al Kharid and Varrock**. The NPCs, shops, banks, doors and
   dialogue all work, and every monster you can attack has its proper drops.
 - Train **Attack, Strength, Defence, Ranged, Hitpoints, Prayer, Magic, Mining, Smithing, Crafting,
-  Woodcutting, Fishing, Cooking, Firemaking, Runecraft and Thieving**.
-- Fight with prayers, the standard and Ancient spellbooks, Vengeance and special attacks.
+  Fletching, Herblore, Woodcutting, Fishing, Cooking, Firemaking, Runecraft and Thieving**.
+- Fight with prayers, the standard and Ancient spellbooks, Vengeance, special attacks and potions.
+- Use Magic outside combat too: teleports, alchemy, Superheat Item, enchanting, Telekinetic Grab,
+  curses and binds.
 - Die like you would in OSRS: you lose items, a gravestone holds them for you, and Death's Office can
   give them back.
 - Watch out for aggressive monsters. Like in OSRS, they attack you unless your combat level is more
   than double theirs, and they leave you alone once you have spent 10 minutes in the same area.
+  Wizards cast spells at you from a distance instead of walking up to you.
+- Poison works both ways: poisoned weapons and ammo poison monsters, poisonous monsters poison you,
+  and antipoisons cure it.
 
 ## What's missing
 
-- Monsters that should use magic or ranged (dark wizards, for example) still walk up and hit you in
-  melee. I'm fixing that now, together with Fletching, Herblore and the rest of Magic.
 - Agility, Slayer, Hunter, Construction and Farming aren't in yet.
 
 The roadmap above shows what comes after that.

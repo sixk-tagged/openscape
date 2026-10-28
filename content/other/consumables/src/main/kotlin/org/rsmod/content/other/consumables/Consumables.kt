@@ -47,10 +47,14 @@ internal val FOODS =
         Food(ConsumableObjs.karambwan, "karambwan", combo = true, attackDelay = 2) { 18 },
     )
 
-/** [doses] runs from 4 doses down to 1; drinking the last one leaves an empty vial. */
+/**
+ * [doses] runs from 4 doses down to 1; drinking the last one leaves an empty vial. [check] gives
+ * the message for why the potion can't be drunk right now, if it can't.
+ */
 internal class Potion(
     val doses: List<ObjType>,
     val label: String,
+    val check: Player.() -> String? = { null },
     val effect: Player.(StatTypeList) -> Unit,
 )
 
@@ -133,4 +137,4 @@ internal val POTIONS =
         ) {
             statHeal(stats.prayer, 7, 25)
         },
-    )
+    ) + HERBLORE_POTIONS

@@ -17,6 +17,16 @@ import org.rsmod.game.type.obj.isType
 public class MagicSpellRegistry
 @Inject
 constructor(private val objTypes: ObjTypeList, private val enumResolver: EnumTypeMapResolver) {
+    private val enchantSpells =
+        listOf(
+            objs.spell_enchant_lvl_1,
+            objs.spell_enchant_lvl_2,
+            objs.spell_enchant_lvl_3,
+            objs.spell_enchant_lvl_4,
+            objs.spell_enchant_lvl_5,
+            objs.spell_enchant_lvl_6,
+            objs.spell_enchant_lvl_7,
+        )
     private lateinit var objSpells: Map<Int, MagicSpell>
     private lateinit var autocastSpells: Map<Int, MagicSpell>
 
@@ -46,6 +56,11 @@ constructor(private val objTypes: ObjTypeList, private val enumResolver: EnumTyp
             for (spellObj in spellList.values) {
                 spells[spellObj.id] = spellObj.toMagicSpell()
             }
+        }
+
+        // openscape: the Lvl-N Enchant spells sit on the jewellery popup, not in a spellbook enum.
+        for (spellObj in enchantSpells) {
+            spells[spellObj.id] = spellObj.toMagicSpell()
         }
 
         return spells

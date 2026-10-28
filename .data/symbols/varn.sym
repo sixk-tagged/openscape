@@ -4,3 +4,7 @@
 3	attacking_player
 4	lastattack
 5	flat_armour
+60	magic_bind_until
+61	magic_bind_immune_until
+70	poison_severity
+71	poisoned_by

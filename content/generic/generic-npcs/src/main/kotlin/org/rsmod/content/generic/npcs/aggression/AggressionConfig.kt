@@ -27,7 +27,6 @@ object AggressiveNpcs : NpcReferences() {
             find("giantspider2"),
             find("mugger"),
             // Draynor Village, Draynor Manor and the Draynor Sewers.
-            find("young_dark_wizard"),
             find("highwayman"),
             // The jail's patrolling guards; the one at the cells (`jailguard`) is passive.
             find("jailguard_two_patrol"),
@@ -38,11 +37,6 @@ object AggressiveNpcs : NpcReferences() {
             find("house_ghost3"),
             find("house_ghost4"),
             find("house_ghost5"),
-            // Level 140: twice that is past any combat level, so they always attack.
-            find("skeletal_wyvern1"),
-            find("skeletal_wyvern2"),
-            find("skeletal_wyvern3"),
-            find("skeletal_wyvern4"),
             // Skeletons and zombies in the Draynor and Varrock sewers. The wiki has every
             // skeleton aggressive, `skeleton_unagressive` included.
             find("skeleton_unarmed"),
@@ -75,10 +69,6 @@ object AggressiveNpcs : NpcReferences() {
             find("ugthanki"),
             find("shantay_guard"),
             // Varrock: the stone circle, the palace bear cage and the sewers.
-            find("qip_ds_young_dark_wizard1"),
-            find("qip_ds_young_dark_wizard2"),
-            find("qip_ds_young_dark_wizard3"),
-            find("qip_ds_young_dark_wizard4"),
             find("brownbear"),
             find("ghost"),
             find("ghost5"),
@@ -90,15 +80,33 @@ object AggressiveNpcs : NpcReferences() {
             find("mossgiant4"),
         )
 
+    /**
+     * The ranged and magic monsters (`NpcAttackProfiles`): same level check as `levelChecked`, but
+     * they stand off and attack from range.
+     */
+    val levelCheckedRanged =
+        listOf(
+            // Draynor Village and the Varrock stone circle.
+            find("young_dark_wizard"),
+            find("qip_ds_young_dark_wizard1"),
+            find("qip_ds_young_dark_wizard2"),
+            find("qip_ds_young_dark_wizard3"),
+            find("qip_ds_young_dark_wizard4"),
+            // Level 140: twice that is past any combat level, so they always attack.
+            find("skeletal_wyvern1"),
+            find("skeletal_wyvern2"),
+            find("skeletal_wyvern3"),
+            find("skeletal_wyvern4"),
+        )
+
     /** The wiki's "always aggressive", whatever the player's level. */
     val always = listOf(find("sourhog"))
 }
 
 internal object AggressiveNpcEditor : NpcEditor() {
     init {
-        // Only melee has a default npc attack (`NvPCombatScript`), so the dark wizards close in
-        // too.
         AggressiveNpcs.levelChecked.forEach { edit(it) { huntMode = huntmodes.cowardly } }
+        AggressiveNpcs.levelCheckedRanged.forEach { edit(it) { huntMode = huntmodes.ranged } }
         AggressiveNpcs.always.forEach { edit(it) { huntMode = huntmodes.aggressive_melee } }
     }
 }

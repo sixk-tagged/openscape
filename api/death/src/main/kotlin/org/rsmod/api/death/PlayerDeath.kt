@@ -2,6 +2,7 @@ package org.rsmod.api.death
 
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
+import org.rsmod.api.combat.commons.poison.curePoison
 import org.rsmod.api.config.constants
 import org.rsmod.api.config.refs.components
 import org.rsmod.api.config.refs.jingles
@@ -70,6 +71,7 @@ constructor(
     private fun ProtectedAccess.resetPlayerState(stats: StatTypeList) {
         player.disablePrayers()
         player.deathResetTimers()
+        player.curePoison()
 
         player.specialAttackType = 0
         player.specialAttackEnergy = constants.sa_max_energy

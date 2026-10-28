@@ -37,7 +37,7 @@ internal object SpellObjEditor : ObjEditor() {
         tele(objs.spell_lumbridge_teleport, 41.0, CoordGrid(0, 50, 50, 21, 18))
         spell(objs.spell_tele_grab, 43.0)
         spell(objs.spell_fire_bolt, 22.5)
-        tele(objs.spell_falador_teleport, 47.0, CoordGrid(0, 46, 52, 21, 50))
+        tele(objs.spell_falador_teleport, 48.0, CoordGrid(0, 46, 52, 21, 50))
         spell(objs.spell_crumble_undead, 24.5)
         spell(objs.spell_poh_teleport, 30.0)
         spell(objs.spell_wind_blast, 25.5)

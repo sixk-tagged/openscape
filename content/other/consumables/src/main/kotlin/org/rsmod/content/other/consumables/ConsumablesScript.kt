@@ -69,6 +69,10 @@ class ConsumablesScript @Inject constructor(private val statTypes: StatTypeList)
         if (player.hitpoints == 0 || player.potionDelay > mapClock) {
             return
         }
+        potion.check(player)?.let {
+            mes(it)
+            return
+        }
         val next = potion.doses.getOrNull(dose + 1) ?: ConsumableObjs.vial
         if (!invReplaceSlot(inv, slot, count = 1, replacement = next).success) {
             return

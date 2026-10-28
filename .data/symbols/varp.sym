@@ -2338,3 +2338,11 @@
 65421	tolerance_region
 65422	tolerance_region_old
 65423	tolerance_since
+65350	magic_charge_until
+65360	potion_stamina_until
+65361	potion_antifire_until
+65362	potion_antifire_kind
+65363	potion_regen_until
+65364	potion_remedy_until
+65365	potion_divine_until
+65366	potion_surge_ready
