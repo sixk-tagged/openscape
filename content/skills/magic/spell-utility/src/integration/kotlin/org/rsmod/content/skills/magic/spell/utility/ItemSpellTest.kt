@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.parallel.Execution
 import org.junit.jupiter.api.parallel.ExecutionMode
+import org.rsmod.api.config.refs.components
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.stats
-import org.rsmod.api.player.ui.IfOverlayButton
 import org.rsmod.api.testing.GameTestState
-import org.rsmod.game.type.interf.IfButtonOp
+import org.rsmod.api.testing.scope.GameTestScope
 
 /* Obj transaction system is not thread-safe. */
 @Execution(ExecutionMode.SAME_THREAD)
@@ -146,12 +146,51 @@ class ItemSpellTest {
     fun GameTestState.`enchant bolt spell converts ten of the stack`() = utilityTest { deps ->
         val bolt = EnchantObjs.bolts[0]
         setUp(UtilityObjs.cosmic_rune to 5, objs.air_rune to 10, bolt.input to 15)
-        val menu = checkNotNull(deps.spells.getObjSpell(objs.view_bolt_enchantment_spells))
-        eventBus.publish(IfOverlayButton(player, menu.component, 0, null, IfButtonOp.Op1))
-        advance()
-        assertEquals(10, player.inv.count(bolt.output))
+        openBoltMenu(deps)
+        player.resumePauseButton(components.skillmulti_a, sub = 1)
+        advanceUntil(max = 6) { player.inv.count(bolt.output) == 10 }
         assertEquals(5, player.inv.count(bolt.input))
         assertEquals(4, player.inv.count(UtilityObjs.cosmic_rune))
         assertEquals(fineXp(9.0), gained(stats.magic))
+        assertMessageSent("The magic of the runes coaxes out the true nature of the gem tips.")
+    }
+
+    @Test
+    fun GameTestState.`the bolt menu only offers the bolts the Magic level allows`() =
+        utilityTest { deps ->
+            val jade = EnchantObjs.bolts[2]
+            setUp(UtilityObjs.cosmic_rune to 5, objs.earth_rune to 10, jade.input to 12)
+            player.stats[stats.magic] = 14
+            openBoltMenu(deps)
+
+            // Opal, sapphire and jade are on offer: the fourth button does nothing.
+            player.resumePauseButton(components.skillmulti_d, sub = 1)
+            advance(ticks = 2)
+            assertEquals(12, player.inv.count(jade.input))
+
+            player.resumePauseButton(components.skillmulti_c, sub = 1)
+            advanceUntil(max = 6) { player.inv.count(jade.output) == 10 }
+            assertEquals(2, player.inv.count(jade.input))
+        }
+
+    @Test
+    fun GameTestState.`a bolt menu quantity enchants that many sets`() = utilityTest { deps ->
+        val bolt = EnchantObjs.bolts[0]
+        setUp(UtilityObjs.cosmic_rune to 5, objs.air_rune to 10, bolt.input to 25)
+        openBoltMenu(deps)
+        player.resumePauseButton(components.skillmulti_a, sub = 2)
+        advanceUntil(max = 6) { player.inv.count(bolt.output) == 10 }
+        advanceUntil(max = 6) { player.inv.count(bolt.output) == 20 }
+        assertEquals(5, player.inv.count(bolt.input))
+        assertEquals(3, player.inv.count(UtilityObjs.cosmic_rune))
+    }
+
+    /** Clicks the spellbook's bolt enchantments button, as the client sends it. */
+    private fun GameTestScope.openBoltMenu(deps: Deps) {
+        // A fresh test player's clock reads -1 until their first tick.
+        advance()
+        val menu = checkNotNull(deps.spells.getObjSpell(objs.view_bolt_enchantment_spells))
+        player.ifButton(menu.component)
+        advance(ticks = 2)
     }
 }

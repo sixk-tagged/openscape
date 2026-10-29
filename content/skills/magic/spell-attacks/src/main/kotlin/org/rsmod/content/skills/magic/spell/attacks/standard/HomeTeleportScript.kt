@@ -11,6 +11,7 @@ import org.rsmod.api.type.refs.queue.QueueReferences
 import org.rsmod.api.type.refs.seq.SeqReferences
 import org.rsmod.api.type.refs.spot.SpotanimReferences
 import org.rsmod.api.type.refs.varp.VarpReferences
+import org.rsmod.content.other.consumables.endGoading
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.seq.SeqType
 import org.rsmod.game.type.spot.SpotanimType
@@ -56,6 +57,7 @@ class HomeTeleportScript : PluginScript() {
         val stage = STAGES.getOrNull(index)
         if (stage == null) {
             teleport(DESTINATION)
+            player.endGoading()
             resetAnim()
             player.lastHomeTeleport = epochMinutes()
             return

@@ -10,6 +10,7 @@ import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.protect.ProtectedAccessLauncher
 import org.rsmod.api.script.onIfOverlayButton
 import org.rsmod.api.spells.MagicSpellRegistry
+import org.rsmod.content.other.consumables.endGoading
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.obj.ObjTypeList
 import org.rsmod.map.CoordGrid
@@ -54,6 +55,7 @@ constructor(
             statAdvance(stats.magic, spell.castXp)
             delay(CAST_TICKS)
             teleport(dest)
+            player.endGoading()
             anim(UtilitySeqs.teleport_end)
         }
     }

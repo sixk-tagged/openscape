@@ -8,6 +8,7 @@ import org.junit.jupiter.api.parallel.ExecutionMode
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.testing.GameTestState
+import org.rsmod.content.other.consumables.configs.PotionVarps
 import org.rsmod.map.CoordGrid
 
 /* Obj transaction system is not thread-safe. */
@@ -43,6 +44,21 @@ class TeleportTest {
 
         assertEquals(START, player.coords)
         assertEquals(5, player.inv.count(objs.law_rune))
+    }
+
+    @Test
+    fun GameTestState.`a teleport ends the goading effect`() = utilityTest { deps ->
+        setUp(objs.law_rune to 5, objs.air_rune to 10, objs.fire_rune to 5)
+        player.teleport(START)
+        player.setVarp(PotionVarps.goading_until, 500)
+        advance()
+
+        val spell = checkNotNull(deps.spells.getObjSpell(objs.spell_varrock_teleport))
+        player.ifButton(spell.component)
+        advanceUntil(max = 10) { player.coords == VARROCK }
+
+        assertEquals(0, player.vars[PotionVarps.goading_until])
+        assertMessageSent("Your goading potion has worn off.")
     }
 
     @Test

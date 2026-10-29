@@ -80,6 +80,17 @@ class HerbloreTest {
         }
 
     @Test
+    fun GameTestState.`a lava scale at 99 herblore grinds into six shards`() =
+        runGameTest(SkillProduction::class, Herblore::class) {
+            val scale = obj("lava_scale")
+            setUp(99, HerbloreObjs.pestle_and_mortar to 1, scale to 1)
+
+            useOn(HerbloreObjs.pestle_and_mortar, scale)
+            advanceUntil({ player.count(scale) == 0 }, timeoutTicks = 30)
+            assertEquals(6, player.count(obj("lava_shard")))
+        }
+
+    @Test
     fun GameTestState.`weapon poison coats five arrows and leaves a vial`() =
         runGameTest(SkillProduction::class, Herblore::class) {
             val arrows = obj("bronze_arrow")

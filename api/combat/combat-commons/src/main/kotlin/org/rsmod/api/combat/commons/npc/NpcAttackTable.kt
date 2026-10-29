@@ -3,6 +3,7 @@ package org.rsmod.api.combat.commons.npc
 import jakarta.inject.Singleton
 import org.rsmod.api.combat.commons.types.MeleeAttackType
 import org.rsmod.api.random.GameRandom
+import org.rsmod.game.entity.Player
 import org.rsmod.game.type.npc.NpcType
 import org.rsmod.game.type.proj.ProjAnimType
 import org.rsmod.game.type.seq.SeqType
@@ -26,7 +27,8 @@ public class NpcDrain(public val stat: StatType, public val percent: Int)
  * (ranged and magic only, flown with [projAnim], default `arrow` or `magic_spell`) and [impact]
  * plays on the target when the projectile arrives. [drain] only applies to magic: a landing hit
  * does no damage. [melee] is the defence type a melee attack is rolled against (crush by default).
- * [weight] is the share of picks relative to the profile's other attacks.
+ * [weight] is the share of picks relative to the profile's other attacks. [onLand] runs on the
+ * target when the attack lands, even for 0 damage (an icy breath freezing, say).
  */
 public class NpcAttack(
     public val style: NpcAttackStyle,
@@ -41,6 +43,7 @@ public class NpcAttack(
     public val drain: NpcDrain? = null,
     public val melee: MeleeAttackType? = null,
     public val weight: Int = 1,
+    public val onLand: ((Player) -> Unit)? = null,
 ) {
     init {
         require(style == NpcAttackStyle.Melee || travel != null) { "$style needs a projectile." }

@@ -21,7 +21,8 @@ fun ObjType.x(count: Int = 1): Ingredient = Ingredient(this, count)
 /**
  * One production action for Fletching, Herblore and the like. [inputs] are used up, [tools] only
  * have to be carried. [xp] and [makes] are for one unit: a recipe made in sets ([batch] units per
- * action, e.g. 15 arrows) makes a smaller set when the materials fall short.
+ * action, e.g. 15 arrows) makes a smaller set when the materials fall short. [rollMakes], if set,
+ * rolls the pieces one unit makes in place of [makes].
  */
 class Recipe(
     val stat: StatType,
@@ -36,6 +37,7 @@ class Recipe(
     val anim: SeqType? = null,
     val message: String? = null,
     val levelMessage: String? = null,
+    val rollMakes: (ProtectedAccess.() -> Int)? = null,
 )
 
 /** Using [a] on [b] makes [recipe], right away or through a one-option make-X [verb] prompt. */
@@ -112,7 +114,8 @@ private fun ProtectedAccess.step(task: Task) {
     for (input in recipe.inputs) {
         invDel(inv, input.obj, input.count * units)
     }
-    if (!invAdd(inv, recipe.product, recipe.makes * units).success) {
+    val made = (recipe.rollMakes?.invoke(this) ?: recipe.makes) * units
+    if (!invAdd(inv, recipe.product, made).success) {
         // No room: put the inputs back rather than lose them.
         for (input in recipe.inputs) {
             invAdd(inv, input.obj, input.count * units)
@@ -124,7 +127,7 @@ private fun ProtectedAccess.step(task: Task) {
     if (recipe.xp > 0.0) {
         statAdvance(recipe.stat, recipe.xp * units)
     }
-    mes(message(recipe, units))
+    mes(message(recipe, made))
     if (task.remaining > 1 && problem(recipe) == null) {
         recipe.anim?.let { anim(it) }
         weakQueue(ProductionQueues.make, recipe.ticks + 1, Task(recipe, task.remaining - 1))
@@ -133,11 +136,10 @@ private fun ProtectedAccess.step(task: Task) {
     }
 }
 
-/** [Recipe.message], with `#` the pieces made and `{0}`, `{1}`.. the lowercase input names. */
-private fun ProtectedAccess.message(recipe: Recipe, units: Int): String {
+/** [Recipe.message], with `#` the [made] pieces and `{0}`, `{1}`.. the lowercase input names. */
+private fun ProtectedAccess.message(recipe: Recipe, made: Int): String {
     var text =
-        recipe.message?.replace("#", "${recipe.makes * units}")
-            ?: "You make ${ocName(recipe.product).lowercase()}."
+        recipe.message?.replace("#", "$made") ?: "You make ${ocName(recipe.product).lowercase()}."
     recipe.inputs.forEachIndexed { i, input ->
         text = text.replace("{$i}", ocName(input.obj).lowercase())
     }

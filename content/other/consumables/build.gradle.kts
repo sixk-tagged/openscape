@@ -8,5 +8,6 @@ dependencies {
     implementation(projects.content.skills.herblore)
     integrationImplementation(projects.api.pluginCommons)
     integrationImplementation(projects.api.player)
+    integrationImplementation(projects.api.combat.combatScripts)
     integrationImplementation(projects.content.skills.herblore)
 }

@@ -1,10 +1,17 @@
 package org.rsmod.content.other.consumables
 
+import jakarta.inject.Inject
 import kotlin.math.min
+import org.rsmod.api.combat.commons.npc.queueCombatRetaliate
 import org.rsmod.api.config.constants
+import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.timers
 import org.rsmod.api.config.refs.varbits
+import org.rsmod.api.hunt.NpcSearch
+import org.rsmod.api.npc.isOutOfCombat
+import org.rsmod.api.npc.isValidTarget
+import org.rsmod.api.player.isInCombat
 import org.rsmod.api.player.output.UpdateRun
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.stat.stat
@@ -16,7 +23,9 @@ import org.rsmod.api.player.vars.intVarp
 import org.rsmod.api.script.onPlayerSoftTimer
 import org.rsmod.content.other.consumables.configs.PotionTimers
 import org.rsmod.content.other.consumables.configs.PotionVarps
+import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
+import org.rsmod.game.type.hunt.HuntVis
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
@@ -35,6 +44,7 @@ private var Player.antifireUntil by intVarp(PotionVarps.antifire_until)
 private var Player.regenUntil by intVarp(PotionVarps.regen_until)
 private var Player.remedyUntil by intVarp(PotionVarps.remedy_until)
 private var Player.divineUntil by intVarp(PotionVarps.divine_until)
+private var Player.goadingUntil by intVarp(PotionVarps.goading_until)
 
 /** Absolute map clock cycle at which the next surge potion may be drunk. */
 internal var Player.surgeReady by intVarp(PotionVarps.surge_ready)
@@ -50,6 +60,12 @@ private const val REMEDY_TICKS = 3000
 private const val REMEDY_INTERVAL = 25
 private const val DIVINE_TICKS = 3000
 private const val ANTIFIRE_WARNING = 25
+private const val GOADING_TICKS = 600
+private const val GOADING_INTERVAL = 6
+private const val GOADING_RANGE = 4
+
+/** The index of a monster's `Attack` option (op 2). */
+private const val ATTACK_OP = 1
 
 /** The combat stats the remedy restores and a divine potion's end resets. */
 private val Player.combatStats
@@ -89,11 +105,27 @@ internal fun Player.startDivine() {
     effectsTick()
 }
 
+/** Goading checks for monsters from the tick after the sip, then every [GOADING_INTERVAL]. */
+internal fun Player.startGoading() {
+    goadingUntil = currentMapClock + GOADING_TICKS
+    effectsTick()
+}
+
+/** Teleporting ends goading early. */
+fun Player.endGoading() {
+    if (goadingUntil == 0) {
+        return
+    }
+    goadingUntil = 0
+    // UNVERIFIED: the wiki says a message is shown when goading ends early, not what it says.
+    mes("Your goading potion has worn off.")
+}
+
 private fun Player.effectsTick() {
     softTimer(PotionTimers.effects, 1)
 }
 
-class PotionEffects : PluginScript() {
+class PotionEffects @Inject constructor(private val npcSearch: NpcSearch) : PluginScript() {
     override fun ScriptContext.startup() {
         onPlayerSoftTimer(PotionTimers.effects) { player.tickEffects() }
     }
@@ -120,6 +152,9 @@ class PotionEffects : PluginScript() {
         }
         if (divineUntil != 0) {
             active = tickDivine(now) || active
+        }
+        if (goadingUntil != 0) {
+            active = tickGoading(now) || active
         }
         if (!active) {
             clearSoftTimer(PotionTimers.effects)
@@ -165,6 +200,46 @@ class PotionEffects : PluginScript() {
         }
         return true
     }
+
+    private fun Player.tickGoading(now: Int): Boolean {
+        val left = goadingUntil - now
+        if (left <= 0) {
+            goadingUntil = 0
+            return false
+        }
+        if (left % GOADING_INTERVAL == GOADING_INTERVAL - 1) {
+            goad()
+        }
+        return true
+    }
+
+    /**
+     * Makes the monsters within 4 tiles and in line of sight attack. In single-way combat only the
+     * nearest one does, and only when the player is out of combat.
+     */
+    private fun Player.goad() {
+        val multi = vars[varbits.multiway_indicator] == 1
+        if (!multi && isInCombat()) {
+            return
+        }
+        val targets =
+            npcSearch.findAllAny(coords, GOADING_RANGE, HuntVis.LineOfSight).filter {
+                it.canBeGoaded(this)
+            }
+        if (multi) {
+            targets.forEach { it.queueCombatRetaliate(this) }
+        } else {
+            // UNVERIFIED: the wiki doesn't say which one in single-way combat; the nearest here.
+            targets.minByOrNull { coords.chebyshevDistance(it.coords) }?.queueCombatRetaliate(this)
+        }
+    }
+
+    /** Monsters already fighting, and those past the player's Slayer level, are left alone. */
+    private fun Npc.canBeGoaded(player: Player): Boolean =
+        isValidTarget() &&
+            visType.op.getOrNull(ATTACK_OP) == "Attack" &&
+            isOutOfCombat() &&
+            player.stat(stats.slayer) >= visType.param(params.slayer_levelrequire)
 
     private fun Player.tickDivine(now: Int): Boolean {
         if (now < divineUntil) {

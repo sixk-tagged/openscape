@@ -129,6 +129,7 @@ internal val HERBLORE_POTIONS =
             startPrayerRegeneration()
         },
         Potion(Potions.menaphiteRemedy, "Menaphite remedy") { startRemedy() },
+        Potion(Potions.goading, "goading potion") { startGoading() },
         // UNVERIFIED: the cooldown message.
         Potion(
             Potions.surge,

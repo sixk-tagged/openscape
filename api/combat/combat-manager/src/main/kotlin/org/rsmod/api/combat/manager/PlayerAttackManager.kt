@@ -14,6 +14,7 @@ import org.rsmod.api.combat.commons.player.combatPlayDefendAnim
 import org.rsmod.api.combat.commons.player.combatPlayDefendSpot
 import org.rsmod.api.combat.commons.player.queueCombatRetaliate
 import org.rsmod.api.combat.commons.player.resolveCombatXpMultiplier
+import org.rsmod.api.combat.commons.poison.PoisonedWeapons
 import org.rsmod.api.combat.commons.styles.MagicAttackStyle
 import org.rsmod.api.combat.commons.styles.MeleeAttackStyle
 import org.rsmod.api.combat.commons.styles.RangedAttackStyle
@@ -34,6 +35,7 @@ import org.rsmod.api.player.interact.PlayerInteractions
 import org.rsmod.api.player.interact.PlayerTInteractions
 import org.rsmod.api.player.output.soundSynth
 import org.rsmod.api.player.protect.clearPendingAction
+import org.rsmod.api.player.righthand
 import org.rsmod.api.player.stat.hitpoints
 import org.rsmod.api.player.stat.statAdvance
 import org.rsmod.api.random.GameRandom
@@ -68,6 +70,7 @@ constructor(
     private val npcTInteractions: NpcTInteractions,
     private val playerInteractions: PlayerInteractions,
     private val playerTInteractions: PlayerTInteractions,
+    private val poisoned: PoisonedWeapons,
 ) {
     /**
      * Determines if the player is still under an active attack delay.
@@ -645,6 +648,7 @@ constructor(
      *
      * **Notes:**
      * - This function awards hero points to the [source] player based on the hit damage.
+     * - This function rolls the [source]'s poisoned weapon poisoning an [Npc] target.
      * - This function **does not** grant combat experience to [source]. To apply experience, call
      *   [giveCombatXp] separately.
      *
@@ -673,6 +677,8 @@ constructor(
         val hit = target.queueHit(source, delay, HitType.Melee, damage, npcHitModifier)
         target.heroPoints(source, min(hit.damage, target.hitpoints))
         target.combatPlayDefendAnim()
+        val weapon = objTypes.getOrNull(source.righthand)
+        poisoned.poisonNpc(target, source, weapon, ranged = false, hit.damage, random)
         return hit
     }
 
@@ -995,6 +1001,9 @@ constructor(
         target.heroPoints(source, min(hit.damage, target.hitpoints))
         target.combatPlayDefendAnim(clientDelay)
         target.combatPlayDefendSpot(objTypes, ammo, clientDelay)
+        // The ammo, or the thrown weapon when there is none.
+        val weapon = ammo?.let { objTypes[it] } ?: objTypes.getOrNull(source.righthand)
+        poisoned.poisonNpc(target, source, weapon, ranged = true, hit.damage, random)
         return hit
     }
 

@@ -15,17 +15,20 @@ import org.rsmod.api.combat.commons.poison.isPoisoned
 import org.rsmod.api.combat.commons.poison.poison
 import org.rsmod.api.combat.commons.poison.poisonSeverity
 import org.rsmod.api.combat.commons.poison.poisonState
+import org.rsmod.api.combat.manager.PlayerAttackManager
 import org.rsmod.api.combat.scripts.PoisonScript
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.hit.plugin.NpcHitScript
 import org.rsmod.api.hit.plugin.PlayerHitScript
+import org.rsmod.api.player.righthand
 import org.rsmod.api.player.stat.hitpoints
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.factory.npcTypeFactory
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.api.type.refs.obj.ObjReferences
+import org.rsmod.game.inv.InvObj
 import org.rsmod.game.type.obj.ObjTypeList
 import org.rsmod.game.type.util.ParamMapBuilder
 import org.rsmod.map.CoordGrid
@@ -152,9 +155,25 @@ class PoisonTest {
             assertEquals(0, deps.weapons.rangedSeverity(plain))
         }
 
+    @Test
+    fun GameTestState.`every queued melee hit rolls the weapon's poison, specials included`() =
+        poisonTest { deps ->
+            val npc = spawnNpc(START, npcTypeFactory.create { hitpoints = 30 })
+            player.righthand = InvObj(Weapons.dragon_dagger_pp)
+
+            random.next = 0
+            deps.manager.queueMeleeHit(player, npc, 5)
+            assertEquals(30, npc.poisonSeverity)
+        }
+
     class Deps
     @Inject
-    constructor(val weapons: PoisonedWeapons, val objTypes: ObjTypeList, val random: GameRandom)
+    constructor(
+        val weapons: PoisonedWeapons,
+        val objTypes: ObjTypeList,
+        val random: GameRandom,
+        val manager: PlayerAttackManager,
+    )
 
     internal object Weapons : ObjReferences() {
         val dragon_dagger_pp = find("dragon_dagger_p++")

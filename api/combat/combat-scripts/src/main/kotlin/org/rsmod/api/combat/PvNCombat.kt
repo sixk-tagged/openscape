@@ -2,7 +2,6 @@ package org.rsmod.api.combat
 
 import jakarta.inject.Inject
 import org.rsmod.api.combat.commons.CombatAttack
-import org.rsmod.api.combat.commons.poison.PoisonedWeapons
 import org.rsmod.api.combat.manager.PlayerAttackManager
 import org.rsmod.api.combat.manager.RangedAmmoManager
 import org.rsmod.api.combat.player.activateMagicSpecial
@@ -42,7 +41,6 @@ constructor(
     private val ammunition: RangedAmmoManager,
     private val spellsReg: SpellAttackRegistry,
     private val boltEffects: BoltEffects,
-    private val poisoned: PoisonedWeapons,
 ) {
     suspend fun attack(access: ProtectedAccess, target: Npc, attack: CombatAttack.PlayerAttack) {
         when (attack) {
@@ -99,9 +97,7 @@ constructor(
         val damage = manager.rollMeleeDamage(player, npc, attack)
         manager.giveCombatXp(player, npc, attack, damage)
         manager.playWeaponFx(player, attack)
-        val hit = manager.queueMeleeHit(player, npc, damage)
-        val weaponType = objTypes.getOrNull(player.righthand)
-        poisoned.poisonNpc(npc, player, weaponType, ranged = false, hit.damage, random)
+        manager.queueMeleeHit(player, npc, damage)
         manager.continueCombat(player, npc)
     }
 
@@ -219,8 +215,7 @@ constructor(
         val damage = with(boltEffects) { rollDamage(npc, attack, hitAmmoObj) }
         manager.giveCombatXp(player, npc, attack, damage)
 
-        val hit = manager.queueRangedHit(player, npc, hitAmmoObj, damage, clientDelay, serverDelay)
-        poisoned.poisonNpc(npc, player, weaponType, ranged = true, hit.damage, random)
+        manager.queueRangedHit(player, npc, hitAmmoObj, damage, clientDelay, serverDelay)
 
         if (usingThrown && player.righthand == null) {
             mes("That was your last one!")

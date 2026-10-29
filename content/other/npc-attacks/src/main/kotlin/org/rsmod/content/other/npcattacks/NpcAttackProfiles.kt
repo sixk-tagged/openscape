@@ -10,9 +10,14 @@ import org.rsmod.api.config.refs.seqs
 import org.rsmod.api.config.refs.spotanims
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.synths
+import org.rsmod.api.player.lefthand
+import org.rsmod.api.player.magic.freeze
 import org.rsmod.api.type.refs.npc.NpcReferences
+import org.rsmod.api.type.refs.obj.ObjReferences
 import org.rsmod.api.type.refs.seq.SeqReferences
 import org.rsmod.api.type.refs.spot.SpotanimReferences
+import org.rsmod.game.entity.Player
+import org.rsmod.game.inv.isAnyType
 import org.rsmod.game.type.npc.NpcType
 
 /**
@@ -23,8 +28,8 @@ import org.rsmod.game.type.npc.NpcType
  */
 object NpcAttackProfiles {
     // UNVERIFIED: the attack ranges (the wiki gives none), which animation and sound each npc uses
-    // (the cache has none for them), how often a dark wizard curses instead of striking, the
-    // wyvern's pick weights, and the wyvern's icy breath freezing (left out: no freeze system).
+    // (the cache has none for them), how often a dark wizard curses instead of striking and the
+    // wyvern's pick weights.
     private val wizard =
         NpcAttackProfile(
             range = 8,
@@ -138,9 +143,24 @@ object NpcAttackProfiles {
                         anim = NpcAttackSeqs.wyvern_skeleton_ice_breath,
                         travel = NpcAttackSpotanims.wyvern_skeleton_travel_breath,
                         impact = NpcAttackSpotanims.wyvern_skeleton_impact_breath,
+                        onLand = ::icyBreathFreeze,
                     ),
                 ),
         )
+
+    /**
+     * The icy breath freezes like the Ancient ice spells unless the ancient wyvern shield is worn.
+     * UNVERIFIED: how long (the wiki gives no length; Ice Rush's 8 ticks), and that the freeze
+     * starts when the breath is launched rather than when it arrives.
+     */
+    internal fun icyBreathFreeze(target: Player) {
+        val shield = target.lefthand
+        if (!shield.isAnyType(NpcAttackObjs.wyvern_shield, NpcAttackObjs.wyvern_shield_uncharged)) {
+            target.freeze(ICY_BREATH_FREEZE_TICKS)
+        }
+    }
+
+    private const val ICY_BREATH_FREEZE_TICKS = 8
 
     val PROFILES: List<Pair<List<NpcType>, NpcAttackProfile>> =
         listOf(
@@ -176,6 +196,12 @@ object NpcAttackNpcs : NpcReferences() {
     val skeletal_wyvern2 = find("skeletal_wyvern2")
     val skeletal_wyvern3 = find("skeletal_wyvern3")
     val skeletal_wyvern4 = find("skeletal_wyvern4")
+}
+
+/** The ancient wyvern shield, charged or not. */
+object NpcAttackObjs : ObjReferences() {
+    val wyvern_shield = find("wyvern_shield")
+    val wyvern_shield_uncharged = find("wyvern_shield_uncharged")
 }
 
 internal object NpcAttackSeqs : SeqReferences() {

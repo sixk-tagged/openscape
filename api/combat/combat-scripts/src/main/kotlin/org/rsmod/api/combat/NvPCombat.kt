@@ -86,6 +86,9 @@ constructor(
         if (landed && poisonDamage != null) {
             target.poison(Poison.severity(poisonDamage))
         }
+        if (landed) {
+            attack?.onLand?.invoke(target)
+        }
     }
 
     private fun StandardNpcAccess.attackMelee(target: Player, attack: NpcAttack?): Boolean {

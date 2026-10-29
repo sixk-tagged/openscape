@@ -11,6 +11,8 @@ import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.protect.ProtectedAccessLauncher
+import org.rsmod.api.player.stat.magicLvl
+import org.rsmod.api.player.ui.skillMulti
 import org.rsmod.api.script.onIfOverlayButton
 import org.rsmod.api.spells.MagicSpellRegistry
 import org.rsmod.api.type.refs.obj.ObjReferences
@@ -26,8 +28,9 @@ import org.rsmod.plugin.scripts.ScriptContext
 
 /**
  * Lvl-1 to Lvl-7 Enchant (jewellery) and the crossbow bolt enchantments. The jewellery spells are
- * cast on an inventory item and swap it one for one; the bolt spells come from the bolt menu and
- * swap up to [BOLTS_PER_CAST] bolts of one kind.
+ * cast on an inventory item and swap it one for one. The bolt spell opens the make-X chatbox with
+ * the bolts the player's Magic level allows; each set picked swaps up to [BOLTS_PER_CAST] bolts of
+ * that kind.
  *
  * Note: casting on one item does not roll on to the rest of that type (the wiki's 2019
  * auto-continue), each cast is a click. Enchanted items start with their full charges.
@@ -79,23 +82,46 @@ constructor(
 
     private fun ScriptContext.startBolts() {
         val menu = checkNotNull(spells.getObjSpell(objs.view_bolt_enchantment_spells))
-        // UNVERIFIED: the bolt menu's buttons are assumed to be `comsub` 0..9 of this component in
-        // the order of [EnchantObjs.bolts]; the cache names no component for them.
-        onIfOverlayButton(menu.component) {
-            val bolt = EnchantObjs.bolts.getOrNull(comsub) ?: return@onIfOverlayButton
-            launcher.launch(player) { enchantBolts(bolt, menu) }
+        onIfOverlayButton(menu.component) { launcher.launch(player) { chooseBolts(menu) } }
+    }
+
+    /**
+     * The menu is the make-X chatbox (`skillmulti`, which has ten buttons for the ten bolts), as in
+     * the wiki's screenshot of the spell. Its buttons are `skillmulti:a` to `j` and the quantity is
+     * the number of sets.
+     *
+     * UNVERIFIED: the title (from that screenshot), the "Enchant" verb (the cache's `skillmulti`
+     * verb 19) and that only the bolts the player has the level for are offered (the wiki says "up
+     * to 10").
+     */
+    private suspend fun ProtectedAccess.chooseBolts(menu: MagicSpell) {
+        val offered = EnchantObjs.bolts.filter { player.magicLvl >= it.level }
+        if (offered.isEmpty()) {
+            mes("Your Magic level is not high enough for this spell.")
+            return
+        }
+        val outputs = offered.map { it.output }
+        val choice = skillMulti(ENCHANT_VERB, TITLE, outputs, outputs.map { ocName(it) }) ?: return
+        val bolt = offered[choice.index]
+        repeat(choice.amount) { set ->
+            if (set > 0) {
+                delay(CAST_TICKS)
+            }
+            if (!enchantBolts(bolt, menu)) {
+                return
+            }
         }
     }
 
-    private fun ProtectedAccess.enchantBolts(bolt: EnchantObjs.Bolt, menu: MagicSpell) {
+    private fun ProtectedAccess.enchantBolts(bolt: EnchantObjs.Bolt, menu: MagicSpell): Boolean {
         if (actionDelay > mapClock) {
-            return
+            return false
         }
         val have = inv.count(objTypes[bolt.input])
         if (have == 0) {
             // UNVERIFIED: the wiki lists no message for casting without the bolts.
             mes("You don't have any ${objTypes[bolt.input].name.lowercase()} to enchant.")
-            return
+            return false
         }
         val amount = min(have, BOLTS_PER_CAST)
         val spell =
@@ -110,19 +136,23 @@ constructor(
                     bolt.runes.map { (rune, count) -> MagicSpell.ObjRequirement(rune, count, null) },
             )
         if (runes.attemptCast(player, spell).isFailure()) {
-            return
+            return false
         }
         invDel(inv, bolt.input, amount)
         invAdd(inv, bolt.output, amount)
         anim(UtilitySeqs.enchant_3)
         spotanim(UtilitySpots.enchant_3, height = 92)
+        mes("The magic of the runes coaxes out the true nature of the gem tips.")
         statAdvance(stats.magic, spell.castXp)
         actionDelay = mapClock + CAST_TICKS
+        return true
     }
 
     private companion object {
         const val CAST_TICKS = 3
         const val BOLTS_PER_CAST = 10
+        const val ENCHANT_VERB = 19
+        const val TITLE = "How many sets of bolts to enchant?"
     }
 }
 

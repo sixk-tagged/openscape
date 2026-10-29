@@ -7,6 +7,7 @@ dependencies {
     implementation(projects.api.combat.combatManager)
     implementation(projects.api.pluginCommons)
     implementation(projects.api.spells)
+    implementation(projects.content.other.consumables)
     integrationImplementation(projects.api.pluginCommons)
     integrationImplementation(projects.api.player)
     integrationImplementation(projects.api.spells)

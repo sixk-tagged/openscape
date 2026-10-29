@@ -18,6 +18,7 @@ object PotionVarps : VarpReferences() {
     val remedy_until = find("potion_remedy_until")
     val divine_until = find("potion_divine_until")
     val surge_ready = find("potion_surge_ready")
+    val goading_until = find("potion_goading_until")
 }
 
 internal object PotionVarpBuilder : VarpBuilder() {
@@ -29,5 +30,6 @@ internal object PotionVarpBuilder : VarpBuilder() {
         build("potion_remedy_until") { temporary = true }
         build("potion_divine_until") { temporary = true }
         build("potion_surge_ready") { temporary = true }
+        build("potion_goading_until") { temporary = true }
     }
 }

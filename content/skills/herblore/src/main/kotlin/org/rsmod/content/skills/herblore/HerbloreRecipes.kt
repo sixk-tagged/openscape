@@ -1,6 +1,7 @@
 package org.rsmod.content.skills.herblore
 
 import org.rsmod.api.config.refs.stats
+import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.type.refs.obj.ObjReferences
 import org.rsmod.content.skills.production.Combo
 import org.rsmod.content.skills.production.Ingredient
@@ -35,6 +36,7 @@ object HerbloreRecipes : ObjReferences() {
         ticks: Int = 2,
         anim: SeqType? = HerbloreSeqs.mix,
         message: String? = null,
+        rollMakes: (ProtectedAccess.() -> Int)? = null,
     ) =
         Recipe(
             stats.herblore,
@@ -49,6 +51,7 @@ object HerbloreRecipes : ObjReferences() {
             anim,
             message,
             "You need level $level Herblore to make this potion.",
+            rollMakes,
         )
 
     private fun herb(name: String, grimy: String, level: Int, xp: Double, unf: Int, vial: String) =
@@ -286,7 +289,11 @@ object HerbloreRecipes : ObjReferences() {
         }
     }
 
-    private fun grind(input: String, product: String, makes: Int = 1): Combo {
+    private fun grind(
+        input: String,
+        product: String,
+        rollMakes: (ProtectedAccess.() -> Int)? = null,
+    ): Combo {
         val item = find(input)
         val recipe =
             herblore(
@@ -295,10 +302,10 @@ object HerbloreRecipes : ObjReferences() {
                 0.0,
                 item.x(),
                 tools = listOf(pestle),
-                makes = makes,
                 ticks = 3,
                 anim = HerbloreSeqs.grind,
                 message = "You grind the {0} to dust.",
+                rollMakes = rollMakes,
             )
         return Combo(pestle, item, recipe)
     }
@@ -313,10 +320,16 @@ object HerbloreRecipes : ObjReferences() {
             grind("blue_dragon_scale", "dragon_scale_dust"),
             grind("bird_nest_empty", "crushed_bird_nest"),
             grind("dragon_bones_superior", "crushed_dragon_bones"),
-            // Note: the wiki gives 3-6 shards, more at higher Herblore; flat 4 until Recipe
-            // takes a random yield.
-            grind("lava_scale", "lava_shard", makes = 4),
+            grind("lava_scale", "lava_shard", rollMakes = { lavaShards() }),
         )
+
+    /**
+     * 3-6 shards per scale: the wiki's averages are about 3.6 at level 1 and 6 at 99. UNVERIFIED:
+     * the roll itself; three extra-shard rolls from 20% to 100% match those averages. The hard
+     * Wilderness Diary's +50% is left out (no diaries).
+     */
+    private fun ProtectedAccess.lavaShards(): Int =
+        3 + (1..3).count { statRandom(stats.herblore, 50, 255, invisibleBoost = 0) }
 
     private fun crushedBones(): List<Combo> {
         val bones = find("crushed_dragon_bones")
