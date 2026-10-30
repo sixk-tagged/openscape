@@ -8,11 +8,13 @@ import org.rsmod.game.type.inv.InvStackType
 
 object MiningCurrencies : CurrencyReferences() {
     val golden_nugget = find("golden_nugget")
+    val unidentified_minerals = find("mguild_minerals")
 }
 
 object MiningInvs : InvReferences() {
     /** Unused vanilla inv, repurposed as Prospector Percy's nugget shop. */
     val nugget_shop = find("miningstore")
+    val mineral_shop = find("mguild_rewardshop")
 }
 
 internal object MiningInvEditor : InvEditor() {
@@ -29,6 +31,17 @@ internal object MiningInvEditor : InvEditor() {
             stock += stock(MiningObjs.mining_gloves, count = 100, restockCycles = 100)
             stock += stock(MiningObjs.superior_mining_gloves, count = 100, restockCycles = 100)
             stock += stock(MiningObjs.expert_mining_gloves, count = 100, restockCycles = 100)
+        }
+
+        // Belona's Mineral Exchange (the Mining Guild): counts are display only.
+        edit(MiningInvs.mineral_shop) {
+            scope = InvScope.Shared
+            stack = InvStackType.Always
+            autoSize = true
+            stock += stock(MiningObjs.mining_gloves, count = 100, restockCycles = 1)
+            stock += stock(MiningObjs.superior_mining_gloves, count = 100, restockCycles = 1)
+            stock += stock(MiningObjs.soft_clay_pack, count = 1000, restockCycles = 1)
+            stock += stock(MiningObjs.bag_full_of_gems, count = 100, restockCycles = 1)
         }
     }
 }

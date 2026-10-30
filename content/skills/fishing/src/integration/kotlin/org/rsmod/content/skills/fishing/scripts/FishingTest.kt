@@ -45,6 +45,22 @@ class FishingTest {
         }
 
     @Test
+    fun GameTestState.`the Musa Point cage spot catches lobsters and the harpoon swordfish`() =
+        runGameTest(Fishing::class) {
+            val pot = InvObj(FishingObjs.lobster_pot)
+            val spot = setUp(FishingNpcs.musa_cage_spot, level = 99, pot)
+
+            player.opNpc1(spot)
+            advanceUntil({ player.count(FishingObjs.raw_lobster) > 0 }, timeoutTicks = 400)
+            assertMessageSent("You catch a lobster.")
+
+            player.inv[0] = InvObj(FishingObjs.harpoon)
+            player.opNpc3(spot)
+            advanceUntil({ player.count(FishingObjs.raw_swordfish) > 0 }, timeoutTicks = 400)
+            assertMessageSent("You catch a swordfish.")
+        }
+
+    @Test
     fun GameTestState.`fishing without a net says which tool is needed`() =
         runGameTest(Fishing::class) {
             val spot = setUp(FishingNpcs.lumbridge_sea_spot, level = 1)

@@ -13,8 +13,11 @@ I'm building it outward from Lumbridge, one area at a time.
 
 ## What you can do right now
 
-- Explore **Lumbridge, Draynor Village, Al Kharid and Varrock**. The NPCs, shops, banks, doors and
-  dialogue all work, and every monster you can attack has its proper drops.
+- Explore **Lumbridge, Draynor Village, Al Kharid, Varrock, Falador, Port Sarim, Rimmington,
+  Edgeville and Barbarian Village**. The NPCs, shops, banks, doors and dialogue all work, and every
+  monster you can attack has its proper drops.
+- Mine in the Mining Guild, take the boat to Karamja, and earn your White Knight rank by fighting
+  Black Knights.
 - Train **Attack, Strength, Defence, Ranged, Hitpoints, Prayer, Magic, Mining, Smithing, Crafting,
   Fletching, Herblore, Woodcutting, Fishing, Cooking, Firemaking, Runecraft and Thieving**.
 - Fight with prayers, the standard and Ancient spellbooks, Vengeance, special attacks and potions.

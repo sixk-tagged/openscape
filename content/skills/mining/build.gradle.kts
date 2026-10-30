@@ -6,6 +6,7 @@ plugins {
 dependencies {
     implementation(projects.api.pluginCommons)
     integrationImplementation(projects.api.player)
+    integrationImplementation(projects.api.stats.levelmod)
     integrationImplementation(projects.api.stats.xpmod)
     integrationImplementation(projects.api.shops)
 }

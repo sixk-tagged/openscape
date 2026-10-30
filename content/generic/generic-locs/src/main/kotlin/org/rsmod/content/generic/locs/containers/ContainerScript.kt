@@ -23,6 +23,17 @@ class ContainerScript @Inject constructor(private val locRepo: LocRepository) : 
         container(ContainerLocs.drawers2_rotated, ContainerLocs.drawers2_rotated_open, "drawers")
         container(ContainerLocs.spooky_wardrobe, ContainerLocs.spooky_wardrobe_open, "wardrobe")
         container(ContainerLocs.draynor_wardrobe, ContainerLocs.draynor_wardrobe_open, "wardrobe")
+        container(ContainerLocs.drawers1, ContainerLocs.drawers1_open, "drawers")
+        // Falador's drawers put Search first and Close second.
+        onOpLoc1(ContainerLocs.falador_drawers) {
+            change(it.loc, ContainerLocs.falador_drawers_open, ContainerSeqs.open)
+        }
+        onOpLoc1(ContainerLocs.falador_drawers_open) {
+            mes("You search the drawers but find nothing.")
+        }
+        onOpLoc2(ContainerLocs.falador_drawers_open) {
+            change(it.loc, ContainerLocs.falador_drawers, ContainerSeqs.close)
+        }
         // Note: OSRS only opens Sigmund's chest with his key during The Lost Tribe; the
         // locked message is unverified.
         onOpLoc1(ContainerLocs.lost_tribe_chest) { mes("This chest is locked.") }
@@ -60,6 +71,10 @@ object ContainerLocs : LocReferences() {
     val draynor_wardrobe = find("draynor_wardrobe")
     val draynor_wardrobe_open = find("draynor_wardrobe_open")
     val lost_tribe_chest = find("lost_tribe_chest")
+    val drawers1 = find("drawers1")
+    val drawers1_open = find("drawers1open")
+    val falador_drawers = find("fai_falador_drawers")
+    val falador_drawers_open = find("fai_falador_drawers_open")
 }
 
 // Note: drawers reuse the chest anims; OSRS may use the cupboard ones.

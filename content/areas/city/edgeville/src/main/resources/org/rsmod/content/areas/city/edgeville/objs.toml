@@ -1,0 +1,116 @@
+[[spawn]]
+obj = 'beer'
+coords = '0_48_53_5_47'
+
+[[spawn]]
+obj = 'beer'
+coords = '0_48_53_5_51'
+
+[[spawn]]
+obj = 'beer'
+coords = '0_48_53_8_49'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_154_21_23'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_154_21_28'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_154_22_50'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_154_25_45'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_154_26_30'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_153_29_33'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_153_35_31'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_153_37_31'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_153_38_33'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_154_44_35'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_154_47_38'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_154_48_38'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_48_154_50_35'
+
+[[spawn]]
+obj = 'brass_necklace'
+coords = '0_48_154_50_25'
+
+[[spawn]]
+obj = 'bronze_arrow'
+coords = '0_48_154_63_60'
+
+[[spawn]]
+obj = 'bronze_arrow'
+count = 3
+coords = '0_48_154_58_47'
+
+[[spawn]]
+obj = 'bronze_pickaxe'
+coords = '0_48_53_9_37'
+
+[[spawn]]
+obj = 'bucket_empty'
+coords = '0_46_54_14_54'
+
+[[spawn]]
+obj = 'cooked_meat'
+coords = '0_48_53_5_49'
+
+[[spawn]]
+obj = 'cooked_meat'
+coords = '0_48_53_8_51'
+
+[[spawn]]
+obj = 'edgevilledungeonkey'
+coords = '0_48_154_59_6'
+
+[[spawn]]
+obj = 'iron_mace'
+coords = '0_48_54_39_61'
+
+[[spawn]]
+obj = 'leather_gloves'
+coords = '0_48_54_25_30'
+
+[[spawn]]
+obj = 'monkrobebottom'
+coords = '1_47_54_51_32'
+
+[[spawn]]
+obj = 'monkrobetop'
+coords = '1_47_54_51_31'
+
+[[spawn]]
+obj = 'pot_empty'
+coords = '0_48_53_2_39'

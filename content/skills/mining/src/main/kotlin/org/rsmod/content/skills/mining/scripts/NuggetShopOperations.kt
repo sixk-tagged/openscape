@@ -13,45 +13,60 @@ import org.rsmod.game.inv.InvObj
 import org.rsmod.game.inv.Inventory
 import org.rsmod.game.inv.isType
 import org.rsmod.game.shop.Shop
+import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.obj.ObjTypeList
 
-/** Buy-only, fixed-price shop paid in golden nuggets. Stock never runs out. */
-class NuggetShopOperations
-@Inject
-constructor(private val objTypes: ObjTypeList, private val marketPrices: MarketPrices) :
-    StandardShopOperations {
+/**
+ * A buy-only shop paid in [currency] items at fixed [prices]. Stock never runs out. Golden nuggets
+ * (Prospector Percy) and unidentified minerals (Belona) use it.
+ */
+abstract class ItemCurrencyShopOperations(
+    private val objTypes: ObjTypeList,
+    private val marketPrices: MarketPrices,
+    private val currency: ObjType,
+    private val currencyName: String,
+    private val prices: List<Pair<ObjType, Int>>,
+) : StandardShopOperations {
     override fun examineShopValue(player: Player, shop: Shop, slot: Int) {
         val obj = shop.inv[slot] ?: return
         val price = priceOf(obj) ?: return
-        player.mes("${objTypes[obj].name}: currently costs $price golden nuggets.")
+        player.mes("${objTypes[obj].name}: currently costs $price $currencyName.")
     }
 
     override fun shopBuy(player: Player, sideInv: Inventory, shop: Shop, slot: Int, request: Int) {
         val obj = shop.inv[slot] ?: return
         val price = priceOf(obj) ?: return
-        val nugget = objTypes[MiningObjs.golden_nugget]
-        if (sideInv.count(nugget) < price) {
-            player.mes(NOT_ENOUGH_NUGGETS)
+        val coin = objTypes[currency]
+        val affordable = sideInv.count(coin) / price
+        if (affordable == 0) {
+            player.mes("You don't have enough $currencyName.")
             return
         }
-        val transaction =
-            player.invTransaction(sideInv) {
+        // One at a time, so a buy that runs out of space still gets what fits.
+        repeat(minOf(request, affordable)) {
+            if (!buyOne(player, sideInv, obj.id, coin.id, price)) {
+                player.mes(NOT_ENOUGH_INV_SPACE)
+                return
+            }
+        }
+    }
+
+    private fun buyOne(player: Player, sideInv: Inventory, obj: Int, coin: Int, price: Int) =
+        player
+            .invTransaction(sideInv) {
                 val inv = select(sideInv)
                 delete {
                     this.from = inv
-                    this.obj = nugget.id
+                    this.obj = coin
                     this.strictCount = price
                 }
                 insert {
                     this.into = inv
-                    this.obj = obj.id
+                    this.obj = obj
                     this.strictCount = 1
                 }
             }
-        if (!transaction.success) {
-            player.mes(NOT_ENOUGH_INV_SPACE)
-        }
-    }
+            .success
 
     override fun examineInvValue(player: Player, sideInv: Inventory, shop: Shop, slot: Int) {
         player.mes(CANNOT_SELL)
@@ -67,12 +82,27 @@ constructor(private val objTypes: ObjTypeList, private val marketPrices: MarketP
         player.objExamine(type, obj.count, marketPrices[type] ?: 0)
     }
 
-    private fun priceOf(obj: InvObj): Int? = PRICES.firstOrNull { obj.isType(it.first) }?.second
+    private fun priceOf(obj: InvObj): Int? = prices.firstOrNull { obj.isType(it.first) }?.second
 
     companion object {
-        const val NOT_ENOUGH_NUGGETS = "You don't have enough golden nuggets."
         const val NOT_ENOUGH_INV_SPACE = "You don't have enough inventory space."
         const val CANNOT_SELL = "You can't sell items to this shop."
+    }
+}
+
+/** Prospector Percy's nugget shop. */
+class NuggetShopOperations @Inject constructor(objTypes: ObjTypeList, marketPrices: MarketPrices) :
+    ItemCurrencyShopOperations(
+        objTypes,
+        marketPrices,
+        MiningObjs.golden_nugget,
+        "golden nuggets",
+        PRICES,
+    ) {
+    companion object {
+        const val NOT_ENOUGH_NUGGETS = "You don't have enough golden nuggets."
+        const val NOT_ENOUGH_INV_SPACE = ItemCurrencyShopOperations.NOT_ENOUGH_INV_SPACE
+        const val CANNOT_SELL = ItemCurrencyShopOperations.CANNOT_SELL
 
         private val PRICES =
             listOf(
@@ -86,3 +116,20 @@ constructor(private val objTypes: ObjTypeList, private val marketPrices: MarketP
             )
     }
 }
+
+/**
+ * Belona's Mining Guild Mineral Exchange, paid in unidentified minerals (wiki, May 2024 prices).
+ */
+class MineralShopOperations @Inject constructor(objTypes: ObjTypeList, marketPrices: MarketPrices) :
+    ItemCurrencyShopOperations(
+        objTypes,
+        marketPrices,
+        MiningObjs.unidentified_minerals,
+        "unidentified minerals",
+        listOf(
+            MiningObjs.mining_gloves to 40,
+            MiningObjs.superior_mining_gloves to 100,
+            MiningObjs.soft_clay_pack to 10,
+            MiningObjs.bag_full_of_gems to 20,
+        ),
+    )

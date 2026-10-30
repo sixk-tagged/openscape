@@ -82,6 +82,8 @@ constructor(
         if (player.deathTutorial and TUTORIAL_DONE == 0) {
             // Death brings first-timers to his office to explain, in place of the respawn.
             player.deathTutorial = player.deathTutorial or TUTORIAL_ACTIVE
+            // Its portal then leads to the respawn point, Lumbridge.
+            player.officeReturn = 0
             telejump(DeathsOfficeScript.OFFICE_ARRIVAL)
             queue(DeathQueues.tutorial, 1)
         }

@@ -8,6 +8,7 @@ import org.rsmod.content.other.deathsoffice.configs.DeathLocs
 import org.rsmod.content.other.deathsoffice.configs.DeathVarps
 import org.rsmod.game.loc.LocAngle
 import org.rsmod.map.CoordGrid
+import org.rsmod.routefinder.flag.CollisionFlag
 
 class DeathsOfficeTest {
     @Test
@@ -33,6 +34,23 @@ class DeathsOfficeTest {
         }
 
     @Test
+    fun GameTestState.`the falador coffin's portal leads back to the crypt`() =
+        deathTest(DeathsOfficeScript::class) {
+            finishDeathTutorial()
+            val back = DeathsOfficeScript.FALADOR_RETURN
+            assertEquals(0, collision[back.x, back.z, back.level] and CollisionFlag.BLOCK_WALK)
+            val coffin =
+                placeMapLoc(FALADOR_COFFIN, DeathLocs.falador_coffin, angle = LocAngle.North)
+            player.teleport(back)
+            player.opLoc1(coffin)
+            advanceUntil(max = 10) { player.coords == DeathsOfficeScript.OFFICE_ARRIVAL }
+
+            val portal = placeMapLoc(OFFICE_PORTAL, DeathLocs.exit_portal, angle = LocAngle.South)
+            player.opLoc1(portal)
+            advanceUntil(max = 10) { player.coords == back }
+        }
+
+    @Test
     fun GameTestState.`portal is blocked during the tutorial`() =
         deathTest(DeathsOfficeScript::class) {
             player.setVarp(DeathVarps.death_tutorial, 1)
@@ -44,8 +62,9 @@ class DeathsOfficeTest {
         }
 
     private companion object {
-        // Real placements from the rev 233 map (maplocs.py).
+        // Real placements from the rev 233 map.
         val LUMBRIDGE_GRAVE = CoordGrid(3238, 3192)
         val OFFICE_PORTAL = CoordGrid(3169, 5726)
+        val FALADOR_COFFIN = CoordGrid(2977, 9736)
     }
 }

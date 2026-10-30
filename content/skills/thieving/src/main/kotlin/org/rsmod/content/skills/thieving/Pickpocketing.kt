@@ -92,7 +92,7 @@ object PickpocketTargets {
             listOf(
                 Target(
                     "man",
-                    listOf(man, man2, man3, man_indoor, al_kharid_man, varrock_man),
+                    listOf(man, man2, man3, man_indoor, al_kharid_man, varrock_man) + falador_men,
                     1,
                     8.0,
                     180,
@@ -141,7 +141,7 @@ object PickpocketTargets {
                         varrock_guard_f2,
                         varrock_guard_f3,
                         varrock_guard_captain,
-                    ),
+                    ) + falador_guards,
                     40,
                     46.8,
                     50,
@@ -170,7 +170,7 @@ object PickpocketTargets {
                     MasterFarmerSeeds.roll(random, player.farmingLvl)
                 },
             )
-        }
+        } + SarimPickpocketTargets.all
 }
 
 object ThievingNpcs : NpcReferences() {
@@ -205,6 +205,28 @@ object ThievingNpcs : NpcReferences() {
     val master_farmer_1_f = find("master_farmer_1_f")
     val master_farmer_2_f = find("master_farmer_2_f")
     val martin = find("martin_the_master_farmer")
+    val falador_men =
+        listOf(
+            find("man4"),
+            find("falador_man1"),
+            find("falador_man2"),
+            find("falador_man3"),
+            find("falador_doric_area_man1"),
+            find("falador_doric_area_man2"),
+            find("falador_doric_area_man3"),
+            find("falador_doric_area_man4"),
+        )
+    val falador_guards =
+        listOf(
+            find("guard1"),
+            find("fai_falador_guard1"),
+            find("fai_falador_guard2"),
+            find("fai_falador_guard3"),
+            find("fai_falador_guard4"),
+            find("fai_falador_guard5"),
+            find("fai_falador_guard6"),
+            find("falador_doric_area_guard"),
+        )
 }
 
 object ThievingObjs : ObjReferences() {

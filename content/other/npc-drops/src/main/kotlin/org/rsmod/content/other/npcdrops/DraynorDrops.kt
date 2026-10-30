@@ -102,7 +102,7 @@ internal val darkWizardLowDrops =
         }
     }
 
-private val blackKnightDrops =
+internal val blackKnightDrops =
     with(extra_objs) {
         with(drop_objs) {
             NpcDrops(
@@ -178,7 +178,7 @@ private val skeletonUnarmedDrops =
         }
     }
 
-private val skeletonArmedDrops =
+internal val skeletonArmedDrops =
     with(extra_objs) {
         with(drop_objs) {
             NpcDrops(
@@ -309,7 +309,7 @@ private val wizardDrops =
         }
     }
 
-private val lesserDemonDrops =
+internal val lesserDemonDrops =
     with(extra_objs) {
         with(drop_objs) {
             NpcDrops(

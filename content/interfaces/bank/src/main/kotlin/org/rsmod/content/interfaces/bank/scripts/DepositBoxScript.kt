@@ -2,6 +2,7 @@ package org.rsmod.content.interfaces.bank.scripts
 
 import jakarta.inject.Inject
 import kotlin.math.max
+import org.rsmod.api.config.refs.content
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.invtx.invTransfer
 import org.rsmod.api.player.protect.ProtectedAccess
@@ -37,6 +38,7 @@ constructor(private val objTypes: ObjTypeList, private val eventBus: EventBus) :
 
     override fun ScriptContext.startup() {
         onOpLoc1(DepositBoxLocs.deposit_box) { openDepositBox() }
+        onOpLoc1(content.bank_deposit_box) { openDepositBox() }
         onIfModalButton(DepositBoxComponents.inventory) { invOp(it.comsub, it.op) }
         onIfModalButton(DepositBoxComponents.deposit_inv) { depositAll(inv) }
         onIfModalButton(DepositBoxComponents.deposit_worn) { depositWorn() }

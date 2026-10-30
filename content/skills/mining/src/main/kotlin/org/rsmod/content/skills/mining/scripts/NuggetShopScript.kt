@@ -11,8 +11,10 @@ class NuggetShopScript
 constructor(
     private val operations: ShopOperationMap,
     private val nuggetOperations: NuggetShopOperations,
+    private val mineralOperations: MineralShopOperations,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         operations.register(MiningCurrencies.golden_nugget, nuggetOperations)
+        operations.register(MiningCurrencies.unidentified_minerals, mineralOperations)
     }
 }

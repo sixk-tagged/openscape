@@ -81,6 +81,22 @@ class AreaDropsTest {
             assertEquals(setOf(drop(objs.bones), drop(extra_objs.wizard_hat)), drops.toSet())
         }
 
+    @Test
+    fun GameTestState.`an air wizard's last slot is its talisman`() =
+        runInjectedGameTest(ObjRepository::class, null, *SCRIPTS) { objRepo ->
+            // Air runes take the first 19 of 20.
+            val drops = kill(falador_npcs.air_wizard, objRepo, 19)
+            assertEquals(setOf(drop(drop_objs.ashes), drop(drop_objs.air_talisman)), drops.toSet())
+        }
+
+    @Test
+    fun GameTestState.`a dwarf's first slot is a bronze pickaxe`() =
+        runInjectedGameTest(ObjRepository::class, null, *SCRIPTS) { objRepo ->
+            val drops = kill(falador_npcs.dwarf, objRepo, 0)
+            val expected = setOf(drop(objs.bones), drop(falador_drop_objs.bronze_pickaxe))
+            assertEquals(expected, drops.toSet())
+        }
+
     /** Kills a fresh [type] with [rolls] queued for its drop table; returns (obj id, count)s. */
     private fun GameTestScope.kill(
         type: NpcType,
@@ -115,6 +131,7 @@ class AreaDropsTest {
                 DraynorDrops::class,
                 AlKharidDrops::class,
                 VarrockDrops::class,
+                FaladorDrops::class,
             )
         val COORDS = CoordGrid(0, 50, 50, 34, 31)
 

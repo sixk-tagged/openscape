@@ -1,0 +1,40 @@
+[[spawn]]
+obj = 'bronze_arrow'
+count = 2
+coords = '0_46_52_0_4'
+
+[[spawn]]
+obj = 'bronze_axe'
+coords = '1_46_52_26_48'
+
+[[spawn]]
+obj = 'hammer'
+coords = '1_46_52_31_40'
+
+[[spawn]]
+obj = 'cooked_chicken'
+coords = '1_46_52_27_54'
+
+[[spawn]]
+obj = 'spade'
+coords = '0_46_52_37_42'
+
+[[spawn]]
+obj = 'bronze_pickaxe'
+coords = '0_47_52_1_14'
+
+[[spawn]]
+obj = 'egg'
+coords = '0_47_51_8_31'
+
+[[spawn]]
+obj = 'egg'
+coords = '0_47_51_9_31'
+
+[[spawn]]
+obj = 'bucket_empty'
+coords = '0_47_51_12_27'
+
+[[spawn]]
+obj = 'bucket_empty'
+coords = '0_47_51_18_25'

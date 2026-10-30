@@ -48,6 +48,8 @@ object DeathVarps : VarpReferences() {
      * Coins of fee already paid for what is in the grave now; it is unlocked once that covers it.
      */
     val gravestone_paid = find("gravestone_paid")
+    /** Packed [org.rsmod.map.CoordGrid] the office's portal leads back to; 0 means Lumbridge. */
+    val death_office_return = find("death_office_return")
 }
 
 internal object DeathVarpBuilder : VarpBuilder() {
@@ -57,6 +59,7 @@ internal object DeathVarpBuilder : VarpBuilder() {
         build("death_coffer") { permanent = true }
         build("death_tutorial") { permanent = true }
         build("gravestone_paid") { permanent = true }
+        build("death_office_return") { permanent = true }
     }
 }
 
@@ -103,6 +106,8 @@ internal object DeathNpcSpawns : MapNpcSpawnBuilder() {
 object DeathLocs : LocReferences() {
     /** The grave in Lumbridge's graveyard that leads into Death's Office. */
     val lumbridge_grave = find("death_office_access_grave")
+    /** The white coffin in the crypt under Falador's White Knights' Castle. */
+    val falador_coffin = find("death_office_access_whitecoffin")
     val exit_portal = find("death_office_exitportal")
     val coffer = find("death_coffer_access")
 }

@@ -15,10 +15,16 @@ import org.rsmod.plugin.scripts.ScriptContext
  */
 class StraightStaircaseScript : PluginScript() {
     override fun ScriptContext.startup() {
+        onOpLoc1(StraightStaircaseLocs.rimmington_bottom) { climb(it.loc, levels = 1) }
+        onOpLoc1(StraightStaircaseLocs.rimmington_top) { climb(it.loc, levels = -1) }
         onOpLoc1(StraightStaircaseLocs.bottom) { climb(it.loc, levels = 1) }
         onOpLoc1(StraightStaircaseLocs.top) { climb(it.loc, levels = -1) }
         onOpLoc1(StraightStaircaseLocs.narrow_bottom) { climb(it.loc, levels = 1) }
         onOpLoc1(StraightStaircaseLocs.narrow_top) { climb(it.loc, levels = -1) }
+        onOpLoc1(StraightStaircaseLocs.falador_bottom) { climb(it.loc, levels = 1) }
+        onOpLoc1(StraightStaircaseLocs.falador_top) { climb(it.loc, levels = -1) }
+        onOpLoc1(StraightStaircaseLocs.falador_castle_bottom) { climb(it.loc, levels = 1) }
+        onOpLoc1(StraightStaircaseLocs.falador_castle_top) { climb(it.loc, levels = -1) }
     }
 
     private fun ProtectedAccess.climb(stairs: BoundLocInfo, levels: Int) {
@@ -41,8 +47,14 @@ class StraightStaircaseScript : PluginScript() {
 }
 
 object StraightStaircaseLocs : LocReferences() {
+    val rimmington_bottom = find("poor_stairs")
+    val rimmington_top = find("poor_stairstop")
     val bottom = find("stairs")
     val top = find("stairstop")
     val narrow_bottom = find("narrowstairs_wooden_bottom")
     val narrow_top = find("narrowstairs_wooden_top")
+    val falador_bottom = find("fai_falador_stairs")
+    val falador_top = find("fai_falador_stairstop")
+    val falador_castle_bottom = find("fai_falador_castle_stairs")
+    val falador_castle_top = find("fai_falador_castle_stairstop")
 }

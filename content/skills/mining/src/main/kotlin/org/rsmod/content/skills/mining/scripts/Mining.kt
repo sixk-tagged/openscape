@@ -21,6 +21,8 @@ import org.rsmod.api.script.onOpLoc3
 import org.rsmod.api.script.onOpLocU
 import org.rsmod.api.stats.levelmod.InvisibleLevels
 import org.rsmod.api.stats.xpmod.XpModifiers
+import org.rsmod.content.skills.mining.MiningGuild
+import org.rsmod.content.skills.mining.MiningGuildVarps
 import org.rsmod.content.skills.mining.configs.MiningContent
 import org.rsmod.content.skills.mining.configs.MiningObjs
 import org.rsmod.content.skills.mining.configs.MiningParams
@@ -108,6 +110,9 @@ constructor(
             if (type.rockBonusRolls) {
                 rollBonusDrops()
             }
+            if (MiningGuild.contains(rock.coords)) {
+                rollMineral(product)
+            }
             if (isDepleted(type)) {
                 deplete(rock, type)
                 return
@@ -188,8 +193,16 @@ constructor(
         }
     }
 
+    private fun ProtectedAccess.rollMineral(ore: ObjType) {
+        val chance = MiningGuild.mineralChance(ore) ?: return
+        if (player.vars[MiningGuildVarps.minerals_off] == 0 && random.of(1, chance) == 1) {
+            invAddOrDrop(objRepo, MiningObjs.unidentified_minerals)
+        }
+    }
+
     private fun ProtectedAccess.deplete(rock: BoundLocInfo, type: UnpackedLocType) {
-        val respawnTime = type.rockRespawnTime
+        val guild = MiningGuild.contains(rock.coords)
+        val respawnTime = if (guild) type.rockRespawnTime / 2 else type.rockRespawnTime
         locRepo.change(rock, type.rockDepleted, respawnTime)
         resetAnim()
         for (observer in playerRepo.findAll(ZoneKey.from(rock.coords), zoneRadius = 3)) {

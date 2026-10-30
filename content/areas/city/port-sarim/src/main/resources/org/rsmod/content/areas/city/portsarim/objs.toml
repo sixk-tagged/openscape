@@ -1,0 +1,144 @@
+[[spawn]]
+obj = 'bronze_arrow'
+coords = '0_46_50_13_5'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_46_50_14_5'
+
+[[spawn]]
+obj = 'logs'
+coords = '0_46_50_15_5'
+
+[[spawn]]
+obj = 'bronze_pickaxe'
+coords = '0_46_50_19_16'
+
+[[spawn]]
+obj = 'bronze_scimitar'
+coords = '1_46_50_21_11'
+
+[[spawn]]
+obj = 'white_apron'
+coords = '0_47_50_8_29'
+
+[[spawn]]
+obj = 'white_apron'
+coords = '0_47_50_1_4'
+
+[[spawn]]
+obj = 'bolt'
+coords = '1_47_50_8_44'
+
+[[spawn]]
+obj = 'bolt'
+coords = '1_47_50_20_59'
+
+[[spawn]]
+obj = 'knife'
+coords = '0_45_49_23_12'
+
+[[spawn]]
+obj = 'jug_empty'
+coords = '0_45_49_25_10'
+
+[[spawn]]
+obj = 'banana'
+coords = '0_45_49_27_10'
+
+[[spawn]]
+obj = 'rope'
+coords = '0_45_49_24_16'
+
+[[spawn]]
+obj = 'airrune'
+coords = '0_45_49_58_22'
+
+[[spawn]]
+obj = 'seaweed'
+coords = '0_44_49_48_59'
+
+[[spawn]]
+obj = 'hammer'
+coords = '0_45_51_54_22'
+
+[[spawn]]
+obj = 'chisel'
+coords = '0_45_51_55_22'
+
+[[spawn]]
+obj = 'jug_empty'
+coords = '0_45_51_56_28'
+
+[[spawn]]
+obj = 'amulet_mould'
+coords = '0_45_51_48_26'
+
+[[spawn]]
+obj = 'jewl_bracelet_mould'
+coords = '0_45_51_48_25'
+
+[[spawn]]
+obj = 'shears'
+coords = '1_45_51_50_21'
+
+[[spawn]]
+obj = 'tiara_mould'
+coords = '1_45_51_55_18'
+
+[[spawn]]
+obj = 'ring_mould'
+coords = '1_45_51_55_19'
+
+[[spawn]]
+obj = 'necklace_mould'
+coords = '1_45_51_52_23'
+
+[[spawn]]
+obj = 'holy_symbol_mould'
+coords = '1_45_51_51_23'
+
+[[spawn]]
+obj = 'snape_grass'
+coords = '0_45_51_26_33'
+
+[[spawn]]
+obj = 'snape_grass'
+coords = '0_45_51_27_31'
+
+[[spawn]]
+obj = 'snape_grass'
+coords = '0_45_51_37_10'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_44_149_14_29'
+
+[[spawn]]
+obj = 'bones'
+coords = '0_44_149_13_28'
+
+[[spawn]]
+obj = 'firerune'
+coords = '0_44_149_26_16'
+
+[[spawn]]
+obj = 'firerune'
+coords = '0_44_149_20_30'
+
+[[spawn]]
+obj = 'firerune'
+coords = '0_44_149_27_24'
+
+[[spawn]]
+obj = 'firerune'
+coords = '0_44_149_22_16'
+
+[[spawn]]
+obj = 'firerune'
+coords = '0_44_149_17_25'
+
+[[spawn]]
+obj = 'red_spiders_eggs'
+coords = '0_44_149_16_50'
+

@@ -101,10 +101,10 @@ internal val allotmentSeeds =
         )
     }
 
-private val cowDrops =
+internal val cowDrops =
     NpcDrops(always = listOf(always(drop_objs.cowhide), always(drop_objs.raw_beef), bones))
 
-private val chickenDrops =
+internal val chickenDrops =
     NpcDrops(
         always = listOf(bones, always(drop_objs.raw_chicken)),
         main = table(drop(drop_objs.feather, 64, 5), drop(drop_objs.feather, 32, 15)),
@@ -164,7 +164,7 @@ internal val farmerDrops =
         )
     }
 
-private val goblinLevel2Drops =
+internal val goblinLevel2Drops =
     with(drop_objs) {
         NpcDrops(
             always = listOf(bones),
@@ -266,7 +266,7 @@ private val impDrops =
         )
     }
 
-private val muggerDrops =
+internal val muggerDrops =
     with(drop_objs) {
         NpcDrops(
             always = listOf(bones),

@@ -243,6 +243,35 @@ object FishingData {
             catches = listOf(Catch(FishingObjs.raw_pike, 25, 60.0, 16, 96)),
         )
 
+    val cage =
+        Method(
+            op = 1,
+            verb = "catch",
+            tool = FishingObjs.lobster_pot,
+            toolName = "lobster pot",
+            bait = null,
+            anim = FishingSeqs.cage,
+            castMessage = "You attempt to catch a lobster...",
+            catches = listOf(Catch(FishingObjs.raw_lobster, 40, 90.0, 6, 95)),
+        )
+
+    /** The swordfish roll goes first, then tuna. */
+    val harpoon =
+        Method(
+            op = 3,
+            verb = "harpoon",
+            tool = FishingObjs.harpoon,
+            toolName = "harpoon",
+            bait = null,
+            anim = FishingSeqs.harpoon,
+            castMessage = "You start harpooning fish...",
+            catches =
+                listOf(
+                    Catch(FishingObjs.raw_swordfish, 50, 100.0, 4, 48),
+                    Catch(FishingObjs.raw_tuna, 35, 80.0, 8, 64),
+                ),
+        )
+
     /** Spot npc type -> (op1 method, op3 method). Only spawned spots are listed. */
     val spots =
         mapOf(
@@ -250,6 +279,10 @@ object FishingData {
             FishingNpcs.lumbridge_river_spot to (lure to riverBait),
             FishingNpcs.draynor_sea_spot to (smallNet to seaBait),
             FishingNpcs.alkharid_sea_spot to (smallNet to seaBait),
+            FishingNpcs.barbarian_river_spot to (lure to riverBait),
+            FishingNpcs.musa_sea_spot to (smallNet to seaBait),
+            FishingNpcs.mudskipper_sea_spot to (smallNet to seaBait),
+            FishingNpcs.musa_cage_spot to (cage to harpoon),
         )
 }
 
@@ -258,6 +291,10 @@ object FishingNpcs : NpcReferences() {
     val lumbridge_river_spot = find("0_50_50_freshfish")
     val draynor_sea_spot = find("0_48_50_saltfish")
     val alkharid_sea_spot = find("0_51_49_saltfish")
+    val barbarian_river_spot = find("0_48_53_freshfish")
+    val musa_sea_spot = find("0_45_49_saltfish")
+    val mudskipper_sea_spot = find("0_46_49_saltfish")
+    val musa_cage_spot = find("0_45_49_rarefish")
 }
 
 object FishingObjs : ObjReferences() {
@@ -273,9 +310,16 @@ object FishingObjs : ObjReferences() {
     val raw_trout = find("raw_trout")
     val raw_salmon = find("raw_salmon")
     val raw_pike = find("raw_pike")
+    val lobster_pot = find("lobster_pot")
+    val harpoon = find("harpoon")
+    val raw_lobster = find("raw_lobster")
+    val raw_tuna = find("raw_tuna")
+    val raw_swordfish = find("raw_swordfish")
 }
 
 object FishingSeqs : SeqReferences() {
     val smallnet = find("human_smallnet")
     val rod = find("human_fishing_casting")
+    val cage = find("human_lobster")
+    val harpoon = find("human_harpoon")
 }

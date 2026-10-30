@@ -39,7 +39,7 @@ class VarrockDrops @Inject constructor(private val tables: NpcDropTables) : Plug
     }
 }
 
-private val guardDrops =
+internal val guardDrops =
     with(extra_objs) {
         with(drop_objs) {
             NpcDrops(
@@ -74,7 +74,7 @@ private val guardDrops =
         }
     }
 
-private val darkWizardHighDrops =
+internal val darkWizardHighDrops =
     with(extra_objs) {
         with(drop_objs) {
             NpcDrops(
@@ -114,7 +114,7 @@ private val darkWizardHighDrops =
         }
     }
 
-private val barbarianDrops =
+internal val barbarianDrops =
     with(extra_objs) {
         with(drop_objs) {
             NpcDrops(
@@ -149,7 +149,7 @@ private val barbarianDrops =
 private val bearDrops =
     NpcDrops(always = listOf(bones, always(extra_objs.bear_fur), always(extra_objs.raw_bear_meat)))
 
-private val monkDrops =
+internal val monkDrops =
     NpcDrops(
         always = listOf(bones),
         main =

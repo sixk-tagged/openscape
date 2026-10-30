@@ -118,6 +118,9 @@ object MiningObjs : ObjReferences() {
     val mining_gloves = find("mguild_gloves")
     val superior_mining_gloves = find("mguild_gloves_superior")
     val expert_mining_gloves = find("mguild_gloves_expert")
+    val unidentified_minerals = find("mguild_minerals")
+    val soft_clay_pack = find("pack_softclay_guild")
+    val bag_full_of_gems = find("reward_gem_bag_guild")
     // `amulet_of_glory_4` is already in BaseObjs.
     val amulet_of_glory_1 = find("amulet_of_glory_1")
     val amulet_of_glory_2 = find("amulet_of_glory_2")
