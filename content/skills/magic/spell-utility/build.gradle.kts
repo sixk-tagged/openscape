@@ -17,4 +17,5 @@ dependencies {
     integrationImplementation(projects.api.combat.combatFormulas)
     integrationImplementation(projects.api.combat.combatWeapon)
     integrationImplementation(projects.content.other.consumables)
+    integrationImplementation(projects.engine.annotations)
 }

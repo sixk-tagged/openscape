@@ -2,6 +2,7 @@ package org.rsmod.api.combat.scripts
 
 import jakarta.inject.Inject
 import org.rsmod.api.combat.PvPCombat
+import org.rsmod.api.combat.canAttackPlayer
 import org.rsmod.api.combat.commons.magic.MagicSpell
 import org.rsmod.api.combat.commons.styles.AttackStyle
 import org.rsmod.api.combat.manager.MagicRuneManager
@@ -103,6 +104,11 @@ constructor(
     }
 
     private fun ProtectedAccess.canAttack(target: Player): Boolean {
+        if (!canAttackPlayer(target)) {
+            clearPendingAction()
+            return false
+        }
+
         val weapon = objTypes.getOrNull(player.righthand)
         if (weapon != null && weapon.isCategoryType(categories.dinhs_bulwark)) {
             val attackStyle = styles.get(player)

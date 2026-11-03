@@ -9,6 +9,8 @@ typealias varbits = BaseVarBits
 object BaseVarBits : VarBitReferences() {
     val multiway_indicator = find("multiway_indicator", 52603174307098)
     val singleway_plus_indicator = find("singleway_plus_indicator", 52603174350056)
+    val inside_wilderness = find("inside_wilderness")
+    val pvp_area_client = find("pvp_area_client")
 
     val stamina_active = find("stamina_active", 81145461762806)
     val stamina_duration = find("stamina_duration", 14272015789523)

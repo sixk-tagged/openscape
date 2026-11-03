@@ -26,6 +26,7 @@ import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.seqs
 import org.rsmod.api.config.refs.spotanims
 import org.rsmod.api.config.refs.stats
+import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.hit.plugin.PlayerHitScript
 import org.rsmod.api.player.stat.hitpoints
 import org.rsmod.api.player.stat.stat
@@ -34,6 +35,7 @@ import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.factory.npcTypeFactory
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.game.entity.Npc
+import org.rsmod.game.entity.Player
 import org.rsmod.game.entity.npc.NpcMode
 import org.rsmod.game.type.npc.UnpackedNpcType
 import org.rsmod.game.type.util.ParamMapBuilder
@@ -77,6 +79,18 @@ class NvPCombatTest {
             random.then = MISS
             advance(ticks = 6)
             assertEquals(99, player.hitpoints)
+        }
+
+    @Test
+    fun GameTestState.`an attack that rolls its own damage never misses or gets cut by prayer`() =
+        combatTest { deps ->
+            val attack = magic(maxHit = 50) { _, accurate, _ -> if (accurate) 7 else 20 }
+            shooter(deps, attack)
+            player.setVarBit(varbits.protect_from_magic, 1)
+            random.next = PICK
+            random.then = MISS
+            advanceUntil(max = 8) { player.hitpoints < 99 }
+            assertEquals(79, player.hitpoints)
         }
 
     @Test
@@ -189,13 +203,18 @@ class NvPCombatTest {
             testBody = test,
         )
 
-    private fun magic(maxHit: Int, drain: NpcDrain? = null) =
+    private fun magic(
+        maxHit: Int,
+        drain: NpcDrain? = null,
+        rollDamage: ((Player, Boolean, GameRandom) -> Int)? = null,
+    ) =
         NpcAttack(
             NpcAttackStyle.Magic,
             maxHit,
             anim = seqs.human_caststrike,
             travel = spotanims.windstrike_travel,
             drain = drain,
+            rollDamage = rollDamage,
         )
 
     private fun ranged(maxHit: Int) =

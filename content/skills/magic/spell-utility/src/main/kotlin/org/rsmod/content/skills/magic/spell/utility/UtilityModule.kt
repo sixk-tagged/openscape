@@ -7,5 +7,6 @@ class UtilityModule : PluginModule() {
     override fun bind() {
         addSetBinding<SpellAttackMap>(CurseSpells::class.java)
         addSetBinding<SpellAttackMap>(CombatSpells::class.java)
+        addSetBinding<SpellAttackMap>(TeleBlockSpell::class.java)
     }
 }

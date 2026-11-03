@@ -13,6 +13,7 @@ import org.rsmod.api.combat.commons.types.AttackType
 import org.rsmod.api.combat.commons.types.MeleeAttackType
 import org.rsmod.api.combat.commons.types.RangedAttackType
 import org.rsmod.api.combat.manager.MagicRuneManager
+import org.rsmod.api.combat.skullUnlessRetaliating
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.righthand
@@ -229,7 +230,7 @@ internal suspend fun ProtectedAccess.activateShieldSpecial(
 ): Boolean = TODO()
 
 internal fun ProtectedAccess.setPkVars(target: Player) {
-    // TODO(combat): Set pk skull when applicable.
+    skullUnlessRetaliating(target)
     pkPrey2 = pkPrey1
     pkPrey1 = target.uid
 

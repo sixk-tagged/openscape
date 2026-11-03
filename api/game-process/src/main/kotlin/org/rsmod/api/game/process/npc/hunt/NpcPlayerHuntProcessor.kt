@@ -178,9 +178,8 @@ constructor(
     private fun Player.isAfk(): Boolean =
         vars[varps.playtime] - vars[varps.tolerance_since] >= TOLERANCE_TICKS
 
-    // TODO(combat): Wilderness indicator.
     private fun Player.isInWilderness(): Boolean {
-        return false
+        return vars[varbits.inside_wilderness] == 1
     }
 
     // Hunt can be quite expensive if not careful. We are assuming that using a possibly delayed

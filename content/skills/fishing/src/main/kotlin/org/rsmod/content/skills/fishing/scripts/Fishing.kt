@@ -14,12 +14,14 @@ import org.rsmod.api.script.onOpNpc1
 import org.rsmod.api.script.onOpNpc3
 import org.rsmod.api.stats.levelmod.InvisibleLevels
 import org.rsmod.api.stats.xpmod.XpModifiers
+import org.rsmod.api.type.editors.npc.NpcEditor
 import org.rsmod.api.type.refs.npc.NpcReferences
 import org.rsmod.api.type.refs.obj.ObjReferences
 import org.rsmod.api.type.refs.seq.SeqReferences
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.npc.NpcStateEvents
 import org.rsmod.game.interact.InteractionNpc
+import org.rsmod.game.type.npc.NpcType
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.obj.ObjTypeList
 import org.rsmod.game.type.seq.SeqType
@@ -44,12 +46,14 @@ constructor(
     override fun ScriptContext.startup() {
         for ((spot, methods) in FishingData.spots) {
             onOpNpc1(spot) { fish(it.npc, methods.first) }
-            onOpNpc3(spot) { fish(it.npc, methods.second) }
-            onAiTimer(spot) { move(npc) }
+            methods.second?.let { second -> onOpNpc3(spot) { fish(it.npc, second) } }
+            if (spot !in FishingData.fixed) {
+                onAiTimer(spot) { move(npc) }
+            }
         }
-        val spotIds = FishingData.spots.keys.map { it.id }.toSet()
+        val movingIds = (FishingData.spots.keys - FishingData.fixed).map { it.id }.toSet()
         onEvent<NpcStateEvents.Create> {
-            if (npc.type.id in spotIds) {
+            if (npc.type.id in movingIds) {
                 npc.aiTimer(moveDelay())
             }
         }
@@ -62,7 +66,8 @@ constructor(
             return
         }
         if (method.tool !in inv) {
-            mes("You need a ${method.toolName} to ${method.verb} these fish.")
+            val article = if (method.toolName.first() in "aeiou") "an" else "a"
+            mes("You need $article ${method.toolName} to ${method.verb} these fish.")
             return
         }
         val bait = method.bait
@@ -137,17 +142,30 @@ constructor(
         }
     }
 
-    /** Open water (blocked floor, no loc) with a walkable tile beside it to fish from. */
+    /**
+     * Open water: blocked floor with no loc and a walkable tile beside it to fish from. Floor is
+     * also blocked on mud banks and under piers, so at least [MIN_WATER_AROUND] of its eight
+     * neighbours must be blocked floor too.
+     */
     private fun isFishable(coords: CoordGrid): Boolean {
-        val flags = collision[coords.x, coords.z, coords.level]
-        if (flags and CollisionFlag.BLOCK_WALK == 0 || flags and CollisionFlag.LOC != 0) {
+        if (!isBlocked(coords, CollisionFlag.BLOCK_WALK) || isBlocked(coords, CollisionFlag.LOC)) {
             return false
         }
-        val shore = listOf(coords.translate(1, 0), coords.translate(-1, 0))
-        return (shore + listOf(coords.translate(0, 1), coords.translate(0, -1))).any {
-            collision[it.x, it.z, it.level] and (CollisionFlag.BLOCK_WALK or CollisionFlag.LOC) == 0
-        }
+        val beside =
+            listOf(
+                coords.translate(1, 0),
+                coords.translate(-1, 0),
+                coords.translate(0, 1),
+                coords.translate(0, -1),
+            )
+        val shore = beside.any { !isBlocked(it, CollisionFlag.BLOCK_WALK or CollisionFlag.LOC) }
+        val around = (-1..1).flatMap { dx -> (-1..1).map { dz -> coords.translate(dx, dz) } }
+        val water = around.count { isBlocked(it, CollisionFlag.BLOCK_WALK) } - 1
+        return shore && water >= MIN_WATER_AROUND
     }
+
+    private fun isBlocked(coords: CoordGrid, flags: Int): Boolean =
+        collision[coords.x, coords.z, coords.level] and flags != 0
 
     /** OSRS spots move after 250 to 530 ticks (Mod Ash, OSRS wiki "Fishing spots"). */
     private fun moveDelay(): Int = random.of(250, 530)
@@ -155,6 +173,7 @@ constructor(
     private companion object {
         const val FISHING_TICKS = 5
         const val MOVE_RADIUS = 2
+        const val MIN_WATER_AROUND = 4
     }
 }
 
@@ -272,8 +291,36 @@ object FishingData {
                 ),
         )
 
-    /** Spot npc type -> (op1 method, op3 method). Only spawned spots are listed. */
-    val spots =
+    /** Lava eels are baited with the oily rod; the lava spot has no other option. */
+    val lavaEel =
+        Method(
+            op = 1,
+            verb = "bait",
+            tool = FishingObjs.oily_fishing_rod,
+            toolName = "oily fishing rod",
+            bait = fishingBait,
+            anim = FishingSeqs.rod,
+            castMessage = "You cast out your line...",
+            catches = listOf(Catch(FishingObjs.raw_lava_eel, 53, 60.0, 16, 96)),
+        )
+
+    /** Dark crabs use a lobster pot and dark fishing bait, spent on each catch. */
+    val darkCrab =
+        Method(
+            op = 1,
+            verb = "catch",
+            tool = FishingObjs.lobster_pot,
+            toolName = "lobster pot",
+            bait = Bait(FishingObjs.wilderness_fishing_bait, "dark fishing bait"),
+            anim = FishingSeqs.cage,
+            // UNVERIFIED: the wording of the dark crab start message.
+            castMessage = "You attempt to catch a dark crab...",
+            // The Elite Wilderness Diary's better rates are not built.
+            catches = listOf(Catch(FishingObjs.raw_dark_crab, 85, 130.0, 3, 40)),
+        )
+
+    /** Spot npc type -> (op1 method, op3 method or null). Only spawned spots are listed. */
+    val spots: Map<NpcType, Pair<Method, Method?>> =
         mapOf(
             FishingNpcs.lumbridge_sea_spot to (smallNet to seaBait),
             FishingNpcs.lumbridge_river_spot to (lure to riverBait),
@@ -283,7 +330,34 @@ object FishingData {
             FishingNpcs.musa_sea_spot to (smallNet to seaBait),
             FishingNpcs.mudskipper_sea_spot to (smallNet to seaBait),
             FishingNpcs.musa_cage_spot to (cage to harpoon),
+            FishingNpcs.bandit_camp_sea_spot to (smallNet to seaBait),
+            FishingNpcs.lava_eel_spot to (lavaEel to null),
+            FishingNpcs.resource_area_crab_spot to (darkCrab to null),
+            FishingNpcs.wilderness_crab_spot to (darkCrab to null),
         )
+
+    /**
+     * Spots that never relocate: the Resource Area's dark crabs (OSRS wiki, Raw dark crab), and the
+     * lava eels, as the lava around them is all covered by locs and offers no other tile.
+     */
+    val fixed = setOf(FishingNpcs.resource_area_crab_spot, FishingNpcs.lava_eel_spot)
+}
+
+/**
+ * Spots relocate through [Fishing] on a timer, and nothing else may move them: left to the default
+ * wander mode they walk out of the water onto the shore, and the wander mode's "return to spawn"
+ * would undo each relocation.
+ */
+object FishingNpcEdits : NpcEditor() {
+    init {
+        for (spot in FishingData.spots.keys) {
+            edit(spot) {
+                defaultMode = none
+                moveRestrict = nomove
+                wanderRange = 0
+            }
+        }
+    }
 }
 
 object FishingNpcs : NpcReferences() {
@@ -295,6 +369,10 @@ object FishingNpcs : NpcReferences() {
     val musa_sea_spot = find("0_45_49_saltfish")
     val mudskipper_sea_spot = find("0_46_49_saltfish")
     val musa_cage_spot = find("0_45_49_rarefish")
+    val bandit_camp_sea_spot = find("0_47_57_saltfish")
+    val lava_eel_spot = find("0_47_59_lavafish")
+    val resource_area_crab_spot = find("49_61_crabs")
+    val wilderness_crab_spot = find("52_59_crabs")
 }
 
 object FishingObjs : ObjReferences() {
@@ -302,6 +380,8 @@ object FishingObjs : ObjReferences() {
     val fishing_rod = find("fishing_rod")
     val fly_fishing_rod = find("fly_fishing_rod")
     val fishing_bait = find("fishing_bait")
+    val oily_fishing_rod = find("oily_fishing_rod")
+    val wilderness_fishing_bait = find("wilderness_fishing_bait")
     val feather = find("feather")
     val raw_shrimp = find("raw_shrimp")
     val raw_anchovies = find("raw_anchovies")
@@ -315,6 +395,8 @@ object FishingObjs : ObjReferences() {
     val raw_lobster = find("raw_lobster")
     val raw_tuna = find("raw_tuna")
     val raw_swordfish = find("raw_swordfish")
+    val raw_lava_eel = find("raw_lava_eel")
+    val raw_dark_crab = find("raw_dark_crab")
 }
 
 object FishingSeqs : SeqReferences() {

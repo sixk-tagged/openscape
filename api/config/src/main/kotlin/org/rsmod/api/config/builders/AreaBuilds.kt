@@ -7,5 +7,6 @@ internal object AreaBuilds : AreaBuilder() {
         build("lumbridge")
         build("singles_plus")
         build("multiway")
+        build("wilderness")
     }
 }

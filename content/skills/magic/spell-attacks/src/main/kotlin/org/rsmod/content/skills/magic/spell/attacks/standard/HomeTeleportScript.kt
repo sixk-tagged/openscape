@@ -1,8 +1,11 @@
 package org.rsmod.content.skills.magic.spell.attacks.standard
 
+import jakarta.inject.Inject
+import org.rsmod.api.area.checker.AreaChecker
 import org.rsmod.api.player.isInCombat
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.protect.ProtectedAccess
+import org.rsmod.api.player.teleportRefusal
 import org.rsmod.api.player.vars.intVarp
 import org.rsmod.api.script.onIfOverlayButton
 import org.rsmod.api.script.onPlayerQueueWithArgs
@@ -27,13 +30,19 @@ private var Player.lastHomeTeleport: Int by intVarp(HomeTeleportVarps.aide_tele_
  * cancels it; combat cancels it too. The cooldown is 30 minutes of real time, shared with every
  * home teleport in OSRS.
  */
-class HomeTeleportScript : PluginScript() {
+class HomeTeleportScript @Inject constructor(private val areaChecker: AreaChecker) :
+    PluginScript() {
     override fun ScriptContext.startup() {
         onIfOverlayButton(HomeTeleportComponents.standard) { player.castHomeTeleport() }
         onPlayerQueueWithArgs<Int>(HomeTeleportQueues.home_teleport) { stage(it.args) }
     }
 
     private fun Player.castHomeTeleport() {
+        val refusal = teleportRefusal(areaChecker)
+        if (refusal != null) {
+            mes(refusal)
+            return
+        }
         val wait = COOLDOWN_MINUTES - (epochMinutes() - lastHomeTeleport)
         if (wait > 0) {
             val minutes = if (wait == 1) "minute" else "minutes"
@@ -49,6 +58,14 @@ class HomeTeleportScript : PluginScript() {
     }
 
     private fun ProtectedAccess.stage(index: Int) {
+        // A Tele Block that lands mid-cast stops the teleport.
+        val refusal = player.teleportRefusal(areaChecker)
+        if (refusal != null) {
+            mes(refusal)
+            resetAnim()
+            spotanim(null)
+            return
+        }
         if (isInCombat()) {
             resetAnim()
             spotanim(null)

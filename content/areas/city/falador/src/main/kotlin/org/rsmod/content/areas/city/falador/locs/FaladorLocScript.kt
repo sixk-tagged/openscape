@@ -60,9 +60,15 @@ class FaladorLocScript : PluginScript() {
     }
 
     /**
-     * Only the staircase by Falador's Party Room is scripted; `stairs_cellar` is used elsewhere.
+     * Only the staircase by Falador's Party Room and the Wilderness's down into the Deep Wilderness
+     * Dungeon are scripted; `stairs_cellar` is used elsewhere.
      */
     private fun ProtectedAccess.mineStairsDown(stairs: BoundLocInfo) {
+        if (stairs.coords == WILDERNESS_STAIRS) {
+            // UNVERIFIED: lands beside the stairs back up.
+            telejump(coords.translateZ(DUNGEON_Z))
+            return
+        }
         if (stairs.coords != MINE_STAIRS) {
             mes("Nothing interesting happens.")
             return
@@ -128,6 +134,7 @@ class FaladorLocScript : PluginScript() {
         const val DUNGEON_Z = 6400
 
         val MINE_STAIRS = CoordGrid(3058, 3376, 0)
+        val WILDERNESS_STAIRS = CoordGrid(3044, 3924, 0)
 
         // UNVERIFIED: the open tiles beside the crypt's entrance (its west side) and the stairs
         // back up (their east side), from the cache's sizes and approach flags.

@@ -9,6 +9,7 @@ import org.rsmod.api.type.refs.interf.InterfaceReferences
 import org.rsmod.api.type.refs.inv.InvReferences
 import org.rsmod.api.type.refs.loc.LocReferences
 import org.rsmod.api.type.refs.npc.NpcReferences
+import org.rsmod.api.type.refs.obj.ObjReferences
 import org.rsmod.api.type.refs.queue.QueueReferences
 import org.rsmod.api.type.refs.seq.SeqReferences
 import org.rsmod.api.type.refs.timer.TimerReferences
@@ -21,6 +22,13 @@ import org.rsmod.game.type.npc.NpcType
 object DeathInvs : InvReferences() {
     val gravestone = find("gravestone")
     val death_permanent = find("death_permanent")
+    /** What a looting bag holds; the bag itself is defined by the Wilderness rules. */
+    val looting_bag = find("looting_bag")
+}
+
+object DeathObjs : ObjReferences() {
+    val looting_bag = find("looting_bag")
+    val looting_bag_open = find("looting_bag_open")
 }
 
 internal object DeathInvEditor : InvEditor() {

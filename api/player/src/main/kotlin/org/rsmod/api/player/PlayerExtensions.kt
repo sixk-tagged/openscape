@@ -18,6 +18,7 @@ import org.rsmod.api.player.vars.usingQuickPrayers
 import org.rsmod.game.entity.Player
 import org.rsmod.game.inv.Inventory
 import org.rsmod.game.type.inv.InvScope
+import org.rsmod.map.CoordGrid
 
 public fun Player.forceDisconnect() {
     forceDisconnect = true
@@ -90,6 +91,24 @@ public fun Player.isInPvnCombat(): Boolean {
 /** @return `true` if the player is **currently** in a multi-combat area. */
 public fun Player.mapMultiway(checker: AreaChecker): Boolean {
     return checker.inArea(areas.multiway, coords)
+}
+
+/** @return `true` while Tele Block stops the player teleporting (saved through logout). */
+public fun Player.isTeleblocked(): Boolean = vars[varps.teleblock_ticks] > 0
+
+/** @return `true` if the player is **currently** in the Wilderness (safe zones excluded). */
+public fun Player.mapWilderness(checker: AreaChecker): Boolean {
+    return checker.inArea(areas.wilderness, coords)
+}
+
+/**
+ * The Wilderness level of [coords], as the client works it out for the overlay: one level per 8
+ * tiles north of the ditch, the dungeons sitting 6400 tiles north of the surface. Only meaningful
+ * for coords inside `areas.wilderness`.
+ */
+public fun wildernessLevel(coords: CoordGrid): Int {
+    val surfaceZ = if (coords.z >= 6400) coords.z - 6400 else coords.z
+    return (surfaceZ - 3520) / 8 + 1
 }
 
 /**

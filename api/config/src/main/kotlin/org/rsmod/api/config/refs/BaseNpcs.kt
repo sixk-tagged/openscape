@@ -20,6 +20,6 @@ object BaseNpcs : NpcReferences() {
     val corp_beast = find("corp_beast", 5604977903323694725)
     val imp = find("imp", 61762237712635356)
     val farming_tools_leprechaun = find("farming_tools_leprechaun", 5428755996588687321)
-    val rod_fishing_spot_1527 = find("0_50_50_freshfish", 1358863933022409758)
-    val fishing_spot_1530 = find("0_50_49_saltfish", 8943009170502558049)
+    val rod_fishing_spot_1527 = find("0_50_50_freshfish", 1358863933022182777)
+    val fishing_spot_1530 = find("0_50_49_saltfish", 8943009170502331068)
 }

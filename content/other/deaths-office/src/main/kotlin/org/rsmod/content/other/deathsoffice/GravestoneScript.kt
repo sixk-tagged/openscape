@@ -1,6 +1,7 @@
 package org.rsmod.content.other.deathsoffice
 
 import jakarta.inject.Inject
+import org.rsmod.api.config.refs.areas
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.death.DeathKeep
@@ -11,11 +12,13 @@ import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.vars.intVarp
 import org.rsmod.api.player.worn.WornUnequipOp
+import org.rsmod.api.repo.obj.ObjRepository
 import org.rsmod.api.script.onPlayerLogin
 import org.rsmod.api.script.onPlayerLogout
 import org.rsmod.api.script.onPlayerSoftTimer
 import org.rsmod.api.script.onProtectedEvent
 import org.rsmod.content.other.deathsoffice.configs.DeathInvs
+import org.rsmod.content.other.deathsoffice.configs.DeathObjs
 import org.rsmod.content.other.deathsoffice.configs.DeathQueues
 import org.rsmod.content.other.deathsoffice.configs.DeathTimers
 import org.rsmod.content.other.deathsoffice.configs.DeathVarps
@@ -24,6 +27,7 @@ import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Player
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.inv.Inventory
+import org.rsmod.game.obj.Obj
 import org.rsmod.game.type.inv.InvType
 import org.rsmod.game.type.inv.InvTypeList
 import org.rsmod.game.type.obj.ObjTypeList
@@ -40,6 +44,7 @@ constructor(
     private val marketPrices: MarketPrices,
     private val invTypes: InvTypeList,
     private val eventBus: EventBus,
+    private val objRepo: ObjRepository,
 ) : PluginScript() {
     private var Player.graveCoord by intVarp(DeathVarps.gravestone_coord)
     private var Player.gravePaid by intVarp(DeathVarps.gravestone_paid)
@@ -54,10 +59,33 @@ constructor(
     private fun ProtectedAccess.loseItems(deathCoords: CoordGrid) {
         val skulled = player.skullIcon != null
         val protectItem = player.vars[varbits.protect_item] == 1
+        // A looting bag is always lost, whatever else is kept; what it held is lost with it.
+        val bag = inv(DeathInvs.looting_bag)
+        for (slot in inv.indices) {
+            val held = inv[slot] ?: continue
+            if (held.id == DeathObjs.looting_bag.id || held.id == DeathObjs.looting_bag_open.id) {
+                inv[slot] = null
+            }
+        }
         val carried = (inv.filterNotNull() + worn.filterNotNull()).filterNot(::isBond)
         val (kept, lost) =
             DeathKeep.split(carried, DeathKeep.keepCount(skulled, protectItem), ::unitPrice)
-        if (lost.isEmpty()) {
+        if (lost.isEmpty() && bag.filterNotNull().isEmpty()) {
+            return
+        }
+
+        // In the Wilderness, lost food and potions are deleted rather than dropped or graved.
+        val wilderness = inArea(areas.wilderness, deathCoords)
+        val deleted: (InvObj) -> Boolean = { wilderness && isFoodOrPotion(it) }
+        if (lost.all(deleted) && bag.filterNotNull().all(deleted)) {
+            takeLost(kept, deleted) { _, _, _, _, _ -> }
+            return
+        }
+
+        // Killed by a player in the Wilderness: no gravestone, the killer takes what was lost.
+        val killer = if (wilderness) findHero() else null
+        if (killer != null) {
+            dropForKiller(kept, killer, deathCoords, deleted)
             return
         }
 
@@ -66,7 +94,7 @@ constructor(
         val grave = inv(DeathInvs.gravestone)
         if (!hadGrave && !graves.spawn(player, deathCoords)) {
             // All 255 grave slots are taken: the items go straight to Death.
-            moveLost(kept, into = office, overflow = office)
+            moveLost(kept, into = office, overflow = office, deleted)
             return
         }
         if (!hadGrave) {
@@ -76,7 +104,7 @@ constructor(
         val trimmed = hadGrave && player.trimGrave(grave, office)
         // Credit paid for items the trim sent to Death no longer covers the grave.
         player.gravePaid = minOf(player.gravePaid.toLong(), graveOwed(grave, ::unitPrice)).toInt()
-        val overflowed = moveLost(kept, into = grave, overflow = office) || trimmed
+        val overflowed = moveLost(kept, into = grave, overflow = office, deleted) || trimmed
         player.graveTicks = GRAVE_TICKS
         player.softTimer(DeathTimers.gravestone, 1)
         if (player.deathTutorial and TUTORIAL_DONE == 0) {
@@ -98,17 +126,61 @@ constructor(
     /**
      * Moves every carried unit not in [kept] into [into], or into [overflow] when [into] is full.
      * Anything neither can hold is deleted, as OSRS does past Death's 120 slots. Worn items go in
-     * as their inventory form and are unequipped properly. Returns whether anything overflowed.
+     * as their inventory form and are unequipped properly. Whatever [deleted] says is deleted
+     * instead. Returns whether anything overflowed.
      */
     private fun ProtectedAccess.moveLost(
         kept: List<InvObj>,
         into: Inventory,
         overflow: Inventory,
+        deleted: (InvObj) -> Boolean,
     ): Boolean {
+        var overflowed = false
+        takeLost(kept, deleted) { from, slot, obj, lose, keepHere ->
+            if (player.invTransfer(from, slot, lose, into, untransform = true).success) {
+                return@takeLost
+            }
+            overflowed = true
+            if (!player.invTransfer(from, slot, lose, overflow, untransform = true).success) {
+                from[slot] = if (keepHere > 0) obj.copy(count = keepHere) else null
+            }
+        }
+        return overflowed
+    }
+
+    /**
+     * Drops every carried unit not in [kept] on the floor where the player died. [killer] sees them
+     * alone for [PVP_REVEAL_TICKS]; then everyone does, until [PVP_LOOT_TICKS] have passed.
+     * Whatever [deleted] says is deleted instead.
+     */
+    private fun ProtectedAccess.dropForKiller(
+        kept: List<InvObj>,
+        killer: Player,
+        deathCoords: CoordGrid,
+        deleted: (InvObj) -> Boolean,
+    ) {
+        takeLost(kept, deleted) { from, slot, obj, lose, keepHere ->
+            from[slot] = if (keepHere > 0) obj.copy(count = keepHere) else null
+            val dropped = Obj.fromOwner(killer, deathCoords, typeOf(obj), lose)
+            objRepo.add(dropped, duration = PVP_LOOT_TICKS, reveal = PVP_REVEAL_TICKS)
+        }
+        killer.mes("You have defeated ${player.displayName}.")
+    }
+
+    /**
+     * Calls [take] for each carried stack that loses units: the inventory, its slot, the stack, how
+     * many units go and how many stay. [take] must remove the lost units from the slot. Worn items
+     * that left their slot are then unequipped properly. Stacks [deleted] approves are removed
+     * without a call. A looting bag's contents are lost in full, after the pack and worn items.
+     */
+    private fun ProtectedAccess.takeLost(
+        kept: List<InvObj>,
+        deleted: (InvObj) -> Boolean,
+        take: (Inventory, Int, InvObj, Int, Int) -> Unit,
+    ) {
         val keepLeft = kept.groupingBy { it.id }.eachCount().toMutableMap()
         val wornBefore = Wearpos.entries.associateWith { worn[it.slot] }
-        var overflowed = false
-        for (from in listOf(inv, worn)) {
+        for (from in listOf(inv, worn, inv(DeathInvs.looting_bag))) {
             for (slot in from.indices) {
                 val obj = from[slot] ?: continue
                 if (isBond(obj)) {
@@ -120,13 +192,11 @@ constructor(
                 if (lose == 0) {
                     continue
                 }
-                if (player.invTransfer(from, slot, lose, into, untransform = true).success) {
+                if (deleted(obj)) {
+                    from[slot] = if (keepHere > 0) obj.copy(count = keepHere) else null
                     continue
                 }
-                overflowed = true
-                if (!player.invTransfer(from, slot, lose, overflow, untransform = true).success) {
-                    from[slot] = if (keepHere > 0) obj.copy(count = keepHere) else null
-                }
+                take(from, slot, obj, lose, keepHere)
             }
         }
         for ((wearpos, old) in wornBefore) {
@@ -134,7 +204,6 @@ constructor(
                 WornUnequipOp.notifyWornUnequip(player, wearpos, objTypes[old], eventBus)
             }
         }
-        return overflowed
     }
 
     /**
@@ -225,6 +294,10 @@ constructor(
 
     private fun isBond(obj: InvObj): Boolean = typeOf(obj).param(params.bond_item)
 
+    // Note: the cache has no food/potion marker on objs; anything you Eat or Drink counts.
+    private fun isFoodOrPotion(obj: InvObj): Boolean =
+        typeOf(obj).iop.any { it == "Eat" || it == "Drink" }
+
     // Note: shop value until a Grand Exchange exists; its prices plug into MarketPrices.
     private fun unitPrice(obj: InvObj): Long {
         val type = typeOf(obj)
@@ -234,6 +307,10 @@ constructor(
     companion object {
         const val GRAVE_TICKS: Int = 1500
         const val KEPT_PER_UNSTACKABLE: Int = 28
+        // UNVERIFIED: the wiki gives 1 + 59 minutes (Wilderness page) and 1 + 4 (Death page) for a
+        // player's loot; the Death page, the newer and more specific of the two, is used.
+        const val PVP_REVEAL_TICKS: Int = 100
+        const val PVP_LOOT_TICKS: Int = 500
         /** `death_tutorial` bit: in Death's Office for the tutorial, cleared by his portal. */
         const val TUTORIAL_ACTIVE: Int = 1
         /** `death_tutorial` bit: every topic covered; bits 2, 4 and 16 are the topics. */

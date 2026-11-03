@@ -1,6 +1,7 @@
 package org.rsmod.content.skills.magic.spell.utility
 
 import jakarta.inject.Inject
+import org.rsmod.api.area.checker.AreaChecker
 import org.rsmod.api.combat.commons.magic.MagicSpell
 import org.rsmod.api.combat.manager.MagicRuneManager
 import org.rsmod.api.combat.manager.MagicRuneManager.Companion.isFailure
@@ -8,6 +9,7 @@ import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.protect.ProtectedAccessLauncher
+import org.rsmod.api.player.teleportRefusal
 import org.rsmod.api.script.onIfOverlayButton
 import org.rsmod.api.spells.MagicSpellRegistry
 import org.rsmod.content.other.consumables.endGoading
@@ -32,6 +34,7 @@ constructor(
     private val runes: MagicRuneManager,
     private val objTypes: ObjTypeList,
     private val launcher: ProtectedAccessLauncher,
+    private val areaChecker: AreaChecker,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         for (obj in TELEPORTS) {
@@ -46,6 +49,11 @@ constructor(
 
     private fun cast(player: Player, spell: MagicSpell, dest: CoordGrid) {
         launcher.launch(player) {
+            val refusal = player.teleportRefusal(areaChecker)
+            if (refusal != null) {
+                mes(refusal)
+                return@launch
+            }
             if (runes.attemptCast(player, spell).isFailure()) {
                 return@launch
             }

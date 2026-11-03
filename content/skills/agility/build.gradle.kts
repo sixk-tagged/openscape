@@ -1,0 +1,14 @@
+plugins {
+    id("base-conventions")
+    id("integration-test-suite")
+}
+
+dependencies {
+    implementation(projects.api.pluginCommons)
+    integrationImplementation(projects.api.gameProcess)
+    integrationImplementation(projects.api.player)
+    integrationImplementation(projects.api.stats.levelmod)
+    integrationImplementation(projects.api.stats.xpmod)
+    integrationImplementation(projects.api.repo)
+    integrationImplementation(projects.api.shops)
+}

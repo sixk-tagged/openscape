@@ -18,8 +18,13 @@ I'm building it outward from Lumbridge, one area at a time.
   monster you can attack has its proper drops.
 - Mine in the Mining Guild, take the boat to Karamja, and earn your White Knight rank by fighting
   Black Knights.
+- Head into the **Wilderness**: PvP with skulls, level ranges and Tele Block, the Ferox Enclave, the
+  Resource Area, the Chaos Temple, the Lava Maze, obelisks, levers and looting bags. Bring a shield
+  for the dragons, because they breathe fire.
 - Train **Attack, Strength, Defence, Ranged, Hitpoints, Prayer, Magic, Mining, Smithing, Crafting,
-  Fletching, Herblore, Woodcutting, Fishing, Cooking, Firemaking, Runecraft and Thieving**.
+  Fletching, Herblore, Woodcutting, Fishing, Cooking, Firemaking, Runecraft, Thieving and Agility**.
+- Run 11 Agility courses, from the Gnome Stronghold to the rooftops of Rellekka. Collect marks of
+  grace for Grace's graceful outfit, and take the shortcuts around the map.
 - Fight with prayers, the standard and Ancient spellbooks, Vengeance, special attacks and potions.
 - Use Magic outside combat too: teleports, alchemy, Superheat Item, enchanting, Telekinetic Grab,
   curses and binds.
@@ -33,7 +38,12 @@ I'm building it outward from Lumbridge, one area at a time.
 
 ## What's missing
 
-- Agility, Slayer, Hunter, Construction and Farming aren't in yet.
+- Slayer, Hunter, Construction and Farming aren't in yet.
+- Agility doesn't have the Ardougne course or a few of the shortcuts. Getting to Canifis takes level
+  65 Agility for now, through the Salve railing shortcut.
+- Nothing makes or sells an oily fishing rod yet, so you can't fish lava eels.
+- I haven't played through the Wilderness or Agility yet. The tests pass, but expect some wrong
+  tiles, animations and messages.
 
 The roadmap above shows what comes after that.
 

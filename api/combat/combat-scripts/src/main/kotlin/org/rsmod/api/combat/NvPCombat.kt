@@ -24,6 +24,9 @@ import org.rsmod.api.config.refs.spotanims
 import org.rsmod.api.config.refs.synths
 import org.rsmod.api.npc.access.StandardNpcAccess
 import org.rsmod.api.npc.isInCombat
+import org.rsmod.api.player.hit.modifier.NoopPlayerHitModifier
+import org.rsmod.api.player.hit.modifier.PlayerHitModifier
+import org.rsmod.api.player.hit.modifier.StandardPlayerHitModifier
 import org.rsmod.api.player.hit.queueHit
 import org.rsmod.api.player.isValidTarget
 import org.rsmod.api.player.output.soundSynth
@@ -130,11 +133,15 @@ constructor(
         val (serverDelay, clientDelay) = projAnim.durations
 
         val successfulHit = accuracy.rollMagicAccuracy(npc, target, random)
+        // An attack that rolls its own damage (dragonfire) never misses and is not cut by prayer.
+        val rollDamage = attack.rollDamage
         var damage = 0
-        if (successfulHit) {
+        if (successfulHit || rollDamage != null) {
             playImpactFx(attack, target, clientDelay)
             val drain = attack.drain
-            if (drain != null) {
+            if (rollDamage != null) {
+                damage = rollDamage(target, successfulHit, random)
+            } else if (drain != null) {
                 target.statDrain(drain.stat, 0, drain.percent)
             } else {
                 damage = random.of(0..attack.maxHit)
@@ -144,8 +151,9 @@ constructor(
             target.soundSynth(synths.spellfail, delay = clientDelay)
         }
 
-        finishAttack(target, HitType.Magic, damage, serverDelay, clientDelay)
-        return successfulHit
+        val modifier = if (rollDamage != null) NoopPlayerHitModifier else StandardPlayerHitModifier
+        finishAttack(target, HitType.Magic, damage, serverDelay, clientDelay, modifier)
+        return successfulHit || rollDamage != null
     }
 
     private fun StandardNpcAccess.playAttackFx(attack: NpcAttack?, target: Player) {
@@ -170,6 +178,7 @@ constructor(
         damage: Int,
         hitDelay: Int,
         clientDelay: Int,
+        modifier: PlayerHitModifier = StandardPlayerHitModifier,
     ) {
         setAttackVars(target)
 
@@ -178,7 +187,7 @@ constructor(
         // last entries in the queue list at the time of processing.
         target.queueCombatRetaliate(npc, hitDelay)
 
-        target.queueHit(npc, hitDelay, type, damage)
+        target.queueHit(npc, hitDelay, type, damage, modifier = modifier)
         target.combatPlayDefendAnim(objTypes, clientDelay)
     }
 

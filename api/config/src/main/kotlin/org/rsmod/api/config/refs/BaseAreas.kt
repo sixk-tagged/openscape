@@ -8,4 +8,5 @@ object BaseAreas : AreaReferences() {
     val lumbridge = find("lumbridge")
     val singles_plus = find("singles_plus")
     val multiway = find("multiway")
+    val wilderness = find("wilderness")
 }

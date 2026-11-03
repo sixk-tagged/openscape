@@ -28,7 +28,10 @@ public class NpcDrain(public val stat: StatType, public val percent: Int)
  * plays on the target when the projectile arrives. [drain] only applies to magic: a landing hit
  * does no damage. [melee] is the defence type a melee attack is rolled against (crush by default).
  * [weight] is the share of picks relative to the profile's other attacks. [onLand] runs on the
- * target when the attack lands, even for 0 damage (an icy breath freezing, say).
+ * target when the attack lands, even for 0 damage (an icy breath freezing, say). [rollDamage] is
+ * for a magic attack that never misses and whose damage the target's protection decides
+ * (dragonfire): it gets whether the magic accuracy roll was won, returns the damage and skips the
+ * usual Protect from Magic cut, so it must apply any prayer itself.
  */
 public class NpcAttack(
     public val style: NpcAttackStyle,
@@ -44,9 +47,11 @@ public class NpcAttack(
     public val melee: MeleeAttackType? = null,
     public val weight: Int = 1,
     public val onLand: ((Player) -> Unit)? = null,
+    public val rollDamage: ((Player, Boolean, GameRandom) -> Int)? = null,
 ) {
     init {
         require(style == NpcAttackStyle.Melee || travel != null) { "$style needs a projectile." }
+        require(rollDamage == null || style == NpcAttackStyle.Magic) { "Only magic rolls itself." }
         require(weight > 0) { "Weight must be positive." }
     }
 }

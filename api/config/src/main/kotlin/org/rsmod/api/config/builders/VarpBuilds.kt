@@ -31,6 +31,9 @@ internal object VarpBuilds : VarpBuilder() {
         build("saved_autocast_state_bladed_staff")
         build("lastcombat") { temporary = true }
         build("lastcombat_pvp") { temporary = true }
+        build("teleblock_ticks") { permanent = true }
+        build("skull_ticks") { permanent = true }
+        build("ferox_respawn") { permanent = true }
         build("aggressive_npc") { temporary = true }
 
         build("temp_restore_65527")

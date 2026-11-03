@@ -27,6 +27,7 @@ import org.rsmod.api.spells.runes.subs.RuneSubstituteScript
 import org.rsmod.api.spells.runes.unlimited.UnlimitedRuneScript
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
+import org.rsmod.game.area.AreaIndex
 import org.rsmod.game.entity.PathingEntity
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.stat.PlayerSkillXPTable
@@ -42,6 +43,7 @@ constructor(
     val spells: MagicSpellRegistry,
     val attacks: SpellAttackRegistry,
     val objRepo: ObjRepository,
+    val areaIndex: AreaIndex,
 )
 
 private object MagicModule : AbstractModule() {
@@ -75,6 +77,7 @@ internal fun GameTestState.utilityTest(test: GameTestScope.(Deps) -> Unit) =
         BonesToFruitScript::class,
         EnchantScript::class,
         BoundNpcScript::class,
+        TeleBlockScript::class,
         ChargeScript::class,
         ComboRuneScript::class,
         CompactRuneScript::class,

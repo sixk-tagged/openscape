@@ -54,6 +54,7 @@ import org.rsmod.api.player.isInPvnCombat
 import org.rsmod.api.player.isInPvpCombat
 import org.rsmod.api.player.isOutOfCombat
 import org.rsmod.api.player.mapMultiway
+import org.rsmod.api.player.mapWilderness
 import org.rsmod.api.player.midiJingle
 import org.rsmod.api.player.midiSong
 import org.rsmod.api.player.output.Camera
@@ -1817,6 +1818,11 @@ public class ProtectedAccess(
     /** @see [org.rsmod.api.player.mapMultiway] */
     public fun mapMultiway(): Boolean {
         return player.mapMultiway(context.areaChecker)
+    }
+
+    /** @see [org.rsmod.api.player.mapWilderness] */
+    public fun mapWilderness(target: Player = player): Boolean {
+        return target.mapWilderness(context.areaChecker)
     }
 
     /** @see [org.rsmod.api.player.music.MusicPlayer.unlockAndPlay] */

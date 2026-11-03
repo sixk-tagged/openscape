@@ -39,10 +39,17 @@ private lateinit var invTypes: InvTypeList
 internal fun GameTestState.deathTest(
     vararg scripts: KClass<out PluginScript>,
     body: GameTestScope.(Gravestones) -> Unit,
+) = deathTestWith(Gravestones::class, *scripts, body = body)
+
+/** [deathTest] with [dependency] injected in place of the graves. */
+internal fun <T : Any> GameTestState.deathTestWith(
+    dependency: KClass<T>,
+    vararg scripts: KClass<out PluginScript>,
+    body: GameTestScope.(T) -> Unit,
 ) {
     invTypes = cacheTypes.invs
     runInjectedGameTest(
-        Gravestones::class,
+        dependency,
         null,
         PlayerDeathScript::class,
         GravestoneScript::class,

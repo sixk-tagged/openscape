@@ -41,4 +41,5 @@ dependencies {
     integrationImplementation(projects.api.combat.combatWeapon)
     integrationImplementation(projects.api.hitPlugin)
     integrationImplementation(projects.api.type.typeReferences)
+    integrationImplementation(projects.engine.annotations)
 }

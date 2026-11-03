@@ -6,5 +6,7 @@ plugins {
 dependencies {
     implementation(libs.rsprot.api)
     implementation(projects.api.pluginCommons)
+    integrationImplementation(projects.api.death)
     integrationImplementation(projects.api.deathPlugin)
+    integrationImplementation(projects.engine.annotations)
 }
