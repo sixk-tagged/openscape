@@ -11,7 +11,6 @@ import org.rsmod.api.player.torso
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.skills.smithing.configs.SmithingComponents
-import org.rsmod.content.skills.smithing.configs.SmithingContent
 import org.rsmod.content.skills.smithing.configs.SmithingInterfaces
 import org.rsmod.content.skills.smithing.configs.SmithingLocs
 import org.rsmod.content.skills.smithing.configs.SmithingObjs
@@ -191,7 +190,7 @@ class AnvilSmithingTest {
         }
 
     private fun GameTestScope.setUp(level: Int, vararg objs: ObjType): BoundLocInfo {
-        val anvil = placeMapLoc(ANVIL_COORDS, findLocType(SmithingContent.anvil))
+        val anvil = placeMapLoc(ANVIL_COORDS, SmithingLocs.anvil)
         player.teleport(anvil.coords.translateX(-1))
         player.clearInv()
         objs.forEachIndexed { slot, obj -> player.inv[slot] = InvObj(obj) }
