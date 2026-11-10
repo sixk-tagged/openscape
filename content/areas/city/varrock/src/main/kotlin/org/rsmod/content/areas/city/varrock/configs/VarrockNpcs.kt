@@ -152,7 +152,7 @@ internal object VarrockNpcEditor : NpcEditor() {
         }
         edit(varrock_npcs.bluemoon_cook) { moveRestrict = indoors }
         edit(varrock_npcs.jollyboar_cook) { moveRestrict = indoors }
-        edit(varrock_npcs.baraek) { wanderRange = 1 }
+        edit(varrock_npcs.baraek) { wanderRange = 2 }
         // The bartenders stay behind their bars.
         for (bartender in
             listOf(

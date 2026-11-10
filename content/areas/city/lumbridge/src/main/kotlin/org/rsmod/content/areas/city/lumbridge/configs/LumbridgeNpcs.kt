@@ -81,7 +81,7 @@ internal object LumbridgeNpcEditor : NpcEditor() {
             patrol8 = patrol(CoordGrid(0, 50, 50, 14, 5), 0)
             patrol9 = patrol(CoordGrid(0, 50, 50, 2, 5), 0)
             patrol10 = patrol(CoordGrid(0, 50, 50, 2, 32), 0)
-            maxRange = 40
+            maxRange = 50
         }
 
         edit(lumbridge_npcs.cook) { moveRestrict = indoors }
