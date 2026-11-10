@@ -104,7 +104,9 @@ object BaseParams : ParamReferences() {
     val slayer_levelrequire: ParamInt = find("slayer_levelrequire")
     /** The cache's param 50: the Slayer task id (`slayer_task:id`) this npc counts for. */
     val slayer_category: ParamInt = find("slayer_category")
-    /** openscape: hits never take the npc below this (gargoyles, rockslugs: an item finishes them). */
+    /**
+     * openscape: hits never take the npc below this (gargoyles, rockslugs: an item finishes them).
+     */
     val hitpoints_floor: ParamInt = find("hitpoints_floor")
     /**
      * openscape: 1 for turoth and kurask, hurt only by leaf-bladed weapons, broad ammo, Magic Dart.
