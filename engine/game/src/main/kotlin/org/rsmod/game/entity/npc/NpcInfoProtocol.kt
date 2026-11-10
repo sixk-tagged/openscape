@@ -14,6 +14,9 @@ public interface NpcInfoProtocol {
 
     public fun setFaceAngle(angle: Int, instant: Boolean)
 
+    /** The direction (a `Direction.id`) players see the npc face when it first comes into view. */
+    public fun setSpawnDirection(direction: Int)
+
     public fun setTransmog(type: Int)
 
     public fun resetTransmog(originalType: Int)
@@ -63,6 +66,8 @@ public data object NoopNpcInfo : NpcInfoProtocol {
     override fun setFacePathingEntity(slot: Int) {}
 
     override fun setFaceAngle(angle: Int, instant: Boolean) {}
+
+    override fun setSpawnDirection(direction: Int) {}
 
     override fun setTransmog(type: Int) {}
 

@@ -67,6 +67,27 @@ object VarrockNpcs : NpcReferences() {
     val trainee_2 = find("fai_varrock_guard_training02_variant01")
     val trainee_3 = find("fai_varrock_guard_training02_f")
     val trainee_4 = find("fai_varrock_guard_training02_f_variant01")
+
+    val kitten_crate = find("kittens_mew")
+    val biohazard_guard = find("bioguard1")
+    val museum_guard_1 = find("vm_museum_guard")
+    val museum_guard_2 = find("vm_museum_guard2")
+    val museum_guard_3 = find("vm_museum_guard3")
+    val museum_info_clerk = find("vm_info_booth_lady")
+    val aubury = find("aubury")
+    val da_vinci = find("artist2")
+    val captain_rovin = find("captain_rovin")
+    val drunk = find("drunk2")
+    val father_lawrence = find("father_lawrence")
+    val gambler = find("gambler2")
+    val julie = find("guidors_wife")
+    val kanel = find("kanel")
+    val philop = find("philop")
+    val sir_prysin = find("sir_prysin")
+    val shilop = find("shilop")
+    val wilough = find("wilough")
+    val charlie_the_tramp = find("tramppg")
+    val jonny_the_beard = find("jonny_the_beard")
 }
 
 internal object VarrockNpcEditor : NpcEditor() {
@@ -125,13 +146,66 @@ internal object VarrockNpcEditor : NpcEditor() {
         }
 
         edit(varrock_npcs.apothecary) { moveRestrict = indoors }
-        edit(varrock_npcs.head_chef) { moveRestrict = indoors }
+        edit(varrock_npcs.head_chef) {
+            moveRestrict = indoors
+            wanderRange = 3
+        }
         edit(varrock_npcs.bluemoon_cook) { moveRestrict = indoors }
         edit(varrock_npcs.jollyboar_cook) { moveRestrict = indoors }
         edit(varrock_npcs.baraek) { wanderRange = 1 }
-        edit(varrock_npcs.bluemoon_bartender) { moveRestrict = indoors }
-        edit(varrock_npcs.donkey_bartender) { moveRestrict = indoors }
-        edit(varrock_npcs.jollyboar_bartender) { moveRestrict = indoors }
+        // The bartenders stay behind their bars.
+        for (bartender in
+            listOf(
+                varrock_npcs.bluemoon_bartender,
+                varrock_npcs.donkey_bartender,
+                varrock_npcs.jollyboar_bartender,
+            )) {
+            edit(bartender) {
+                moveRestrict = indoors
+                wanderRange = 2
+            }
+        }
+        edit(varrock_npcs.tea_seller) { wanderRange = 2 }
+
+        // The lumber yard's kitten crate is an npc that never moves.
+        edit(varrock_npcs.kitten_crate) {
+            moveRestrict = nomove
+            wanderRange = 0
+        }
+        for (npc in
+            listOf(
+                varrock_npcs.biohazard_guard,
+                varrock_npcs.museum_guard_1,
+                varrock_npcs.museum_guard_2,
+                varrock_npcs.museum_guard_3,
+                varrock_npcs.museum_info_clerk,
+                varrock_npcs.smithing_tutor,
+            )) {
+            edit(npc) { wanderRange = 0 }
+        }
+
+        for (npc in
+            listOf(
+                varrock_npcs.aubury,
+                varrock_npcs.captain_rovin,
+                varrock_npcs.father_lawrence,
+                varrock_npcs.julie,
+                varrock_npcs.kanel,
+                varrock_npcs.philop,
+                varrock_npcs.sir_prysin,
+            )) {
+            edit(npc) { moveRestrict = indoors }
+        }
+        for (npc in listOf(varrock_npcs.da_vinci, varrock_npcs.drunk, varrock_npcs.gambler)) {
+            edit(npc) {
+                moveRestrict = indoors
+                wanderRange = 3
+            }
+        }
+        edit(varrock_npcs.shilop) { wanderRange = 2 }
+        edit(varrock_npcs.wilough) { wanderRange = 2 }
+        edit(varrock_npcs.charlie_the_tramp) { wanderRange = 2 }
+        edit(varrock_npcs.jonny_the_beard) { wanderRange = 4 }
     }
 
     private fun bankers(vararg types: NpcType) {

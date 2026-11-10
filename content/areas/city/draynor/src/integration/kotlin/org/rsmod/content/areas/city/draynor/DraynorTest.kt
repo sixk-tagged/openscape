@@ -16,10 +16,12 @@ import org.rsmod.content.areas.city.draynor.configs.DraynorVarps
 import org.rsmod.content.areas.city.draynor.locs.DraynorLocScript
 import org.rsmod.content.areas.city.draynor.npcs.DraynorServices
 import org.rsmod.content.areas.city.draynor.npcs.DraynorShops
+import org.rsmod.content.generic.npcs.banker.BankerFacing
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.loc.BoundLocInfo
 import org.rsmod.game.loc.LocAngle
 import org.rsmod.game.loc.LocShape
+import org.rsmod.game.map.Direction
 import org.rsmod.game.type.obj.Wearpos
 import org.rsmod.map.CoordGrid
 
@@ -239,6 +241,18 @@ class DraynorTest {
             player.setVarp(DraynorVarps.olivia_angry_until, 0)
             player.opNpc3(olivia)
             advanceUntil(max = 11) { player.openedShop != null }
+        }
+
+    @Test
+    fun GameTestState.`bankers face the booth beside them`() =
+        runGameTest(BankerFacing::class) {
+            placeMapLoc(OPEN_GROUND.translateX(1), DraynorLocs.bankbooth)
+            val banker = spawnNpc(OPEN_GROUND, npcTypes[DraynorNpcs.banker2])
+            assertEquals(Direction.East, banker.respawnDir)
+
+            // Without a booth beside them they keep their type's direction.
+            val away = spawnNpc(OPEN_GROUND.translateZ(5), npcTypes[DraynorNpcs.banker2])
+            assertEquals(Direction.South, away.respawnDir)
         }
 
     private companion object {

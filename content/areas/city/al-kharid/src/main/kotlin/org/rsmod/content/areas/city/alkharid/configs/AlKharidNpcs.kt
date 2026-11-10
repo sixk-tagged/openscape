@@ -33,6 +33,7 @@ object AlKharidNpcs : NpcReferences() {
     val prince_ali = find("prince_ali_vis")
     val hassan = find("hassan")
     val al_kharid_man = find("al_kharid_man")
+    val camel = find("camel")
 
     val camels =
         listOf(
@@ -48,13 +49,39 @@ object AlKharidNpcs : NpcReferences() {
 
 internal object AlKharidNpcEditor : NpcEditor() {
     init {
-        edit(alkharid_npcs.banker1) { contentGroup = content.banker }
-        edit(alkharid_npcs.banker2) { contentGroup = content.banker }
+        edit(alkharid_npcs.banker1) {
+            contentGroup = content.banker
+            wanderRange = 0
+        }
+        edit(alkharid_npcs.banker2) {
+            contentGroup = content.banker
+            wanderRange = 0
+        }
         edit(alkharid_npcs.al_kharid_man) { contentGroup = content.person }
 
         // The toll gate guards stand at their posts beside the gate.
         edit(alkharid_npcs.border_guard1) { wanderRange = 0 }
         edit(alkharid_npcs.border_guard2) { wanderRange = 0 }
+        edit(alkharid_npcs.shantay_guard_still) { wanderRange = 0 }
+        edit(alkharid_npcs.shantay_guard) { wanderRange = 3 }
+
+        // The market traders stay by their stalls.
+        edit(alkharid_npcs.gem_trader) { wanderRange = 2 }
+        edit(alkharid_npcs.karim) { wanderRange = 2 }
+        edit(alkharid_npcs.silk_trader) { wanderRange = 2 }
+        edit(alkharid_npcs.shantay) { wanderRange = 3 }
+
+        // Dommik, Louie, Ranael and Zeke keep to their shops.
+        for (keeper in
+            listOf(
+                alkharid_npcs.dommik,
+                alkharid_npcs.louie,
+                alkharid_npcs.ranael,
+                alkharid_npcs.zeke,
+            )) {
+            edit(keeper) { moveRestrict = indoors }
+        }
+        edit(alkharid_npcs.camel) { moveRestrict = outdoors }
 
         // The general store keeps the default 130% / 40% / 3% params.
         edit(alkharid_npcs.shop_keeper) { moveRestrict = indoors }

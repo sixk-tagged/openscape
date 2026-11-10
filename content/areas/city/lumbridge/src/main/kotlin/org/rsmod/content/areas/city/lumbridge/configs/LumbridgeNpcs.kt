@@ -6,6 +6,13 @@ import org.rsmod.api.config.refs.content
 import org.rsmod.api.shops.config.ShopParams
 import org.rsmod.api.type.editors.npc.NpcEditor
 import org.rsmod.api.type.refs.npc.NpcReferences
+import org.rsmod.content.areas.city.lumbridge.npcs.CookingTutorNpcs
+import org.rsmod.content.areas.city.lumbridge.npcs.CraftingTutorNpcs
+import org.rsmod.content.areas.city.lumbridge.npcs.IronmanTutorNpcs
+import org.rsmod.content.areas.city.lumbridge.npcs.MagicTutorNpcs
+import org.rsmod.content.areas.city.lumbridge.npcs.MeleeTutorNpcs
+import org.rsmod.content.areas.city.lumbridge.npcs.MiningTutorNpcs
+import org.rsmod.content.areas.city.lumbridge.npcs.RangedTutorNpcs
 import org.rsmod.map.CoordGrid
 
 typealias lumbridge_npcs = LumbridgeNpcs
@@ -38,6 +45,8 @@ object LumbridgeNpcs : NpcReferences() {
     val hewey = find("mistmyst_hewey", 7376540171675674022)
     val fishing_tutor = find("aide_tutor_fishing", 4335984535090215880)
     val millie = find("millie_the_miller", 89073509135537075)
+    val account_security_tutor = find("forestry_poh_bees")
+    val father_urhney = find("father_urhney")
 }
 
 internal object LumbridgeNpcEditor : NpcEditor() {
@@ -46,9 +55,15 @@ internal object LumbridgeNpcEditor : NpcEditor() {
 
         edit(lumbridge_npcs.shop_assistant) { moveRestrict = indoors }
 
-        edit(lumbridge_npcs.banker) { contentGroup = content.banker }
+        edit(lumbridge_npcs.banker) {
+            contentGroup = content.banker
+            wanderRange = 0
+        }
 
-        edit(lumbridge_npcs.banker_tutor) { contentGroup = content.banker_tutor }
+        edit(lumbridge_npcs.banker_tutor) {
+            contentGroup = content.banker_tutor
+            wanderRange = 0
+        }
 
         edit(lumbridge_npcs.prayer_tutor) { moveRestrict = indoors }
 
@@ -137,5 +152,23 @@ internal object LumbridgeNpcEditor : NpcEditor() {
         }
 
         edit(lumbridge_npcs.millie) { wanderRange = 1 }
+
+        edit(lumbridge_npcs.father_urhney) { moveRestrict = indoors }
+
+        // The tutors stand at their posts.
+        for (tutor in
+            listOf(
+                lumbridge_npcs.woodsman_tutor,
+                lumbridge_npcs.account_security_tutor,
+                CookingTutorNpcs.tutor,
+                CraftingTutorNpcs.tutor,
+                IronmanTutorNpcs.tutor,
+                MagicTutorNpcs.tutor,
+                MeleeTutorNpcs.tutor,
+                MiningTutorNpcs.tutor,
+                RangedTutorNpcs.tutor,
+            )) {
+            edit(tutor) { wanderRange = 0 }
+        }
     }
 }

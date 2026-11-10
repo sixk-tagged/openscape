@@ -112,6 +112,11 @@ internal object EdgevilleNpcEditor : NpcEditor() {
         for (npc in edgeville_npcs.aggressive) {
             edit(npc) { huntMode = huntmodes.cowardly }
         }
+
+        // The monastery's monks stay close to where they stand.
+        for (npc in listOf(edgeville_npcs.abbot, edgeville_npcs.monk, edgeville_npcs.jered)) {
+            edit(npc) { wanderRange = 3 }
+        }
     }
 
     private fun shop(npc: NpcType, sell: Int, buy: Int, change: Int) {

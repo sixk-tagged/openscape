@@ -18,6 +18,8 @@ object DuckNpcs : NpcReferences() {
     val duck = find("duck")
     val duck_female = find("duck_female")
     val duckling = find("duck_update_ducklings")
+    /** The older duckling type, which Lumbridge's pond spawns. */
+    val duckling_old = find("duckling")
 }
 
 object DuckNpcEdits : NpcEditor() {
@@ -25,7 +27,7 @@ object DuckNpcEdits : NpcEditor() {
         val ducks = setOf(duck_npcs.duck, duck_npcs.duck_female)
         ducks.forEach(::duck)
 
-        val ducklings = setOf(duck_npcs.duckling)
+        val ducklings = setOf(duck_npcs.duckling, duck_npcs.duckling_old)
         ducklings.forEach(::duckling)
     }
 

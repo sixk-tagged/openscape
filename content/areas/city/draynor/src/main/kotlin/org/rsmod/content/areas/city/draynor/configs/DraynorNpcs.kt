@@ -39,6 +39,8 @@ object DraynorNpcs : NpcReferences() {
     val veronica = find("veronica")
     val oddenstein = find("professor_oddenstein")
     val morgan = find("morgan")
+    val undead_tree = find("nasty_tree")
+    val wise_old_man_bed = find("wom_bed_inactive")
     val witch = find("anma_witch_multi")
     val market_guard = find("farming_market_guard")
 }
@@ -50,8 +52,29 @@ object DraynorVarps : VarpReferences() {
 
 internal object DraynorNpcEditor : NpcEditor() {
     init {
-        edit(draynor_npcs.banker1) { contentGroup = content.banker }
-        edit(draynor_npcs.banker2) { contentGroup = content.banker }
+        edit(draynor_npcs.banker1) {
+            contentGroup = content.banker
+            wanderRange = 0
+        }
+        edit(draynor_npcs.banker2) {
+            contentGroup = content.banker
+            wanderRange = 0
+        }
+        edit(draynor_npcs.bank_guard) { wanderRange = 0 }
+
+        // Draynor Manor's undead trees and the Wise Old Man's bed are npcs that never move.
+        for (still in listOf(draynor_npcs.undead_tree, draynor_npcs.wise_old_man_bed)) {
+            edit(still) {
+                moveRestrict = nomove
+                wanderRange = 0
+            }
+        }
+
+        edit(draynor_npcs.morgan) { moveRestrict = indoors }
+        edit(draynor_npcs.traiborn) { moveRestrict = indoors }
+        edit(draynor_npcs.oddenstein) { wanderRange = 2 }
+        edit(draynor_npcs.veronica) { wanderRange = 2 }
+        edit(draynor_npcs.diango) { wanderRange = 3 }
 
         // Shop price multipliers from each shop's StoreTableHead: sell %, buy % and the stock
         // delta %, all multiplied by 10 like the other shops' params.

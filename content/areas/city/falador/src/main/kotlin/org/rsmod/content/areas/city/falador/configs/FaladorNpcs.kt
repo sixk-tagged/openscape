@@ -45,6 +45,9 @@ object FaladorNpcs : NpcReferences() {
     val guild_guard = find("mguild_guard1")
     val guild_guard2 = find("mguild_guard2")
     val doric = find("doric")
+    val hairdresser = find("hairdresser")
+    val squire = find("squire")
+    val guard = find("guard1")
     val malignius = find("elemental_wizard_boss")
 
     val white_knight = find("white_knight")
@@ -69,7 +72,36 @@ internal object FaladorVarpBuilder : VarpBuilder() {
 internal object FaladorNpcEditor : NpcEditor() {
     init {
         // The west bank's `banker2` is already a banker (Draynor's config).
-        edit(falador_npcs.east_banker) { contentGroup = content.banker }
+        edit(falador_npcs.east_banker) {
+            contentGroup = content.banker
+            wanderRange = 0
+        }
+
+        // The shopkeepers, Doric and the hairdresser keep to their buildings.
+        for (npc in
+            listOf(
+                falador_npcs.shop_keeper,
+                falador_npcs.shop_assistant,
+                falador_npcs.flynn,
+                falador_npcs.cassie,
+                falador_npcs.herquin,
+                falador_npcs.wayne,
+                falador_npcs.doric,
+                falador_npcs.hairdresser,
+            )) {
+            edit(npc) { moveRestrict = indoors }
+        }
+        for (barmaid in listOf(falador_npcs.emily, falador_npcs.kaylee, falador_npcs.tina)) {
+            edit(barmaid) {
+                moveRestrict = indoors
+                wanderRange = 4
+            }
+        }
+        // The Mining Guild's door dwarves stand at their posts.
+        edit(falador_npcs.guild_guard) { wanderRange = 0 }
+        edit(falador_npcs.guild_guard2) { wanderRange = 0 }
+        edit(falador_npcs.squire) { wanderRange = 4 }
+        edit(falador_npcs.guard) { wanderRange = 2 }
 
         // Shop price multipliers from each shop's StoreTableHead: sell %, buy % and the stock
         // delta %, all multiplied by 10 like the other shops' params.

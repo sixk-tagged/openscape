@@ -136,8 +136,14 @@ internal object WildernessNpcEditor : NpcEditor() {
         shop(wilderness_npcs.noterazzo, sell = 900, buy = 600, change = 30)
         shop(wilderness_npcs.lundail, sell = 1000, buy = 600, change = 10)
 
-        edit(wilderness_npcs.ferox_banker) { contentGroup = content.banker }
-        edit(wilderness_npcs.gundai) { contentGroup = content.banker }
+        for (banker in listOf(wilderness_npcs.ferox_banker, wilderness_npcs.gundai)) {
+            edit(banker) {
+                contentGroup = content.banker
+                wanderRange = 0
+            }
+        }
+        edit(wilderness_npcs.fat_tony) { wanderRange = 3 }
+        edit(wilderness_npcs.noterazzo) { wanderRange = 3 }
 
         for (npc in wilderness_npcs.aggressive) {
             edit(npc) { huntMode = huntmodes.cowardly }

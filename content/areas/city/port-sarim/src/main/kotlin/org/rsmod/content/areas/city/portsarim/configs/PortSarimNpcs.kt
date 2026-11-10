@@ -129,6 +129,26 @@ internal object PortSarimNpcEditor : NpcEditor() {
         for (npc in port_sarim_npcs.aggressive) {
             edit(npc) { huntMode = huntmodes.cowardly }
         }
+
+        // The jail's sleeping guard and the Rusty Anchor's seated Ahab never get up.
+        edit(port_sarim_npcs.sleeping_guard) { wanderRange = 0 }
+        edit(port_sarim_npcs.ahab) { wanderRange = 0 }
+
+        for (npc in
+            listOf(
+                port_sarim_npcs.chemist,
+                port_sarim_npcs.hetty,
+                port_sarim_npcs.luthas,
+                port_sarim_npcs.tanner,
+            ) + port_sarim_npcs.master_crafters) {
+            edit(npc) { moveRestrict = indoors }
+        }
+        for (npc in
+            listOf(port_sarim_npcs.chancy, port_sarim_npcs.da_vinci, port_sarim_npcs.hops)) {
+            edit(npc) { wanderRange = 3 }
+        }
+        edit(port_sarim_npcs.customs_officer) { wanderRange = 4 }
+        edit(port_sarim_npcs.wormbrain) { wanderRange = 2 }
     }
 
     private fun shop(npc: NpcType, sell: Int, buy: Int, change: Int, indoor: Boolean = true) {

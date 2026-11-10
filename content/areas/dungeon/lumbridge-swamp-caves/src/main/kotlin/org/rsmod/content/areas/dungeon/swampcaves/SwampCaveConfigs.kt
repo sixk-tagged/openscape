@@ -6,6 +6,7 @@ import org.rsmod.api.type.builders.area.AreaBuilder
 import org.rsmod.api.type.builders.map.area.MapAreaBuilder
 import org.rsmod.api.type.builders.map.npc.MapNpcSpawnBuilder
 import org.rsmod.api.type.builders.varp.VarpBuilder
+import org.rsmod.api.type.editors.npc.NpcEditor
 import org.rsmod.api.type.refs.area.AreaReferences
 import org.rsmod.api.type.refs.interf.InterfaceReferences
 import org.rsmod.api.type.refs.npc.NpcReferences
@@ -18,6 +19,18 @@ import org.rsmod.game.area.polygon.VertexCoord
 object SwampCaveNpcs : NpcReferences() {
     val hole = find("swamp_wallbeast")
     val wall_beast = find("swamp_wallbeast_combat")
+}
+
+/** The holes, and the wall beasts that come out of them, stay in their walls. */
+internal object SwampCaveNpcEditor : NpcEditor() {
+    init {
+        for (npc in listOf(SwampCaveNpcs.hole, SwampCaveNpcs.wall_beast)) {
+            edit(npc) {
+                moveRestrict = nomove
+                wanderRange = 0
+            }
+        }
+    }
 }
 
 object SwampCaveObjs : ObjReferences() {

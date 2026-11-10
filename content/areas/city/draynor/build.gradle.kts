@@ -7,4 +7,5 @@ dependencies {
     implementation(projects.api.pluginCommons)
     implementation(projects.api.scriptAdvanced)
     integrationImplementation(projects.api.player)
+    integrationImplementation(projects.content.generic.genericNpcs)
 }
