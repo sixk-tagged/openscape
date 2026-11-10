@@ -45,8 +45,9 @@ object LumbridgeNpcs : NpcReferences() {
     val hewey = find("mistmyst_hewey", 7376540171675674022)
     val fishing_tutor = find("aide_tutor_fishing", 4335984535090215880)
     val millie = find("millie_the_miller", 89073509135537075)
-    val account_security_tutor = find("forestry_poh_bees")
     val father_urhney = find("father_urhney")
+    /** Two penguins disguised as one of Fred's sheep. */
+    val penguin_sheep = find("sheep_shearer_the_thing")
 }
 
 internal object LumbridgeNpcEditor : NpcEditor() {
@@ -159,7 +160,6 @@ internal object LumbridgeNpcEditor : NpcEditor() {
         for (tutor in
             listOf(
                 lumbridge_npcs.woodsman_tutor,
-                lumbridge_npcs.account_security_tutor,
                 CookingTutorNpcs.tutor,
                 CraftingTutorNpcs.tutor,
                 IronmanTutorNpcs.tutor,

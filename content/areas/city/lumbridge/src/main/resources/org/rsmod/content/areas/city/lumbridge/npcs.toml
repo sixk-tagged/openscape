@@ -1943,10 +1943,6 @@ npc = 'hundred_aris2'
 coords = '0_50_50_11_25'
 
 [[spawn]]
-npc = 'forestry_poh_bees'
-coords = '0_50_50_38_0'
-
-[[spawn]]
 npc = 'tob_spectator_misthalin'
 coords = '1_50_50_10_49'
 
