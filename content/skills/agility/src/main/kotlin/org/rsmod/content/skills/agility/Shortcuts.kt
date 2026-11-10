@@ -195,6 +195,26 @@ object Shortcuts {
                 CoordGrid(3092, 3878),
                 CoordGrid(3092, 3883),
                 AgilityLocs.lava_maze_stones,
+            ) +
+            // The Lumbridge Swamp Caves, to the giant frogs and the Chasm of Tears.
+            // Note: never falls in (the wiki: 1 xp and the light source goes out).
+            crossing(
+                1,
+                3.0,
+                AgilitySeqs.stepping_stone,
+                4,
+                CoordGrid(3204, 9572),
+                CoordGrid(3208, 9572),
+                AgilityLocs.swamp_cave_stones_a,
+            ) +
+            crossing(
+                1,
+                3.0,
+                AgilitySeqs.stepping_stone,
+                4,
+                CoordGrid(3221, 9556),
+                CoordGrid(3221, 9552),
+                AgilityLocs.swamp_cave_stones_b,
             )
 
     /** One row per loc of an obstacle that takes the player between [from] and [to]. */
@@ -212,10 +232,16 @@ object Shortcuts {
 /** Runs [Shortcuts]. */
 class ShortcutScript : PluginScript() {
     override fun ScriptContext.startup() {
+        val outOfReach =
+            listOf(
+                AgilityLocs.chaos_temple_stones,
+                AgilityLocs.swamp_cave_stones_a,
+                AgilityLocs.swamp_cave_stones_b,
+            )
         for (shortcut in Shortcuts.all) {
             onOpLoc1(shortcut.loc) { cross(shortcut, it.loc) }
-            // These stones stand in the lava, out of reach of either bank.
-            if (shortcut.loc == AgilityLocs.chaos_temple_stones) {
+            // These stones stand in lava or water, out of reach of either bank.
+            if (shortcut.loc in outOfReach) {
                 onApLoc1(shortcut.loc) {
                     if (isWithinApRange(it.loc, LINK_RANGE)) {
                         cross(shortcut, it.loc)

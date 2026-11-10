@@ -6,6 +6,7 @@ import org.rsmod.api.script.onIfModalButton
 import org.rsmod.api.script.onOpHeldU
 import org.rsmod.api.script.onOpLocU
 import org.rsmod.api.type.refs.obj.ObjReferences
+import org.rsmod.api.type.refs.varp.VarpReferences
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.comp.ComponentType
 import org.rsmod.game.type.obj.ObjType
@@ -28,6 +29,11 @@ class Jewellery : PluginScript() {
         onOpLocU(furnace, CraftingObjs.tiara_mould) { tiara() }
         for ((button, recipe) in JewelleryRecipes.gold + JewelleryRecipes.silver) {
             onIfModalButton(button) {
+                if (recipe.product.isType(JewellerySlayerObjs.slayer_ring) && !player.ringBling) {
+                    // UNVERIFIED: the wording; the unlock (Ring Bling, 150 points) is the wiki's.
+                    mes("You need to learn how to make Slayer rings from a Slayer Master first.")
+                    return@onIfModalButton
+                }
                 startCrafting(recipe, player.makeQuantity.coerceIn(1, MAX_AMOUNT))
             }
         }
@@ -62,8 +68,23 @@ class Jewellery : PluginScript() {
     }
 }
 
+/** Slayer unlock bit 6, "Ring Bling" (the cache's `slayer_unlock` table). */
+private val Player.ringBling: Boolean
+    get() = ((vars[JewelleryVarps.slayer_unlocks] shr RING_BLING_BIT) and 1) == 1
+
+private const val RING_BLING_BIT = 6
+
+object JewelleryVarps : VarpReferences() {
+    val slayer_unlocks = find("slayer_rewards_unlocks")
+}
+
+object JewellerySlayerObjs : ObjReferences() {
+    val slayer_ring = find("slayer_ring_8")
+}
+
 /** Jewellery recipes (OSRS wiki levels and xp). Each piece takes three ticks at the furnace. */
 object JewelleryRecipes : ObjReferences() {
+
     private class Row(
         val gem: String,
         val ring: Pair<Int, Int>,

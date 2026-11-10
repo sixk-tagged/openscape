@@ -2362,3 +2362,9 @@
 65433	agility_mark_minute
 65447	ferox_respawn
 65434	agility_dispenser
+65410	slayer_any_combat
+65411	swamp_dark_ticks
+65412	swamp_gas_ticks
+65413	swamp_darkness_overlay
+65414	swamp_beast_tile
+65415	slayer_superior_until

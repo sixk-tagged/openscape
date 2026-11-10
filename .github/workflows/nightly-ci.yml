@@ -31,6 +31,16 @@ jobs:
         with:
           validate-wrappers: true
 
+      # The wrapper download sometimes times out or gets a 504; try it a few times.
+      - name: Download Gradle
+        run: |
+          for attempt in 1 2 3 4 5; do
+            ./gradlew --version && exit 0
+            echo "Gradle download failed (attempt $attempt), retrying in 30 s"
+            sleep 30
+          done
+          exit 1
+
       - name: Set up RS Mod
         run: ./gradlew install
 

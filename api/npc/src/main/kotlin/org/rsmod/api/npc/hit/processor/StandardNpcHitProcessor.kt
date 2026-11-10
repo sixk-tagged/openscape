@@ -2,6 +2,7 @@ package org.rsmod.api.npc.hit.processor
 
 import jakarta.inject.Inject
 import org.rsmod.api.config.refs.hitmark_groups
+import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.queues
 import org.rsmod.api.npc.access.StandardNpcAccess
@@ -14,6 +15,7 @@ import org.rsmod.game.entity.PlayerList
 import org.rsmod.game.headbar.Headbar
 import org.rsmod.game.hit.Hit
 import org.rsmod.game.type.headbar.HeadbarType
+import org.rsmod.game.type.obj.ObjType
 
 public class StandardNpcHitProcessor
 @Inject
@@ -22,9 +24,11 @@ constructor(private val playerList: PlayerList, private val eventBus: EventBus) 
         // TODO(combat): Show ironman_blocked hitmark if source is an ironman and target has been
         // damaged by other sources.
 
+        // openscape: hitpoints floors (gargoyles...) and leaf-bladed-only npcs (turoth, kurask).
+        val cap = npc.damageCap(hit::isRighthandObj, hit::isSecondaryObj)
         var changedDamage: Int? = null
-        if (hit.damage > npc.hitpoints) {
-            changedDamage = npc.hitpoints
+        if (hit.damage > cap) {
+            changedDamage = cap
         }
 
         if (changedDamage == 0) {
@@ -91,4 +95,29 @@ constructor(private val playerList: PlayerList, private val eventBus: EventBus) 
         val event = NpcHitEvents.Impact(this, hit)
         eventBus.publish(event)
     }
+}
+
+private val LEAF_BLADED_WEAPONS by lazy {
+    listOf(objs.leafbladed_spear, objs.leafbladed_sword, objs.leafbladed_battleaxe)
+}
+
+private val LEAF_BLADED_AMMO by lazy {
+    listOf(objs.broad_arrows, objs.broad_bolts, objs.amethyst_broad_bolts, objs.spell_magic_dart)
+}
+
+/**
+ * openscape: the most damage this npc can take from one hit: never below its `hitpoints_floor`
+ * (gargoyles, rockslugs), and none at all for a `leafbladed_only` npc (turoth, kurask) unless the
+ * weapon ([isRighthand]) or the ammo or spell ([isSecondary]) is leaf-bladed. Combat xp is capped
+ * by it too, so zeroed hits give none.
+ */
+public fun Npc.damageCap(
+    isRighthand: (ObjType) -> Boolean,
+    isSecondary: (ObjType) -> Boolean,
+): Int {
+    val leafOnly = visType.param(params.leafbladed_only) == 1
+    if (leafOnly && LEAF_BLADED_WEAPONS.none(isRighthand) && LEAF_BLADED_AMMO.none(isSecondary)) {
+        return 0
+    }
+    return (hitpoints - visType.param(params.hitpoints_floor)).coerceAtLeast(0)
 }

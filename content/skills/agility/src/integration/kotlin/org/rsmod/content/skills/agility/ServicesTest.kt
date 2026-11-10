@@ -216,6 +216,24 @@ class ServicesTest {
                         CoordGrid(3092, 3878),
                         CoordGrid(3092, 3883),
                     ),
+                    Triple(
+                        placeMapLoc(
+                            CoordGrid(3206, 9572),
+                            AgilityLocs.swamp_cave_stones_a,
+                            LocShape.GroundDecor,
+                        ),
+                        CoordGrid(3204, 9572),
+                        CoordGrid(3208, 9572),
+                    ),
+                    Triple(
+                        placeMapLoc(
+                            CoordGrid(3221, 9554),
+                            AgilityLocs.swamp_cave_stones_b,
+                            LocShape.GroundDecor,
+                        ),
+                        CoordGrid(3221, 9556),
+                        CoordGrid(3221, 9552),
+                    ),
                 )
             for ((loc, near, far) in crossings) {
                 player.teleport(near)

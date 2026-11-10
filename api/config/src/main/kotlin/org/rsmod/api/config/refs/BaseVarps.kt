@@ -104,6 +104,8 @@ object BaseVarps : VarpReferences() {
     val skull_ticks = find("skull_ticks")
     val ferox_respawn = find("ferox_respawn")
     val aggressive_npc = find("aggressive_npc")
+    val slayer_target = find("slayer_target")
+    val slayer_count = find("slayer_count")
     val generic_temp_coords_65529 = find("generic_temp_coords_65529")
     val inv_capacity_65530 = find("inv_capacity_65530")
     val generic_storage_65531 = find("generic_storage_65531")

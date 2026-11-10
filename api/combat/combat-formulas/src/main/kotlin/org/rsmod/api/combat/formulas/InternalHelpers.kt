@@ -1,5 +1,8 @@
 package org.rsmod.api.combat.formulas
 
+import org.rsmod.api.config.refs.params
+import org.rsmod.api.config.refs.varbits
+import org.rsmod.api.config.refs.varps
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.npc.UnpackedNpcType
 
@@ -12,7 +15,20 @@ internal const val HIT_CHANCE_SCALE: Int = 10_000
 
 internal fun scale(base: Int, multiplier: Int, divisor: Int): Int = (base * multiplier) / divisor
 
+/**
+ * openscape: the npc's `slayer_category` (cache param 50) is the player's current task, with kills
+ * left. Krystilia's tasks (master 7) only count inside the Wilderness.
+ */
 internal fun UnpackedNpcType.isSlayerTask(player: Player): Boolean {
-    // TODO(combat): Resolve if type is slayer task.
-    return false
+    val task = param(params.slayer_category)
+    if (task <= 0 || player.vars[varps.slayer_count] <= 0) {
+        return false
+    }
+    if (player.vars[varps.slayer_target] != task) {
+        return false
+    }
+    return player.vars[varbits.slayer_master] != KRYSTILIA ||
+        player.vars[varbits.inside_wilderness] == 1
 }
+
+private const val KRYSTILIA = 7

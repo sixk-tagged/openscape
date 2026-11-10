@@ -162,6 +162,8 @@ object AgilityLocs : LocReferences() {
     val chaos_temple_stones = find("wilderness_chaos_temple_shortcut")
     val lava_dragon_stones = find("wilderness_lava_dragons_shortcut")
     val lava_maze_stones = find("wilderness_lava_maze_northern_shortcut")
+    val swamp_cave_stones_a = find("swamp_cave_steppingstone_a")
+    val swamp_cave_stones_b = find("swamp_cave_steppingstone_b")
 
     // Gates, Rogues' Den, spirit trees
     val member_gate_left = find("membergatel")

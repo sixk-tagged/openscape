@@ -92,6 +92,7 @@ constructor(
         if (landed) {
             attack?.onLand?.invoke(target)
         }
+        attack?.onAttack?.invoke(target)
     }
 
     private fun StandardNpcAccess.attackMelee(target: Player, attack: NpcAttack?): Boolean {

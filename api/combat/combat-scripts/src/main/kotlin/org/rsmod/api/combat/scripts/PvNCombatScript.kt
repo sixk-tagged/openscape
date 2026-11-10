@@ -15,9 +15,11 @@ import org.rsmod.api.combat.player.resolveCombatAttack
 import org.rsmod.api.combat.weapon.styles.AttackStyles
 import org.rsmod.api.combat.weapon.types.AttackTypes
 import org.rsmod.api.config.refs.categories
+import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.queues
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.righthand
+import org.rsmod.api.player.stat.slayerLvl
 import org.rsmod.api.script.advanced.onDefaultApNpc2
 import org.rsmod.api.script.advanced.onDefaultOpNpc2
 import org.rsmod.api.script.onApNpcT
@@ -109,6 +111,13 @@ constructor(
         //  their specific conditions. Some npcs like the mage arena (wilderness) npcs
         //  don't give any sort of message, but simply won't allow players to melee them.
         //  (Will stop at ap range, doesn't drag you into melee range)
+
+        // openscape: Slayer monsters can't be attacked below their Slayer level (boosts count).
+        // UNVERIFIED: the message text.
+        if (npc.visType.param(params.slayer_levelrequire) > player.slayerLvl) {
+            mes("You need a higher Slayer level to know how to wound this monster.")
+            return false
+        }
 
         // Note: Dinh's bulwark conditions occur _before_ multi-combat area checks and _after_
         // "can attack" hooks.

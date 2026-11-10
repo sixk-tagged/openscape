@@ -8,8 +8,8 @@ import org.rsmod.game.type.obj.ObjType
 
 /**
  * One drop. In a [DropTable] it wins with chance `weight / table.total`; as an "always" drop the
- * weight is ignored. A drop is an obj ([obj] x [count]) or a sub-table roll ([table]). A
- * [members]-only drop gives [f2p] instead on a free world (null = nothing).
+ * weight is ignored. A drop is an obj ([obj] x [count]) or [count] rolls of a sub-table ([table]).
+ * A [members]-only drop gives [f2p] instead on a free world (null = nothing).
  */
 public class Drop(
     public val obj: ObjType? = null,
@@ -55,12 +55,12 @@ public class NpcDrops(
 
 private fun Drop.give(random: GameRandom, members: Boolean, out: MutableList<InvObj>) {
     val drop = if (this.members && !members) f2p ?: return else this
-    drop.table?.let {
-        it.roll(random, members, out)
+    val count = if (drop.count.first == drop.count.last) drop.count.first else random.of(drop.count)
+    drop.table?.let { table ->
+        repeat(count) { table.roll(random, members, out) }
         return
     }
     val obj = drop.obj ?: return
-    val count = if (drop.count.first == drop.count.last) drop.count.first else random.of(drop.count)
     out += InvObj(obj, count)
 }
 

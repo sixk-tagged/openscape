@@ -42,21 +42,6 @@ class DraynorTest {
         }
 
     @Test
-    fun GameTestState.`spria trade opens the slayer equipment shop`() =
-        runGameTest(DraynorShops::class) {
-            val spria = spawnNpc(CoordGrid(3091, 3266), npcTypes[DraynorNpcs.spria])
-            player.teleport(CoordGrid(3093, 3266))
-            advance()
-
-            player.opNpc4(spria)
-            advanceUntil(max = 10) { player.openedShop != null }
-
-            val shop = checkNotNull(player.openedShop)
-            assertEquals(50, shop.inv.count(DraynorObjs.slayer_gem))
-            assertEquals(50, shop.inv.count(DraynorObjs.reinforced_goggles))
-        }
-
-    @Test
     fun GameTestState.`ned sells a rope for 15 coins`() =
         runGameTest(DraynorServices::class) {
             player.clearInv()

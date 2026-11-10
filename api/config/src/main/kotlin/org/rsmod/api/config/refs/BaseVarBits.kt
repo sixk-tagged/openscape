@@ -11,6 +11,7 @@ object BaseVarBits : VarBitReferences() {
     val singleway_plus_indicator = find("singleway_plus_indicator", 52603174350056)
     val inside_wilderness = find("inside_wilderness")
     val pvp_area_client = find("pvp_area_client")
+    val slayer_master = find("slayer_master")
 
     val stamina_active = find("stamina_active", 81145461762806)
     val stamina_duration = find("stamina_duration", 14272015789523)

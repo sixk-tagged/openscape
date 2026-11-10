@@ -27,6 +27,7 @@ import org.rsmod.api.config.refs.spotanims
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.synths
 import org.rsmod.api.npc.hit.modifier.NpcHitModifier
+import org.rsmod.api.npc.hit.processor.damageCap
 import org.rsmod.api.npc.hit.queueHit
 import org.rsmod.api.player.hit.queueHit
 import org.rsmod.api.player.interact.NpcInteractions
@@ -35,6 +36,7 @@ import org.rsmod.api.player.interact.PlayerInteractions
 import org.rsmod.api.player.interact.PlayerTInteractions
 import org.rsmod.api.player.output.soundSynth
 import org.rsmod.api.player.protect.clearPendingAction
+import org.rsmod.api.player.quiver
 import org.rsmod.api.player.righthand
 import org.rsmod.api.player.stat.hitpoints
 import org.rsmod.api.player.stat.statAdvance
@@ -242,7 +244,7 @@ constructor(
         }
 
     private fun giveCombatXp(player: Player, target: Npc, attack: CombatAttack.Melee, damage: Int) {
-        val cappedDamage = min(damage, target.hitpoints)
+        val cappedDamage = min(damage, target.xpCap(attack.weapon?.id, null))
         val multiplier = target.resolveCombatXpMultiplier()
         giveCombatXp(player, attack, cappedDamage, multiplier)
     }
@@ -310,7 +312,7 @@ constructor(
         attack: CombatAttack.Ranged,
         damage: Int,
     ) {
-        val cappedDamage = min(damage, target.hitpoints)
+        val cappedDamage = min(damage, target.xpCap(attack.weapon.id, player.quiver?.id))
         val multiplier = target.resolveCombatXpMultiplier()
         giveCombatXp(player, attack, cappedDamage, multiplier)
     }
@@ -369,7 +371,7 @@ constructor(
         }
 
     private fun giveCombatXp(player: Player, target: Npc, attack: CombatAttack.Spell, damage: Int) {
-        val cappedDamage = min(damage, target.hitpoints)
+        val cappedDamage = min(damage, target.xpCap(attack.weapon?.id, attack.spell.obj.id))
         val multiplier = target.resolveCombatXpMultiplier()
         giveCombatXp(player, attack, cappedDamage, multiplier)
     }
@@ -420,7 +422,7 @@ constructor(
 
     @Suppress("unused")
     private fun giveCombatXp(player: Player, target: Npc, attack: CombatAttack.Staff, damage: Int) {
-        val cappedDamage = min(damage, target.hitpoints)
+        val cappedDamage = min(damage, target.xpCap(attack.weapon.id, null))
         val multiplier = target.resolveCombatXpMultiplier()
         giveStaffCombatXp(player, cappedDamage, multiplier)
     }
@@ -2052,3 +2054,10 @@ constructor(
             size = size,
         )
 }
+
+/**
+ * openscape: the xp-worthy part of a hit on this npc (see [damageCap]): by weapon and ammo/spell
+ * ids.
+ */
+private fun Npc.xpCap(righthand: Int?, secondary: Int?): Int =
+    damageCap({ it.id == righthand }, { it.id == secondary })

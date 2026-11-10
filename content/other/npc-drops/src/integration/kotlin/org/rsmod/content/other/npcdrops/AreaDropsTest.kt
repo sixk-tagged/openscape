@@ -22,6 +22,13 @@ class AreaDropsTest {
         }
 
     @Test
+    fun GameTestState.`a wall beast's first slot is three air runes`() =
+        runInjectedGameTest(ObjRepository::class, null, *SCRIPTS) { objRepo ->
+            val drops = kill(swamp_drop_npcs.wall_beast_hole, objRepo, 0)
+            assertEquals(listOf(drop(swamp_drop_objs.airrune, 3)), drops)
+        }
+
+    @Test
     fun GameTestState.`plain skeletons drop only bones`() =
         runInjectedGameTest(ObjRepository::class, null, *SCRIPTS) { objRepo ->
             val drops = kill(draynor_npcs.skeleton_unarmed3, objRepo)
@@ -132,6 +139,7 @@ class AreaDropsTest {
                 AlKharidDrops::class,
                 VarrockDrops::class,
                 FaladorDrops::class,
+                SwampCaveDrops::class,
             )
         val COORDS = CoordGrid(0, 50, 50, 34, 31)
 

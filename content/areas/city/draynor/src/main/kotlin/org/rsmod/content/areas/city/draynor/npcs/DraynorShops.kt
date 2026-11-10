@@ -9,7 +9,6 @@ import org.rsmod.api.player.dialogue.Dialogue
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.script.onOpNpc1
 import org.rsmod.api.script.onOpNpc3
-import org.rsmod.api.script.onOpNpc4
 import org.rsmod.api.script.onOpNpcU
 import org.rsmod.api.shops.Shops
 import org.rsmod.content.areas.city.draynor.configs.draynor_invs
@@ -24,7 +23,7 @@ import org.rsmod.game.type.varp.VarpType
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
-/** Draynor's plain shops: Talk-to offers the shop, Trade (or Spria's op4) opens it directly. */
+/** Draynor's plain shops: Talk-to offers the shop, Trade opens it directly (Spria is in Slayer). */
 class DraynorShops @Inject constructor(private val shops: Shops, private val hunt: Hunt) :
     PluginScript() {
     override fun ScriptContext.startup() {
@@ -53,13 +52,6 @@ class DraynorShops @Inject constructor(private val shops: Shops, private val hun
             draynor_invs.ava,
             "Hello there. Can I interest you in some of my wares?",
         )
-        keeper(
-            draynor_npcs.spria,
-            "Slayer Equipment",
-            draynor_invs.slayer,
-            "Hello there. I can sell you some Slayer equipment, if you like.",
-            tradeOp = 4,
-        )
         // Ned's Talk-to is his rope dialogue (DraynorServices). The Fremennik Isles counts as done,
         // so the shop has its renamed title and 90% prices.
         onOpNpc3(draynor_npcs.ned) {
@@ -79,7 +71,6 @@ class DraynorShops @Inject constructor(private val shops: Shops, private val hun
         title: String,
         inv: InvType,
         greeting: String,
-        tradeOp: Int = 3,
         grudge: VarpType? = null,
     ) {
         onOpNpc1(npc) {
@@ -89,11 +80,7 @@ class DraynorShops @Inject constructor(private val shops: Shops, private val hun
                 startDialogue(it.npc) { shopTalk(it.npc, title, inv, greeting) }
             }
         }
-        if (tradeOp == 4) {
-            onOpNpc4(npc) { trade(it.npc, title, inv, grudge) }
-        } else {
-            onOpNpc3(npc) { trade(it.npc, title, inv, grudge) }
-        }
+        onOpNpc3(npc) { trade(it.npc, title, inv, grudge) }
     }
 
     private suspend fun ProtectedAccess.trade(

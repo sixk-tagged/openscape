@@ -102,6 +102,14 @@ object BaseParams : ParamReferences() {
     val freeze_resistance: ParamInt = find("freeze_resistance")
     val slayer_experience: ParamInt = find("slayer_experience")
     val slayer_levelrequire: ParamInt = find("slayer_levelrequire")
+    /** The cache's param 50: the Slayer task id (`slayer_task:id`) this npc counts for. */
+    val slayer_category: ParamInt = find("slayer_category")
+    /** openscape: hits never take the npc below this (gargoyles, rockslugs: an item finishes them). */
+    val hitpoints_floor: ParamInt = find("hitpoints_floor")
+    /**
+     * openscape: 1 for turoth and kurask, hurt only by leaf-bladed weapons, broad ammo, Magic Dart.
+     */
+    val leafbladed_only: ParamInt = find("leafbladed_only")
     val magic_defence_uses_defence_level: ParamBool = find("magic_defence_uses_defence_level")
     val spell_worn_req_message: ParamStr = find("spell_worn_req_message")
     val elemental_weakness_type: ParamInt = find("elemental_weakness_type")

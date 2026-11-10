@@ -1,0 +1,660 @@
+[[spawn]]
+npc = 'secret_ghost15'
+coords = '1_53_55_56_30'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_1'
+coords = '1_53_55_21_30'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_1'
+coords = '1_53_55_32_31'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_1'
+coords = '1_53_55_36_23'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_2'
+coords = '1_53_55_36_31'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_2'
+coords = '1_53_55_46_29'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_3'
+coords = '1_53_55_19_14'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_3'
+coords = '1_53_55_31_22'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_3'
+coords = '1_53_55_43_25'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_3'
+coords = '1_53_55_50_30'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_4'
+coords = '1_53_55_21_25'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_4'
+coords = '1_53_55_28_17'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_4'
+coords = '1_53_55_35_19'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_4'
+coords = '1_53_55_39_28'
+
+[[spawn]]
+npc = 'slayer_abberant_spectre_4'
+coords = '1_53_55_50_24'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_16_53'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_19_44'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_19_50'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_19_56'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_21_53'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_22_42'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_23_49'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_26_47'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_27_42'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_29_53'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_30_50'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_31_45'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_34_49'
+
+[[spawn]]
+npc = 'slayer_abyssal'
+coords = '2_53_55_35_52'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_35_45'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_40_45'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_41_36'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_41_41'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_44_44'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_44_51'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_45_47'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_46_34'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_48_40'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_48_51'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_49_54'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_50_36'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_50_46'
+
+[[spawn]]
+npc = 'slayer_abyssal_strongholdcave'
+coords = '3_53_155_53_50'
+
+[[spawn]]
+npc = 'slayer_banshee_1'
+coords = '0_53_55_37_44'
+
+[[spawn]]
+npc = 'slayer_banshee_1'
+coords = '0_53_55_41_32'
+
+[[spawn]]
+npc = 'slayer_banshee_1'
+coords = '0_53_55_44_39'
+
+[[spawn]]
+npc = 'slayer_banshee_1'
+coords = '0_53_55_47_19'
+
+[[spawn]]
+npc = 'slayer_banshee_1'
+coords = '0_53_55_47_24'
+
+[[spawn]]
+npc = 'slayer_banshee_1'
+coords = '0_53_55_48_40'
+
+[[spawn]]
+npc = 'slayer_banshee_1'
+coords = '0_53_55_51_26'
+
+[[spawn]]
+npc = 'slayer_banshee_1'
+coords = '0_53_55_52_17'
+
+[[spawn]]
+npc = 'slayer_bloodveld'
+coords = '1_53_55_24_41'
+
+[[spawn]]
+npc = 'slayer_bloodveld'
+coords = '1_53_55_25_45'
+
+[[spawn]]
+npc = 'slayer_bloodveld'
+coords = '1_53_55_27_39'
+
+[[spawn]]
+npc = 'slayer_bloodveld'
+coords = '1_53_55_30_47'
+
+[[spawn]]
+npc = 'slayer_bloodveld'
+coords = '1_53_55_32_40'
+
+[[spawn]]
+npc = 'slayer_bloodveld'
+coords = '1_53_55_32_44'
+
+[[spawn]]
+npc = 'slayer_bloodveld'
+coords = '1_53_55_34_37'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby'
+coords = '1_53_55_17_51'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby'
+coords = '1_53_55_19_47'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby'
+coords = '1_53_55_19_56'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby'
+coords = '1_53_55_20_40'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby'
+coords = '1_53_55_24_37'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby'
+coords = '1_53_55_24_53'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby'
+coords = '1_53_55_29_54'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby'
+coords = '1_53_55_34_53'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby_strongholdcave'
+coords = '3_53_155_11_14'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby_strongholdcave'
+coords = '3_53_155_12_20'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby_strongholdcave'
+coords = '3_53_155_13_9'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby_strongholdcave'
+coords = '3_53_155_14_29'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby_strongholdcave'
+coords = '3_53_155_19_25'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby_strongholdcave'
+coords = '3_53_155_20_15'
+
+[[spawn]]
+npc = 'slayer_bloodveld_baby_strongholdcave'
+coords = '3_53_155_29_19'
+
+[[spawn]]
+npc = 'slayer_bloodveld_strongholdcave'
+coords = '3_53_155_17_19'
+
+[[spawn]]
+npc = 'slayer_bloodveld_strongholdcave'
+coords = '3_53_155_24_22'
+
+[[spawn]]
+npc = 'slayer_bloodveld_strongholdcave'
+coords = '3_53_155_25_11'
+
+[[spawn]]
+npc = 'slayer_bloodveld_strongholdcave'
+coords = '3_53_155_25_17'
+
+[[spawn]]
+npc = 'slayer_bloodveld_strongholdcave'
+coords = '3_53_155_31_15'
+
+[[spawn]]
+npc = 'slayer_cave_gargoyle'
+coords = '3_53_155_35_23'
+
+[[spawn]]
+npc = 'slayer_cave_gargoyle'
+coords = '3_53_155_36_12'
+
+[[spawn]]
+npc = 'slayer_cave_gargoyle'
+coords = '3_53_155_40_17'
+
+[[spawn]]
+npc = 'slayer_cave_gargoyle'
+coords = '3_53_155_40_27'
+
+[[spawn]]
+npc = 'slayer_cave_gargoyle'
+coords = '3_53_155_41_22'
+
+[[spawn]]
+npc = 'slayer_cave_gargoyle'
+coords = '3_53_155_42_12'
+
+[[spawn]]
+npc = 'slayer_cave_gargoyle'
+coords = '3_53_155_45_28'
+
+[[spawn]]
+npc = 'slayer_cave_gargoyle'
+coords = '3_53_155_47_12'
+
+[[spawn]]
+npc = 'slayer_cave_gargoyle'
+coords = '3_53_155_47_23'
+
+[[spawn]]
+npc = 'slayer_cave_gargoyle'
+coords = '3_53_155_48_8'
+
+[[spawn]]
+npc = 'slayer_cave_gargoyle'
+coords = '3_53_155_48_16'
+
+[[spawn]]
+npc = 'slayer_cave_gargoyle'
+coords = '3_53_155_52_11'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_20_29'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_20_43'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_20_55'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_21_39'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_21_51'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_28_31'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_29_53'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_32_38'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_32_47'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_36_24'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_36_33'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_38_51'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_1'
+coords = '0_53_55_47_54'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_big_1'
+coords = '0_53_55_18_50'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_big_1'
+coords = '0_53_55_19_26'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_big_1'
+coords = '0_53_55_19_40'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_big_1'
+coords = '0_53_55_25_50'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_big_1'
+coords = '0_53_55_29_24'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_big_1'
+coords = '0_53_55_31_35'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_big_1'
+coords = '0_53_55_37_54'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_big_1'
+coords = '0_53_55_49_51'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_big_2'
+coords = '0_53_55_27_54'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_big_2'
+coords = '0_53_55_35_28'
+
+[[spawn]]
+npc = 'slayer_crawling_hand_big_2'
+coords = '0_53_55_36_49'
+
+[[spawn]]
+npc = 'slayer_gargoyle_1'
+coords = '2_53_55_40_20'
+
+[[spawn]]
+npc = 'slayer_gargoyle_1'
+coords = '2_53_55_43_28'
+
+[[spawn]]
+npc = 'slayer_gargoyle_1'
+coords = '2_53_55_45_17'
+
+[[spawn]]
+npc = 'slayer_gargoyle_1'
+coords = '2_53_55_47_22'
+
+[[spawn]]
+npc = 'slayer_gargoyle_1'
+coords = '2_53_55_47_28'
+
+[[spawn]]
+npc = 'slayer_gargoyle_1'
+coords = '2_53_55_51_28'
+
+[[spawn]]
+npc = 'slayer_gargoyle_1'
+coords = '2_53_55_53_21'
+
+[[spawn]]
+npc = 'slayer_gargoyle_1'
+coords = '2_53_55_54_15'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_1'
+coords = '1_53_55_41_36'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_1'
+coords = '1_53_55_42_43'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_1'
+coords = '1_53_55_54_55'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_2'
+coords = '1_53_55_47_55'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_2'
+coords = '1_53_55_48_44'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_2'
+coords = '1_53_55_54_49'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_2'
+coords = '1_53_55_56_53'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_3'
+coords = '1_53_55_46_35'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_3'
+coords = '1_53_55_51_40'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_3'
+coords = '1_53_55_51_52'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_4'
+coords = '1_53_55_42_50'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_4'
+coords = '1_53_55_43_39'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_4'
+coords = '1_53_55_47_49'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_5'
+coords = '1_53_55_42_55'
+
+[[spawn]]
+npc = 'slayer_infernal_mage_5'
+coords = '1_53_55_50_36'
+
+[[spawn]]
+npc = 'slayer_nechryael'
+coords = '2_53_55_41_50'
+
+[[spawn]]
+npc = 'slayer_nechryael'
+coords = '2_53_55_43_54'
+
+[[spawn]]
+npc = 'slayer_nechryael'
+coords = '2_53_55_45_46'
+
+[[spawn]]
+npc = 'slayer_nechryael'
+coords = '2_53_55_47_50'
+
+[[spawn]]
+npc = 'slayer_nechryael'
+coords = '2_53_55_49_54'
+
+[[spawn]]
+npc = 'slayer_nechryael'
+coords = '2_53_55_51_50'
+
+[[spawn]]
+npc = 'slayer_nechryael'
+coords = '2_53_55_52_46'
+
+[[spawn]]
+npc = 'slayer_nechryael'
+coords = '2_53_55_53_40'
+
+[[spawn]]
+npc = 'slayer_nechryael'
+coords = '2_53_55_54_54'
+
+[[spawn]]
+npc = 'slayer_nechryael'
+coords = '2_53_55_55_43'
+
+[[spawn]]
+npc = 'slayer_nechryael'
+coords = '2_53_55_57_52'
+
+[[spawn]]
+npc = 'slayer_nechryael_strongholdcave'
+coords = '3_53_155_11_48'
+
+[[spawn]]
+npc = 'slayer_nechryael_strongholdcave'
+coords = '3_53_155_14_41'
+
+[[spawn]]
+npc = 'slayer_nechryael_strongholdcave'
+coords = '3_53_155_14_51'
+
+[[spawn]]
+npc = 'slayer_nechryael_strongholdcave'
+coords = '3_53_155_15_37'
+
+[[spawn]]
+npc = 'slayer_nechryael_strongholdcave'
+coords = '3_53_155_19_41'
+
+[[spawn]]
+npc = 'slayer_nechryael_strongholdcave'
+coords = '3_53_155_20_49'
+
+[[spawn]]
+npc = 'slayer_nechryael_strongholdcave'
+coords = '3_53_155_21_45'
+
+[[spawn]]
+npc = 'slayer_nechryael_strongholdcave'
+coords = '3_53_155_22_34'
+
+[[spawn]]
+npc = 'slayer_nechryael_strongholdcave'
+coords = '3_53_155_25_39'
+
+[[spawn]]
+npc = 'slayer_nechryael_strongholdcave'
+coords = '3_53_155_25_50'
+
+[[spawn]]
+npc = 'slayer_nechryael_strongholdcave'
+coords = '3_53_155_32_40'
+
+[[spawn]]
+npc = 'slayer_nechryael_strongholdcave'
+coords = '3_53_155_32_49'
+
+[[spawn]]
+npc = 'slayer_tower_dungeon_ghost'
+coords = '3_53_155_32_33'
+
+[[spawn]]
+npc = 'small_bat'
+coords = '0_53_55_19_16'
+
+[[spawn]]
+npc = 'small_bat'
+coords = '0_53_55_33_5'
+
+[[spawn]]
+npc = 'small_bat'
+coords = '0_53_55_40_7'
+
+[[spawn]]
+npc = 'small_bat'
+coords = '0_53_55_53_6'
+
