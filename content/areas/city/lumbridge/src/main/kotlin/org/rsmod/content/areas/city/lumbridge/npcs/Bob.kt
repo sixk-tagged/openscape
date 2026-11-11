@@ -7,6 +7,7 @@ import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.script.advanced.onUnimplementedOpNpc4
 import org.rsmod.api.script.onOpNpc1
 import org.rsmod.api.script.onOpNpc3
+import org.rsmod.api.script.onOpNpcU
 import org.rsmod.api.shops.Shops
 import org.rsmod.content.areas.city.lumbridge.configs.lumbridge_invs
 import org.rsmod.content.areas.city.lumbridge.configs.lumbridge_npcs
@@ -20,6 +21,10 @@ class Bob @Inject constructor(private val shops: Shops) : PluginScript() {
         onOpNpc1(lumbridge_npcs.bob) { startDialogue(it.npc) }
         onOpNpc3(lumbridge_npcs.bob) { player.openShop(it.npc) }
         onUnimplementedOpNpc4(lumbridge_npcs.bob) { repairOp(it.npc) }
+        // Nothing here is repairable (no Barrows equipment yet).
+        onOpNpcU(lumbridge_npcs.bob) {
+            chatNpc(it.npc, mesanims.neutral, "Sorry friend, but I can't do anything with that.")
+        }
     }
 
     private fun Player.openShop(npc: Npc) {

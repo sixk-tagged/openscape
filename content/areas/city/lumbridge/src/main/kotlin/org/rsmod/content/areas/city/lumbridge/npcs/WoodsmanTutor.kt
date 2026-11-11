@@ -7,10 +7,16 @@ import org.rsmod.api.player.dialogue.Dialogue
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.baseWoodcuttingLvl
 import org.rsmod.api.script.advanced.onUnimplementedOpNpc1
+import org.rsmod.api.type.refs.obj.ObjReferences
 import org.rsmod.content.areas.city.lumbridge.configs.lumbridge_npcs
 import org.rsmod.game.entity.Npc
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
+
+object WoodsmanTutorObjs : ObjReferences() {
+    val cape = find("skillcape_woodcutting")
+    val hood = find("skillcape_woodcutting_hood")
+}
 
 class WoodsmanTutor : PluginScript() {
     override fun ScriptContext.startup() {
@@ -18,30 +24,65 @@ class WoodsmanTutor : PluginScript() {
     }
 
     private suspend fun ProtectedAccess.startDialogue(npc: Npc) {
-        startDialogue(npc) { woodsmanDialogue() }
-    }
-
-    private suspend fun Dialogue.woodsmanDialogue() {
-        when {
-            // Note: no 99 skillcape branch yet; 99s get the advanced menu instead of a crash.
-            player.baseWoodcuttingLvl >= 29 -> highLevelMenu()
-            player.baseWoodcuttingLvl in 20..28 -> intermediateLevelMenu()
-            else -> lowLevelMenu()
+        startDialogue(npc) {
+            if (player.baseWoodcuttingLvl >= 99) {
+                skillcapeOffer()
+            } else {
+                mainMenu()
+            }
         }
     }
 
-    private suspend fun Dialogue.lowLevelMenu() {
+    /** The options depend on the Woodcutting level, as the wiki lists them. */
+    private suspend fun Dialogue.mainMenu() {
+        val level = player.baseWoodcuttingLvl
+        val cape = "What is that cape you're wearing?"
+        val trees = "Tell me about different trees and axes."
         val choice =
-            choice2(
-                "Can you teach me the basics of Woodcutting and Firemaking, please?",
-                1,
-                "What is that cape you're wearing?",
-                2,
-            )
-        if (choice == 1) {
-            noviceBasics()
-        } else if (choice == 2) {
-            capeExplanationNonMastery()
+            when {
+                level <= 18 ->
+                    choice3(
+                        "Can you teach me the basics of Woodcutting and Firemaking, please?",
+                        BASICS,
+                        cape,
+                        CAPE,
+                        "Goodbye",
+                        GOODBYE,
+                    )
+                level == 19 -> choice3(trees, TREES, cape, CAPE, "Goodbye", GOODBYE)
+                level <= 28 ->
+                    choice4(
+                        "I already know a bit about Woodcutting and Firemaking, any tips?",
+                        TIPS,
+                        trees,
+                        TREES,
+                        cape,
+                        CAPE,
+                        "Goodbye",
+                        GOODBYE,
+                    )
+                else ->
+                    choice4(
+                        "Any advice for an advanced woodcutter?",
+                        ADVANCED,
+                        trees,
+                        TREES,
+                        cape,
+                        CAPE,
+                        "Goodbye",
+                        GOODBYE,
+                    )
+            }
+        when (choice) {
+            BASICS -> noviceBasics()
+            TIPS -> intermediateAdvice()
+            ADVANCED -> advancedAdvice()
+            TREES -> {
+                chatPlayer(quiz, trees)
+                treeAndAxeMenu()
+            }
+            CAPE -> capeExplanation()
+            GOODBYE -> chatPlayer(neutral, "Goodbye.")
         }
     }
 
@@ -87,28 +128,9 @@ class WoodsmanTutor : PluginScript() {
         }
     }
 
-    private suspend fun Dialogue.intermediateLevelMenu() {
-        val choice =
-            choice4(
-                "I already know a bit about Woodcutting and Firemaking, any tips?",
-                1,
-                "Tell me about different trees and axes.",
-                2,
-                "What is that cape you're wearing?",
-                3,
-                "Goodbye.",
-                4,
-            )
-        when (choice) {
-            1 -> intermediateAdvice()
-            2 -> treeAndAxeInquiry()
-            3 -> capeExplanationNonMastery()
-            4 -> goodbye()
-        }
-    }
-
     private suspend fun Dialogue.intermediateAdvice() {
         chatPlayer(quiz, "I already know about the basics of woodcutting, got any tips?")
+        giveAxeIfRequired()
         chatNpc(
             happy,
             "Choose carefully where and what you chop, you can get " +
@@ -126,26 +148,13 @@ class WoodsmanTutor : PluginScript() {
                 "chopping trees, they can really do some damage if " +
                 "you're not paying attention...",
         )
-    }
-
-    private suspend fun Dialogue.highLevelMenu() {
-        val choice =
-            choice4(
-                "Any advice for an advanced woodcutter?",
-                1,
-                "Tell me about different trees and axes.",
-                2,
-                "What is that cape you're wearing?",
-                3,
-                "Goodbye.",
-                4,
-            )
-        when (choice) {
-            1 -> advancedAdvice()
-            2 -> treeAndAxeInquiry()
-            3 -> capeExplanationNonMastery()
-            4 -> goodbye()
-        }
+        chatNpc(happy, "Don't forget you can always use logs for fletching experience too.")
+        chatNpc(
+            happy,
+            "Yes, you'll need lots of logs if you want to be a good fletcher. Talk to the " +
+                "ranging tutor for more information.",
+        )
+        mainMenu()
     }
 
     private suspend fun Dialogue.advancedAdvice() {
@@ -157,38 +166,50 @@ class WoodsmanTutor : PluginScript() {
                 "chop trees such as Maple and Yew! These are very " +
                 "good for firemaking.",
         )
+        chatNpc(happy, "Of course, they're also very useful for fletching.")
         chatNpc(
             happy,
-            "Also, look out for birds' nests, you never know what our " +
-                "feathered friends have been collecting. Clue scrolls " +
-                "maybe?",
+            "Also, look out for birds' nests, you never know what our feathered friends have " +
+                "been collecting. Jewellery and Clue scrolls maybe?",
         )
-        highLevelMenu()
-    }
-
-    private suspend fun Dialogue.treeAndAxeInquiry() {
-        chatPlayer(quiz, "Tell me about different trees and axes.")
-        treeAndAxeMenu()
+        mainMenu()
     }
 
     private suspend fun Dialogue.treeAndAxeMenu() {
         val choice =
-            choice4(
-                "Oak and Willow",
-                1,
-                "Maple and Yew",
-                2,
-                "Axes",
-                3,
-                "Go back to teaching",
-                4,
-                title = "Trees",
-            )
+            if (player.baseWoodcuttingLvl >= 29) {
+                choice5(
+                    "Oak and Willow",
+                    1,
+                    "Maple and Yew",
+                    2,
+                    "Magic and other trees",
+                    3,
+                    "Axes",
+                    4,
+                    "Go back to teaching",
+                    5,
+                    title = "Trees",
+                )
+            } else {
+                choice4(
+                    "Oak and Willow",
+                    1,
+                    "Maple and Yew",
+                    2,
+                    "Axes",
+                    4,
+                    "Go back to teaching",
+                    5,
+                    title = "Trees",
+                )
+            }
         when (choice) {
             1 -> oakAndWillowExplanation()
             2 -> mapleAndYewExplanation()
-            3 -> axesExplanation()
-            4 -> highLevelMenu()
+            3 -> magicAndOtherTrees()
+            4 -> axesExplanation()
+            5 -> mainMenu()
         }
     }
 
@@ -228,6 +249,21 @@ class WoodsmanTutor : PluginScript() {
         treeAndAxeMenu()
     }
 
+    private suspend fun Dialogue.magicAndOtherTrees() {
+        objbox(
+            objs.magic_logs,
+            "Magic trees are... magic. A difficult wood to work with, but worth it for the " +
+                "rewards. Find them in the areas south of Seers village or on the East side of " +
+                "the Mage Arena.",
+        )
+        chatNpc(
+            neutral,
+            "Hollow trees can be found in the Haunted Woods east of Canifis, but be careful of " +
+                "the leeches.",
+        )
+        treeAndAxeMenu()
+    }
+
     private suspend fun Dialogue.axesExplanation() {
         objbox(
             objs.bronze_axe,
@@ -258,13 +294,57 @@ class WoodsmanTutor : PluginScript() {
         treeAndAxeMenu()
     }
 
-    private suspend fun Dialogue.goodbye() {
-        chatPlayer(neutral, "Goodbye.")
+    // Note: the trimmed cape for a second 99 is skipped, as in the other cape sellers.
+    private suspend fun Dialogue.skillcapeOffer() {
+        chatNpc(
+            happy,
+            "Wow! It's not often I meet somebody as accomplished as you in Woodcutting! Perhaps " +
+                "you should become the tutor, instead of me! Seeing as you're so skilled, maybe " +
+                "you are interested in buying a Skillcape of",
+        )
+        chatNpc(happy, "Woodcutting?")
+        if (!choice2("No, thanks.", false, "Yes, please", true)) {
+            chatPlayer(neutral, "No, thanks.")
+            chatNpc(neutral, "Ok, come back to me if you change your mind.")
+            return
+        }
+        chatPlayer(happy, "Yes, please.")
+        if (!player.members) {
+            chatNpc(neutral, "I can't sell you one here. Try talking to me later.")
+            return
+        }
+        chatNpc(
+            happy,
+            "Anybody who has spent as much time cutting trees as you deserves the right to own " +
+                "one. Wearing this cape will increase your chance of finding bird's nests. " +
+                "That'll be 99000 coins, please.",
+        )
+        if (!choice2("99000! That's too rich for me.", false, "No problem.", true)) {
+            chatPlayer(shocked, "99000! That's too rich for me.")
+            chatNpc(
+                neutral,
+                "Well go chop down a few mahogany trees and sell the timber; then you'll be " +
+                    "able to afford one.",
+            )
+            return
+        }
+        chatPlayer(happy, "No problem.")
+        if (player.inv.freeSpace() < 2) {
+            // UNVERIFIED: the wiki has no full-inventory branch; same line as the other sellers.
+            chatNpc(neutral, "You'll need two free inventory spaces to carry the cape and hood.")
+            return
+        }
+        if (!access.invTakeFee(CAPE_PRICE)) {
+            chatPlayer(sad, "But, unfortunately, I don't have enough money with me.")
+            chatNpc(neutral, "Well come back and see me when you do.")
+            return
+        }
+        player.invAdd(player.inv, WoodsmanTutorObjs.cape)
+        player.invAdd(player.inv, WoodsmanTutorObjs.hood)
+        chatNpc(happy, "Excellent! Wear that cape with pride my friend.")
     }
 
     private suspend fun Dialogue.giveAxeIfRequired() {
-        // NOTE: Once woodcutting axes are defined to the appropriate objs, we can remove the
-        // specific bronze axe condition. Or we can keep it; doesn't make a difference.
         if (objs.bronze_axe in player.inv || content.woodcutting_axe in player.inv) {
             return
         }
@@ -298,7 +378,7 @@ class WoodsmanTutor : PluginScript() {
         }
     }
 
-    private suspend fun Dialogue.capeExplanationNonMastery() {
+    private suspend fun Dialogue.capeExplanation() {
         chatPlayer(happy, "What is that cape you're wearing?")
         chatNpc(
             neutral,
@@ -307,5 +387,15 @@ class WoodsmanTutor : PluginScript() {
                 "person who has achieved the highest possible level in a " +
                 "skill can wear one.",
         )
+    }
+
+    private companion object {
+        const val BASICS = 1
+        const val TIPS = 2
+        const val ADVANCED = 3
+        const val TREES = 4
+        const val CAPE = 5
+        const val GOODBYE = 6
+        const val CAPE_PRICE = 99_000
     }
 }

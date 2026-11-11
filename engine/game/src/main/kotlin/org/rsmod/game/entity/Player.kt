@@ -213,6 +213,8 @@ public class Player(
     public lateinit var worn: Inventory
 
     public var lastLogin: LocalDateTime = LocalDateTime.now()
+    /** When the character was made (Hans counts "days since you arrived" from this). */
+    public var createdAt: LocalDateTime = LocalDateTime.now()
 
     /*
      * There are various ways a player can be removed from the game:

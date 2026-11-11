@@ -173,7 +173,7 @@ private suspend fun Dialogue.questsToDo() {
             ::dangerousQuests,
             "Something easy please, I'm new here.",
             ::easyQuests,
-            "I'm a thinker rather than fighter; anything skill oriented?",
+            "I'm a thinker rather than fighter, anything skill oriented?",
             ::thinkingQuests,
             "I want to do all kinds of things, do you know anything like that?",
             ::allQuests,
@@ -517,7 +517,7 @@ private suspend fun Dialogue.pirateTreasureQuest() {
     chatNpc(
         happy,
         "RedBeard Frank in Port Sarim's bar, the Rusty " +
-            "Anchor, might be able to tell you about the rumoured " +
+            "Anchor, might be able to tell you about the rumored " +
             "treasure that is buried somewhere in Gielinor.",
     )
     // Note: dialogue should be different when the quest has been started but not completed.
@@ -566,7 +566,7 @@ private suspend fun Dialogue.maybeAnotherTime() {
 private suspend fun Dialogue.untiedShoeLace() {
     chatPlayer(laugh, "Your shoe lace is untied.")
     chatNpc(angry, "No, it's not!")
-    chatPlayer(laugh, "No, you're right. I have nothing to back that up.")
+    chatPlayer(laugh, "No you're right. I have nothing to back that up.")
     chatNpc(angry, "Fool! Leave me alone!")
 }
 

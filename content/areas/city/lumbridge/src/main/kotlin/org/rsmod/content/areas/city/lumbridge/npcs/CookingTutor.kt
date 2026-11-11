@@ -16,6 +16,17 @@ object CookingTutorNpcs : NpcReferences() {
 
 object CookingTutorObjs : ObjReferences() {
     val range_icon = find("range_icon_dummy")
+    val raw_beef = find("raw_beef")
+    val cooked_meat = find("cooked_meat")
+    val dragon_bitter = find("dragon_bitter")
+    val tuna_potato = find("potato_tuna+sweetcorn")
+    val bucket_water = find("bucket_water")
+    val pot_flour = find("pot_flour")
+    val piedish = find("piedish")
+    val pastry_dough = find("pastry_dough")
+    val tomato = find("tomato")
+    val cheese = find("cheese")
+    val pat_of_butter = find("pot_of_butter")
 }
 
 class CookingTutor : PluginScript() {
@@ -117,8 +128,172 @@ class CookingTutor : PluginScript() {
             "Many things! You can cook anything from fish to poultry. You could try your hand " +
                 "at making baked potatoes or even brew some of the good stuff.",
         )
-        // Note: the fish/brewing/vegetables/pies submenu is skipped.
-        chatNpc(happy, "Is there anything else you want to know?")
-        mainMenu()
+        chatNpc(happy, "What would you like to hear about?")
+        foodMenu()
+    }
+
+    /** The members-world lines differ from the free-world ones in places. */
+    private suspend fun Dialogue.foodMenu() {
+        val choice =
+            choice4(
+                "Tell me about Fish and Meat.",
+                1,
+                "Tell me about Brewing.",
+                2,
+                "Tell me about Vegetables.",
+                3,
+                "Tell me about Pies and Pizzas.",
+                4,
+            )
+        when (choice) {
+            1 -> fishAndMeat()
+            2 -> brewing()
+            3 -> vegetables()
+            4 -> piesAndPizzas()
+        }
+        chatNpc(happy, "Would you like to hear about anything else I mentioned?")
+        foodMenu()
+    }
+
+    private suspend fun Dialogue.fishAndMeat() {
+        chatPlayer(quiz, "Tell me about Fish and Meat.")
+        doubleobjbox(
+            CookingTutorObjs.raw_beef,
+            CookingTutorObjs.cooked_meat,
+            "Fish and meat of most varieties can be cooked very simply on either a fire or " +
+                "range, experiment which one works for you.",
+        )
+        chatNpc(
+            happy,
+            "You might find that when killing monsters, they drop some raw meat for you to cook.",
+        )
+        if (player.members) {
+            chatNpc(
+                happy,
+                "Some foods have hidden properties. Anglerfish can provide you with an overheal " +
+                    "effect where you have a few more hitpoints than your level. The higher your " +
+                    "hitpoints the better the boost.",
+            )
+        } else {
+            chatNpc(
+                happy,
+                "Some of them might have hidden properties. Such as anglerfish, but you will find " +
+                    "it hard getting hold of any of them at this time.",
+            )
+        }
+        chatNpc(
+            happy,
+            "Most of the time, cooking meat and fish requires nothing else but a range or fire. " +
+                "More complicated dishes might require specialized equipment.",
+        )
+    }
+
+    private suspend fun Dialogue.brewing() {
+        chatPlayer(quiz, "Tell me about Brewing.")
+        doubleobjbox(
+            CookingTutorObjs.dragon_bitter,
+            objs.beer,
+            "You can brew your own beers using the fermenting vats in either Keldagrim or Port " +
+                "Phasmatys.",
+        )
+        if (player.members) {
+            chatNpc(
+                happy,
+                "Use two buckets of water, two handfuls of barley malt, 4 hops of your choice and " +
+                    "a pot of ale yeast, then leave to ferment for a few days!",
+            )
+            chatNpc(
+                happy,
+                "Simply turn the tap and let the ale flow into the barrel next to the vat, then " +
+                    "use empty beer glasses on the barrel.",
+            )
+        } else {
+            chatNpc(
+                happy,
+                "You might find it hard getting to these places but you can always buy beer at " +
+                    "any pub. Some pubs sell unique beers too.",
+            )
+        }
+    }
+
+    private suspend fun Dialogue.vegetables() {
+        chatPlayer(quiz, "Tell me about Vegetables.")
+        if (!player.members) {
+            objbox(
+                CookingTutorObjs.tuna_potato,
+                "Baked potatoes are a more advanced food and are healthy too!",
+            )
+            chatNpc(
+                happy,
+                "They require many different ingredients to make, such as butter and vegetables, " +
+                    "but you will find it hard to acquire the ingredients needed.",
+            )
+            return
+        }
+        doubleobjbox(
+            objs.potato,
+            CookingTutorObjs.tuna_potato,
+            "Baked potatoes are excellent foods and they are healthy too!",
+        )
+        chatNpc(
+            happy,
+            "You'll need to churn some butter and cheese. Look for the churn icon on the " +
+                "minimap. There is a churn in the farm building northwest of Lumbridge.",
+        )
+        doubleobjbox(
+            CookingTutorObjs.pat_of_butter,
+            CookingTutorObjs.cheese,
+            "The nearest dairy cow is north of the nearby water mill. Take buckets of milk with " +
+                "you to the churn and use the milk on the churn to make butter or cheese.",
+        )
+        // "bowel" is the game's own typo.
+        chatNpc(
+            happy,
+            "Now you will need to pick your topping if you want one. Get yourself a bowel and " +
+                "create the perfect topping. Then put the topping onto the potato.",
+        )
+    }
+
+    private suspend fun Dialogue.piesAndPizzas() {
+        chatPlayer(quiz, "Tell me about Pies and Pizzas.")
+        doubleobjbox(
+            CookingTutorObjs.bucket_water,
+            CookingTutorObjs.pot_flour,
+            "Use a pot of flour with a bucket of water. You will then need to make some pastry " +
+                "dough.",
+        )
+        doubleobjbox(
+            CookingTutorObjs.piedish,
+            CookingTutorObjs.pastry_dough,
+            "Use the pastry dough with a pie dish to get a pie shell, then add your choice of " +
+                "filling such as apples or red berries.",
+        )
+        chatNpc(
+            happy,
+            "Finally cook your pie by using the unbaked pie on a cooking range. Mmmm...pie.",
+        )
+        if (player.members) {
+            chatNpc(
+                happy,
+                "Some pies might even be able to boost some of your skills, be it temporarily.",
+            )
+        }
+        chatNpc(
+            happy,
+            "Next, we have pizza. You will first need to make yourself a pizza base, use a pot of " +
+                "flour with a bucket of water and make a pizza base.",
+        )
+        doubleobjbox(
+            CookingTutorObjs.tomato,
+            CookingTutorObjs.cheese,
+            "Now you will need to get yourself a tomato and some cheese. Use the tomato on the " +
+                "pizza base and then use the cheese. Cook the uncooked pizza base and there you " +
+                "have yourself a plain pizza.",
+        )
+        chatNpc(
+            happy,
+            "If you want to, you could add yourself a topping to the pizza too. Why not try some " +
+                "anchovies?",
+        )
     }
 }

@@ -1,8 +1,10 @@
 package org.rsmod.content.areas.city.lumbridge.npcs
 
+import org.rsmod.api.config.constants
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.invtx.invAdd
 import org.rsmod.api.player.dialogue.Dialogue
+import org.rsmod.api.player.output.ClientScripts.toplevelSidebuttonSwitch
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.baseMagicLvl
 import org.rsmod.api.player.stat.baseRunecraftingLvl
@@ -52,11 +54,12 @@ class MagicTutor : PluginScript() {
         }
     }
 
-    // Note: no spellbook tab switch, no Adventure paths line, and the quest-gated Mage Arena
-    // and Desert Treasure lines are skipped.
+    // Note: no Adventure paths line. Quests aren't tracked, so the Mage Arena and Desert
+    // Treasure tips always show, as they do before those quests.
     private suspend fun Dialogue.magicCombat() {
         chatPlayer(quiz, "Tell me about magic combat please.")
         if (player.baseMagicLvl < 42) {
+            toplevelSidebuttonSwitch(player, constants.toplevel_magic)
             chatNpc(
                 neutral,
                 "This is your spell book, this contains all the spells you can cast. To cast a " +
@@ -109,14 +112,29 @@ class MagicTutor : PluginScript() {
                 "Superheat Item and the Alchemy spells are good ways to level magic if you are " +
                     "not interested in the combat aspect of magic.",
             )
-            if (player.members) {
-                chatNpc(
-                    neutral,
-                    "There's always the Magic Training Arena. You can find it north of the " +
-                        "Emir's Arena, north-east of Al Kharid. You will be able to earn some " +
-                        "special rewards there by practicing your magic there.",
-                )
-            }
+            chatNpc(
+                neutral,
+                "There's always the Magic Training Arena. You can find it north of the " +
+                    "Emir's Arena, north-east of Al Kharid. You will be able to earn some " +
+                    "special rewards there by practicing your magic there.",
+            )
+            chatNpc(
+                neutral,
+                "If you want a challenge, Kolodion, the master of battle magic, has set up an " +
+                    "arena deep in the Wilderness. There you will have the chance to learn some " +
+                    "extremely powerful spells.",
+            )
+            chatNpc(
+                neutral,
+                "You should investigate the treasure in the desert, you may find great benefit " +
+                    "to your magic.",
+            )
+            chatNpc(
+                neutral,
+                "Speak to the Archaeologist in the Bedabin Camp, south- west of the Shantay " +
+                    "Pass. But be careful, this quest is not for the faint of heart and can be " +
+                    "very dangerous.",
+            )
         }
         chatNpc(happy, "Is there anything else you would like to know?")
         mainMenu()

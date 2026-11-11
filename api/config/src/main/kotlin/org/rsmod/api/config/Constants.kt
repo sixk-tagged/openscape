@@ -49,8 +49,12 @@ object Constants {
     const val modal_fixedwidthandheight: Int = 0
     const val modal_infinitewidthandheight: Int = 1
 
+    const val toplevel_combat: Int = 0
+    const val toplevel_skills: Int = 1
     const val toplevel_details: Int = 2
+    const val toplevel_worn: Int = 4
     const val toplevel_prayer: Int = 5
+    const val toplevel_magic: Int = 6
 
     const val setting_lit_maxhit_min_threshold = 10
 

@@ -131,8 +131,188 @@ class CraftingTutor : PluginScript() {
             "All kinds of things, really! You can make armour from leather, make some pottery, " +
                 "try your hand at glass blowing, make some jewellery, weapons even...",
         )
-        // Note: the armour/pottery/glass/jewellery/weapons submenu is skipped.
-        chatNpc(happy, "Is there anything else you want to know?")
-        mainMenu()
+        chatNpc(happy, "What would you like to hear about?")
+        topicMenu(lastAsked = null)
+    }
+
+    /**
+     * OSRS menus hold five options: once a topic is heard, it gives way to "Not right now." (the
+     * wiki only says that option appears after asking).
+     */
+    private suspend fun Dialogue.topicMenu(lastAsked: Int?) {
+        val options = TOPICS.indices.filter { it != lastAsked }.map { TOPICS[it] to it }
+        val shown = if (lastAsked == null) options else options + ("Not right now." to NOT_NOW)
+        val choice =
+            when (shown.size) {
+                5 ->
+                    choice5(
+                        shown[0].first,
+                        shown[0].second,
+                        shown[1].first,
+                        shown[1].second,
+                        shown[2].first,
+                        shown[2].second,
+                        shown[3].first,
+                        shown[3].second,
+                        shown[4].first,
+                        shown[4].second,
+                    )
+                else -> error("Unexpected menu size: ${shown.size}")
+            }
+        if (choice == NOT_NOW) {
+            chatPlayer(neutral, "Not right now.")
+            chatNpc(happy, "Is there anything else you want to know?")
+            if (choice2("How can I train my crafting?", true, "No, thank you.", false)) {
+                training()
+            } else {
+                chatPlayer(neutral, "No, thank you.")
+                chatNpc(happy, "Well, just come back any time you want to know anything!")
+            }
+            return
+        }
+        chatPlayer(quiz, TOPICS[choice])
+        when (choice) {
+            0 -> armour()
+            1 -> pottery()
+            2 -> glassBlowing()
+            3 -> jewellery()
+            4 -> weapons()
+        }
+        chatNpc(happy, "Would you like to hear about anything else I mentioned?")
+        topicMenu(lastAsked = choice)
+    }
+
+    private suspend fun Dialogue.armour() {
+        chatNpc(
+            happy,
+            "Sure thing! Most armour you can craft just involves taking a needle and some thread " +
+                "to whatever material you can get your hands on.",
+        )
+        chatNpc(
+            happy,
+            "You might like to try with different kinds of animal hide, from cows, yaks, snakes, " +
+                "dragons... Or any other sort of fabric you can find!",
+        )
+        chatNpc(
+            happy,
+            "Some crafty types have started making some leather- covered wooden shields " +
+                "recently, too!",
+        )
+        chatNpc(
+            happy,
+            "You might find some creatures make for a pretty sturdy helmet, too. The best way to " +
+                "make something like that's just to take a good old chisel to it!",
+        )
+        chatPlayer(happy, "That sounds great.")
+    }
+
+    private suspend fun Dialogue.pottery() {
+        chatNpc(
+            happy,
+            "Of course! Pottery's all kind of the same, it just takes a lot of getting used to.",
+        )
+        chatNpc(
+            happy,
+            "All that there really is to it is getting your hands on some clay, getting it wet " +
+                "and getting to work on a potter's wheel.",
+        )
+        chatNpc(
+            happy,
+            "Once you've got the shape you want out of it, you want to put it in a pottery oven " +
+                "to fire it up.",
+        )
+        chatNpc(
+            happy,
+            "The barbarians west of Varrock seem to be pretty keen on their pottery. I'd take a " +
+                "look around there, if you wanted to try it out!",
+        )
+        chatNpc(
+            happy,
+            "Once you get the hang of it, you can make pots, pie dishes, bowls... You know.",
+        )
+        chatPlayer(happy, "Neat!")
+    }
+
+    private suspend fun Dialogue.glassBlowing() {
+        chatNpc(
+            happy,
+            "Glass blowing? Well, to get started you'll need to get yourself some molten glass. " +
+                "You can make some for yourself by heating sand and soda ash in a furnace.",
+        )
+        chatNpc(
+            happy,
+            "Once you've got a hold of that, you'll want a glass blowing pipe to blow it out in " +
+                "to shape, before it cools down.",
+        )
+        chatNpc(
+            happy,
+            "It's not the easiest thing to get to grips with, but it shouldn't be too difficult!",
+        )
+        chatPlayer(happy, "Nifty.")
+    }
+
+    private suspend fun Dialogue.jewellery() {
+        chatNpc(
+            happy,
+            "Sure. All it boils down to is a bar of gold or silver, some kind of cut gem if " +
+                "you're feeling fancy, and a mould to help shape the thing.",
+        )
+        chatNpc(
+            happy,
+            "You can use a chisel to make a gem really shine and sparkle. You wouldn't want to " +
+                "use an uncut one for any jewellery.",
+        )
+        chatNpc(
+            happy,
+            "Once you've got all of your materials together, you'll want to use a furnace to " +
+                "actually craft whatever it is you're trying to make!",
+        )
+        chatNpc(
+            happy,
+            "Wizards seem to like enchanting their jewellery to do all kinds of things, too, but " +
+                "I don't know a lot about that.",
+        )
+        chatPlayer(happy, "Sounds good!")
+    }
+
+    private suspend fun Dialogue.weapons() {
+        chatNpc(
+            happy,
+            "Well, there aren't too many weapons that people tend to craft, but there are a " +
+                "couple worth noting!",
+        )
+        chatNpc(
+            happy,
+            "Battlestaves are probably the most common. It boils down to fastening an orb of " +
+                "some kind onto the end of a battlestaff.",
+        )
+        chatNpc(
+            happy,
+            "You do need to get the orb in the first place, though... You can make one through " +
+                "glass blowing, but it's not much use without being charged.",
+        )
+        chatNpc(
+            happy,
+            "I can't help much with crafting it, though! There's a little more magic involved " +
+                "there than I'm familiar with.",
+        )
+        chatNpc(
+            happy,
+            "Aside from battlestaves, there are a couple of weapons that people like to make " +
+                "from silver... Sickles and bolts, usually.",
+        )
+        chatPlayer(happy, "Interesting...")
+    }
+
+    private companion object {
+        val TOPICS =
+            listOf(
+                "Tell me about crafting armour.",
+                "Tell me about pottery.",
+                "Tell me about glass blowing.",
+                "Tell me about making jewellery.",
+                "Tell me about crafting weapons.",
+            )
+        const val NOT_NOW = -1
     }
 }

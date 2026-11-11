@@ -4,6 +4,7 @@ import org.rsmod.api.config.constants
 import org.rsmod.api.player.dialogue.Dialogue
 import org.rsmod.api.player.output.ClientScripts.toplevelSidebuttonSwitch
 import org.rsmod.api.player.protect.ProtectedAccess
+import org.rsmod.api.player.stat.basePrayerLvl
 import org.rsmod.api.script.onOpNpc1
 import org.rsmod.content.areas.city.lumbridge.configs.lumbridge_npcs
 import org.rsmod.game.entity.Npc
@@ -41,6 +42,10 @@ class PrayerTutor : PluginScript() {
 
     private suspend fun Dialogue.prayerTraining() {
         chatPlayer(quiz, "How can I train my prayer?")
+        if (player.basePrayerLvl >= 99) {
+            chatNpc(happy, "I think you should be teaching me a thing or two, shouldn't you?")
+            chatNpc(neutral, "Well, if you really want my advice...")
+        }
         chatNpc(
             happy,
             "The most common way to train prayer is by either " +
@@ -61,12 +66,7 @@ class PrayerTutor : PluginScript() {
                 "are for it.",
         )
         chatNpc(happy, "Is there anything else you would like to know?")
-        val choice = choice2("What is prayer useful for?", 1, "No, thank you.", 2)
-        if (choice == 1) {
-            prayerUsefulness()
-        } else if (choice == 2) {
-            noThanks()
-        }
+        mainMenu()
     }
 
     private suspend fun Dialogue.prayerUsefulness() {
@@ -95,12 +95,7 @@ class PrayerTutor : PluginScript() {
                 "nearby.",
         )
         chatNpc(happy, "Is there anything else you would like to know?")
-        val choice = choice2("How can I train my prayer?", 1, "No, thank you.", 2)
-        if (choice == 1) {
-            prayerTraining()
-        } else if (choice == 2) {
-            noThanks()
-        }
+        mainMenu()
     }
 
     private suspend fun Dialogue.noThanks() {

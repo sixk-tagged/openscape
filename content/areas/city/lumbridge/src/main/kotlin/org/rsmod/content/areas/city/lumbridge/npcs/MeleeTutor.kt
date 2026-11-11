@@ -1,8 +1,10 @@
 package org.rsmod.content.areas.city.lumbridge.npcs
 
+import org.rsmod.api.config.constants
 import org.rsmod.api.invtx.invAdd
 import org.rsmod.api.invtx.invDel
 import org.rsmod.api.player.dialogue.Dialogue
+import org.rsmod.api.player.output.ClientScripts.toplevelSidebuttonSwitch
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.script.onOpNpc1
 import org.rsmod.api.script.onOpNpcU
@@ -70,8 +72,8 @@ class MeleeTutor : PluginScript() {
         }
     }
 
-    // Note: no worn/combat tab switches, no Adventure paths line, and no "something a bit
-    // more... human" PvP follow-up (it needs a sixth option).
+    // Note: no Adventure paths line, and no "something a bit more... human" PvP follow-up (it
+    // needs a sixth option). Where the tabs switch is a guess: there is no wiki transcript.
     private suspend fun Dialogue.meleeCombat() {
         chatPlayer(quiz, "Tell me about melee combat.")
         chatNpc(
@@ -79,12 +81,14 @@ class MeleeTutor : PluginScript() {
             "Well adventurer, the first thing you will need is a sword and a shield " +
                 "appropriate for your level.",
         )
+        toplevelSidebuttonSwitch(player, constants.toplevel_worn)
         chatNpc(
             neutral,
             "Make sure to equip your sword and shield. Click on them in your inventory, " +
                 "they will disappear from your inventory and move to your worn items. You can " +
                 "see your worn items in the worn items tab here.",
         )
+        toplevelSidebuttonSwitch(player, constants.toplevel_combat)
         chatNpc(
             neutral,
             "When you are wielding your sword you will then be able to see the correct " +

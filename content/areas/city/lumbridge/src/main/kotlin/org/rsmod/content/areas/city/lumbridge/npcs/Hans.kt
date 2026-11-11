@@ -1,5 +1,8 @@
 package org.rsmod.content.areas.city.lumbridge.npcs
 
+import java.time.Duration
+import java.time.LocalDateTime
+import org.rsmod.api.config.refs.varps
 import org.rsmod.api.player.dialogue.Dialogue
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.script.onOpNpc1
@@ -46,12 +49,7 @@ class Hans : PluginScript() {
             }
             3 -> {
                 chatPlayer(confused, "I don't know. I'm lost. Where am I?")
-                chatNpc(
-                    neutral,
-                    "You are in Lumbridge Castle, in the Kingdom of " +
-                        "Misthalin. Across the river, the road leads north to " +
-                        "Varrock, and to the west lies Draynor Village.",
-                )
+                chatNpc(neutral, "You are in Lumbridge Castle.")
             }
             4 -> {
                 chatPlayer(quiz, "Can you tell me how long I've been here?")
@@ -72,11 +70,13 @@ class Hans : PluginScript() {
         startDialogue(npc) { playtimeDialogue() }
 
     private suspend fun Dialogue.playtimeDialogue() {
-        // TODO(content): playtime
+        // `playtime` counts game ticks (0.6 s): 100 ticks a minute.
+        val minutes = player.vars[varps.playtime] / 100
+        val arrived = Duration.between(player.createdAt, LocalDateTime.now()).toDays()
         chatNpc(
             happy,
-            "You've spent 0 days, 0 hours, 0 minutes in the " +
-                "world since you arrived 0 days ago.",
+            "You've spent ${minutes / 1440} days, ${minutes / 60 % 24} hours, ${minutes % 60} " +
+                "minutes in the world since you arrived $arrived days ago.",
         )
     }
 }

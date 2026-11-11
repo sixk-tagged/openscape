@@ -41,12 +41,11 @@ class HatiusCosaintus : PluginScript() {
         chatPlayer(quiz, "What is the Achievement Diary?")
         chatNpc(
             neutral,
-            "It's a diary that helps you keep track of particular " +
-                "achievements. In the Lumbridge and Draynor area it " +
-                "can help you discover some quite useful things. " +
-                "Eventually, with enough exploration, the inhabitants will " +
-                "reward you",
+            "It's a diary that helps you keep track of particular achievements. In the " +
+                "Lumbridge and Draynor area it can help you discover some quite useful things. " +
+                "Eventually, with enough exploration, the inhabitants will",
         )
+        chatNpc(neutral, "reward you.")
         // TODO(content): Open achievement diary overlay
         toplevelSidebuttonSwitch(player, constants.toplevel_details)
         chatNpc(neutral, "You can see the list of tasks on the side-panel.")
@@ -78,12 +77,11 @@ class HatiusCosaintus : PluginScript() {
         chatPlayer(quiz, "What is the Achievement Diary?")
         chatNpc(
             neutral,
-            "It's a diary that helps you keep track of particular " +
-                "achievements. In the Lumbridge and Draynor area it " +
-                "can help you discover some quite useful things. " +
-                "Eventually, with enough exploration, the inhabitants will " +
-                "reward you.",
+            "It's a diary that helps you keep track of particular achievements. In the " +
+                "Lumbridge and Draynor area it can help you discover some quite useful things. " +
+                "Eventually, with enough exploration, the inhabitants will",
         )
+        chatNpc(neutral, "reward you.")
         // TODO(content): Open achievement diary overlay
         toplevelSidebuttonSwitch(player, constants.toplevel_details)
         chatNpc(neutral, "You can see the list of tasks on the side-panel.")
@@ -93,12 +91,11 @@ class HatiusCosaintus : PluginScript() {
     private suspend fun Dialogue.rewardExplanation() {
         chatNpc(
             happy,
-            "Well, there are four different Explorer's rings, which " +
-                "match up with the four levels of difficulty. Each has the " +
-                "same rewards as the previous level and some additional " +
-                "benefits too... which tier of rewards would you like to " +
-                "know more about?",
+            "Well, there are four different Explorer's rings, which match up with the four " +
+                "levels of difficulty. Each has the same rewards as the previous level and some " +
+                "additional benefits too... which tier of rewards would you like to",
         )
+        chatNpc(happy, "know more about?")
         val choice =
             choice4(
                 "Easy Rewards.",
@@ -136,7 +133,8 @@ class HatiusCosaintus : PluginScript() {
             happy,
             "In addition to the easy rewards, your ring can restore " +
                 "half of your run energy and teleport you to the " +
-                "Draynor cabbage patch three times per day.",
+                "Draynor cabbage patch three times per day, there's also a new shortcut " +
+                "available under the Draynor village wall.",
         )
         chatPlayer(happy, "Thanks!")
     }
@@ -148,8 +146,9 @@ class HatiusCosaintus : PluginScript() {
             "In addition to the easy and medium benefits, the ring " +
                 "will have unlimited cabbage teleports and four charges to " +
                 "restore half your run energy. Collecting Tears of " +
-                "Guthix will provide increased experience.",
+                "Guthix will provide increased experience and a shortcut",
         )
+        chatNpc(happy, "from Lumbridge swamp to the Desert becomes available.")
         chatPlayer(happy, "Thanks!")
     }
 
@@ -160,11 +159,12 @@ class HatiusCosaintus : PluginScript() {
             "In addition to the previous tiers of rewards, you can " +
                 "block an additional slayer target with slayer masters, " +
                 "recharge all of your run energy three times per day " +
-                "and cast high level alchemy thirty times per day. The " +
-                "Culinaromancer's chest is 20% cheaper, you can use " +
-                "Fairy rings without needing a dramen or lunar staff " +
-                "and you'll receive double wire when thieving in " +
-                "Dorgesh-Kaan.",
+                "and cast high level alchemy thirty times per day. The",
+        )
+        chatNpc(
+            happy,
+            "Culinaromancer's chest is 20% cheaper and you can use Fairy rings without " +
+                "needing a dramen or lunar staff.",
         )
         chatPlayer(happy, "Thanks!")
     }

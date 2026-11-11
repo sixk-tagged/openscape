@@ -1,7 +1,9 @@
 package org.rsmod.content.areas.city.lumbridge.npcs
 
+import org.rsmod.api.config.constants
 import org.rsmod.api.invtx.invAdd
 import org.rsmod.api.player.dialogue.Dialogue
+import org.rsmod.api.player.output.ClientScripts.toplevelSidebuttonSwitch
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.baseRangedLvl
 import org.rsmod.api.script.onOpNpc1
@@ -80,7 +82,7 @@ class RangedTutor : PluginScript() {
         mainMenu()
     }
 
-    // Note: no skills/combat tab switches and no Adventure paths line.
+    // Note: no Adventure paths line.
     private suspend fun Dialogue.noviceAdvice() {
         chatNpc(
             neutral,
@@ -98,6 +100,7 @@ class RangedTutor : PluginScript() {
             "To claim the Training bow and arrows, right-click on me and choose Claim, to " +
                 "claim runes right-click on the Magic Combat tutor and select Claim.",
         )
+        toplevelSidebuttonSwitch(player, constants.toplevel_skills)
         chatNpc(
             neutral,
             "Not all bows can use every type of arrow, most bows have a limit. You can find " +
@@ -114,6 +117,7 @@ class RangedTutor : PluginScript() {
             "Once you have your bow and arrows, equip them by selecting their Wield option in " +
                 "your inventory.",
         )
+        toplevelSidebuttonSwitch(player, constants.toplevel_combat)
         chatNpc(
             neutral,
             "You can change the way you attack by going to the combat options tab. There are " +

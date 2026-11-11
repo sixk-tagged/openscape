@@ -34,6 +34,7 @@ constructor(private val modLevelTypes: ModLevelTypeList) :
         player.runEnergy = data.runEnergy
         player.xpRate = data.xpRate
         player.lastLogin = LocalDateTime.now()
+        player.createdAt = data.createdAt ?: player.lastLogin
         player.vars.backing.putAll(data.varps)
         player.assignModLevel(data.modLevel)
     }

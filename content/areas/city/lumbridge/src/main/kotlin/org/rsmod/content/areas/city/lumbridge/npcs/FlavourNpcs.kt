@@ -309,6 +309,7 @@ class FlavourNpcScript : PluginScript() {
             )
         when (choice) {
             1 -> {
+                chatPlayer(quiz, "Who are you?")
                 chatNpc(
                     happy,
                     "My name is Gillie Groats. My father is a farmer and I milk the cows " +
@@ -323,7 +324,7 @@ class FlavourNpcScript : PluginScript() {
                 chatPlayer(happy, "Thanks.")
             }
             2 -> {
-                chatPlayer(quiz, "So how do you get milk from a cow then?")
+                chatPlayer(quiz, "So how do you milk a cow then?")
                 chatNpc(happy, "It's very easy. First you need an empty bucket to hold the milk.")
                 chatNpc(happy, "Then find a dairy cow to milk - you can't milk just any cow.")
                 chatPlayer(quiz, "How do I find a dairy cow?")

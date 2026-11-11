@@ -35,7 +35,8 @@ class SwampCaveEntrance : PluginScript() {
         mes("You tie the rope to the top of the entrance and throw it down.")
     }
 
-    // Note: light sources, swamp gas and the insect swarm are not implemented.
+    // The cave's darkness, gas and insects live in SwampCaveScript. Note: no Doomsayer warning
+    // screen on the way down without a light; there is no warnings system yet.
     private suspend fun ProtectedAccess.climbDown() {
         if (!player.swampRopeTied) {
             mes("There is a sheer drop below the hole. You will need a rope.")
