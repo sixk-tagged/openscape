@@ -151,6 +151,8 @@ object AgilityLocs : LocReferences() {
     val falador_tunnel_north = find("falador_sc_castlewall_north")
     val draynor_manor_stones = find("lumbridge_sc_stepstone")
     val varrock_trellis = find("garden_trellis_concave_shortcut")
+    val gnome_rocks_top = find("gnome_stronghold_sc_rock_top")
+    val gnome_rocks_bottom = find("gnome_stronghold_sc_rock_bottom")
     val alkharid_rocks_top = find("alkharid_mine_sc_top")
     val alkharid_rocks_bottom = find("alkharid_mine_sc_bottom")
     val draynor_tunnel_west = find("draynor_diary_under_wall_w")
@@ -164,6 +166,13 @@ object AgilityLocs : LocReferences() {
     val lava_maze_stones = find("wilderness_lava_maze_northern_shortcut")
     val swamp_cave_stones_a = find("swamp_cave_steppingstone_a")
     val swamp_cave_stones_b = find("swamp_cave_steppingstone_b")
+    val yanille_wall = find("yanille_castlewall_sc")
+    val yanille_hole = find("yanille_castlehole_sc")
+    val yanille_rocks = find("watchshortcut")
+    val yanille_ledge = find("balancing_ledge3")
+    val yanille_pipe = find("obstical_pipe4")
+    val yanille_rubble_down = find("climbingcaverocks2")
+    val yanille_rubble_up = find("climbingcaverocks1")
 
     // Gates, Rogues' Den, spirit trees
     val member_gate_left = find("membergatel")

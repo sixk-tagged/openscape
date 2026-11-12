@@ -112,6 +112,23 @@ class SlayerTest {
         }
 
     @Test
+    fun GameTestState.`nieve turns away a level 3 player and pays 12 points a task`() =
+        runGameTest(SlayerScript::class) {
+            val nieve = spawnNpc(OPEN_GROUND.translateX(2), npcTypes[SlayerNpcs.nieve])
+            player.teleport(OPEN_GROUND)
+            advance()
+            player.opNpc3(nieve)
+            talkThrough()
+            assertEquals(0, player.vars[varps.slayer_count])
+
+            val goblin = spawnGoblin()
+            player.withProtectedAccess { vars[SlayerVarBits.streak] = 4 }
+            giveTask(master = 6, task = GOBLINS, count = 1)
+            eventBus.publish(NpcKilled(goblin, player))
+            assertEquals(12, player.vars[SlayerVarBits.points])
+        }
+
+    @Test
     fun GameTestState.`a task kill can bring out its superior`() =
         runGameTest(SlayerScript::class) {
             giveTask(master = 1, task = CAVE_CRAWLERS, count = 5)

@@ -1,0 +1,95 @@
+[[spawn]]
+npc = '0_39_53_freshfish'
+coords = '0_39_53_12_29'
+
+[[spawn]]
+npc = '0_39_53_freshfish'
+coords = '0_39_53_31_20'
+
+[[spawn]]
+npc = '0_39_53_freshfish'
+coords = '0_39_53_34_20'
+
+[[spawn]]
+npc = '0_39_53_freshfish'
+coords = '0_39_53_37_18'
+
+[[spawn]]
+npc = '0_39_53_freshfish'
+coords = '0_39_53_38_11'
+
+[[spawn]]
+npc = '0_39_53_freshfish'
+coords = '0_39_53_41_14'
+
+[[spawn]]
+npc = 'barbguard1'
+coords = '0_39_55_48_47'
+
+[[spawn]]
+npc = 'barbguard1'
+coords = '0_39_55_48_51'
+
+[[spawn]]
+npc = 'butterfly'
+coords = '0_39_53_60_52'
+
+[[spawn]]
+npc = 'chicken'
+coords = '0_39_55_58_43'
+
+[[spawn]]
+npc = 'chicken_brown'
+coords = '0_39_55_57_42'
+
+[[spawn]]
+npc = 'chicken_brown'
+coords = '0_39_55_57_45'
+
+[[spawn]]
+npc = 'fai_barbarian_1'
+coords = '0_39_55_50_40'
+
+[[spawn]]
+npc = 'fai_barbarian_2'
+coords = '0_39_55_50_45'
+
+[[spawn]]
+npc = 'fai_barbarian_3'
+coords = '0_39_55_53_46'
+
+[[spawn]]
+npc = 'fai_barbarian_5'
+coords = '0_39_55_53_50'
+
+[[spawn]]
+npc = 'fai_barbarian_8'
+coords = '0_39_55_48_57'
+
+[[spawn]]
+npc = 'fai_barbarian_female_1'
+coords = '0_39_55_54_43'
+
+[[spawn]]
+npc = 'fai_barbarian_female_3'
+coords = '0_39_55_52_38'
+
+[[spawn]]
+npc = 'gunnjorn'
+coords = '0_39_55_44_28'
+
+[[spawn]]
+npc = 'mossgiant'
+coords = '0_39_53_53_16'
+
+[[spawn]]
+npc = 'mossgiant2'
+coords = '0_39_53_58_17'
+
+[[spawn]]
+npc = 'mossgiant3'
+coords = '0_39_53_58_9'
+
+[[spawn]]
+npc = 'mossgiant4'
+coords = '0_39_53_60_14'

@@ -52,7 +52,7 @@ class Pickpocketing @Inject constructor(private val instantHits: InstantPlayerHi
             return
         }
         val (obj, count) = target.loot(random, player)
-        if (!invAdd(inv, obj, count).success) {
+        if (!invAddAll(listOfNotNull(obj to count, target.extra))) {
             mes(constants.dm_invspace)
             return
         }
@@ -84,6 +84,8 @@ object PickpocketTargets {
         val high: Int,
         val stunTicks: Int,
         val damage: Int = 1,
+        /** A second item every success also gives. */
+        val extra: Pair<ObjType, Int>? = null,
         val loot: (GameRandom, Player) -> Pair<ObjType, Int>,
     )
 
@@ -141,6 +143,7 @@ object PickpocketTargets {
                         varrock_guard_f2,
                         varrock_guard_f3,
                         varrock_guard_captain,
+                        ArdougneNpcs.ardougne_guard,
                     ) + falador_guards,
                     40,
                     46.8,
@@ -170,7 +173,7 @@ object PickpocketTargets {
                     MasterFarmerSeeds.roll(random, player.farmingLvl)
                 },
             )
-        } + SarimPickpocketTargets.all
+        } + SarimPickpocketTargets.all + ArdougnePickpocketTargets.all
 }
 
 object ThievingNpcs : NpcReferences() {

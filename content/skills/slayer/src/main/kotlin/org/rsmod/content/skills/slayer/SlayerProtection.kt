@@ -175,7 +175,9 @@ internal object ProtectedNpcs : NpcReferences() {
             .map { find(it) }
     val banshees = listOf(find("slayer_banshee_1"), find("superior_banshee"))
     val aberrant_spectres =
-        (1..4).map { find("slayer_abberant_spectre_$it") } + find("superior_abberant_spectre")
+        (1..4).map { find("slayer_abberant_spectre_$it") } +
+            find("superior_abberant_spectre") +
+            (1..2).map { find("slayer_aberrantspectre_${it}_strongholdcave") }
 }
 
 internal object ProtectionObjs : ObjReferences() {

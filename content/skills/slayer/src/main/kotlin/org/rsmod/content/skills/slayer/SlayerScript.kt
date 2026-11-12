@@ -380,6 +380,7 @@ internal constructor(
                 slayer_npcs.turael to SlayerMaster.Turael,
                 slayer_npcs.mazchna to SlayerMaster.Mazchna,
                 slayer_npcs.vannaka to SlayerMaster.Vannaka,
+                slayer_npcs.nieve to SlayerMaster.Nieve,
                 slayer_npcs.krystilia to SlayerMaster.Krystilia,
                 slayer_npcs.spria to SlayerMaster.Spria,
             )

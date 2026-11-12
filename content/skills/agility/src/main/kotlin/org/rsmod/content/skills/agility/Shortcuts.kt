@@ -29,6 +29,8 @@ class Shortcut(
     val ticks: Int,
     val wall: Boolean = false,
     val links: List<Pair<CoordGrid, CoordGrid>> = emptyList(),
+    /** Whether the player is moved in one jump (a long climb) rather than walked across. */
+    val jump: Boolean = false,
 )
 
 /**
@@ -114,6 +116,17 @@ object Shortcuts {
                 CoordGrid(3228, 3470),
                 CoordGrid(3228, 3471),
                 AgilityLocs.varrock_trellis,
+            ) +
+            // The Gnome Stronghold's north-east rocks, to the Barbarian Outpost.
+            crossing(
+                37,
+                0.0,
+                AgilitySeqs.climb,
+                4,
+                CoordGrid(2486, 3515),
+                CoordGrid(2489, 3521),
+                AgilityLocs.gnome_rocks_top,
+                AgilityLocs.gnome_rocks_bottom,
             ) +
             // The Al Kharid mining pit's cliff.
             crossing(
@@ -215,7 +228,74 @@ object Shortcuts {
                 CoordGrid(3221, 9556),
                 CoordGrid(3221, 9552),
                 AgilityLocs.swamp_cave_stones_b,
-            )
+            ) +
+            // Yanille: under the north wall (one loc each way), and the rocks out of the city.
+            crossing(
+                16,
+                0.0,
+                AgilitySeqs.pipe,
+                5,
+                CoordGrid(2575, 3107),
+                CoordGrid(2575, 3112),
+                AgilityLocs.yanille_wall,
+                AgilityLocs.yanille_hole,
+            ) +
+            Shortcut(
+                AgilityLocs.yanille_rocks,
+                5,
+                25.0,
+                AgilitySeqs.climb,
+                3,
+                links = listOf(CoordGrid(2561, 3108) to CoordGrid(2561, 3111)),
+            ) +
+            // The Yanille Agility Dungeon: the balancing ledge, the monkey bars (two lines of the
+            // loc Edgeville also uses), the pipe and the pile of rubble.
+            // Note: the ledge never drops you into the poison spiders' pit.
+            crossing(
+                40,
+                22.5,
+                AgilitySeqs.balance_walk,
+                8,
+                CoordGrid(2580, 9520),
+                CoordGrid(2580, 9512),
+                AgilityLocs.yanille_ledge,
+            ) +
+            Shortcut(
+                AgilityLocs.edgeville_bars_end_2,
+                57,
+                20.0,
+                AgilitySeqs.monkeybars,
+                6,
+                links =
+                    listOf(2598, 2599).flatMap { x ->
+                        val south = CoordGrid(x, 9489)
+                        val north = CoordGrid(x, 9494)
+                        listOf(south to north, north to south)
+                    },
+            ) +
+            crossing(
+                49,
+                7.5,
+                AgilitySeqs.pipe,
+                6,
+                CoordGrid(2578, 9506),
+                CoordGrid(2572, 9506),
+                AgilityLocs.yanille_pipe,
+            ) +
+            // UNVERIFIED: where the rubble's top lands you. The two ends are 66 tiles apart.
+            listOf(AgilityLocs.yanille_rubble_down, AgilityLocs.yanille_rubble_up).map {
+                val top = CoordGrid(2615, 9506)
+                val bottom = CoordGrid(2616, 9571)
+                Shortcut(
+                    it,
+                    67,
+                    5.5,
+                    AgilitySeqs.climb,
+                    3,
+                    links = listOf(top to bottom, bottom to top),
+                    jump = true,
+                )
+            }
 
     /** One row per loc of an obstacle that takes the player between [from] and [to]. */
     private fun crossing(
@@ -238,13 +318,15 @@ class ShortcutScript : PluginScript() {
                 AgilityLocs.swamp_cave_stones_a,
                 AgilityLocs.swamp_cave_stones_b,
             )
-        for (shortcut in Shortcuts.all) {
-            onOpLoc1(shortcut.loc) { cross(shortcut, it.loc) }
+        // One handler per loc type: a type can serve several shortcuts, told apart by where the
+        // player stands.
+        for ((loc, shortcuts) in Shortcuts.all.groupBy { it.loc }) {
+            onOpLoc1(loc) { cross(shortcuts, it.loc) }
             // These stones stand in lava or water, out of reach of either bank.
-            if (shortcut.loc in outOfReach) {
-                onApLoc1(shortcut.loc) {
+            if (loc in outOfReach) {
+                onApLoc1(loc) {
                     if (isWithinApRange(it.loc, LINK_RANGE)) {
-                        cross(shortcut, it.loc)
+                        cross(shortcuts, it.loc)
                     }
                 }
             }
@@ -252,7 +334,11 @@ class ShortcutScript : PluginScript() {
     }
 
     // UNVERIFIED: the refusal messages.
-    private suspend fun ProtectedAccess.cross(shortcut: Shortcut, loc: BoundLocInfo) {
+    private suspend fun ProtectedAccess.cross(shortcuts: List<Shortcut>, loc: BoundLocInfo) {
+        val shortcut =
+            shortcuts.firstOrNull { s ->
+                s.links.any { coords.chebyshevDistance(it.first) <= LINK_RANGE }
+            } ?: shortcuts.first()
         if (player.agilityLvl < shortcut.level) {
             mes("You need an Agility level of ${shortcut.level} to use this shortcut.")
             return
@@ -267,11 +353,16 @@ class ShortcutScript : PluginScript() {
         val start = coords
         faceSquare(dest)
         anim(shortcut.anim)
-        exactMove(start, dest, 0, shortcut.ticks * CYCLES_PER_TICK, facing(start, dest))
-        if (coords != dest) {
-            return
+        if (shortcut.jump) {
+            delay(shortcut.ticks)
+            telejump(dest)
+        } else {
+            exactMove(start, dest, 0, shortcut.ticks * CYCLES_PER_TICK, facing(start, dest))
+            if (coords != dest) {
+                return
+            }
+            delay(shortcut.ticks)
         }
-        delay(shortcut.ticks)
         if (shortcut.xp > 0.0) {
             statAdvance(stats.agility, shortcut.xp)
         }

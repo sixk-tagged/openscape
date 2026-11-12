@@ -2,6 +2,7 @@ package org.rsmod.content.other.npcdrops
 
 import org.junit.jupiter.api.Test
 import org.rsmod.api.config.refs.objs
+import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.death.plugin.NpcDeathScript
 import org.rsmod.api.hit.plugin.NpcHitScript
 import org.rsmod.api.repo.obj.ObjRepository
@@ -37,14 +38,32 @@ class WildernessDropsTest {
             assertEquals(setOf(drop(objs.bones)), missed.toSet())
         }
 
+    @Test
+    fun GameTestState
+        .`a looting bag in a table is not dropped to a killer outside the Wilderness`() =
+        runInjectedGameTest(ObjRepository::class, null, *SCRIPTS) { objRepo ->
+            val drops =
+                kill(wilderness_drop_npcs.green_dragons.first(), objRepo, 0, 0, wilderness = false)
+            assertEquals(
+                setOf(
+                    drop(wilderness_drop_objs.dragon_bones),
+                    drop(wilderness_drop_objs.dragonhide_green),
+                    drop(wilderness_drop_objs.steel_platelegs),
+                ),
+                drops.toSet(),
+            )
+        }
+
     /** Kills a fresh [type] with [rolls] queued for its drop table; returns (obj id, count)s. */
     private fun GameTestScope.kill(
         type: NpcType,
         objRepo: ObjRepository,
         vararg rolls: Int,
+        wilderness: Boolean = true,
     ): List<Pair<Int, Int>> {
         // A fresh test player's clock reads -1 until their first tick.
         advance()
+        player.withProtectedAccess { vars[varbits.inside_wilderness] = if (wilderness) 1 else 0 }
         // Loot is owned by the killer's observer id, which a test player only gets if we set it.
         player.observerUUID = player.uuid
         val npc = spawnNpc(COORDS, npcTypes[type])

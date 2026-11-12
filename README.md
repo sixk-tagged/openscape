@@ -18,15 +18,19 @@ I'm building it outward from Lumbridge, one area at a time.
   monster you can attack has its proper drops.
 - Mine in the Mining Guild, take the boat to Karamja, and earn your White Knight rank by fighting
   Black Knights.
+- Head west into **Kandarin**: Seers' Village, Catherby, Ardougne, Witchaven, Yanille, the Tree Gnome
+  Stronghold and the Barbarian Outpost. Fish in the Fishing Guild, steal from Ardougne's market stalls
+  (the guards are watching), open the chests, and get into the Wizards' Guild with 66 Magic.
 - Head into the **Wilderness**: PvP with skulls, level ranges and Tele Block, the Ferox Enclave, the
   Resource Area, the Chaos Temple, the Lava Maze, obelisks, levers and looting bags. Bring a shield
   for the dragons, because they breathe fire.
 - Train **Attack, Strength, Defence, Ranged, Hitpoints, Prayer, Magic, Mining, Smithing, Crafting,
   Fletching, Herblore, Woodcutting, Fishing, Cooking, Firemaking, Runecraft, Thieving, Agility and
   Slayer**.
-- Get **Slayer** tasks from Turael, Spria, Mazchna, Vannaka, or Krystilia for the Wilderness. Spend
-  your points on unlocks, make a Slayer helmet, and watch out for superior monsters. Take your tasks
-  to the Lumbridge Swamp Caves, the Slayer Tower and the Fremennik Slayer Dungeon.
+- Get **Slayer** tasks from Turael, Spria, Mazchna, Vannaka, Nieve, or Krystilia for the Wilderness.
+  Spend your points on unlocks, make a Slayer helmet, and watch out for superior monsters. Take your
+  tasks to the Lumbridge Swamp Caves, the Slayer Tower, the Fremennik Slayer Dungeon and the Stronghold
+  Slayer Cave.
 - Run 11 Agility courses, from the Gnome Stronghold to the rooftops of Rellekka. Collect marks of
   grace for Grace's graceful outfit, and take the shortcuts around the map.
 - Fight with prayers, the standard and Ancient spellbooks, Vengeance, special attacks and potions.
@@ -43,11 +47,11 @@ I'm building it outward from Lumbridge, one area at a time.
 ## What's missing
 
 - Hunter, Construction and Farming aren't in yet.
-- Slayer only has its first five masters. The higher ones come with their areas.
+- Slayer doesn't have Chaeldar, Konar or Duradel yet. They come with their areas.
 - Agility doesn't have the Ardougne course or a few of the shortcuts.
 - Nothing makes or sells an oily fishing rod yet, so you can't fish lava eels.
-- I haven't played through the Wilderness, Agility or Slayer yet. The tests pass, but expect some wrong
-  tiles, animations and messages.
+- I haven't played through the Wilderness, Agility, Slayer or Kandarin yet. The tests pass, but expect
+  some wrong tiles, animations and messages.
 
 The roadmap above shows what comes after that.
 

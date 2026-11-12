@@ -47,6 +47,7 @@ class Prayer : PluginScript() {
             onOpHeld1(bone) { bury(bone, xp, it.slot, it.inventory) }
         }
         onOpLoc1(prayer_locs.altar) { prayAt() }
+        onOpLoc1(prayer_locs.camelot_altar) { prayAt() }
     }
 
     private suspend fun ProtectedAccess.bury(bone: ObjType, xp: Double, slot: Int, inv: Inventory) {
@@ -93,6 +94,7 @@ object prayer_objs : ObjReferences() {
 
 object prayer_locs : LocReferences() {
     val altar = find("altar")
+    val camelot_altar = find("altarv2")
 }
 
 object prayer_seqs : SeqReferences() {

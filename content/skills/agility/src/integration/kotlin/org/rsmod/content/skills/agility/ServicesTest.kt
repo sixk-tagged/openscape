@@ -179,6 +179,48 @@ class ServicesTest {
         }
 
     @Test
+    fun GameTestState.`the Yanille monkey bars cross both lines, sharing Edgeville's loc`() =
+        runGameTest(ShortcutScript::class) {
+            val loc =
+                placeMapLoc(
+                    CoordGrid(2599, 9490),
+                    AgilityLocs.edgeville_bars_end_2,
+                    LocShape.GroundDecor,
+                )
+            player.teleport(CoordGrid(2599, 9489))
+            player.stats[stats.agility] = 56
+            player.opLoc1(loc)
+            advanceUntil(max = 10) {
+                messageSent("You need an Agility level of 57 to use this shortcut.")
+            }
+
+            player.stats[stats.agility] = 57
+            player.opLoc1(loc)
+            advanceUntil(max = 15) { player.coords == CoordGrid(2599, 9494) }
+        }
+
+    @Test
+    fun GameTestState.`the rocks out of the Gnome Stronghold need 37 Agility`() =
+        runGameTest(ShortcutScript::class) {
+            val loc =
+                placeMapLoc(
+                    CoordGrid(2486, 3515),
+                    AgilityLocs.gnome_rocks_top,
+                    LocShape.GroundDecor,
+                )
+            player.teleport(CoordGrid(2486, 3515))
+            player.stats[stats.agility] = 36
+            player.opLoc1(loc)
+            advanceUntil(max = 10) {
+                messageSent("You need an Agility level of 37 to use this shortcut.")
+            }
+
+            player.stats[stats.agility] = 37
+            player.opLoc1(loc)
+            advanceUntil(max = 15) { player.coords == CoordGrid(2489, 3521) }
+        }
+
+    @Test
     fun GameTestState.`every shortcut starts and ends on a tile a player can stand on`() =
         runGameTest(ShortcutScript::class) {
             for (shortcut in Shortcuts.all) {

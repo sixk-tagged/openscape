@@ -91,22 +91,50 @@ constructor(
         }
         if (actionDelay == mapClock) {
             actionDelay = mapClock + FISHING_TICKS
-            val caught = rollCatch(method)
-            if (caught != null) {
-                if (bait != null) {
-                    invDel(inv, bait.obj, 1)
+            val catches = rollCatches(method)
+            if (catches.isNotEmpty() && bait != null) {
+                invDel(inv, bait.obj, 1)
+            }
+            for (caught in catches) {
+                if (inv.isFull()) {
+                    break
                 }
-                val name = objTypes[caught.fish].name.lowercase().removePrefix("raw ")
-                spam("You catch ${if (name.endsWith("s")) "some" else "a"} $name.")
+                val name =
+                    objTypes[caught.fish].name.lowercase().let {
+                        if (it in RAW_KEPT) it else it.removePrefix("raw ")
+                    }
+                spam(
+                    when {
+                        caught.fish == FishingObjs.big_bass -> "You catch an enormous bass!"
+                        name.endsWith("s") || name == "seaweed" -> "You catch some $name."
+                        name.first() in "aeiou" -> "You catch an $name."
+                        else -> "You catch a $name."
+                    }
+                )
                 statAdvance(stats.fishing, caught.xp * xpMods.get(player, stats.fishing))
                 invAdd(inv, caught.fish)
-                if (inv.isFull()) {
-                    resetAnim()
-                    return
-                }
+            }
+            if (inv.isFull()) {
+                resetAnim()
+                return
             }
         }
         if (method.op == 1) opNpc1(spot) else opNpc3(spot)
+    }
+
+    /** A big net rolls every catch on its own (mackerel twice); other methods roll one. */
+    private fun ProtectedAccess.rollCatches(method: FishingData.Method): List<FishingData.Catch> {
+        val extra = method.independent
+        if (extra.isEmpty()) {
+            return listOfNotNull(rollCatch(method))
+        }
+        return extra
+            .filter { player.fishingLvl >= it.level }
+            .filter { statRandom(stats.fishing, it.low, it.high, invisibleLvls) }
+            .map {
+                if (it.fish == FishingObjs.raw_bass && random.of(BIG_BASS) == 0) FishingData.bigBass
+                else it
+            }
     }
 
     /** Best fish first, each with its own wiki success roll ("cascade"), as OSRS does. */
@@ -174,6 +202,8 @@ constructor(
         const val FISHING_TICKS = 5
         const val MOVE_RADIUS = 2
         const val MIN_WATER_AROUND = 4
+        val RAW_KEPT = setOf("raw mackerel", "raw cod", "raw bass")
+        const val BIG_BASS = 1000
     }
 }
 
@@ -198,7 +228,12 @@ object FishingData {
         val anim: SeqType,
         val castMessage: String,
         val catches: List<Catch>,
+        /** Every catch is rolled on its own, in place of the one best-first roll. */
+        val independent: List<Catch> = emptyList(),
     )
+
+    /** The 1/1000 big bass that replaces a raw bass (wiki, Big bass). */
+    val bigBass = Catch(FishingObjs.big_bass, 46, 100.0, 3, 40)
 
     private val fishingBait = Bait(FishingObjs.fishing_bait, "fishing bait")
 
@@ -291,6 +326,51 @@ object FishingData {
                 ),
         )
 
+    /** Mackerel, cod and bass, plus the junk rolls (casket, oyster, seaweed, boots, gloves). */
+    val bigNet =
+        Method(
+            op = 1,
+            verb = "catch",
+            tool = FishingObjs.big_net,
+            toolName = "big fishing net",
+            bait = null,
+            anim = FishingSeqs.largenet,
+            castMessage = "You cast out your net...",
+            catches =
+                listOf(
+                    Catch(FishingObjs.raw_mackerel, 16, 20.0, 5, 65),
+                    Catch(FishingObjs.raw_cod, 23, 45.0, 4, 55),
+                    Catch(FishingObjs.raw_bass, 46, 100.0, 3, 40),
+                ),
+            // The nine rolls of the wiki's big net chart; the skills necklace's casket rate and
+            // the heron pet roll are not built.
+            independent =
+                listOf(
+                    Catch(FishingObjs.leather_boots, 16, 1.0, 10, 10),
+                    Catch(FishingObjs.seaweed, 16, 1.0, 10, 10),
+                    Catch(FishingObjs.leather_gloves, 16, 1.0, 5, 5),
+                    Catch(FishingObjs.raw_mackerel, 16, 20.0, 5, 65),
+                    Catch(FishingObjs.raw_mackerel, 16, 20.0, 5, 65),
+                    Catch(FishingObjs.oyster, 16, 10.0, 3, 7),
+                    Catch(FishingObjs.casket, 16, 10.0, 1, 2),
+                    Catch(FishingObjs.raw_cod, 23, 45.0, 4, 55),
+                    Catch(FishingObjs.raw_bass, 46, 100.0, 3, 40),
+                ),
+        )
+
+    /** The harpoon at a big net spot catches sharks. */
+    val sharkHarpoon =
+        Method(
+            op = 3,
+            verb = "harpoon",
+            tool = FishingObjs.harpoon,
+            toolName = "harpoon",
+            bait = null,
+            anim = FishingSeqs.harpoon,
+            castMessage = "You start harpooning fish...",
+            catches = listOf(Catch(FishingObjs.raw_shark, 76, 110.0, 3, 40)),
+        )
+
     /** Lava eels are baited with the oily rod; the lava spot has no other option. */
     val lavaEel =
         Method(
@@ -334,6 +414,16 @@ object FishingData {
             FishingNpcs.lava_eel_spot to (lavaEel to null),
             FishingNpcs.resource_area_crab_spot to (darkCrab to null),
             FishingNpcs.wilderness_crab_spot to (darkCrab to null),
+            FishingNpcs.sinclair_river_spot to (lure to riverBait),
+            FishingNpcs.catherby_sea_spot to (smallNet to seaBait),
+            FishingNpcs.catherby_cage_spot to (cage to harpoon),
+            FishingNpcs.catherby_net_spot to (bigNet to sharkHarpoon),
+            FishingNpcs.guild_cage_spot to (cage to harpoon),
+            FishingNpcs.guild_net_spot to (bigNet to sharkHarpoon),
+            FishingNpcs.observatory_river_spot to (lure to riverBait),
+            FishingNpcs.ardougne_river_spot to (lure to riverBait),
+            FishingNpcs.gnome_river_spot to (lure to riverBait),
+            FishingNpcs.baxtorian_river_spot to (lure to riverBait),
         )
 
     /**
@@ -373,6 +463,16 @@ object FishingNpcs : NpcReferences() {
     val lava_eel_spot = find("0_47_59_lavafish")
     val resource_area_crab_spot = find("49_61_crabs")
     val wilderness_crab_spot = find("52_59_crabs")
+    val sinclair_river_spot = find("0_42_55_freshfish")
+    val catherby_sea_spot = find("0_44_53_saltfish")
+    val catherby_cage_spot = find("0_44_53_rarefish")
+    val catherby_net_spot = find("0_44_53_memberfish")
+    val guild_cage_spot = find("0_40_53_rarefish")
+    val guild_net_spot = find("0_40_53_memberfish")
+    val observatory_river_spot = find("0_38_49_freshfish")
+    val ardougne_river_spot = find("0_40_52_freshfish")
+    val gnome_river_spot = find("0_37_53_freshfish")
+    val baxtorian_river_spot = find("0_39_53_freshfish")
 }
 
 object FishingObjs : ObjReferences() {
@@ -397,6 +497,17 @@ object FishingObjs : ObjReferences() {
     val raw_swordfish = find("raw_swordfish")
     val raw_lava_eel = find("raw_lava_eel")
     val raw_dark_crab = find("raw_dark_crab")
+    val big_net = find("big_net")
+    val raw_mackerel = find("raw_mackerel")
+    val raw_cod = find("raw_cod")
+    val raw_bass = find("raw_bass")
+    val raw_shark = find("raw_shark")
+    val big_bass = find("poh_trophydrop_bass")
+    val leather_boots = find("leather_boots")
+    val leather_gloves = find("leather_gloves")
+    val seaweed = find("seaweed")
+    val oyster = find("oystershell")
+    val casket = find("casket")
 }
 
 object FishingSeqs : SeqReferences() {
@@ -404,4 +515,5 @@ object FishingSeqs : SeqReferences() {
     val rod = find("human_fishing_casting")
     val cage = find("human_lobster")
     val harpoon = find("human_harpoon")
+    val largenet = find("human_largenet")
 }

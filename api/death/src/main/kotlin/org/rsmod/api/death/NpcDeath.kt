@@ -5,6 +5,7 @@ import jakarta.inject.Singleton
 import org.rsmod.api.config.constants
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.params
+import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.config.refs.varns
 import org.rsmod.api.config.refs.varps
 import org.rsmod.api.npc.access.StandardNpcAccess
@@ -15,6 +16,7 @@ import org.rsmod.api.player.vars.typeNpcUidVarp
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.repo.npc.NpcRepository
 import org.rsmod.api.repo.obj.ObjRepository
+import org.rsmod.api.type.refs.obj.ObjReferences
 import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
@@ -56,7 +58,10 @@ constructor(
             objRepo.add(objs.bones, dropCoords, duration, hero)
             return
         }
+        val wilderness = hero.vars[varbits.inside_wilderness] == 1
         for (obj in drops.roll(random, hero.members)) {
+            // Looting bags only drop in the Wilderness, whichever area wrote up the table.
+            if (obj.id == NpcDeathObjs.looting_bag.id && !wilderness) continue
             objRepo.add(obj, dropCoords, duration, hero)
         }
     }
@@ -125,4 +130,8 @@ public suspend fun StandardNpcAccess.death(
     }
 
     npcRepo.del(npc, Int.MAX_VALUE)
+}
+
+internal object NpcDeathObjs : ObjReferences() {
+    val looting_bag = find("looting_bag")
 }

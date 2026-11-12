@@ -66,7 +66,10 @@ constructor(
         }
 
         // The way down is in Falador's script: the stairs share a type with its mine's.
-        onOpLoc1(wilderness_locs.dungeon_stairs_up) { telejump(coords.translateZ(-DUNGEON_Z)) }
+        onOpLoc1(wilderness_locs.dungeon_stairs_up) {
+            // Yanille's two cellars (UNVERIFIED: the transport table's landings).
+            telejump(YANILLE_STAIRS_UP[it.loc.coords] ?: coords.translateZ(-DUNGEON_Z))
+        }
 
         // Levers.
         onOpLoc1(wilderness_locs.edgeville_lever) {
@@ -227,6 +230,12 @@ constructor(
     private companion object {
         const val TELEBLOCKED = "A magical force stops you from teleporting."
         const val DUNGEON_Z = 6400
+
+        val YANILLE_STAIRS_UP =
+            mapOf(
+                CoordGrid(2569, 9522, 0) to CoordGrid(2569, 3121, 0),
+                CoordGrid(2603, 9478, 0) to CoordGrid(2606, 3078, 0),
+            )
         const val OBELISK_DELAY = 6
         const val WEB_TICKS = 100
 

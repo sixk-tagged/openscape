@@ -1,0 +1,235 @@
+[[spawn]]
+npc = 'bat'
+coords = '0_40_148_9_58'
+
+[[spawn]]
+npc = 'bat'
+coords = '0_40_148_11_53'
+
+[[spawn]]
+npc = 'bat'
+coords = '0_40_148_15_53'
+
+[[spawn]]
+npc = 'bat'
+coords = '0_40_148_39_13'
+
+[[spawn]]
+npc = 'bat'
+coords = '0_40_148_40_8'
+
+[[spawn]]
+npc = 'bat'
+coords = '0_40_148_41_6'
+
+[[spawn]]
+npc = 'bat'
+coords = '0_40_148_42_12'
+
+[[spawn]]
+npc = 'bat'
+coords = '0_40_148_47_13'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_148_51_11'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_148_51_15'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_148_52_16'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_148_53_10'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_148_53_49'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_148_54_11'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_148_54_49'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_148_54_53'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_148_55_15'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_148_56_12'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_148_56_50'
+
+[[spawn]]
+npc = 'chaos_druid_warrior'
+coords = '0_40_148_16_29'
+
+[[spawn]]
+npc = 'chaos_druid_warrior'
+coords = '0_40_148_18_28'
+
+[[spawn]]
+npc = 'chaos_druid_warrior'
+coords = '0_40_148_19_36'
+
+[[spawn]]
+npc = 'chaos_druid_warrior'
+coords = '0_40_148_20_25'
+
+[[spawn]]
+npc = 'chaos_druid_warrior'
+coords = '0_40_148_20_30'
+
+[[spawn]]
+npc = 'chaos_druid_warrior'
+coords = '0_40_148_23_27'
+
+[[spawn]]
+npc = 'chaos_druid_warrior'
+coords = '0_40_148_28_26'
+
+[[spawn]]
+npc = 'chaos_druid_warrior'
+coords = '0_40_148_34_26'
+
+[[spawn]]
+npc = 'chaos_druid_warrior'
+coords = '0_40_148_38_25'
+
+[[spawn]]
+npc = 'giantskeleton'
+coords = '0_40_148_2_34'
+
+[[spawn]]
+npc = 'giantskeleton'
+coords = '0_40_148_4_32'
+
+[[spawn]]
+npc = 'giantskeleton'
+coords = '0_40_148_4_37'
+
+[[spawn]]
+npc = 'giantskeleton'
+coords = '0_40_148_5_35'
+
+[[spawn]]
+npc = 'giantskeleton'
+coords = '0_40_148_7_34'
+
+[[spawn]]
+npc = 'giantskeleton'
+coords = '0_40_148_8_37'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_10_31'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_15_42'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_17_44'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_18_47'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_19_41'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_19_47'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_21_47'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_22_41'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_24_39'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_30_38'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_34_33'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_36_20'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_38_34'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_39_19'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_39_29'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_40_16'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_41_23'
+
+[[spawn]]
+npc = 'poisonspider'
+coords = '0_40_149_43_22'
+
+[[spawn]]
+npc = 'zombie_armed'
+coords = '0_40_148_30_21'
+
+[[spawn]]
+npc = 'zombie_armed'
+coords = '0_40_148_33_20'
+
+[[spawn]]
+npc = 'zombie_armed2'
+coords = '0_40_148_24_19'
+
+[[spawn]]
+npc = 'zombie_armed2'
+coords = '0_40_148_31_20'
+
+[[spawn]]
+npc = 'zombie_armed2'
+coords = '0_40_148_33_19'
+
+[[spawn]]
+npc = 'zombie_armed3'
+coords = '0_40_148_27_20'
+
+[[spawn]]
+npc = 'zombie_armed3'
+coords = '0_40_148_30_19'

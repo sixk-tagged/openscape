@@ -1,5 +1,9 @@
 package org.rsmod.content.skills.thieving
 
+import org.rsmod.api.invtx.add
+import org.rsmod.api.invtx.invTransaction
+import org.rsmod.api.invtx.select
+import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.type.refs.obj.ObjReferences
 import org.rsmod.game.type.obj.ObjType
@@ -22,6 +26,17 @@ internal class Loot(private val entries: List<Entry>) {
         error("Roll exceeded total weight: $total")
     }
 }
+
+/** Adds every item or none of them: false when they don't all fit. */
+internal fun ProtectedAccess.invAddAll(items: List<Pair<ObjType, Int>>): Boolean =
+    player
+        .invTransaction(inv) {
+            val target = select(inv)
+            for ((obj, count) in items) {
+                add(target, obj.id, count)
+            }
+        }
+        .success
 
 internal fun loot(vararg entries: Pair<ObjType, Int>) =
     Loot(entries.map { Loot.Entry(it.first, it.second) })

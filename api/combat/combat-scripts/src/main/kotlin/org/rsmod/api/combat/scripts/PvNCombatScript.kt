@@ -3,6 +3,7 @@ package org.rsmod.api.combat.scripts
 import jakarta.inject.Inject
 import org.rsmod.api.combat.ACTIVE_COMBAT_DELAY
 import org.rsmod.api.combat.PvNCombat
+import org.rsmod.api.combat.canAttackInSlayerCave
 import org.rsmod.api.combat.commons.magic.MagicSpell
 import org.rsmod.api.combat.commons.styles.AttackStyle
 import org.rsmod.api.combat.manager.MagicRuneManager
@@ -116,6 +117,11 @@ constructor(
         // UNVERIFIED: the message text.
         if (npc.visType.param(params.slayer_levelrequire) > player.slayerLvl) {
             mes("You need a higher Slayer level to know how to wound this monster.")
+            return false
+        }
+
+        // openscape: the Stronghold Slayer Cave only allows your assigned Slayer monster.
+        if (!canAttackInSlayerCave(npc)) {
             return false
         }
 

@@ -1,0 +1,2728 @@
+[[spawn]]
+npc = 'aemad'
+coords = '0_40_51_53_30'
+
+[[spawn]]
+npc = 'ardougne_archer'
+coords = '2_40_51_12_20'
+
+[[spawn]]
+npc = 'ardougne_archer'
+coords = '2_40_51_12_45'
+
+[[spawn]]
+npc = 'ardougne_archer'
+coords = '2_40_51_22_20'
+
+[[spawn]]
+npc = 'ardougne_archer'
+coords = '2_40_51_22_45'
+
+[[spawn]]
+npc = 'ardougne_archer'
+coords = '2_40_51_28_26'
+
+[[spawn]]
+npc = 'ardougne_archer'
+coords = '2_40_51_28_39'
+
+[[spawn]]
+npc = 'ardougne_guard'
+coords = '0_41_52_11_11'
+
+[[spawn]]
+npc = 'ardougne_guard'
+coords = '0_41_52_12_12'
+
+[[spawn]]
+npc = 'ardougne_guard'
+coords = '0_41_52_13_11'
+
+[[spawn]]
+npc = 'ardougne_guard'
+coords = '0_41_51_27_43'
+
+[[spawn]]
+npc = 'ardougne_guard'
+coords = '0_41_51_35_45'
+
+[[spawn]]
+npc = 'ardougne_guard'
+coords = '0_41_51_36_45'
+
+[[spawn]]
+npc = 'ardougne_guard'
+coords = '0_41_51_37_45'
+
+[[spawn]]
+npc = 'ardougne_guard'
+coords = '0_41_51_39_37'
+
+[[spawn]]
+npc = 'ardougne_guard'
+coords = '0_41_51_40_54'
+
+[[spawn]]
+npc = 'ardougne_guard'
+coords = '0_41_51_41_36'
+
+[[spawn]]
+npc = 'arena_guard1'
+coords = '0_40_49_24_5'
+
+[[spawn]]
+npc = 'arena_guard1'
+coords = '0_40_49_31_3'
+
+[[spawn]]
+npc = 'arena_guard1'
+coords = '0_40_49_35_3'
+
+[[spawn]]
+npc = 'arena_guard1'
+coords = '0_40_49_54_14'
+
+[[spawn]]
+npc = 'arena_guard1'
+coords = '0_40_49_57_36'
+
+[[spawn]]
+npc = 'arena_guard1'
+coords = '0_40_49_58_23'
+
+[[spawn]]
+npc = 'arena_guard1'
+coords = '0_40_49_58_30'
+
+[[spawn]]
+npc = 'arena_guard1'
+coords = '3_40_49_34_26'
+
+[[spawn]]
+npc = 'arena_guard2'
+coords = '0_40_49_55_5'
+
+[[spawn]]
+npc = 'arena_guard2'
+coords = '3_40_49_32_27'
+
+[[spawn]]
+npc = 'arena_guard3'
+coords = '0_40_49_50_57'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_4_10'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_7_13'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_10_6'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_17_26'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_19_35'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_20_30'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_23_13'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_29_57'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_32_46'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_32_49'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_33_43'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_34_40'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_36_48'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_38_46'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_39_57'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_46_35'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_47_47'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_47_49'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_48_50'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_49_13'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_50_13'
+
+[[spawn]]
+npc = 'arena_guard4'
+coords = '0_40_49_54_50'
+
+[[spawn]]
+npc = 'baker_merchant_ardougne'
+coords = '0_41_51_30_47'
+
+[[spawn]]
+npc = 'baker_merchant_ardougne2'
+coords = '0_41_51_45_46'
+
+[[spawn]]
+npc = 'banker1'
+coords = '0_41_51_33_22'
+
+[[spawn]]
+npc = 'banker2'
+coords = '0_40_52_58_2'
+
+[[spawn]]
+npc = 'banker2'
+coords = '0_40_52_59_2'
+
+[[spawn]]
+npc = 'banker2'
+coords = '0_41_51_33_16'
+
+[[spawn]]
+npc = 'battle_tortoise_war2'
+coords = '0_39_50_14_3'
+
+[[spawn]]
+npc = 'battle_tortoise_war2'
+coords = '0_39_50_23_4'
+
+[[spawn]]
+npc = 'battlefield_d_skingnomeknight'
+coords = '0_39_50_11_10'
+
+[[spawn]]
+npc = 'battlefield_d_skingnomeknight'
+coords = '0_39_50_11_11'
+
+[[spawn]]
+npc = 'battlefield_d_skingnomeknight'
+coords = '0_39_50_34_26'
+
+[[spawn]]
+npc = 'battlefield_d_skingnomeknight'
+coords = '0_39_50_34_27'
+
+[[spawn]]
+npc = 'battlefield_d_skingnomeknight'
+coords = '0_39_50_35_27'
+
+[[spawn]]
+npc = 'battlefield_d_skingnomeknight'
+coords = '0_39_50_36_12'
+
+[[spawn]]
+npc = 'battlefield_d_skingnomeknight'
+coords = '0_39_50_36_27'
+
+[[spawn]]
+npc = 'battlefield_d_skingnomeknight'
+coords = '0_39_50_37_26'
+
+[[spawn]]
+npc = 'battlefield_d_skingnomeknight'
+coords = '0_39_50_40_12'
+
+[[spawn]]
+npc = 'battlefield_d_skingnomeknight'
+coords = '0_39_50_43_12'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_15_10'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_19_16'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_19_30'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_23_12'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_25_18'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_28_14'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_31_3'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_33_18'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_38_20'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_44_24'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_48_25'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_51_21'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_58_33'
+
+[[spawn]]
+npc = 'battlefield_darkskinned_gnome_archer'
+coords = '0_39_50_59_25'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_12_9'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_14_9'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_17_16'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_21_12'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_22_17'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_24_18'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_29_4'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_29_21'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_33_20'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_40_18'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_44_19'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_52_27'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_54_28'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_55_22'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_55_30'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_56_32'
+
+[[spawn]]
+npc = 'battlefield_gnome_archer'
+coords = '0_39_50_57_24'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_10_29'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_23_10'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_26_15'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_30_18'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_30_26'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_35_9'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_35_10'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_36_9'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_36_10'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_36_20'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_37_9'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_37_10'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_38_9'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_38_10'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_40_9'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_40_10'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_40_15'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_40_34'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_41_9'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_41_10'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_42_9'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_42_10'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_43_9'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_43_10'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_46_22'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_47_17'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_49_28'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_50_11'
+
+[[spawn]]
+npc = 'battlefield_gnome_troop'
+coords = '0_39_50_57_20'
+
+[[spawn]]
+npc = 'battlefield_gnomeknight'
+coords = '0_39_50_33_25'
+
+[[spawn]]
+npc = 'battlefield_gnomeknight'
+coords = '0_39_50_33_27'
+
+[[spawn]]
+npc = 'battlefield_gnomeknight'
+coords = '0_39_50_35_12'
+
+[[spawn]]
+npc = 'battlefield_gnomeknight'
+coords = '0_39_50_36_25'
+
+[[spawn]]
+npc = 'battlefield_gnomeknight'
+coords = '0_39_50_36_26'
+
+[[spawn]]
+npc = 'battlefield_gnomeknight'
+coords = '0_39_50_37_12'
+
+[[spawn]]
+npc = 'battlefield_gnomeknight'
+coords = '0_39_50_38_12'
+
+[[spawn]]
+npc = 'battlefield_gnomeknight'
+coords = '0_39_50_41_12'
+
+[[spawn]]
+npc = 'battlefield_gnomeknight'
+coords = '0_39_50_42_12'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_6_42'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_13_41'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_15_40'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_16_46'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_18_35'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_20_46'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_21_42'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_22_48'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_22_55'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_23_44'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_23_48'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_24_42'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_26_38'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_32_48'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_33_35'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_33_52'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_34_35'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_35_35'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_40_48'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_41_41'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_41_49'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_45_43'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop'
+coords = '0_39_50_47_46'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_16_33'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_20_36'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_24_32'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_26_34'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_31_39'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_32_37'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_32_39'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_33_36'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_33_37'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_33_39'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_35_43'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_36_44'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_38_38'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_42_41'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_43_43'
+
+[[spawn]]
+npc = 'battlefield_khazard_troop_spearmen'
+coords = '0_39_50_48_47'
+
+[[spawn]]
+npc = 'battlefield_terrorbird_mountedspear'
+coords = '0_39_50_4_26'
+
+[[spawn]]
+npc = 'battlefield_terrorbird_mountedspear'
+coords = '0_39_50_36_17'
+
+[[spawn]]
+npc = 'battlefield_terrorbird_mountedspear2'
+coords = '0_39_50_28_34'
+
+[[spawn]]
+npc = 'battlefield_terrorbird_mountedspear2'
+coords = '0_39_50_38_17'
+
+[[spawn]]
+npc = 'battlefield_terrorbird_mountedspear3'
+coords = '0_39_50_34_17'
+
+[[spawn]]
+npc = 'battlefield_terrorbird_mountedspear3'
+coords = '0_39_50_41_36'
+
+[[spawn]]
+npc = 'browclothedgnome'
+coords = '0_39_49_25_33'
+
+[[spawn]]
+npc = 'browclothedgnome'
+coords = '0_39_49_25_35'
+
+[[spawn]]
+npc = 'browclothedgnome'
+coords = '0_39_50_60_26'
+
+[[spawn]]
+npc = 'brownbear'
+coords = '0_38_49_45_7'
+
+[[spawn]]
+npc = 'brownbear'
+coords = '0_38_49_52_19'
+
+[[spawn]]
+npc = 'brownbear'
+coords = '0_41_51_8_16'
+
+[[spawn]]
+npc = 'brownbear'
+coords = '0_41_51_9_10'
+
+[[spawn]]
+npc = 'butterfly'
+coords = '0_38_52_46_45'
+
+[[spawn]]
+npc = 'butterfly'
+coords = '0_38_52_47_53'
+
+[[spawn]]
+npc = 'butterfly'
+coords = '0_38_52_49_56'
+
+[[spawn]]
+npc = 'butterfly'
+coords = '0_38_52_58_43'
+
+[[spawn]]
+npc = 'butterfly'
+coords = '0_39_49_53_3'
+
+[[spawn]]
+npc = 'butterfly_viceroy'
+coords = '0_39_49_44_31'
+
+[[spawn]]
+npc = 'camel'
+coords = '0_40_51_55_2'
+
+[[spawn]]
+npc = 'camel'
+coords = '0_40_51_59_1'
+
+[[spawn]]
+npc = 'camel'
+coords = '0_40_51_61_2'
+
+[[spawn]]
+npc = 'chadwell'
+coords = '0_38_51_32_23'
+
+[[spawn]]
+npc = 'chantergnome'
+coords = '0_39_49_45_32'
+
+[[spawn]]
+npc = 'chantergnome'
+coords = '0_39_49_45_35'
+
+[[spawn]]
+npc = 'chantergnome'
+coords = '0_39_49_46_31'
+
+[[spawn]]
+npc = 'chantergnome'
+coords = '0_39_49_46_36'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_52_1_27'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_52_1_29'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_52_3_27'
+
+[[spawn]]
+npc = 'chaos_druid'
+coords = '0_40_52_3_30'
+
+[[spawn]]
+npc = 'chaosmonk2'
+coords = '0_38_50_22_47'
+
+[[spawn]]
+npc = 'chaosmonk2'
+coords = '0_38_50_23_40'
+
+[[spawn]]
+npc = 'chaosmonk2'
+coords = '0_38_50_33_48'
+
+[[spawn]]
+npc = 'chaosmonk2'
+coords = '0_38_50_36_43'
+
+[[spawn]]
+npc = 'chaosmonk2'
+coords = '0_38_50_38_43'
+
+[[spawn]]
+npc = 'chaosmonk2'
+coords = '0_38_50_41_41'
+
+[[spawn]]
+npc = 'chaosmonk2'
+coords = '0_38_50_42_48'
+
+[[spawn]]
+npc = 'chaosmonk2'
+coords = '0_38_50_45_38'
+
+[[spawn]]
+npc = 'chaosmonk2'
+coords = '0_38_50_45_44'
+
+[[spawn]]
+npc = 'chicken'
+coords = '0_42_51_3_9'
+
+[[spawn]]
+npc = 'chicken'
+coords = '0_42_51_7_10'
+
+[[spawn]]
+npc = 'chicken_brown'
+coords = '0_42_51_3_13'
+
+[[spawn]]
+npc = 'chicken_brown'
+coords = '0_42_51_4_7'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_41_52_33_13'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_41_52_34_23'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_41_52_36_16'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_41_52_40_13'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_41_52_40_20'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_41_52_40_24'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_41_52_42_16'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_41_52_46_20'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_41_52_47_14'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_41_52_48_26'
+
+[[spawn]]
+npc = 'darkbear'
+coords = '0_38_50_28_0'
+
+[[spawn]]
+npc = 'darkbear'
+coords = '0_38_50_46_0'
+
+[[spawn]]
+npc = 'darkbear'
+coords = '0_39_49_5_23'
+
+[[spawn]]
+npc = 'darkskinned_gnome'
+coords = '0_39_49_26_36'
+
+[[spawn]]
+npc = 'dskin_w_ardoungechild1'
+coords = '0_38_51_30_42'
+
+[[spawn]]
+npc = 'dskin_w_ardoungechild1'
+coords = '0_38_51_33_41'
+
+[[spawn]]
+npc = 'dskin_w_ardoungechild1'
+coords = '0_38_51_37_31'
+
+[[spawn]]
+npc = 'dskin_w_ardoungechild1'
+coords = '0_38_51_45_55'
+
+[[spawn]]
+npc = 'dskin_w_ardoungechild1'
+coords = '0_38_51_50_47'
+
+[[spawn]]
+npc = 'dskin_w_ardoungechild1'
+coords = '0_39_51_22_11'
+
+[[spawn]]
+npc = 'dskin_w_ardoungechild1'
+coords = '0_39_51_27_43'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizen1'
+coords = '0_38_51_33_43'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizen1'
+coords = '0_38_51_50_29'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizen1'
+coords = '0_39_51_13_61'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizen2'
+coords = '0_38_51_21_43'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizen2'
+coords = '0_38_51_48_36'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizen2'
+coords = '0_39_51_15_58'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizen2'
+coords = '0_39_51_44_15'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady1'
+coords = '0_38_51_38_26'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady1'
+coords = '0_38_51_40_32'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady1'
+coords = '0_38_51_51_54'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady1'
+coords = '0_38_51_51_59'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady1'
+coords = '0_38_51_58_29'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady1'
+coords = '0_39_51_14_54'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady1'
+coords = '0_39_51_28_7'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady3'
+coords = '0_38_51_40_43'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady3'
+coords = '0_38_51_60_50'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady3'
+coords = '0_39_51_57_11'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady4'
+coords = '0_38_51_31_53'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady4'
+coords = '0_38_51_50_32'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady4'
+coords = '0_38_51_53_51'
+
+[[spawn]]
+npc = 'dskin_w_ardoungecitizenlady4'
+coords = '0_39_51_23_13'
+
+[[spawn]]
+npc = 'eaglepeak_ferret_zoo'
+coords = '0_40_50_47_60'
+
+[[spawn]]
+npc = 'farmer1'
+coords = '0_41_52_21_39'
+
+[[spawn]]
+npc = 'farmer1'
+coords = '0_41_52_28_23'
+
+[[spawn]]
+npc = 'farmer_brumty'
+coords = '0_40_52_33_30'
+
+[[spawn]]
+npc = 'farming_shopkeeper_3'
+coords = '0_41_52_22_36'
+
+[[spawn]]
+npc = 'flyinghorse_bartender'
+coords = '0_40_51_15_56'
+
+[[spawn]]
+npc = 'fur_merchant_ardougne'
+coords = '0_41_51_42_31'
+
+[[spawn]]
+npc = 'gem_merchant_ardougne'
+coords = '0_41_51_45_39'
+
+[[spawn]]
+npc = 'ghost'
+coords = '0_39_51_5_25'
+
+[[spawn]]
+npc = 'ghost5'
+coords = '0_39_51_5_30'
+
+[[spawn]]
+npc = 'giant'
+coords = '0_38_50_6_18'
+
+[[spawn]]
+npc = 'giant'
+coords = '0_39_49_49_8'
+
+[[spawn]]
+npc = 'giant2'
+coords = '0_38_50_9_17'
+
+[[spawn]]
+npc = 'giant2'
+coords = '0_39_49_52_11'
+
+[[spawn]]
+npc = 'giant3'
+coords = '0_38_50_7_12'
+
+[[spawn]]
+npc = 'giant3'
+coords = '0_39_49_11_13'
+
+[[spawn]]
+npc = 'giant4'
+coords = '0_38_50_6_8'
+
+[[spawn]]
+npc = 'giant5'
+coords = '0_38_50_11_11'
+
+[[spawn]]
+npc = 'giant6'
+coords = '0_38_50_13_9'
+
+[[spawn]]
+npc = 'giantrat'
+coords = '0_39_49_21_48'
+
+[[spawn]]
+npc = 'giantrat'
+coords = '0_41_151_7_31'
+
+[[spawn]]
+npc = 'giantrat'
+coords = '0_41_151_23_37'
+
+[[spawn]]
+npc = 'giantrat'
+coords = '0_41_151_23_52'
+
+[[spawn]]
+npc = 'giantrat1_2'
+coords = '0_39_49_24_51'
+
+[[spawn]]
+npc = 'giantrat2'
+coords = '0_41_151_12_33'
+
+[[spawn]]
+npc = 'giantrat2'
+coords = '0_41_151_20_44'
+
+[[spawn]]
+npc = 'giantrat2'
+coords = '0_41_151_27_36'
+
+[[spawn]]
+npc = 'giantrat3'
+coords = '0_41_151_18_48'
+
+[[spawn]]
+npc = 'giantrat3'
+coords = '0_41_151_20_32'
+
+[[spawn]]
+npc = 'gnome'
+coords = '0_39_49_30_32'
+
+[[spawn]]
+npc = 'gnome'
+coords = '0_39_49_33_27'
+
+[[spawn]]
+npc = 'gnome'
+coords = '0_39_49_34_36'
+
+[[spawn]]
+npc = 'gnome'
+coords = '0_39_49_40_33'
+
+[[spawn]]
+npc = 'gnomekingsguard'
+coords = '0_38_52_27_57'
+
+[[spawn]]
+npc = 'gnomekingsguard'
+coords = '0_38_52_31_57'
+
+[[spawn]]
+npc = 'gnomekingsguard2'
+coords = '0_38_52_28_54'
+
+[[spawn]]
+npc = 'gnomekingsguard2'
+coords = '0_38_52_30_54'
+
+[[spawn]]
+npc = 'goblin'
+coords = '0_39_49_54_61'
+
+[[spawn]]
+npc = 'goblin'
+coords = '0_39_49_56_59'
+
+[[spawn]]
+npc = 'goblin'
+coords = '0_39_49_57_62'
+
+[[spawn]]
+npc = 'goblin'
+coords = '0_39_49_59_58'
+
+[[spawn]]
+npc = 'goblin_armed'
+coords = '0_39_49_9_40'
+
+[[spawn]]
+npc = 'goblin_armed'
+coords = '0_39_49_23_9'
+
+[[spawn]]
+npc = 'goblin_armed'
+coords = '0_39_49_27_19'
+
+[[spawn]]
+npc = 'goblin_armed'
+coords = '0_39_49_46_19'
+
+[[spawn]]
+npc = 'goblin_armed'
+coords = '0_39_49_54_30'
+
+[[spawn]]
+npc = 'goblin_armed'
+coords = '0_39_49_61_62'
+
+[[spawn]]
+npc = 'grave_scorpion'
+coords = '0_38_50_33_29'
+
+[[spawn]]
+npc = 'grave_scorpion'
+coords = '0_38_50_35_28'
+
+[[spawn]]
+npc = 'grave_scorpion'
+coords = '0_38_50_38_30'
+
+[[spawn]]
+npc = 'grave_scorpion'
+coords = '0_38_50_39_22'
+
+[[spawn]]
+npc = 'grave_scorpion'
+coords = '0_38_50_40_24'
+
+[[spawn]]
+npc = 'guarddog'
+coords = '0_41_51_0_55'
+
+[[spawn]]
+npc = 'guarddog'
+coords = '0_41_51_0_63'
+
+[[spawn]]
+npc = 'guarddog'
+coords = '0_41_51_17_51'
+
+[[spawn]]
+npc = 'guarddog'
+coords = '0_41_51_22_61'
+
+[[spawn]]
+npc = 'hero'
+coords = '0_41_51_6_24'
+
+[[spawn]]
+npc = 'hero'
+coords = '0_41_51_23_42'
+
+[[spawn]]
+npc = 'hero'
+coords = '0_41_51_43_52'
+
+[[spawn]]
+npc = 'hobgoblin_armed'
+coords = '0_38_52_11_31'
+
+[[spawn]]
+npc = 'hobgoblin_armed'
+coords = '0_38_52_13_31'
+
+[[spawn]]
+npc = 'hobgoblin_armed'
+coords = '0_38_52_14_29'
+
+[[spawn]]
+npc = 'hobgoblin_armed'
+coords = '0_38_52_16_1'
+
+[[spawn]]
+npc = 'hobgoblin_armed'
+coords = '0_38_52_16_3'
+
+[[spawn]]
+npc = 'hobgoblin_armed'
+coords = '0_38_52_19_2'
+
+[[spawn]]
+npc = 'hobgoblin_unarmed'
+coords = '0_38_52_13_34'
+
+[[spawn]]
+npc = 'hobgoblin_unarmed'
+coords = '0_38_52_15_33'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_41_50_1_3'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_41_50_1_17'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_41_50_5_33'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_41_50_6_10'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_41_50_8_2'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_41_50_9_22'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_41_50_9_43'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_41_50_15_6'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_41_50_15_30'
+
+[[spawn]]
+npc = 'khazard_barman'
+coords = '0_40_49_6_4'
+
+[[spawn]]
+npc = 'khazard_shopkeeper'
+coords = '0_41_49_17_35'
+
+[[spawn]]
+npc = 'khazard_shopkeeper'
+coords = '0_41_49_31_16'
+
+[[spawn]]
+npc = 'khazard_troop'
+coords = '0_38_51_22_37'
+
+[[spawn]]
+npc = 'khazard_troop'
+coords = '0_38_51_26_34'
+
+[[spawn]]
+npc = 'knight_of_ardougne'
+coords = '0_40_51_22_33'
+
+[[spawn]]
+npc = 'knight_of_ardougne'
+coords = '0_41_51_28_54'
+
+[[spawn]]
+npc = 'knight_of_ardougne'
+coords = '0_41_51_29_36'
+
+[[spawn]]
+npc = 'knight_of_ardougne'
+coords = '0_41_51_45_34'
+
+[[spawn]]
+npc = 'knight_of_ardougne'
+coords = '0_41_51_47_49'
+
+[[spawn]]
+npc = 'kortan'
+coords = '0_40_51_55_28'
+
+[[spawn]]
+npc = 'master_farmer_1'
+coords = '0_41_52_12_36'
+
+[[spawn]]
+npc = 'mm_zoo_monkey'
+coords = '0_40_51_39_10'
+
+[[spawn]]
+npc = 'mm_zoo_monkey'
+coords = '0_40_51_39_14'
+
+[[spawn]]
+npc = 'mm_zoo_monkey'
+coords = '0_40_51_41_13'
+
+[[spawn]]
+npc = 'mm_zoo_monkey'
+coords = '0_40_51_41_18'
+
+[[spawn]]
+npc = 'mm_zoo_monkey'
+coords = '0_40_51_42_15'
+
+[[spawn]]
+npc = 'mm_zoo_monkey'
+coords = '0_40_51_44_12'
+
+[[spawn]]
+npc = 'mm_zoo_monkey'
+coords = '0_40_51_45_15'
+
+[[spawn]]
+npc = 'mm_zoo_monkey'
+coords = '0_40_51_45_16'
+
+[[spawn]]
+npc = 'mm_zoo_monkey'
+coords = '0_40_51_46_15'
+
+[[spawn]]
+npc = 'monk_ardougne'
+coords = '0_40_50_46_17'
+
+[[spawn]]
+npc = 'monk_ardougne'
+coords = '0_40_50_48_9'
+
+[[spawn]]
+npc = 'monk_ardougne'
+coords = '0_40_50_58_9'
+
+[[spawn]]
+npc = 'monk_ardougne'
+coords = '1_40_50_35_10'
+
+[[spawn]]
+npc = 'monkey'
+coords = '0_40_51_38_12'
+
+[[spawn]]
+npc = 'monkey'
+coords = '0_40_51_40_11'
+
+[[spawn]]
+npc = 'monkey'
+coords = '0_40_51_40_15'
+
+[[spawn]]
+npc = 'monkey'
+coords = '0_40_51_43_15'
+
+[[spawn]]
+npc = 'monkey'
+coords = '0_40_51_43_17'
+
+[[spawn]]
+npc = 'monkey'
+coords = '0_40_51_44_13'
+
+[[spawn]]
+npc = 'monkey'
+coords = '0_42_49_44_40'
+
+[[spawn]]
+npc = 'monkey'
+coords = '0_42_49_54_23'
+
+[[spawn]]
+npc = 'mossgiant'
+coords = '0_42_50_10_6'
+
+[[spawn]]
+npc = 'mossgiant2'
+coords = '0_42_50_4_4'
+
+[[spawn]]
+npc = 'mossgiant2'
+coords = '0_42_50_7_16'
+
+[[spawn]]
+npc = 'mossgiant3'
+coords = '0_42_50_3_15'
+
+[[spawn]]
+npc = 'mossgiant4'
+coords = '0_42_50_11_12'
+
+[[spawn]]
+npc = 'mourner1'
+coords = '0_39_51_17_30'
+
+[[spawn]]
+npc = 'mourner1'
+coords = '0_39_51_22_56'
+
+[[spawn]]
+npc = 'mourner1'
+coords = '0_39_51_34_10'
+
+[[spawn]]
+npc = 'mourner1'
+coords = '0_39_51_39_32'
+
+[[spawn]]
+npc = 'mourner2'
+coords = '0_39_51_28_28'
+
+[[spawn]]
+npc = 'mourner2'
+coords = '0_39_51_40_30'
+
+[[spawn]]
+npc = 'mourner2'
+coords = '0_39_51_42_57'
+
+[[spawn]]
+npc = 'mourner3'
+coords = '0_39_51_5_51'
+
+[[spawn]]
+npc = 'mourner3'
+coords = '0_39_51_17_61'
+
+[[spawn]]
+npc = 'mourner3'
+coords = '0_39_51_30_15'
+
+[[spawn]]
+npc = 'mourner3'
+coords = '0_39_51_32_33'
+
+[[spawn]]
+npc = 'mourner3'
+coords = '0_39_51_39_24'
+
+[[spawn]]
+npc = 'mourner3'
+coords = '0_39_51_52_23'
+
+[[spawn]]
+npc = 'mourner_armed'
+coords = '0_39_51_22_45'
+
+[[spawn]]
+npc = 'mourner_armed'
+coords = '0_39_51_30_39'
+
+[[spawn]]
+npc = 'mourner_armed'
+coords = '0_39_51_47_45'
+
+[[spawn]]
+npc = 'mourner_armed_guard'
+coords = '0_39_51_56_56'
+
+[[spawn]]
+npc = 'mourner_elena_guard'
+coords = '0_39_51_38_9'
+
+[[spawn]]
+npc = 'mourner_elena_guard'
+coords = '0_39_51_43_9'
+
+[[spawn]]
+npc = 'mournerstew1'
+coords = '0_39_51_49_62'
+
+[[spawn]]
+npc = 'mournerstew1'
+coords = '0_39_51_55_58'
+
+[[spawn]]
+npc = 'mournerstew1'
+coords = '0_39_51_59_60'
+
+[[spawn]]
+npc = 'mournerstew2'
+coords = '1_39_51_55_63'
+
+[[spawn]]
+npc = 'mournerstew3'
+coords = '0_39_51_52_60'
+
+[[spawn]]
+npc = 'mournerstew3'
+coords = '0_39_51_54_62'
+
+[[spawn]]
+npc = 'mournerstew3'
+coords = '0_39_51_57_61'
+
+[[spawn]]
+npc = 'mournertwa'
+coords = '0_40_52_22_1'
+
+[[spawn]]
+npc = 'mournertwb'
+coords = '0_40_51_0_24'
+
+[[spawn]]
+npc = 'mournerwatchtower'
+coords = '0_39_51_63_40'
+
+[[spawn]]
+npc = 'mournerwatchtower'
+coords = '0_40_51_1_39'
+
+[[spawn]]
+npc = 'mournerwatchtower'
+coords = '0_40_51_1_41'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_49_58_56'
+
+[[spawn]]
+npc = 'paladin'
+coords = '0_40_51_11_43'
+
+[[spawn]]
+npc = 'paladin'
+coords = '0_40_51_12_39'
+
+[[spawn]]
+npc = 'paladin'
+coords = '0_40_51_15_32'
+
+[[spawn]]
+npc = 'paladin'
+coords = '0_40_51_17_44'
+
+[[spawn]]
+npc = 'paladin'
+coords = '0_40_51_21_22'
+
+[[spawn]]
+npc = 'paladin'
+coords = '0_40_51_21_35'
+
+[[spawn]]
+npc = 'paladin'
+coords = '0_40_51_23_28'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_12_28'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_16_29'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_18_21'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_21_22'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_21_43'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_22_42'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_24_24'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_24_40'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_25_26'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_26_25'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_26_39'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_27_27'
+
+[[spawn]]
+npc = 'paladin'
+coords = '1_40_51_28_37'
+
+[[spawn]]
+npc = 'paladin2'
+coords = '0_41_51_29_51'
+
+[[spawn]]
+npc = 'paladin2'
+coords = '0_41_51_33_43'
+
+[[spawn]]
+npc = 'peng_zoo'
+coords = '0_40_51_36_6'
+
+[[spawn]]
+npc = 'penguin'
+coords = '0_40_51_32_5'
+
+[[spawn]]
+npc = 'penguin'
+coords = '0_40_51_34_7'
+
+[[spawn]]
+npc = 'penguin'
+coords = '0_40_51_36_5'
+
+[[spawn]]
+npc = 'pmod_town_crier_east_ardoyne'
+coords = '0_41_51_41_47'
+
+[[spawn]]
+npc = 'poison_scorpion'
+coords = '0_42_50_27_18'
+
+[[spawn]]
+npc = 'poison_scorpion'
+coords = '0_42_50_31_23'
+
+[[spawn]]
+npc = 'poison_scorpion'
+coords = '0_42_50_32_12'
+
+[[spawn]]
+npc = 'poison_scorpion'
+coords = '0_42_50_34_20'
+
+[[spawn]]
+npc = 'poison_scorpion'
+coords = '0_42_50_36_15'
+
+[[spawn]]
+npc = 'poison_scorpion'
+coords = '0_42_50_41_24'
+
+[[spawn]]
+npc = 'poison_scorpion'
+coords = '0_42_50_45_25'
+
+[[spawn]]
+npc = 'ramunsheered'
+coords = '0_41_52_32_31'
+
+[[spawn]]
+npc = 'ramunsheered'
+coords = '0_41_52_32_47'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_29_29'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_30_36'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_31_21'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_32_46'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_33_31'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_34_30'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_34_35'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_35_58'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_36_62'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_38_50'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_38_54'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_38_57'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_39_34'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_39_52'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_40_37'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_40_50'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_40_60'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_41_62'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_42_37'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_42_42'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_43_39'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_44_29'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_44_58'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_45_22'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_45_34'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_45_37'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_45_60'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_46_21'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_46_40'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_47_49'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_48_29'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_48_42'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_48_51'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_49_31'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_49_36'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_49_43'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_50_20'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_50_38'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_51_21'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_52_30'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_52_36'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_52_40'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_52_43'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_54_17'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_54_21'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_54_28'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_54_32'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_54_36'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_54_49'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_55_22'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_55_39'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_56_41'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_56_55'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_57_20'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_57_38'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_58_43'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_58_57'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_58_59'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_38_51_60_39'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_3_2'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_4_3'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_49_6_48'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_7_2'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_7_5'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_49_10_54'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_49_12_51'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_12_2'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_49_13_55'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_49_15_52'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_49_16_54'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_49_17_51'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_18_2'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_18_6'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_49_20_54'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_49_20_55'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_21_4'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_22_1'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_25_1'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_29_6'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_33_0'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_34_4'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_36_2'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_39_52_39_4'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_41_151_17_34'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_41_151_21_47'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_41_151_45_17'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_41_151_49_14'
+
+[[spawn]]
+npc = 'rat'
+coords = '0_41_151_56_37'
+
+[[spawn]]
+npc = 'rpdt_employee'
+coords = '0_41_51_20_10'
+
+[[spawn]]
+npc = 'rpdt_employee'
+coords = '0_41_51_20_12'
+
+[[spawn]]
+npc = 'rpdt_employee'
+coords = '0_41_51_23_7'
+
+[[spawn]]
+npc = 'salamander_red'
+coords = '0_38_50_16_25'
+
+[[spawn]]
+npc = 'salamander_red'
+coords = '0_38_50_17_24'
+
+[[spawn]]
+npc = 'salamander_red'
+coords = '0_38_50_17_26'
+
+[[spawn]]
+npc = 'salamander_red'
+coords = '0_38_50_21_21'
+
+[[spawn]]
+npc = 'salamander_red'
+coords = '0_38_50_32_51'
+
+[[spawn]]
+npc = 'salamander_red'
+coords = '0_38_50_36_42'
+
+[[spawn]]
+npc = 'salamander_red'
+coords = '0_38_50_40_39'
+
+[[spawn]]
+npc = 'salamander_red'
+coords = '0_38_50_42_37'
+
+[[spawn]]
+npc = 'salamander_red'
+coords = '0_38_50_44_36'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_40_51_42_3'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_40_51_43_6'
+
+[[spawn]]
+npc = 'scorpion'
+coords = '0_40_51_47_4'
+
+[[spawn]]
+npc = 'sheepunsheered'
+coords = '0_41_52_26_38'
+
+[[spawn]]
+npc = 'sheepunsheered'
+coords = '0_41_52_26_47'
+
+[[spawn]]
+npc = 'sheepunsheered'
+coords = '0_41_52_27_32'
+
+[[spawn]]
+npc = 'sheepunsheered'
+coords = '0_41_52_28_45'
+
+[[spawn]]
+npc = 'sheepunsheered'
+coords = '0_41_52_29_34'
+
+[[spawn]]
+npc = 'sheepunsheered'
+coords = '0_41_52_30_29'
+
+[[spawn]]
+npc = 'sheepunsheered'
+coords = '0_41_52_31_40'
+
+[[spawn]]
+npc = 'sheepunsheered'
+coords = '0_41_52_32_36'
+
+[[spawn]]
+npc = 'sheepunsheered'
+coords = '0_41_52_32_43'
+
+[[spawn]]
+npc = 'sheepunsheered'
+coords = '0_41_52_32_50'
+
+[[spawn]]
+npc = 'silk_merchant_ardougne'
+coords = '0_41_51_32_37'
+
+[[spawn]]
+npc = 'silver_merchant_ardougne'
+coords = '0_41_51_34_52'
+
+[[spawn]]
+npc = 'slug2_lovecraft'
+coords = '0_42_51_44_26'
+
+[[spawn]]
+npc = 'smallscorpion'
+coords = '0_40_51_41_5'
+
+[[spawn]]
+npc = 'smallscorpion'
+coords = '0_40_51_44_8'
+
+[[spawn]]
+npc = 'smallscorpion'
+coords = '0_40_51_45_4'
+
+[[spawn]]
+npc = 'smallscorpion'
+coords = '0_40_51_46_7'
+
+[[spawn]]
+npc = 'snake'
+coords = '0_40_51_50_11'
+
+[[spawn]]
+npc = 'snake'
+coords = '0_40_51_51_11'
+
+[[spawn]]
+npc = 'snake'
+coords = '0_40_51_51_12'
+
+[[spawn]]
+npc = 'snake'
+coords = '0_40_51_56_11'
+
+[[spawn]]
+npc = 'snake'
+coords = '0_40_51_56_12'
+
+[[spawn]]
+npc = 'snake'
+coords = '0_42_49_45_29'
+
+[[spawn]]
+npc = 'snake'
+coords = '0_42_49_46_11'
+
+[[spawn]]
+npc = 'snake'
+coords = '0_42_49_51_33'
+
+[[spawn]]
+npc = 'snake'
+coords = '0_42_49_61_15'
+
+[[spawn]]
+npc = 'snake'
+coords = '0_42_49_63_30'
+
+[[spawn]]
+npc = 'spice_merchant_ardougne'
+coords = '0_41_51_34_32'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_39_49_39_45'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_39_49_39_47'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_39_49_40_44'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_39_49_41_47'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_39_49_45_46'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_39_49_45_52'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_39_49_46_50'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_39_49_48_55'
+
+[[spawn]]
+npc = 'spider'
+coords = '0_39_49_52_54'
+
+[[spawn]]
+npc = 'terrorbird'
+coords = '0_39_49_2_5'
+
+[[spawn]]
+npc = 'terrorbird'
+coords = '0_39_49_8_4'
+
+[[spawn]]
+npc = 'terrorbird_mounted'
+coords = '0_38_52_0_59'
+
+[[spawn]]
+npc = 'terrorbird_mounted'
+coords = '0_38_52_10_60'
+
+[[spawn]]
+npc = 'terrorbird_mounted'
+coords = '0_38_52_21_35'
+
+[[spawn]]
+npc = 'terrorbird_mounted'
+coords = '0_38_52_31_47'
+
+[[spawn]]
+npc = 'treevillage_shopkeeper1'
+coords = '1_39_49_31_25'
+
+[[spawn]]
+npc = 'tribesman'
+coords = '0_42_49_35_23'
+
+[[spawn]]
+npc = 'tribesman'
+coords = '0_42_49_36_22'
+
+[[spawn]]
+npc = 'tribesman'
+coords = '0_42_49_36_25'
+
+[[spawn]]
+npc = 'tribesman'
+coords = '0_42_49_37_27'
+
+[[spawn]]
+npc = 'tribesman'
+coords = '0_42_49_40_22'
+
+[[spawn]]
+npc = 'tribesman'
+coords = '0_42_49_41_22'
+
+[[spawn]]
+npc = 'tribesman'
+coords = '0_42_49_41_28'
+
+[[spawn]]
+npc = 'tribesman'
+coords = '0_42_49_42_26'
+
+[[spawn]]
+npc = 'tribesman'
+coords = '0_42_49_43_25'
+
+[[spawn]]
+npc = 'unicorn'
+coords = '0_41_51_5_2'
+
+[[spawn]]
+npc = 'unicorn'
+coords = '0_41_51_10_1'
+
+[[spawn]]
+npc = 'w_ardougnecitizen3'
+coords = '0_39_51_44_44'
+
+[[spawn]]
+npc = 'w_ardougnecitizen4'
+coords = '0_39_51_40_44'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_32_38'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_34_36'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_34_43'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_35_42'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_36_51'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_37_55'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_39_59'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_41_41'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_42_32'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_44_43'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_46_59'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_48_32'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_49_49'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_38_51_53_48'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_39_51_8_54'
+
+[[spawn]]
+npc = 'w_ardoungechild1'
+coords = '0_39_51_51_13'
+
+[[spawn]]
+npc = 'w_ardoungecitizenlady1'
+coords = '0_38_51_41_24'
+
+[[spawn]]
+npc = 'w_ardoungecitizenlady1'
+coords = '0_39_51_8_62'
+
+[[spawn]]
+npc = 'w_ardoungecitizenlady1'
+coords = '0_39_51_13_50'
+
+[[spawn]]
+npc = 'w_ardoungecitizenlady1'
+coords = '0_39_51_50_13'
+
+[[spawn]]
+npc = 'w_ardoungecitizenlady2'
+coords = '0_38_51_50_22'
+
+[[spawn]]
+npc = 'w_ardoungecitizenlady2'
+coords = '0_38_51_57_31'
+
+[[spawn]]
+npc = 'w_ardoungecitizenlady2'
+coords = '0_39_51_41_60'
+
+[[spawn]]
+npc = 'w_ardoungecitizenlady4'
+coords = '0_38_51_36_26'
+
+[[spawn]]
+npc = 'w_ardoungecitizenlady4'
+coords = '0_38_51_43_61'
+
+[[spawn]]
+npc = 'w_ardoungecitizenlady4'
+coords = '0_38_51_47_47'
+
+[[spawn]]
+npc = 'w_ardoungecitizenlady4'
+coords = '0_39_51_17_51'
+
+[[spawn]]
+npc = 'w_ardoungepriest'
+coords = '0_39_51_33_21'
+
+[[spawn]]
+npc = 'warrior_woman'
+coords = '0_40_52_9_59'
+
+[[spawn]]
+npc = 'warrior_woman'
+coords = '0_40_52_12_55'
+
+[[spawn]]
+npc = 'warrior_woman'
+coords = '0_40_52_12_60'
+
+[[spawn]]
+npc = 'warrior_woman'
+coords = '0_40_52_15_56'
+
+[[spawn]]
+npc = 'warrior_woman'
+coords = '0_40_51_24_41'
+
+[[spawn]]
+npc = 'warrior_woman'
+coords = '0_40_51_25_25'
+
+[[spawn]]
+npc = 'warrior_woman'
+coords = '0_40_51_27_27'
+
+[[spawn]]
+npc = 'warrior_woman'
+coords = '0_41_51_5_31'
+
+[[spawn]]
+npc = 'warrior_woman'
+coords = '0_41_51_8_35'
+
+[[spawn]]
+npc = 'warrior_woman'
+coords = '0_41_52_35_4'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_38_52_5_8'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_38_52_7_5'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_38_52_7_7'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_38_52_8_5'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_38_52_8_7'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_38_51_30_10'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_38_51_33_8'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_38_51_33_11'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_38_51_38_8'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_38_51_40_10'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_38_51_45_11'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_39_49_20_61'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_39_49_52_43'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_40_51_56_19'
+
+[[spawn]]
+npc = 'wolf'
+coords = '0_40_51_60_19'
+
+[[spawn]]
+npc = 'zamorakghost'
+coords = '0_38_50_28_23'
+
+[[spawn]]
+npc = 'zamorakghost'
+coords = '0_38_50_32_23'
+
+[[spawn]]
+npc = 'zamorakghost'
+coords = '0_38_50_33_20'
+
+[[spawn]]
+npc = 'zamorakghost'
+coords = '0_38_50_36_21'
+
+[[spawn]]
+npc = 'zamorakghost'
+coords = '0_38_50_37_26'
+
+[[spawn]]
+npc = 'zamorakghost'
+coords = '0_38_50_44_23'
+
+[[spawn]]
+npc = 'zenesha'
+coords = '0_41_51_29_31'
+
+[[spawn]]
+npc = 'zombie_armed'
+coords = '0_41_151_52_23'
+
+[[spawn]]
+npc = 'zombie_armed2'
+coords = '0_41_151_52_20'
+
+[[spawn]]
+npc = 'zombie_armed3'
+coords = '0_41_151_51_16'
+
+[[spawn]]
+npc = 'zombie_armed_city1'
+coords = '0_39_51_1_28'
+
+[[spawn]]
+npc = 'zombie_armed_city3'
+coords = '0_39_51_15_23'
+
+[[spawn]]
+npc = 'zombie_unarmed_city1'
+coords = '0_39_51_3_22'
+
+[[spawn]]
+npc = 'zombie_unarmed_city3'
+coords = '0_39_51_4_19'
+
+[[spawn]]
+npc = 'zombie_unarmed_city6'
+coords = '0_39_51_10_20'
+
+[[spawn]]
+npc = 'zoo_keeper'
+coords = '0_40_51_43_20'
+
+[[spawn]]
+npc = 'zoo_keeper'
+coords = '0_40_51_51_5'
+
+[[spawn]]
+npc = 'zoo_keeper'
+coords = '0_40_51_59_15'
+
+[[spawn]]
+npc = '0_38_49_freshfish'
+coords = '0_38_49_29_14'
+
+[[spawn]]
+npc = '0_38_49_freshfish'
+coords = '0_38_49_30_9'
+
+[[spawn]]
+npc = '0_38_49_freshfish'
+coords = '0_38_49_33_20'
+
+[[spawn]]
+npc = '0_38_49_freshfish'
+coords = '0_38_49_36_21'
+
+[[spawn]]
+npc = '0_38_49_freshfish'
+coords = '0_38_49_42_17'
+
+[[spawn]]
+npc = '0_40_52_freshfish'
+coords = '0_40_52_1_46'
+
+[[spawn]]
+npc = '0_40_52_freshfish'
+coords = '0_40_52_6_42'
+

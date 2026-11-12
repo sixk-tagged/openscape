@@ -126,7 +126,9 @@ object SuperiorNpcs : NpcReferences() {
                         "slayer_turoth_dad3",
                     )
                     .map { find(it) },
-            aberrant_spectre to (1..4).map { find("slayer_abberant_spectre_$it") },
+            aberrant_spectre to
+                (1..4).map { find("slayer_abberant_spectre_$it") } +
+                    (1..2).map { find("slayer_aberrantspectre_${it}_strongholdcave") },
             kurask to listOf("slayer_kursk_1", "slayer_kursk_2").map { find(it) },
             gargoyle to listOf("slayer_gargoyle_1", "slayer_cave_gargoyle").map { find(it) },
             nechryael to

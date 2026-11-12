@@ -8,7 +8,7 @@ import org.rsmod.api.config.refs.varps
 import org.rsmod.api.hunt.Hunt
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.thievingLvl
-import org.rsmod.api.player.vars.intVarp
+import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.repo.loc.LocRepository
 import org.rsmod.api.script.onOpLoc2
 import org.rsmod.api.type.builders.varp.VarpBuilder
@@ -21,6 +21,7 @@ import org.rsmod.game.type.hunt.HuntVis
 import org.rsmod.game.type.loc.LocType
 import org.rsmod.game.type.npc.NpcType
 import org.rsmod.game.type.obj.ObjTypeList
+import org.rsmod.game.type.varp.VarpType
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
@@ -36,8 +37,6 @@ constructor(
     private val hunt: Hunt,
     private val objTypes: ObjTypeList,
 ) : PluginScript() {
-    private var ProtectedAccess.oliviaAngryUntil by intVarp(ThievingVarps.olivia_angry_until)
-
     override fun ScriptContext.startup() {
         for (stall in ThievingStalls.all) {
             onOpLoc2(stall.type) { steal(it.loc, stall) }
@@ -55,6 +54,11 @@ constructor(
         if (locRepo.findExact(loc.coords, stall.type) == null) {
             return
         }
+        // A guard who sees the grab stops it before anything is taken.
+        if (stall.guardsStop && guardSees(stall)) {
+            alert(stall)
+            return
+        }
         val (obj, count) = stall.loot.roll(random)
         if (!invAdd(inv, obj, count).success) {
             mes(constants.dm_invspace)
@@ -63,12 +67,17 @@ constructor(
         statAdvance(stats.thieving, stall.xp)
         mes("You steal ${withArticle(objTypes[obj].name)}.")
         locRepo.change(loc, stall.empty, stall.respawn)
-        if (stall.type == ThievingLocs.seed_stall) {
-            // Olivia's shop (content/areas/city/draynor) reads this.
-            oliviaAngryUntil = player.vars[varps.playtime] + GRUDGE_TICKS
+        stall.grudge?.let {
+            // The owner's shop (e.g. content/areas/city/draynor) reads this.
+            VarPlayerIntMapSetter.set(player, it, player.vars[varps.playtime] + stall.grudgeTicks)
         }
         alert(stall)
     }
+
+    private fun ProtectedAccess.guardSees(stall: ThievingStalls.Stall): Boolean =
+        hunt.findNpcs(player.coords, ALERT_RANGE, HuntVis.LineOfSight).any { npc ->
+            stall.guards.any { it.id == npc.type.id }
+        }
 
     private fun ProtectedAccess.alert(stall: ThievingStalls.Stall) {
         for (npc in hunt.findNpcs(player.coords, ALERT_RANGE, HuntVis.LineOfSight)) {
@@ -95,8 +104,6 @@ constructor(
         // UNVERIFIED: how far the wiki's "nearby" guards and owners see a theft.
         const val ALERT_RANGE = 8
         const val OWNER_SHOUT = "Hey! Get your hands off there!"
-        // Olivia's wiki page: she won't trade for 10 minutes, counted only while logged in.
-        const val GRUDGE_TICKS = 1000
     }
 }
 
@@ -111,6 +118,11 @@ internal object ThievingStalls {
         val owners: List<NpcType> = emptyList(),
         val guards: List<NpcType> = emptyList(),
         val empty: LocType = ThievingLocs.market,
+        /** Ticks of playtime for which the owner refuses to trade; stored in [grudge]. */
+        val grudge: VarpType? = null,
+        val grudgeTicks: Int = 0,
+        /** True when a guard in sight stops the theft, so it takes nothing. */
+        val guardsStop: Boolean = false,
     )
 
     val all =
@@ -149,6 +161,10 @@ internal object ThievingStalls {
                     },
                     owners = listOf(ThievingStallNpcs.olivia),
                     guards = listOf(ThievingStallNpcs.market_guard),
+                    // Olivia's wiki page: she won't trade for 10 minutes, counted only while
+                    // logged in.
+                    grudge = ThievingVarps.olivia_angry_until,
+                    grudgeTicks = 1000,
                 ),
                 // Fortunato's wine stall, Draynor (the wiki's respawn: 4.8 s).
                 Stall(
@@ -168,7 +184,7 @@ internal object ThievingStalls {
                     empty = ThievingLocs.wine_stall_empty,
                 ),
             )
-        }
+        } + ArdougneStalls.all
 }
 
 object ThievingLocs : LocReferences() {

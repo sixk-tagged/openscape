@@ -51,6 +51,7 @@ internal enum class SlayerMaster(
     Turael(1, 0, 0, 40),
     Mazchna(2, 20, 6, 50),
     Vannaka(3, 40, 8, 60),
+    Nieve(6, 85, 12, 90),
     Krystilia(7, 0, 25, 100),
     Spria(9, 0, 0, 40);
 

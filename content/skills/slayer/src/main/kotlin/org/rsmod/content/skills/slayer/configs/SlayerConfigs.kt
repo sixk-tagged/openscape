@@ -31,6 +31,7 @@ object SlayerNpcs : NpcReferences() {
     val turael = find("slayer_master_1_tureal")
     val mazchna = find("slayer_master_2_mazchna")
     val vannaka = find("slayer_master_3")
+    val nieve = find("slayer_master_nieve")
     val krystilia = find("slayer_master_7")
     val spria = find("slayer_master_9_active")
 }
@@ -135,7 +136,8 @@ internal object SlayerNpcEditor : NpcEditor() {
             edit(npc) { param[params.slayer_levelrequire] = level }
         }
         // The Slayer Equipment shop's StoreTableHead (Spria's is set in Draynor).
-        for (master in listOf(SlayerNpcs.turael, SlayerNpcs.mazchna, SlayerNpcs.vannaka)) {
+        for (master in
+            listOf(SlayerNpcs.turael, SlayerNpcs.mazchna, SlayerNpcs.vannaka, SlayerNpcs.nieve)) {
             shop(master)
         }
         shop(SlayerNpcs.krystilia)

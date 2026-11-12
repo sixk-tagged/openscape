@@ -92,6 +92,8 @@ internal object WoodcuttingTrees : LocEditor() {
         yew(trees.yewtree_update, stumps.yew_stump_40757)
         yew(trees.tree_yew_default01, stumps.yew_stump_42392)
         yew(trees.deadman_yewtree_insurancestall, stumps.yew_stump_9714)
+        yew(trees.deadman_yewtree, stumps.yew_stump_9714)
+        magic(trees.deadman_magictree, stumps.magic_stump_9713)
     }
 
     private fun regular(type: LocType, stump: LocType, logs: ObjType = objs.logs) {
@@ -347,6 +349,8 @@ internal object TreeLocs : LocReferences() {
     val yewtree_update = find("yewtree_update")
     val tree_yew_default01 = find("tree_yew_default01")
     val deadman_yewtree_insurancestall = find("deadman_yewtree_insurancestall")
+    val deadman_yewtree = find("deadman_yewtree")
+    val deadman_magictree = find("deadman_magictree")
 }
 
 internal object StumpLocs : LocReferences() {

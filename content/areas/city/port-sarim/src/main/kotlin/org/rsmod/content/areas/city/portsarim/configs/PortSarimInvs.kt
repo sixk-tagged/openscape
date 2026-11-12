@@ -20,7 +20,7 @@ object PortSarimInvs : InvReferences() {
     val gerrant = find("fishingshop")
     val grum = find("goldshop")
     val rommik = find("craftingshop2")
-    val archery = find("archeryshop2")
+    val archery = find("salesman_ranging")
     val rimmington_general = find("generalshop6")
     val karamja_general = find("generalshop7")
     val zembo = find("boozeshop")

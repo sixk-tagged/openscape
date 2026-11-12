@@ -226,6 +226,7 @@ private fun SlayerMaster.blockSlots(): List<VarBitType> =
         SlayerMaster.Spria -> RewardVarBits.turael_blocks
         SlayerMaster.Mazchna -> RewardVarBits.mazchna_blocks
         SlayerMaster.Vannaka -> RewardVarBits.vannaka_blocks
+        SlayerMaster.Nieve -> RewardVarBits.nieve_blocks
         SlayerMaster.Krystilia -> RewardVarBits.krystilia_blocks
     }
 
@@ -265,5 +266,6 @@ object RewardVarBits : VarBitReferences() {
     val turael_blocks = (1..6).map { find("slayer_blocked_turael_$it") }
     val mazchna_blocks = (1..6).map { find("slayer_blocked_mazchna_$it") }
     val vannaka_blocks = (1..6).map { find("slayer_blocked_vannaka_$it") }
+    val nieve_blocks = (1..6).map { find("slayer_blocked_nieve_$it") }
     val krystilia_blocks = (1..6).map { find("slayer_blocked_krystilia_$it") }
 }

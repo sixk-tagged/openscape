@@ -1,0 +1,431 @@
+[[spawn]]
+npc = 'banker1'
+coords = '0_40_48_55_20'
+
+[[spawn]]
+npc = 'banker2'
+coords = '0_40_48_55_19'
+
+[[spawn]]
+npc = 'colonel_radick'
+coords = '0_39_48_39_19'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_40_48_20_45'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_40_48_22_50'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_40_48_28_47'
+
+[[spawn]]
+npc = 'cow'
+coords = '0_40_48_44_42'
+
+[[spawn]]
+npc = 'darkbear'
+coords = '0_40_47_46_0'
+
+[[spawn]]
+npc = 'dragon_bartender'
+coords = '0_39_48_60_6'
+
+[[spawn]]
+npc = 'dwarf_normal'
+coords = '0_40_47_36_48'
+
+[[spawn]]
+npc = 'dwarf_normal'
+coords = '0_40_47_40_54'
+
+[[spawn]]
+npc = 'dwarf_normal'
+coords = '0_40_47_45_49'
+
+[[spawn]]
+npc = 'dwarf_normal'
+coords = '0_40_47_48_53'
+
+[[spawn]]
+npc = 'frenita'
+coords = '0_40_48_6_26'
+
+[[spawn]]
+npc = 'guild_wizard'
+coords = '0_40_48_34_17'
+
+[[spawn]]
+npc = 'handsand_bert'
+coords = '0_39_48_54_28'
+
+[[spawn]]
+npc = 'handsand_guard_captain'
+coords = '0_39_48_55_6'
+
+[[spawn]]
+npc = 'hunting_shop_owner_yanille'
+coords = '0_40_48_8_10'
+
+[[spawn]]
+npc = 'hunting_weapon_designer'
+coords = '0_40_48_7_13'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_40_48_35_59'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_40_48_37_48'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_40_48_46_54'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_40_48_48_62'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_40_48_54_44'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_40_48_56_54'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_40_48_61_61'
+
+[[spawn]]
+npc = 'imp'
+coords = '0_40_48_62_46'
+
+[[spawn]]
+npc = 'magic_store_owner'
+coords = '1_40_48_35_15'
+
+[[spawn]]
+npc = 'magic_store_owner2'
+coords = '1_40_48_35_16'
+
+[[spawn]]
+npc = 'man'
+coords = '0_40_48_36_32'
+
+[[spawn]]
+npc = 'man3'
+coords = '0_40_48_36_34'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_48_0_20'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_48_1_17'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_48_4_20'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_48_4_25'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_48_7_23'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_48_8_61'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_47_17_18'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_47_26_47'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_47_27_49'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_47_33_24'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_47_43_10'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_47_45_8'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_47_54_35'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_47_54_38'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_39_47_57_39'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_40_47_1_12'
+
+[[spawn]]
+npc = 'ogre'
+coords = '0_40_47_7_38'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_39_48_6_42'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_39_48_9_39'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_39_48_11_36'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_39_48_12_47'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_39_48_13_15'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_39_47_14_36'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_39_48_14_12'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_39_48_17_15'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_39_48_18_9'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_39_47_24_38'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_39_47_30_31'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_40_47_11_19'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_40_47_12_23'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_40_47_15_16'
+
+[[spawn]]
+npc = 'ogre2'
+coords = '0_40_47_18_23'
+
+[[spawn]]
+npc = 'tower_guard'
+coords = '0_39_48_44_18'
+
+[[spawn]]
+npc = 'tower_guard'
+coords = '0_39_48_49_41'
+
+[[spawn]]
+npc = 'tower_guard'
+coords = '0_39_48_50_44'
+
+[[spawn]]
+npc = 'tower_guard'
+coords = '0_39_48_53_40'
+
+[[spawn]]
+npc = 'tower_guard'
+coords = '0_39_48_58_45'
+
+[[spawn]]
+npc = 'unicorn'
+coords = '0_40_47_11_50'
+
+[[spawn]]
+npc = 'unicorn'
+coords = '0_40_47_19_58'
+
+[[spawn]]
+npc = 'wizard'
+coords = '0_40_48_28_18'
+
+[[spawn]]
+npc = 'wizard'
+coords = '0_40_48_29_12'
+
+[[spawn]]
+npc = 'wizard'
+coords = '1_40_48_26_17'
+
+[[spawn]]
+npc = 'wizard'
+coords = '1_40_48_33_12'
+
+[[spawn]]
+npc = 'wizard'
+coords = '1_40_48_35_18'
+
+[[spawn]]
+npc = 'wizard'
+coords = '2_40_48_26_16'
+
+[[spawn]]
+npc = 'wizard'
+coords = '2_40_48_29_13'
+
+[[spawn]]
+npc = 'wizard'
+coords = '2_40_48_33_18'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '0_39_48_44_30'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '0_39_48_46_22'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '0_39_48_47_16'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '0_39_48_49_22'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '0_39_48_50_13'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '0_39_48_51_19'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_39_48_37_14'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_39_48_37_22'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_39_48_38_25'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_39_48_39_16'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_39_48_41_6'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_39_48_41_30'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_39_48_43_35'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_39_48_55_37'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_39_48_57_1'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_39_48_62_1'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_40_48_7_37'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_40_48_12_37'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_40_48_35_1'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_40_48_40_37'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_40_48_49_1'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_40_48_50_35'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_40_48_55_1'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_40_48_58_27'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_40_48_60_5'
+
+[[spawn]]
+npc = 'yanille_soldier'
+coords = '1_40_48_60_23'
+
+[[spawn]]
+npc = 'yanille_watchman'
+coords = '1_39_48_48_40'
+
+[[spawn]]
+npc = 'yanille_watchman'
+coords = '1_39_48_49_44'
+
+[[spawn]]
+npc = 'yanille_watchman'
+coords = '1_39_48_53_40'
+
+[[spawn]]
+npc = 'yanille_watchman'
+coords = '1_39_48_53_44'

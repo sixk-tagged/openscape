@@ -69,6 +69,10 @@ class FaladorLocScript : PluginScript() {
             telejump(coords.translateZ(DUNGEON_Z))
             return
         }
+        YANILLE_CELLARS[stairs.coords]?.let {
+            telejump(it)
+            return
+        }
         if (stairs.coords != MINE_STAIRS) {
             mes("Nothing interesting happens.")
             return
@@ -135,6 +139,13 @@ class FaladorLocScript : PluginScript() {
 
         val MINE_STAIRS = CoordGrid(3058, 3376, 0)
         val WILDERNESS_STAIRS = CoordGrid(3044, 3924, 0)
+
+        /** Yanille's cellar stairs (the transport table's landings). */
+        val YANILLE_CELLARS =
+            mapOf(
+                CoordGrid(2569, 3122, 0) to CoordGrid(2569, 9525, 0),
+                CoordGrid(2603, 3078, 0) to CoordGrid(2601, 9478, 0),
+            )
 
         // UNVERIFIED: the open tiles beside the crypt's entrance (its west side) and the stairs
         // back up (their east side), from the cache's sizes and approach flags.

@@ -180,7 +180,7 @@ private val bloodveldDrops =
         )
     }
 
-private val aberrantSpectreDrops =
+internal val aberrantSpectreDrops =
     with(tower_drop_objs) {
         NpcDrops(
             main =

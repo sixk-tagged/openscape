@@ -283,7 +283,7 @@ private val blackDemonDrops =
 
 // UNVERIFIED: the wiki heads this table /100 but its lines add to 126; built as printed.
 /** Wiki section 4.8 (total 126, weights 126). */
-private val ankouDrops =
+internal val ankouDrops =
     with(wilderness_drop_objs) {
         NpcDrops(
             always = listOf(always(objs.bones), Drop(table = tableOf(3, drop(looting_bag, 1)))),
@@ -801,7 +801,7 @@ private val earthWarriorDrops =
     }
 
 /** Wiki section 4.22 (total 128, weights 128). */
-private val fireGiantDrops =
+internal val fireGiantDrops =
     with(wilderness_drop_objs) {
         NpcDrops(
             always = listOf(always(big_bones), Drop(table = tableOf(3, drop(looting_bag, 1)))),
@@ -870,7 +870,7 @@ private val thugDrops =
     }
 
 /** Wiki section 4.25 (total 50, weights 10). */
-private val hellhoundDrops =
+internal val hellhoundDrops =
     with(wilderness_drop_objs) {
         NpcDrops(
             always =

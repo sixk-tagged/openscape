@@ -264,6 +264,16 @@ class FishingTest {
                 FishingNpcs.bandit_camp_sea_spot to CoordGrid(0, 47, 57, 42, 56),
                 FishingNpcs.lava_eel_spot to CoordGrid(0, 47, 59, 62, 63),
                 FishingNpcs.wilderness_crab_spot to CoordGrid(0, 52, 59, 21, 17),
+                FishingNpcs.sinclair_river_spot to CoordGrid(0, 42, 55, 26, 12),
+                FishingNpcs.catherby_sea_spot to CoordGrid(0, 44, 53, 20, 39),
+                FishingNpcs.catherby_cage_spot to CoordGrid(0, 44, 53, 28, 37),
+                FishingNpcs.catherby_net_spot to CoordGrid(0, 44, 53, 30, 37),
+                FishingNpcs.guild_cage_spot to CoordGrid(0, 40, 53, 39, 27),
+                FishingNpcs.guild_net_spot to CoordGrid(0, 40, 53, 41, 30),
+                FishingNpcs.observatory_river_spot to CoordGrid(0, 38, 49, 29, 14),
+                FishingNpcs.ardougne_river_spot to CoordGrid(0, 40, 52, 1, 46),
+                FishingNpcs.gnome_river_spot to CoordGrid(0, 37, 53, 14, 22),
+                FishingNpcs.baxtorian_river_spot to CoordGrid(0, 39, 53, 12, 29),
             )
         val RESOURCE_CRAB_SPOT = CoordGrid(0, 49, 61, 45, 22)
         // The northernmost swamp spot, and the blocked mud tile two squares from it that is not

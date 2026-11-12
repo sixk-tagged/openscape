@@ -9,3 +9,7 @@ coords = '0_54_54_55_53'
 [[spawn]]
 npc = 'slayer_master_7'
 coords = '0_48_54_37_60'
+
+[[spawn]]
+npc = 'slayer_master_nieve'
+coords = '0_38_53_0_31'
