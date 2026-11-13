@@ -50,8 +50,9 @@ import org.rsmod.game.type.obj.UnpackedObjType
  * account save of a player, autosave and logout included, also writes that player's rows, captured
  * on the game thread with the account snapshot ([saveWork], hooked into `AccountManager`); a failed
  * Grand Exchange save is therefore repaired by the next save of that account. All writes go through
- * the single account writer queue in the order they were requested, and none is retried, so an
- * older state is never written over a newer one.
+ * the single account writer queue in the order they were requested, and none is retried (an account
+ * save that carries these rows isn't either, even at logout), so an older state is never written
+ * over a newer one.
  *
  * What is left: if the writer fails for good (disk full) and the server then stops before another
  * save of that account, the database is behind the game by those trades; the inventory and the

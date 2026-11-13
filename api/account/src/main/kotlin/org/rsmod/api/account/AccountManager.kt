@@ -50,7 +50,9 @@ constructor(private val loader: AccountLoaderService, private val saver: Account
                 player.characterId,
                 player,
                 callback,
-                retry = retry,
+                // A retry runs behind the writes queued meanwhile, so rows a hook captured now
+                // could overwrite newer ones (offers fill while their owner is offline).
+                retry = retry && captured.isEmpty(),
                 extra = combined,
             )
         saver.queue(request)
