@@ -42,6 +42,8 @@ public class BasicGameTestScope(private val eventBus: EventBus) {
         val slot = playerList.nextFreeSlot() ?: error("No available slot.")
         player.coords = coords
         player.slotId = slot
+        // A real login always sets it, and login scripts (the Grand Exchange) read it.
+        player.characterId = slot
         playerList[slot] = player
         eventBus.publish(SessionStateEvent.Initialize(player))
         eventBus.publish(SessionStateEvent.Login(player))

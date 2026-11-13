@@ -298,7 +298,6 @@ constructor(
     private fun isFoodOrPotion(obj: InvObj): Boolean =
         typeOf(obj).iop.any { it == "Eat" || it == "Drink" }
 
-    // Note: shop value until a Grand Exchange exists; its prices plug into MarketPrices.
     private fun unitPrice(obj: InvObj): Long {
         val type = typeOf(obj)
         return (marketPrices[type] ?: type.cost).toLong()

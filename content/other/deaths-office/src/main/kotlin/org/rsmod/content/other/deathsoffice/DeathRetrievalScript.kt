@@ -155,7 +155,6 @@ constructor(private val objTypes: ObjTypeList, private val marketPrices: MarketP
 
     private fun Inventory.getOrNull(slot: Int): InvObj? = if (slot in indices) this[slot] else null
 
-    // Note: shop value until a Grand Exchange exists; its prices plug into MarketPrices.
     private fun unitFee(obj: InvObj): Long {
         val type = objTypes[obj]
         return DeathKeep.officeFee((marketPrices[type] ?: type.cost).toLong())

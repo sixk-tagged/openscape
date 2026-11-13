@@ -92,10 +92,13 @@ constructor(
 
     private suspend fun saveSegments(request: AccountSaveRequest) {
         database.withTransaction { connection ->
-            repository.save(connection, request.player, request.accountId, request.characterId)
-            for (pipeline in pipelines) {
-                pipeline.save(connection, request.player, request.characterId)
+            if (request.savesPlayer) {
+                repository.save(connection, request.player, request.accountId, request.characterId)
+                for (pipeline in pipelines) {
+                    pipeline.save(connection, request.player, request.characterId)
+                }
             }
+            request.extra?.invoke(connection)
         }
     }
 

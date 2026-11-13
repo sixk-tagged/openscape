@@ -1,5 +1,6 @@
 package org.rsmod.api.account.saver.request
 
+import org.rsmod.api.db.DatabaseConnection
 import org.rsmod.game.entity.Player
 
 public data class AccountSaveRequest(
@@ -14,4 +15,11 @@ public data class AccountSaveRequest(
      * dropped instead; the next save carries newer data anyway.
      */
     val retry: Boolean = true,
+    /**
+     * Extra work written in the same transaction as the account rows, so it lands with them or not
+     * at all.
+     */
+    val extra: ((DatabaseConnection) -> Unit)? = null,
+    /** False for a write-only request (`AccountManager.write`): only [extra] runs. */
+    val savesPlayer: Boolean = true,
 )

@@ -114,7 +114,6 @@ constructor(private val objTypes: ObjTypeList, private val marketPrices: MarketP
         if (!type.tradeable || !type.stockmarket || type.param(params.bond_item)) {
             return 1
         }
-        // Note: shop value until a Grand Exchange exists; its prices plug into MarketPrices.
         val price = (marketPrices[type] ?: type.cost).toLong()
         if (price < MIN_VALUE) {
             return price.toInt()

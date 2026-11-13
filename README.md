@@ -38,6 +38,10 @@ I'm building it outward from Lumbridge, one area at a time.
   curses and binds.
 - Die like you would in OSRS: you lose items, a gravestone holds them for you, and Death's Office can
   give them back.
+- Trade with other players on the **Grand Exchange** in Varrock. Your offers keep trading while
+  you're logged out, and you can collect what they made at any bank. There are no bots or NPCs
+  filling offers, and guide prices start at the shop value and follow what players actually pay.
+  The clerks also pack and unpack item sets.
 - Watch out for aggressive monsters. Like in OSRS, they attack you unless your combat level is more
   than double theirs, and they leave you alone once you have spent 10 minutes in the same area.
   Wizards cast spells at you from a distance instead of walking up to you.
@@ -50,8 +54,8 @@ I'm building it outward from Lumbridge, one area at a time.
 - Slayer doesn't have Chaeldar, Konar or Duradel yet. They come with their areas.
 - Agility doesn't have the Ardougne course or a few of the shortcuts.
 - Nothing makes or sells an oily fishing rod yet, so you can't fish lava eels.
-- I haven't played through the Wilderness, Agility, Slayer or Kandarin yet. The tests pass, but expect
-  some wrong tiles, animations and messages.
+- I haven't played through the Wilderness, Agility, Slayer, Kandarin or the Grand Exchange yet. The
+  tests pass, but expect some wrong tiles, animations and messages.
 
 The roadmap above shows what comes after that.
 

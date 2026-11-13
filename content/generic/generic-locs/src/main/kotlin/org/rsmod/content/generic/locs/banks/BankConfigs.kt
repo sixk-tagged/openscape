@@ -11,12 +11,14 @@ internal object BankLocs : LocReferences() {
     val bankbooth = find("aide_bankbooth")
     val bankbooth_multi = find("aide_bankbooth_multi")
     val castlewars_bankchest = find("castlewars_bankchest")
+    val exchange_bank_3ops = find("exchange_bank_wall_bank_3ops")
 }
 
 internal object BankLocEditor : LocEditor() {
     init {
         booth(bank_locs.bankbooth)
         booth(bank_locs.bankbooth_multi)
+        booth(bank_locs.exchange_bank_3ops)
         edit(bank_locs.castlewars_bankchest) { contentGroup = content.bank_chest }
     }
 

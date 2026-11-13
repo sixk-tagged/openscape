@@ -55,7 +55,8 @@ constructor(
         protectedAccess.launch(this) { openGuide() }
     }
 
-    private fun ProtectedAccess.openGuide() {
+    /** Opens the price checker (464 and 238). Also used by Brugsen Bursen. */
+    fun ProtectedAccess.openGuide() {
         invClear(tempInv)
         invTransmit(tempInv)
         invTransmit(inv)

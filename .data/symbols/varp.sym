@@ -2368,6 +2368,7 @@
 65413	swamp_darkness_overlay
 65414	swamp_beast_tile
 65415	slayer_superior_until
+65300	ge_collect_reminder
 65416	count_check_sos_teleport
 65390	coal_truck_store
 65395	disarmed_chest

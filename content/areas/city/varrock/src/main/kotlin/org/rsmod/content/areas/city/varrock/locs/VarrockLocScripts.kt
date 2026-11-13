@@ -68,8 +68,6 @@ constructor(private val locRepo: LocRepository, private val objTypes: ObjTypeLis
         container(varrock_locs.posh_drawers, varrock_locs.posh_drawers_open, "drawers")
 
         onOpLoc1(varrock_locs.bank_locked_door) { knockAtBank() }
-        // Note: there is no Grand Exchange yet, so the counter booth only says so.
-        onOpLoc1(varrock_locs.ge_exchange_booth) { mes("The Grand Exchange is not available yet.") }
 
         onOpLoc1(varrock_locs.church_altar) { prayAt() }
         onOpLoc1(varrock_locs.chaos_altar) { prayAt() }
