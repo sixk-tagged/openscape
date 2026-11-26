@@ -144,6 +144,17 @@ internal object VarrockNpcEditor : NpcEditor() {
             )) {
             edit(npc) { wanderRange = 0 }
         }
+        // The north clerks serve the north booths; three experts face north at their spots.
+        for (npc in
+            listOf(
+                varrock_npcs.ge_clerk_3,
+                varrock_npcs.ge_clerk_4,
+                varrock_npcs.ge_expert_herbs,
+                varrock_npcs.ge_expert_logs,
+                varrock_npcs.ge_expert_runes,
+            )) {
+            edit(npc) { respawnDir = north }
+        }
 
         edit(varrock_npcs.apothecary) { moveRestrict = indoors }
         edit(varrock_npcs.head_chef) {
@@ -183,6 +194,7 @@ internal object VarrockNpcEditor : NpcEditor() {
             )) {
             edit(npc) { wanderRange = 0 }
         }
+        edit(varrock_npcs.museum_guard_2) { respawnDir = north }
 
         for (npc in
             listOf(

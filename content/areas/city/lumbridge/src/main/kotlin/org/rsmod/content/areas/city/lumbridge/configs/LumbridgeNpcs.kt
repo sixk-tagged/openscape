@@ -170,5 +170,8 @@ internal object LumbridgeNpcEditor : NpcEditor() {
             )) {
             edit(tutor) { wanderRange = 0 }
         }
+        // The crafting tutor has the castle wall at their back; the mining tutor looks up the path.
+        edit(CraftingTutorNpcs.tutor) { respawnDir = north }
+        edit(MiningTutorNpcs.tutor) { respawnDir = north }
     }
 }

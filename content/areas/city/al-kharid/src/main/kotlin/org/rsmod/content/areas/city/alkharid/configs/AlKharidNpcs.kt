@@ -59,9 +59,16 @@ internal object AlKharidNpcEditor : NpcEditor() {
         }
         edit(alkharid_npcs.al_kharid_man) { contentGroup = content.person }
 
-        // The toll gate guards stand at their posts beside the gate.
-        edit(alkharid_npcs.border_guard1) { wanderRange = 0 }
-        edit(alkharid_npcs.border_guard2) { wanderRange = 0 }
+        // The toll gate guards stand at their posts beside the gate, looking out at the road: the
+        // Lumbridge-side pair west, the Al Kharid-side pair east.
+        edit(alkharid_npcs.border_guard1) {
+            wanderRange = 0
+            respawnDir = west
+        }
+        edit(alkharid_npcs.border_guard2) {
+            wanderRange = 0
+            respawnDir = east
+        }
         edit(alkharid_npcs.shantay_guard_still) { wanderRange = 0 }
         edit(alkharid_npcs.shantay_guard) { wanderRange = 3 }
 
